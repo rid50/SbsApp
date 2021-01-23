@@ -59,7 +59,7 @@ export class ContractComponent implements OnInit {
         // .subscribe();
 
     // }
-	
+
     // loadContractsPage() {
         // this.dataSource.loadContracts(
             // this.contract.id,
