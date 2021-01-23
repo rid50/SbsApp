@@ -1,15 +1,15 @@
 import {Component, ElementRef, OnInit, AfterViewInit, ViewChild} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
-import {merge, fromEvent} from "rxjs";
+import {ActivatedRoute} from '@angular/router';
+import {merge, fromEvent} from 'rxjs';
 import {debounceTime, distinctUntilChanged, startWith, tap, delay} from 'rxjs/operators';
 
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 
-import {Contract} from "../models/contract";
-import {ContractService} from "../services/contract.service";
-import {ContractDataSource} from "../services/contract.datasource";
+import {Contract} from '../models/contract';
+import {ContractService} from '../services/contract.service';
+import {ContractDataSource} from '../services/contract.datasource';
 
 @Component({
   selector: 'app-contract',
@@ -17,14 +17,11 @@ import {ContractDataSource} from "../services/contract.datasource";
   styleUrls: ['./contract.component.css']
 })
 export class ContractComponent { // implements AfterViewInit {
-  //displayedColumns: string[] = ['id', 'name', 'progress', 'color'];
-	//dataSource: MatTableDataSource<Contract>;
-	contract:Contract;
+  contract: Contract;
 
     dataSource: ContractDataSource;
-		//dataSource: ContractDataSource;
 
-    displayedColumns= ["id", "contractName", "dateEntry", "contractValue", "currency"];
+    displayedColumns = ['id', 'contractName', 'dateEntry', 'contractValue', 'currency'];
 
     @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
     @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -69,6 +66,6 @@ export class ContractComponent { // implements AfterViewInit {
             // this.sort.direction,
             // this.paginator.pageIndex,
             // this.paginator.pageSize);
-    // }	
+    // }
 }
 
