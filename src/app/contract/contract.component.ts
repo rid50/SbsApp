@@ -10,13 +10,14 @@ import {MatTableDataSource} from '@angular/material/table';
 import {Contract} from '../models/contract';
 import {ContractService} from '../services/contract.service';
 import {ContractDataSource} from '../services/contract.datasource';
+import { NgForOf } from '@angular/common';
 
 @Component({
   selector: 'app-contract',
   templateUrl: './contract.component.html',
   styleUrls: ['./contract.component.css']
 })
-export class ContractComponent { // implements AfterViewInit {
+export class ContractComponent implements OnInit {
   contract: Contract;
 
     dataSource: ContractDataSource;
@@ -33,7 +34,7 @@ export class ContractComponent { // implements AfterViewInit {
     }
 
     ngOnInit() {
-		const contracts$ = this.contractService.findAllContracts();
+        const contracts$ = this.contractService.findAllContracts();
     }
 
     // ngAfterViewInit() {
