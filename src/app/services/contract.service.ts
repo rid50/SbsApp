@@ -30,7 +30,7 @@ export class ContractService {
     // }
 
     findAllContracts(): Observable<Contract[]> {
-        // console.log( `AAAAAAAA: ${this.apiUrl}`) //  //
+        console.log( `AAAAAAAA: ${this.apiUrl}`)
         return this.http.get<Contract[]>(`${this.apiUrl}api/contract`)
             .pipe(
                catchError(err => {
