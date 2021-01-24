@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit, AfterViewInit, ViewChild} from '@angular/
 import {ActivatedRoute} from '@angular/router';
 import {merge, fromEvent} from 'rxjs';
 import {debounceTime, distinctUntilChanged, startWith, tap, delay} from 'rxjs/operators';
+// import {tap} from 'rxjs/operators';
 
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
@@ -34,7 +35,16 @@ export class ContractComponent implements OnInit {
     }
 
     ngOnInit() {
-        const contracts$ = this.contractService.findAllContracts();
+        const contracts$ = this.contractService.findAllContracts()
+        // .pipe(tap (x => {
+        //     let y = x;
+        //     console.log(x)
+        // }))
+        .subscribe(
+            // res => console.log('HTTP response', res),
+            // err => console.log('HTTP Error', err),
+            // () => console.log('HTTP request completed.')
+        );
     }
 
     // ngAfterViewInit() {

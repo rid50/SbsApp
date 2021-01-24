@@ -1,8 +1,8 @@
-import {CollectionViewer, DataSource} from "@angular/cdk/collections";
-import {Observable, BehaviorSubject, of} from "rxjs";
-import {catchError, finalize} from "rxjs/operators";
-import {Contract} from "../models/contract";
-import {ContractService} from "./contract.service";
+import {CollectionViewer, DataSource} from '@angular/cdk/collections';
+import {Observable, BehaviorSubject, of} from 'rxjs';
+import {catchError, finalize} from 'rxjs/operators';
+import {Contract} from '../models/contract';
+import {ContractService} from './contract.service';
 
 export class ContractDataSource implements DataSource<Contract> {
 
@@ -14,11 +14,11 @@ export class ContractDataSource implements DataSource<Contract> {
 
     constructor(private contractService: ContractService) {}
 
-    loadContracts(contractId:number,
-                filter:string,
-                sortDirection:string,
-                pageIndex:number,
-                pageSize:number) {
+    loadContracts(contractId: number,
+                  filter: string,
+                  sortDirection: string,
+                  pageIndex: number,
+                  pageSize: number) {
 
         this.loadingSubject.next(true);
 
@@ -32,7 +32,7 @@ export class ContractDataSource implements DataSource<Contract> {
     }
 
     connect(collectionViewer: CollectionViewer): Observable<Contract[]> {
-        console.log("Connecting data source");
+        console.log('Connecting data source');
         return this.contractSubject.asObservable();
     }
 
