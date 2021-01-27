@@ -1,8 +1,9 @@
-import {Injectable} from "@angular/core";
-import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from "@angular/router";
-import {Observable} from "rxjs";
-import {Contract} from "../models/contract";
-import {ContractService} from "./contract.service";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import {Injectable} from '@angular/core'
+import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from '@angular/router'
+import {Observable} from 'rxjs'
+import {Contract} from '../models/contract'
+import {ContractService} from './contract.service'
 
 
 
@@ -14,7 +15,7 @@ export class ContractResolver implements Resolve<Contract> {
     }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Contract> {
-        return this.contractService.findContractById(route.params['id']);
+        return this.contractService.findContractById(route.params['id'])
     }
 
 }

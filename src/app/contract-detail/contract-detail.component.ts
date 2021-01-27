@@ -33,44 +33,44 @@ export class ContractDetailComponent implements OnInit, AfterViewInit {
 
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
 
-        // tslint:disable-next-line: no-string-literal
-        this.contract = this.route.snapshot.data['contract'];
-        this.dataSource = new ContractDataSource(this.contractService);
-        this.dataSource.loadContracts(this.contract.id, '', 'asc', 0, 3);
+        // // tslint:disable-next-line: no-string-literal
+        // this.contract = this.route.snapshot.data['contract'];
+        // this.dataSource = new ContractDataSource(this.contractService);
+        // this.dataSource.loadContracts(this.contract.id, '', 'asc', 0, 3);
     }
 
-    ngAfterViewInit() {
-        this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
+    ngAfterViewInit(): void {
+        // this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
 
-        fromEvent(this.input.nativeElement, 'keyup')
-            .pipe(
-                debounceTime(150),
-                distinctUntilChanged(),
-                tap(() => {
-                    this.paginator.pageIndex = 0;
+        // fromEvent(this.input.nativeElement, 'keyup')
+        //     .pipe(
+        //         debounceTime(150),
+        //         distinctUntilChanged(),
+        //         tap(() => {
+        //             this.paginator.pageIndex = 0;
 
-                    this.loadContractsPage();
-                })
-            )
-            .subscribe();
+        //             this.loadContractsPage();
+        //         })
+        //     )
+        //     .subscribe();
 
-        merge(this.sort.sortChange, this.paginator.page)
-        .pipe(
-            tap(() => this.loadContractsPage())
-        )
-        .subscribe();
+        // merge(this.sort.sortChange, this.paginator.page)
+        // .pipe(
+        //     tap(() => this.loadContractsPage())
+        // )
+        // .subscribe();
 
     }
 
-    loadContractsPage() {
-        this.dataSource.loadContracts(
-            this.contract.id,
-            this.input.nativeElement.value,
-            this.sort.direction,
-            this.paginator.pageIndex,
-            this.paginator.pageSize);
-    }
+    // loadContractsPage() {
+    //     this.dataSource.loadContracts(
+    //         this.contract.id,
+    //         this.input.nativeElement.value,
+    //         this.sort.direction,
+    //         this.paginator.pageIndex,
+    //         this.paginator.pageSize);
+    // }
 }
 

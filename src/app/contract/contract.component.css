@@ -12,8 +12,31 @@
   }
 
   .example-container {
-    height: 400px;
+    height: 200px;
     overflow: auto;
   }
   
-  
+  .mat-header-cell {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  tr.mat-header-row {
+    border: 1px;
+    height: 30px;
+  }
+
+  tr.mat-row {
+    border: 1px;
+    height: 20px;
+  }
+
+  /* .date-entry {
+    text-align: center;
+  }
+
+  .date-entry mat-icon {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 20px;
+  } */
