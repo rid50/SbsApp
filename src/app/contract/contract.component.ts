@@ -2,7 +2,6 @@ import { Component, ElementRef, OnInit, AfterViewInit, ViewChild } from '@angula
 import { ActivatedRoute } from '@angular/router';
 import { merge, fromEvent } from 'rxjs';
 import { debounceTime, distinctUntilChanged, startWith, tap, delay } from 'rxjs/operators';
-// import {tap} from 'rxjs/operators';
 
 //import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -30,7 +29,6 @@ export class ContractComponent implements OnInit {
     @ViewChild('input', { static: true }) input: ElementRef;
 
     constructor(private route: ActivatedRoute, private contractService: ContractService) {
-
     }
 
     ngOnInit(): void {

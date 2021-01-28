@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { CollectionViewer, DataSource } from '@angular/cdk/collections'
 import { Observable, BehaviorSubject, of } from 'rxjs'
 import { catchError, finalize } from 'rxjs/operators'
@@ -19,7 +17,7 @@ export class ContractDataSource implements DataSource<Contract> {
 
     loadContracts(id_wildcard?: string,
                 sortColumnName?: string,
-                sordOrder?:string) {
+                sordOrder?:string): void {
 
         this.loadingSubject.next(true)
 
