@@ -58,17 +58,17 @@ export class ContractComponent implements OnInit {
         // eslint-disable-next-line @typescript-eslint/no-empty-function
         this.sort.sortChange.subscribe(() => {})
 
-        // fromEvent(this.input.nativeElement, 'keyup')
-        //     .pipe(
-        //         debounceTime(150),
-        //         distinctUntilChanged(),
-        //         tap(() => {
-        //             this.paginator.pageIndex = 0;
+        fromEvent(this.input.nativeElement, 'keyup')
+            .pipe(
+                debounceTime(150),
+                distinctUntilChanged(),
+                tap(() => {
+                    //this.paginator.pageIndex = 0;
 
-        //             //this.loadContractsPage();
-        //         })
-        //     )
-        //     .subscribe();
+                    this.loadContracts();
+                })
+            )
+            .subscribe();
 
         //merge(this.sort.sortChange, this.paginator.page)
         //merge(this.sort.sortChange)
@@ -84,12 +84,12 @@ export class ContractComponent implements OnInit {
 
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     loadContracts() {
-        this.dataSource.loadContracts('', this.sort.active, this.sort.direction);
+        this.dataSource.loadContracts(this.input.nativeElement.value, this.sort.active, this.sort.direction);
     }
 
-    // applyFilter(event: Event) {
+    // applyFilter(event: Event): void {
     //     const filterValue = (event.target as HTMLInputElement).value;
-    //     this.dataSource.filter = filterValue.trim().toLowerCase();
+    //     //this.dataSource.filter = filterValue.trim().toLowerCase();
     // }
 
     onRowClicked(row: unknown): void {
