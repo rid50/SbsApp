@@ -4,7 +4,7 @@ import { merge, fromEvent } from 'rxjs';
 import { debounceTime, distinctUntilChanged, startWith, tap, delay } from 'rxjs/operators';
 // import {tap} from 'rxjs/operators';
 
-import { MatPaginator } from '@angular/material/paginator';
+//import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 //import { MatTableDataSource } from '@angular/material/table';
 
@@ -23,9 +23,9 @@ export class ContractComponent implements OnInit {
 
     dataSource: ContractDataSource;
 
-    displayedColumns = ['id', 'contractName', 'dateEntry', 'contractValue', 'currency'];
+    displayedColumns = ['contractId', 'contractName', 'dateEntry', 'contractValue', 'currency'];
 
-    @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+    //@ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
     @ViewChild(MatSort, { static: true }) sort: MatSort;
     @ViewChild('input', { static: true }) input: ElementRef;
 
@@ -37,7 +37,7 @@ export class ContractComponent implements OnInit {
         //this.contract = this.route.snapshot.data["contact"];
         this.dataSource = new ContractDataSource(this.contractService);
 
-        this.dataSource.loadContracts(null, '', '')
+        this.dataSource.loadContracts()
 
         //this.dataSource.sort = this.sort;
 
@@ -55,7 +55,8 @@ export class ContractComponent implements OnInit {
 
     ngAfterViewInit(): void {
         //this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
-        this.sort.sortChange.subscribe()
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        this.sort.sortChange.subscribe(() => {})
 
         // fromEvent(this.input.nativeElement, 'keyup')
         //     .pipe(
@@ -70,25 +71,21 @@ export class ContractComponent implements OnInit {
         //     .subscribe();
 
         //merge(this.sort.sortChange, this.paginator.page)
-        merge(this.sort.sortChange)        
+        //merge(this.sort.sortChange)
+        this.sort.sortChange            
             .pipe(
-                tap((x) => console.log(x)),
-                tap(() => this.dataSource.loadContracts(null, '', '')),
-                //tap(() => this.loadContractsPage())                
+                //tap((x) => console.log(x)),
+                //tap(() => this.dataSource.loadContracts(null, '', '')),
+                tap(() => this.loadContracts())                
             )
             .subscribe();
 
     }
 
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-    // loadContractsPage() {
-    //     this.dataSource.loadContracts(
-    //         this.contract.id,
-    //         this.input.nativeElement.value,
-    //         this.sort.direction,
-    //         this.paginator.pageIndex,
-    //         this.paginator.pageSize);
-    // }
+    loadContracts() {
+        this.dataSource.loadContracts('', this.sort.active, this.sort.direction);
+    }
 
     // applyFilter(event: Event) {
     //     const filterValue = (event.target as HTMLInputElement).value;

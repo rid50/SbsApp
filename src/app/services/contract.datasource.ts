@@ -17,9 +17,9 @@ export class ContractDataSource implements DataSource<Contract> {
     constructor(private contractService: ContractService) { }
 
 
-    loadContracts(id_wildcard: number,
-                sortColumnName: string,
-                sordOrder:string) {
+    loadContracts(id_wildcard?: string,
+                sortColumnName?: string,
+                sordOrder?:string) {
 
         this.loadingSubject.next(true)
 

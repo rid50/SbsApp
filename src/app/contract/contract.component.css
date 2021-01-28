@@ -11,8 +11,14 @@
     width: 25%;
   }
 
-  .example-container {
+  /* .example-container {
     height: 200px;
+    overflow: auto;
+  } */
+
+  .contract-container {
+    height: 200px;
+    /* margin-top: 10px; */
     overflow: auto;
   }
   
@@ -29,6 +35,16 @@
   tr.mat-row {
     border: 1px;
     height: 20px;
+  }
+
+  .spinner-container {
+    height: 200px;
+    width: 200px;
+    position: fixed;
+  }
+
+  .spinner-container mat-spinner {
+    margin: 40px auto 0 auto;
   }
 
   /* .date-entry {

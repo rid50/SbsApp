@@ -13,6 +13,7 @@ export class ContractService {
     findContractById (contractId: number): Observable<Contract> {
         return this.http.get<Contract>(`${this.apiUrl}/api/contract/${contractId}`)
     }
+//t?id=&sortColumnName=contractid&sortOrder=desc
 
     // findAllContracts(): Observable<any> {
     //     return this.http.get(`${this.apiUrl}/api/courses`)
@@ -31,17 +32,18 @@ export class ContractService {
     //         );
     // }
 
-    getContracts(id_wildcard: number,
-                sortColumnName: string,
-                sordOrder:string): Observable<Contract[]> {
-                    let i = 0
-        return this.http.get<Contract[]>(`${this.apiUrl}api/contract`)
-            .pipe(
-               catchError(err => {
-                    console.log('Handling error locally and rethrowing it...', err)
-                    return throwError(err)
-                }),            
-            )
+    getContracts(id_wildcard = '',
+                sortColumnName = '',
+                sordOrder = ''): Observable<Contract[]> {
+                    //let i = 0
+        return this.http.get<Contract[]>
+                (`${this.apiUrl}api/contract?id=${id_wildcard}&sortColumnName=${sortColumnName}&sortOrder=${sordOrder}`)
+            // .pipe(
+            //    catchError(err => {
+            //         console.log('Handling error locally and rethrowing it...', err)
+            //         return throwError(err)
+            //     }),            
+            // )
     }
 
     // findAllCourseLessons(courseId:number): Observable<Lesson[]> {
