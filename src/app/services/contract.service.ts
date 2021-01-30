@@ -35,7 +35,6 @@ export class ContractService {
     getContracts(id_wildcard = '',
                 sortColumnName = '',
                 sordOrder = ''): Observable<Contract[]> {
-                    //let i = 0
         return this.http.get<Contract[]>
                 (`${this.apiUrl}api/contract?id=${id_wildcard}&sortColumnName=${sortColumnName}&sortOrder=${sordOrder}`)
             // .pipe(

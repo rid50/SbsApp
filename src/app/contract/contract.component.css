@@ -1,10 +1,11 @@
-  table {
+  /* .mat-table {
+    overflow: auto;
     width: 100%;
-  }
+  } */
   
   .mat-form-field {
     font-size: 16px;
-    margin-left: 10px;
+    /* margin-left: 10px; */
     width: 100%;
   }
   
@@ -12,20 +13,38 @@
     width: 25%;
   }
 
-  /* .example-container {
-    height: 200px;
-    overflow: auto;
-  } */
-
   .contract-container {
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* min-width: 300px; */
+
     height: 200px;
     /* margin: 0, 10px; */
     overflow: auto;
   }
-  
+
+  .mat-header-cell {
+    color: black;
+  }
+
+  /* .mat-cell:nth-child(4),
+  .mat-header-cell:nth-child(4) {
+    flex: 0 0 40px;
+  }
+
+  .mat-cell:nth-child(5),
+  .mat-header-cell:nth-child(5) {
+    flex: 0 0 40px;
+  }
+
+  .mat-sort-header-container {
+    font-size: larger;
+    font-weight: bolder;
+  } */
+
   .mat-header-cell {
     font-size: 16px;
-    font-weight: 700;
+    /* font-weight: 700; */
   }
 
   tr.mat-header-row {

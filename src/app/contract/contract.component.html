@@ -1,6 +1,9 @@
   <mat-form-field>
-    <mat-label>Search contracts</mat-label>
-    <input matInput placeholder="" #input>
+    <!-- <mat-label>Search contracts</mat-label> -->
+    <input matInput placeholder="Search contracts" (keyup)="applyFilter($event)" #input>
+    <!-- <input matInput placeholder="" #input> -->
+    <!-- <input matInput type="text" [(ngModel)]="filterValue"
+          (blur)="applyFilter()" placeholder="Search contractы"> -->
   </mat-form-field>
 
   <!-- <mat-form-field>
@@ -9,13 +12,13 @@
   
   </mat-form-field> -->
   
-  <div class="spinner-container" *ngIf="dataSource.loading$ | async">
+  <div class="spinner-container" *ngIf="loading$ | async">
     <mat-spinner></mat-spinner>
   </div>
 
   <div class="contract-container mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource" 
-        matSort matSortActive="contractId" matSortDirection="asc" matSortDisableClear>
+    <table mat-table [dataSource]="dataSource" [matSortDisableClear]="false"
+        matSort matSortActive="contractId" matSortDirection="asc" >
   
       <!-- ID Column -->
       <ng-container matColumnDef="contractId">

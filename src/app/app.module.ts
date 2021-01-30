@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
@@ -30,6 +31,7 @@ import { ContractDetailComponent } from './contract-detail/contract-detail.compo
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    FormsModule,
     MatSortModule,
     MatTableModule,
     MatButtonModule,
