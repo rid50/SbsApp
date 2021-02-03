@@ -10,12 +10,14 @@ import { catchError, map, finalize } from 'rxjs/operators'
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input'
+
 //import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 
 import { Contract } from '../models/contract';
 import { ContractService } from '../services/contract.service';
 import { ContractDataSource } from '../services/contract.datasource';
 import { NgForOf } from '@angular/common';
+import { DateAdapter } from '@angular/material/core';
 
 @Component({
     selector: 'app-contract',
@@ -25,8 +27,8 @@ import { NgForOf } from '@angular/common';
 export class ContractComponent implements OnInit {
     contract: Contract
     contracts: Contract[]
+    todaysDate: Date = new Date(); 
 
-    
     //dataSource: ContractDataSource;
     //dataSource = new MatTableDataSource(this.contracts);
 
@@ -42,7 +44,12 @@ export class ContractComponent implements OnInit {
     @ViewChild(MatSort, { static: true }) sort: MatSort;
     @ViewChild('input', { static: true }) input: ElementRef;
 
-    constructor(private route: ActivatedRoute, private contractService: ContractService) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(private route: ActivatedRoute, private _adapter: DateAdapter<any>, private contractService: ContractService) {
+        this._adapter.setLocale('de');
+        //this._adapter.setLocale('en');
+        //this._adapter.setLocale('fr');
+        //this._adapter.setLocale('ru');
     }
 
     ngOnInit(): void {

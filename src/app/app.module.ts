@@ -4,15 +4,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+//import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 
+import { MatCardModule } from '@angular/material/card';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+//npm i @angular/material-moment-adapter
+//npm i moment
+import { MAT_MOMENT_DATE_FORMATS, MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 
 import { environment } from '../environments/environment';
 import { ContractComponent } from './contract/contract.component';
@@ -32,16 +39,25 @@ import { ContractDetailComponent } from './contract-detail/contract-detail.compo
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
+    MatCardModule,
     MatSortModule,
     MatTableModule,
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    MatDatepickerModule,
+    MatMomentDateModule,
     MatPaginatorModule,
     MatProgressSpinnerModule
   ],
+  // both the NativeDateAdapter and MomentDateAdapter allow ISO 8601 strings to be passed to the datepicker and automatically converted to the proper object type  
   providers: [
     {provide: 'BASE_API_URL', useValue: environment.apiUrl},
+    {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {strict: true}},
+    //{provide: MAT_DATE_LOCALE, useValue: 'ru-RU'},
+    // {provide: DateAdapter, useClass: MomentDateAdapter,
+    //   deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
+    // },
     ContractService,
     ContractResolver
   ],

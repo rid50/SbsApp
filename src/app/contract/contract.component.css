@@ -1,32 +1,51 @@
-  /* .mat-table {
-    overflow: auto;
-    width: 100%;
-  } */
+/* @import '~@angular/material/prebuilt-themes/deeppurple-amber.css'; */
   
+  .mat-table {
+    /* display: flex; */
+    /* column-gap: 40px; */
+    /* overflow: auto;
+    width: 100%; */
+    height: 230px;
+    /* margin: 0, 10px; */
+    overflow: auto; 
+  }
+  
+  /* .ng-container {
+    flex: auto;
+  } */
+
   .mat-form-field {
     font-size: 16px;
     /* margin-left: 10px; */
     width: 100%;
   }
   
-  td, th {
+  /* td, th {
     width: 25%;
-  }
+  } */
 
-  .contract-container {
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* min-width: 300px; */
+  /* .contract-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
 
-    height: 200px;
-    /* margin: 0, 10px; */
+    height: 220px;
+    margin: 0, 10px;
     overflow: auto;
-  }
+  } */
 
+  .mat-card-title {
+    margin-bottom: 0 !important;
+  }
   .mat-header-cell {
     color: black;
   }
 
+  /* .mat-cell {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;        
+  } */
   /* .mat-cell:nth-child(4),
   .mat-header-cell:nth-child(4) {
     flex: 0 0 40px;
@@ -35,9 +54,9 @@
   .mat-cell:nth-child(5),
   .mat-header-cell:nth-child(5) {
     flex: 0 0 40px;
-  }
+  } */
 
-  .mat-sort-header-container {
+  /* .mat-sort-header-container {
     font-size: larger;
     font-weight: bolder;
   } */
@@ -47,15 +66,13 @@
     /* font-weight: 700; */
   }
 
-  tr.mat-header-row {
-    border: 1px;
-    height: 30px;
+  .mat-header-row {
+    min-height: 30px !important;
   }
 
-  tr.mat-row {
-    border: 1px;
-    height: 20px;
-  }
+  /* .mat-row {
+    height: 20px !important;
+  } */
 
   .spinner-container {
     height: 200px;
