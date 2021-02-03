@@ -18,6 +18,7 @@ import { ContractService } from '../services/contract.service';
 import { ContractDataSource } from '../services/contract.datasource';
 import { NgForOf } from '@angular/common';
 import { DateAdapter } from '@angular/material/core';
+import { isNgTemplate } from '@angular/compiler';
 
 @Component({
     selector: 'app-contract',
@@ -38,7 +39,8 @@ export class ContractComponent implements OnInit {
 
     dataSource = new MatTableDataSource<Contract>()
 
-    displayedColumns = ['contractId', 'contractName', 'dateEntry', 'contractValue', 'currency'];
+    displayedColumns = ['contractId', 'contractName', 'dateEntry', 'contractValue'];
+    //displayedColumns = ['contractId', 'contractName', 'dateEntry', 'contractValue', 'currency'];
 
     //@ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
     @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -109,6 +111,11 @@ export class ContractComponent implements OnInit {
         this.loadingSubject.next(true)
         this.contractService.getContracts()
             .pipe(
+                map((array:Contract[]) => array.map ((item: Contract) => ({
+                    ...item,
+                    contractValue: `${item.currency} ${item.contractValue}`
+                }))),
+                //tap(console.log),
                 catchError(err => {
                     console.log('Handling error locally and rethrowing it...', err)
                     return throwError(err)

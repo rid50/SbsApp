@@ -79,10 +79,10 @@
           </ng-container>
 
           <!-- Currency Column -->
-          <ng-container matColumnDef="currency">
+          <!-- <ng-container matColumnDef="currency">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Currency </mat-header-cell>
             <mat-cell *matCellDef="let row"> {{row.currency}} </mat-cell>
-          </ng-container>
+          </ng-container> -->
 
           <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
           <mat-row *matRowDef="let row; columns: displayedColumns" (click)="onRowClicked(row)"></mat-row>

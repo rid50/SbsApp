@@ -2,7 +2,7 @@ export interface Contract {
     contractId:number;
     contractName:string;
     dateEntry: string;
-    contractValue: number;
+    contractValue: string;
     currency: number;
 }
 
