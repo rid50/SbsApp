@@ -32,11 +32,11 @@ export class ContractService {
     //         );
     // }
 
-    getContracts(id_wildcard = '',
-                sortColumnName = '',
-                sordOrder = ''): Observable<Contract[]> {
-        return this.http.get<Contract[]>
-                (`${this.apiUrl}api/contract?id=${id_wildcard}&sortColumnName=${sortColumnName}&sortOrder=${sordOrder}`)
+    getContracts(id_wildcard = '', sortColumnName = '', sordOrder = '', 
+        skip = 0, take = 0): Observable<Contract[]> {
+
+            return this.http.get<Contract[]>
+                (`${this.apiUrl}api/contract?id=${id_wildcard}&sort=${sortColumnName}&order=${sordOrder}&skip=${skip}&take=${take}`)
             // .pipe(
             //    catchError(err => {
             //         console.log('Handling error locally and rethrowing it...', err)

@@ -26,21 +26,11 @@ import { isNgTemplate } from '@angular/compiler';
     styleUrls: ['./contract.component.css']
 })
 export class ContractComponent implements OnInit {
-    contract: Contract
-    contracts: Contract[]
-    todaysDate: Date = new Date(); 
-
-    //dataSource: ContractDataSource;
-    //dataSource = new MatTableDataSource(this.contracts);
-
-    private loadingSubject = new BehaviorSubject<boolean>(false);
-
-    loading$ = this.loadingSubject.asObservable();
-
-    dataSource = new MatTableDataSource<Contract>()
-
-    displayedColumns = ['contractId', 'contractName', 'dateEntry', 'contractValue'];
-    //displayedColumns = ['contractId', 'contractName', 'dateEntry', 'contractValue', 'currency'];
+    contract: Contract;
+    dataSource: ContractDataSource;
+    displayedColumns = ['contractId', 'contractName', 'dateEntry', 'contractValue', 'currency'];
+    skip = 0;
+    take = 6;
 
     //@ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
     @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -60,7 +50,7 @@ export class ContractComponent implements OnInit {
 
         //this.dataSource.loadContracts()
         this.loadContracts()
-        this.dataSource.sort = this.sort;
+        //this.dataSource.sort = this.sort;
         //this.dataSource.sort = this.sort;
 
         // const contracts$ = this.contractService.findAllContracts()
@@ -106,26 +96,7 @@ export class ContractComponent implements OnInit {
 
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     loadContracts() {
-        //this.dataSource.loadContracts(this.input.nativeElement.value, this.sort.active, this.sort.direction);
-        
-        this.loadingSubject.next(true)
-        this.contractService.getContracts()
-            .pipe(
-                map((array:Contract[]) => array.map ((item: Contract) => ({
-                    ...item,
-                    contractValue: `${item.currency} ${item.contractValue}`
-                }))),
-                //tap(console.log),
-                catchError(err => {
-                    console.log('Handling error locally and rethrowing it...', err)
-                    return throwError(err)
-                }),
-                //catchError(() => of([])),
-                finalize(() => this.loadingSubject.next(false))
-            )
-            .subscribe(data => this.dataSource.data = data)
-        //.subscribe(contracts => this.contractSubject.next(contracts))
-
+        this.dataSource.loadContracts(this.input.nativeElement.value, this.sort.active, this.sort.direction, this.skip, this.take);
     }
 
     // filterValue : string;
@@ -135,7 +106,7 @@ export class ContractComponent implements OnInit {
 
     applyFilter(event: Event): void {
         const filterValue = (event.target as HTMLInputElement).value;
-        this.dataSource.filter = filterValue.trim().toLowerCase();
+        //this.dataSource.filter = filterValue.trim().toLowerCase();
     }
 
     onRowClicked(row: unknown): void {
