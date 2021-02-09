@@ -15,13 +15,12 @@ export class ContractDataSource implements DataSource<Contract> {
     constructor(private contractService: ContractService) { }
 
 
-    loadContracts(id_wildcard?: string,
-                sortColumnName?: string,
-                sordOrder?:string): void {
+    loadContracts(id_wildcard?: string, sortColumnName?: string, sordOrder?:string,
+        skip?:number, take?:number): void {
 
         this.loadingSubject.next(true)
 
-        this.contractService.getContracts(id_wildcard, sortColumnName, sordOrder)
+        this.contractService.getContracts(id_wildcard, sortColumnName, sordOrder, skip, take)
             .pipe(
                 catchError(() => of([])),
                 finalize(() => this.loadingSubject.next(false))

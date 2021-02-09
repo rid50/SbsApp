@@ -19,10 +19,10 @@ import { NgForOf } from '@angular/common';
 })
 export class ContractComponent implements OnInit {
     contract: Contract;
-
     dataSource: ContractDataSource;
-
     displayedColumns = ['contractId', 'contractName', 'dateEntry', 'contractValue', 'currency'];
+    skip = 0;
+    take = 6;
 
     //@ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
     @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -82,7 +82,7 @@ export class ContractComponent implements OnInit {
 
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     loadContracts() {
-        this.dataSource.loadContracts(this.input.nativeElement.value, this.sort.active, this.sort.direction);
+        this.dataSource.loadContracts(this.input.nativeElement.value, this.sort.active, this.sort.direction, this.skip, this.take);
     }
 
     // applyFilter(event: Event): void {
