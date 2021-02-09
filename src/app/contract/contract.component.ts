@@ -34,8 +34,7 @@ export class ContractComponent implements OnInit {
     ngOnInit(): void {
         //this.contract = this.route.snapshot.data["contact"];
         this.dataSource = new ContractDataSource(this.contractService);
-
-        this.dataSource.loadContracts()
+        this.loadContracts()
 
         //this.dataSource.sort = this.sort;
 
