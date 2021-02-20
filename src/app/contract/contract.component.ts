@@ -59,7 +59,7 @@ export class ContractComponent implements OnInit {
         //this._adapter.setLocale('de');
         //this._adapter.setLocale('en');
         //this._adapter.setLocale('fr');
-        this._adapter.setLocale('ru-RU');
+        //this._adapter.setLocale('ru-RU');
     }
 
     ngOnInit(): void {
