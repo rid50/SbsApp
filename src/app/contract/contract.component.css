@@ -1,5 +1,6 @@
-/* @import '~@angular/material/prebuilt-themes/deeppurple-amber.css'; */
-  
+/* @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~material-design-icons/iconfont/material-icons.css'; */
+
   .mat-table {
     /* display: flex; */
     /* column-gap: 40px; */
@@ -62,7 +63,7 @@
 
   .mat-cell:nth-child(3),
   .mat-header-cell:nth-child(3) {
-    flex: 2%;
+    flex: 6%;
   }  
 
   .mat-cell:nth-child(4),
@@ -70,20 +71,25 @@
     flex: 10%;
   }  
 
+  .mat-cell:nth-child(5),
+  .mat-header-cell:nth-child(5) {
+    flex: 4%;
+  }  
+
   /* .mat-cell {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;        
   } */
-  /* .mat-cell:nth-child(4),
-  .mat-header-cell:nth-child(4) {
-    flex: 0 0 40px;
+  .mat-cell:nth-child(6),
+  .mat-header-cell:nth-child(6) {
+    flex: 24px;
   }
 
-  .mat-cell:nth-child(5),
-  .mat-header-cell:nth-child(5) {
-    flex: 0 0 40px;
-  } */
+  .mat-cell:nth-child(7),
+  .mat-header-cell:nth-child(7) {
+    flex: 24px;
+  }
 
   /* .mat-sort-header-container {
     font-size: larger;

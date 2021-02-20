@@ -38,8 +38,8 @@
           <!-- Contract Name Column -->
           <ng-container matColumnDef="contractName">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Contract Name </mat-header-cell>
-            <mat-cell *matCellDef="let row; let rowIdx = index;">
-              <mat-form-field>
+            <mat-cell *matCellDef="let row; let rowIdx = index;"><span *ngIf=!editRow> {{row.contractName}} </span>
+              <mat-form-field *ngIf=editRow>
                 <mat-label></mat-label>
                 <input matInput #contractName="ngModel" name="contractName{{rowIdx}}" [(ngModel)]="row.contractName"
                   required>
@@ -55,8 +55,8 @@
           <!-- [ngModel]="row.dateEntry | date:'dd-MM-yyyy'" does not work -->
           <ng-container matColumnDef="dateEntry">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Date Entry </mat-header-cell>
-            <mat-cell *matCellDef="let row; let rowIdx = index;" class="date-entry">
-              <mat-form-field>
+            <mat-cell *matCellDef="let row; let rowIdx = index;" class="date-entry"><span *ngIf=!editRow> {{row.dateEntry | date:'shortDate'}} </span>
+              <mat-form-field *ngIf=editRow>
                 <mat-label></mat-label>
                 <input matInput #dateEntry="ngModel" name="dateEntry{{rowIdx}}" id="dateEntry{{rowIdx}}"
                 [ngModel]="row.dateEntry"
@@ -79,12 +79,34 @@
           </ng-container>
 
           <!-- Currency Column -->
-          <!-- <ng-container matColumnDef="currency">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Currency </mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{row.currency}} </mat-cell>
-          </ng-container> -->
+          <ng-container matColumnDef="currency" *ngIf=!editRow>
+              <mat-header-cell *matHeaderCellDef mat-sort-header><span *ngIf=editRow> Currency </span></mat-header-cell>
+              <mat-cell *matCellDef="let row"><span *ngIf=editRow> {{row.currency}} </span></mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="edit">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Edit </mat-header-cell>
+            <mat-cell *matCellDef="let element"> 
+              <button mat-icon-button matTooltip="Click to Edit" class="iconbutton"
+                (click)="edit(element)" color="primary">
+                <mat-icon>edit</mat-icon>
+              </button> 
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="delete">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Delete </mat-header-cell>
+            <mat-cell *matCellDef="let element"> 
+              <button mat-icon-button matTooltip="Click to Delete" class="iconbutton"
+                (click)="delete(element.contractId)" color="warn" [disabled]="!editRow">
+                <mat-icon>delete</mat-icon>
+              </button> 
+            </mat-cell>
+          </ng-container>
+
+
 
           <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+          <!-- <mat-row *matRowDef="let row; columns: displayedColumns" ></mat-row> -->
           <mat-row *matRowDef="let row; columns: displayedColumns" (click)="onRowClicked(row)"></mat-row>
 
           <!-- Row shown when there is no matching data. -->

@@ -44,9 +44,11 @@ export class ContractComponent implements OnInit {
     dataSource = new MatTableDataSource<Contract>()
 
     //displayedColumns = ['contractId', 'contractName', 'dateEntry', 'contractValue', 'currency'];
-    displayedColumns = ['contractId', 'contractName', 'dateEntry', 'contractValue'];
+    displayedColumns = ['contractId', 'contractName', 'dateEntry', 'contractValue', 'currency', 'edit', 'delete'];
     skip = 0;
     take = 6;
+
+    editRow = false
 
     //@ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
     @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -54,10 +56,10 @@ export class ContractComponent implements OnInit {
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     constructor(private route: ActivatedRoute, private _adapter: DateAdapter<any>, private contractService: ContractService) {
-        this._adapter.setLocale('de');
+        //this._adapter.setLocale('de');
         //this._adapter.setLocale('en');
         //this._adapter.setLocale('fr');
-        //this._adapter.setLocale('ru');
+        this._adapter.setLocale('ru-RU');
     }
 
     ngOnInit(): void {
@@ -150,7 +152,14 @@ export class ContractComponent implements OnInit {
     }
 
     onRowClicked(row: unknown): void {
-        console.log('Row clicked: ', row);
+        //console.log('Row clicked: ', row);
+        console.log (window.navigator.language)
     }
+
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    edit(element:Contract): void {this.editRow = !this.editRow}
+
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    delete(id:string):void {console.log}
 }
 
