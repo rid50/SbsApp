@@ -5,11 +5,18 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { LOCALE_ID } from '@angular/core';
-import { registerLocaleData } from '@angular/common';
-import localeRu from '@angular/common/locales/ru';
+//import { registerLocaleData } from '@angular/common';
+//import localeRu from '@angular/common/locales/ru';
 import '@angular/common/locales/global/ru';
 import '@angular/common/locales/global/fr';
 
@@ -32,6 +39,8 @@ import { ContractComponent } from './contract/contract.component';
 import { ContractService } from './services/contract.service';
 import { ContractResolver } from './services/contract.resolver';
 import { ContractDetailComponent } from './contract-detail/contract-detail.component';
+import { HeaderComponent } from './navigation/header/header.component';
+import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 
 //registerLocaleData(localeRu, 'RU');
 
@@ -39,7 +48,9 @@ import { ContractDetailComponent } from './contract-detail/contract-detail.compo
   declarations: [
     AppComponent,
     ContractComponent,
-    ContractDetailComponent
+    ContractDetailComponent,
+    HeaderComponent,
+    SidenavListComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +58,12 @@ import { ContractDetailComponent } from './contract-detail/contract-detail.compo
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
+    FlexLayoutModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatListModule,
+    MatMenuModule,
+    MatSidenavModule,
     MatCardModule,
     MatSortModule,
     MatTableModule,
@@ -58,6 +75,11 @@ import { ContractDetailComponent } from './contract-detail/contract-detail.compo
     MatPaginatorModule,
     MatProgressSpinnerModule,
     MatIconModule
+  ],
+  exports: [
+    MatTabsModule,
+    MatToolbarModule,
+    MatSidenavModule
   ],
   // both the NativeDateAdapter and MomentDateAdapter allow ISO 8601 strings to be passed to the datepicker and automatically converted to the proper object type  
   providers: [
