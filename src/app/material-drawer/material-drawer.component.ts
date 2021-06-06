@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import {MDCDrawer} from "@material/drawer";
-import {MDCTopAppBar} from "@material/top-app-bar";
+import {MDCDrawer} from '@material/drawer';
+import {MDCTopAppBar} from '@material/top-app-bar';
 
 @Component({
   selector: 'app-material-drawer',
@@ -10,7 +10,7 @@ import {MDCTopAppBar} from "@material/top-app-bar";
 })
 export class MaterialDrawerComponent implements OnInit {
 
-  constructor() { }
+  //constructor() { }
 
 
   ngOnInit(): void {
@@ -18,9 +18,9 @@ export class MaterialDrawerComponent implements OnInit {
 	// Instantiation
 	// const topAppBarElement = document.querySelector('.mdc-top-app-bar');
 	// const topAppBar = new MDCTopAppBar(topAppBarElement);	  
-	  
+
 	// const drawer = MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
-		  
+
 	const drawer = MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
 	drawer.open = true;
 
@@ -36,13 +36,13 @@ export class MaterialDrawerComponent implements OnInit {
 	});
 
 	document.body.addEventListener('MDCDrawer:closed', () => {
-	  (<HTMLElement>mainContentEl.querySelector('input, button')).focus();
+		(<HTMLElement>mainContentEl.querySelector('input, button')).focus();
 	});
 
 	const topAppBar = MDCTopAppBar.attachTo(document.getElementById('app-bar'));
 	topAppBar.setScrollTarget(document.getElementById('main-content'));
 	topAppBar.listen('MDCTopAppBar:nav', () => {
-	  drawer.open = !drawer.open;
+		drawer.open = !drawer.open;
 	});	
   }
 }
