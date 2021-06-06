@@ -1,0 +1,27 @@
+//@use '@material/top-app-bar/_index' as top-app-bar;
+
+//@use '@material/top-app-bar';
+
+@use './styles.css';
+//@use './styles/body';
+
+@use '@material/theme' with (
+  $primary: #ee0000,
+  //$primary: #6200ee,
+  $secondary: #faab1a,
+  $background: #fff,
+);
+
+// MDC Typography
+@use '@material/typography/mdc-typography';
+
+// MDC Button
+//@use './styles/button';
+
+// MDC Drawer
+//@use './styles/drawer';
+
+// Angular MDC
+@use '@angular-mdc/theme/material';
+
+//@import '@material/top-app-bar;

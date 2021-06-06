@@ -42,6 +42,8 @@ import { ContractDetailComponent } from './contract-detail/contract-detail.compo
 import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 
+import { MaterialModule } from './material.module';
+
 //registerLocaleData(localeRu, 'RU');
 
 @NgModule({
@@ -74,7 +76,8 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
     MatMomentDateModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
-    MatIconModule
+    MatIconModule,
+	MaterialModule,
   ],
   exports: [
     MatTabsModule,
