@@ -21,7 +21,7 @@ import { DateAdapter } from '@angular/material/core';
 import { isNgTemplate } from '@angular/compiler';
 
 @Component({
-    selector: 'app-contract',
+    selector: '.app-contract',
     templateUrl: './contract.component.html',
     styleUrls: ['./contract.component.css']
 })
@@ -59,7 +59,7 @@ export class ContractComponent implements OnInit {
         //this._adapter.setLocale('de');
         //this._adapter.setLocale('en');
         //this._adapter.setLocale('fr');
-        //this._adapter.setLocale('ru-RU');
+        this._adapter.setLocale('ru-RU');
     }
 
     ngOnInit(): void {
