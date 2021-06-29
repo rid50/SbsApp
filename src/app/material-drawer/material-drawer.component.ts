@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {MDCDrawer} from '@material/drawer';
 import {MDCTopAppBar} from '@material/top-app-bar';
 
-import {ContractComponent} from '../contract/contract.component';
+//import {ContractListComponent} from '../contract-list/contract-list.component';
 
 @Component({
   selector: 'app-material-drawer',

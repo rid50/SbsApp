@@ -1,5 +1,8 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 //import {BrowserModule} from '@angular/platform-browser';
 import {MdcTopAppBarModule} from '@angular-mdc/web/top-app-bar';
 import {MdcDrawerModule} from '@angular-mdc/web/drawer';
@@ -14,6 +17,7 @@ import {ContractModule} from './contract.module';
 //import { ContractComponent } from './contract/contract.component';
 
 import { MaterialDrawerComponent } from './material-drawer/material-drawer.component';
+
 //import { AngularMdcDrawerComponent } from './angular-mdc-drawer/angular-mdc-drawer.component';
 
 // import { LOCALE_ID } from '@angular/core';
@@ -28,6 +32,7 @@ import { MaterialDrawerComponent } from './material-drawer/material-drawer.compo
   ],  
   imports: [
     CommonModule,
+    FlexLayoutModule,
 	//BrowserModule,
     ContractModule,
     MdcTopAppBarModule,
@@ -38,7 +43,7 @@ import { MaterialDrawerComponent } from './material-drawer/material-drawer.compo
     MdcTabBarModule,
   ],
   exports: [
-    MaterialDrawerComponent,
+    //MaterialDrawerComponent,
     //ContractComponent,
 //	MdcTopAppBarModule,
 //  MdcDrawerModule,

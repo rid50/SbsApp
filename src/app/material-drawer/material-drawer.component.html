@@ -10,17 +10,17 @@
         <a class="mdc-list-item mdc-list-item--activated" href="/contracts" aria-current="page">
           <span class="mdc-list-item__ripple"></span>
           <i class="material-icons mdc-list-item__graphic" aria-hidden="true">inbox</i>
-          <span class="mdc-list-item__text">Inbox</span>
+          <span class="mdc-list-item__text">Sales Document Flow</span>
         </a>
         <a class="mdc-list-item" href="#">
           <span class="mdc-list-item__ripple"></span>
           <i class="material-icons mdc-list-item__graphic" aria-hidden="true">send</i>
-          <span class="mdc-list-item__text">Outgoing</span>
+          <span class="mdc-list-item__text">Pending Purchase Requisition</span>
         </a>
         <a class="mdc-list-item" href="#">
           <span class="mdc-list-item__ripple"></span>
           <i class="material-icons mdc-list-item__graphic" aria-hidden="true">drafts</i>
-          <span class="mdc-list-item__text">Drafts</span>
+          <span class="mdc-list-item__text">Statistical Analysis</span>
         </a>
       </div>
     </div>
@@ -31,7 +31,7 @@
       <div class="mdc-top-app-bar__row">
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
           <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button" aria-label="Open navigation menu">menu</button>
-          <span class="mdc-top-app-bar__title">Dismissible Drawer</span>
+          <span class="mdc-top-app-bar__title">Sales Back Office</span>
         </section>
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
           <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Favorite">favorite</button>
@@ -61,8 +61,15 @@
           <span class="mdc-line-ripple"></span>
         </label> -->
 
-        <div class="app-contract"></div>
-        <!-- <app-contract></app-contract>    -->
+        <div>
+          <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="flex-start">
+            <app-contract fxFlex="0 1 calc(80% - 10px)"></app-contract>
+            <app-contract-form-entry fxFlex="0 1 calc(20% - 10px)"></app-contract-form-entry>
+          </div>
+          <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="flex-start">
+            <app-contract-supplier fxFlex="0 1 calc(80% - 10px)"></app-contract-supplier>
+          </div>
+        </div>
         
         <!-- <label class="mdc-text-field mdc-text-field--outlined">
           <span class="mdc-notched-outline">

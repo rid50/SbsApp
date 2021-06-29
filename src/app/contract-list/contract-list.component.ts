@@ -15,17 +15,18 @@ import { MatTableDataSource } from '@angular/material/table';
 
 import { Contract } from '../models/contract';
 import { ContractService } from '../services/contract.service';
+import { ComponentCommunicationService } from '../services/component-communication.service'
 import { ContractDataSource } from '../services/contract.datasource';
 import { NgForOf } from '@angular/common';
 import { DateAdapter } from '@angular/material/core';
 import { isNgTemplate } from '@angular/compiler';
 
 @Component({
-    selector: '.app-contract',
-    templateUrl: './contract.component.html',
-    styleUrls: ['./contract.component.css']
+    selector: 'app-contract',
+    templateUrl: './contract-list.component.html',
+    styleUrls: ['./contract-list.component.css']
 })
-export class ContractComponent implements OnInit {
+export class ContractListComponent implements OnInit {
     contract: Contract;
     //dataSource: ContractDataSource;
 
@@ -55,7 +56,8 @@ export class ContractComponent implements OnInit {
     @ViewChild('input', { static: true }) input: ElementRef;
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    constructor(private route: ActivatedRoute, private _adapter: DateAdapter<any>, private contractService: ContractService) {
+    constructor(private route: ActivatedRoute, private _adapter: DateAdapter<any>,
+        private contractService: ContractService, private componentCommunicationService: ComponentCommunicationService) {
         //this._adapter.setLocale('de');
         //this._adapter.setLocale('en');
         //this._adapter.setLocale('fr');
@@ -151,9 +153,10 @@ export class ContractComponent implements OnInit {
         this.dataSource.filter = filterValue.trim().toLowerCase();
     }
 
-    onRowClicked(row: unknown): void {
+    onRowClicked(row: number): void {
+        this.componentCommunicationService.setContract(this.dataSource[row]);
         //console.log('Row clicked: ', row);
-        console.log (window.navigator.language)
+        //console.log (window.navigator.language)
     }
 
     // eslint-disable-next-line @typescript-eslint/no-empty-function

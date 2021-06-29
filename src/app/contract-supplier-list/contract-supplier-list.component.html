@@ -1,19 +1,18 @@
 <form #testForm="ngForm" (ngSubmit)="testForm.form.valid" novalidate>
-  <mat-card>
-    <mat-card-header>
+  <!-- <mat-card> -->
+    <!-- <mat-card-header>
       <mat-card-title>Contracts</mat-card-title>
-      <!-- <mat-card-subtitle>Contract list</mat-card-subtitle> -->
-    </mat-card-header>
+    </mat-card-header> -->
 
-    <mat-card-content>
+    <!-- <mat-card-content> -->
 
-      <mat-form-field>
+      <!-- <mat-form-field> -->
         <!-- <mat-label>Search contracts</mat-label> -->
-        <input matInput placeholder="Search contracts" (keyup)="applyFilter($event)" #input>
+        <!-- <input matInput placeholder="Search contracts" (keyup)="applyFilter($event)" #input> -->
         <!-- <input matInput placeholder="" #input> -->
         <!-- <input matInput type="text" [(ngModel)]="filterValue"
           (blur)="applyFilter()" placeholder="Search contractы"> -->
-      </mat-form-field>
+      <!-- </mat-form-field> -->
 
       <!-- <mat-form-field>
   
@@ -21,13 +20,17 @@
   
   </mat-form-field> -->
 
-      <div class="spinner-container" *ngIf="loading$ | async">
+      <!-- <div class="spinner-container" *ngIf="loading$ | async">
         <mat-spinner></mat-spinner>
-      </div>
+      </div> -->
 
-      <div class="contract-container mat-elevation-z8">
+
+      <!-- <div class="mat-elevation-z8" *ngFor="let row of dataSource"> -->
+      <div class="mat-elevation-z8">
         <mat-table [dataSource]="dataSource" [matSortDisableClear]="false" matSort matSortActive="contractId"
           matSortDirection="asc">
+        <!-- <mat-table [matSortDisableClear]="false" matSort matSortActive="contractId" -->
+
 
           <!-- ID Column -->
           <ng-container matColumnDef="contractId">
@@ -117,9 +120,9 @@
 
         <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator> -->
       </div>
-    </mat-card-content>
+    <!-- </mat-card-content> -->
     <!-- <mat-card-actions>
       <button mat-raised-button color="primary" [disabled]="testForm.invalid" (click)="save(testForm);">SAVE</button>
     </mat-card-actions> -->
-  </mat-card>
+  <!-- </mat-card> -->
 </form>

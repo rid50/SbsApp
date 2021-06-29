@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule} from '@angular/forms';
-
-import { FlexLayoutModule } from '@angular/flex-layout';
+//import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { environment } from '../environments/environment';
 
@@ -25,7 +24,11 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
 //npm i @angular/material-moment-adapter
 //npm i moment
 import { MAT_MOMENT_DATE_FORMATS, MatMomentDateModule, MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
@@ -34,10 +37,14 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon'; 
 
-import { ContractComponent } from './contract/contract.component';
+import { ContractListComponent } from './contract-list/contract-list.component';
+import { ContractSupplierListComponent } from './contract-supplier-list/contract-supplier-list.component';
+
 import { ContractService } from './services/contract.service';
 import { ContractResolver } from './services/contract.resolver';
 import { ContractDetailComponent } from './contract-detail/contract-detail.component';
+import { ContractFormEntryComponent } from './contract-form-entry/contract-form-entry.component';
+import { ComponentCommunicationService } from './services/component-communication.service';
 
 //import { HeaderComponent } from './navigation/header/header.component';
 //import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
@@ -48,15 +55,17 @@ import { ContractDetailComponent } from './contract-detail/contract-detail.compo
 
 @NgModule({
   declarations: [
-    ContractComponent,
+    ContractListComponent,
+    ContractSupplierListComponent,
     ContractDetailComponent,
+    ContractFormEntryComponent,
     //HeaderComponent,
     //SidenavListComponent
   ],
   imports: [
     CommonModule,
     FormsModule,  
-    FlexLayoutModule,
+    //FlexLayoutModule,
     MatTabsModule,
     MatToolbarModule,
     MatListModule,
@@ -68,7 +77,9 @@ import { ContractDetailComponent } from './contract-detail/contract-detail.compo
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
     MatDatepickerModule,
+    MatNativeDateModule,
     MatMomentDateModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
@@ -76,13 +87,16 @@ import { ContractDetailComponent } from './contract-detail/contract-detail.compo
   ],
   exports: [
     //BrowserModule,
-    ContractComponent,
+    ContractListComponent,
+    ContractSupplierListComponent,
+    ContractFormEntryComponent,
     //MatTabsModule,
     //MatToolbarModule,
     //MatSidenavModule
   ],
   // both the NativeDateAdapter and MomentDateAdapter allow ISO 8601 strings to be passed to the datepicker and automatically converted to the proper object type  
   providers: [
+    MatDatepickerModule,
     {provide: 'BASE_API_URL', useValue: environment.apiUrl},
     {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {strict: true}},
     {provide: MAT_DATE_LOCALE, useValue: 'ru'},
@@ -90,6 +104,7 @@ import { ContractDetailComponent } from './contract-detail/contract-detail.compo
     // {provide: DateAdapter, useClass: MomentDateAdapter,
     //   deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
     // },
+    ComponentCommunicationService,
     ContractService,
     ContractResolver
   ],
