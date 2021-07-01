@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, AfterViewInit, ViewChild, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 //import {NgForm} from '@angular/forms'
 import { Observable, BehaviorSubject, of, throwError } from 'rxjs'
@@ -15,7 +15,7 @@ import { MatTableDataSource } from '@angular/material/table';
 
 import { Contract } from '../models/contract';
 import { ContractService } from '../services/contract.service';
-import { ComponentCommunicationService } from '../services/component-communication.service'
+import { ComponentCommunicationService } from '../services/component-communication.service';
 import { ContractDataSource } from '../services/contract.datasource';
 import { NgForOf } from '@angular/common';
 import { DateAdapter } from '@angular/material/core';
@@ -27,6 +27,9 @@ import { isNgTemplate } from '@angular/compiler';
     styleUrls: ['./contract-list.component.css']
 })
 export class ContractListComponent implements OnInit {
+
+    @Output() contractIdEvent = new EventEmitter<string>();
+
     contract: Contract;
     //dataSource: ContractDataSource;
 
@@ -153,8 +156,9 @@ export class ContractListComponent implements OnInit {
         this.dataSource.filter = filterValue.trim().toLowerCase();
     }
 
-    onRowClicked(row: number): void {
-        this.componentCommunicationService.setContract(this.dataSource[row]);
+    onRowClicked(row: Contract): void {
+        this.componentCommunicationService.setContract(row);
+        this.contractIdEvent.emit(row.contractId);
         //console.log('Row clicked: ', row);
         //console.log (window.navigator.language)
     }

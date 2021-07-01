@@ -1,4 +1,5 @@
 <!-- <mat-card> -->
+  <!-- <p>{{contractId}}</p> -->
 <mat-drawer-container class="mat-elevation-z8">
 <!-- <mat-drawer-container class="example-container" [hasBackdrop]="hasBackdrop.value"> -->
     <!-- <mat-drawer #drawer [mode]="mode.value">I'm a drawer</mat-drawer> -->
@@ -7,10 +8,18 @@
         <!-- <mat-label>Search contracts</mat-label> -->
         <!-- <input matInput placeholder="Search contracts" (keyup)="applyFilter($event)" #input> -->
         <!-- <input matInput type="text" placeholder="" value={{ dataSource.ContractId }} #input> -->
-        <input matInput type="text" placeholder="" #input>
+        <input matInput type="text" placeholder="Contract Id" value={{contract?.contractId}} #input>
         <!-- <input matInput type="text" [(ngModel)]="filterValue"
           (blur)="applyFilter()" placeholder="Search contractы"> -->
-      </mat-form-field>      
+      </mat-form-field>
+      <mat-form-field>
+        <!-- <mat-label>Search contracts</mat-label> -->
+        <!-- <input matInput placeholder="Search contracts" (keyup)="applyFilter($event)" #input> -->
+        <!-- <input matInput type="text" placeholder="" value={{ dataSource.ContractId }} #input> -->
+        <input matInput type="text" placeholder="Contract Name" value={{contract?.contractName}} #input>
+        <!-- <input matInput type="text" [(ngModel)]="filterValue"
+          (blur)="applyFilter()" placeholder="Search contractы"> -->
+      </mat-form-field>                  
       <mat-form-field>
         <mat-label>Sidenav mode</mat-label>
         <mat-select #mode value="side">
