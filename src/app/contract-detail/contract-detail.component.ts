@@ -5,7 +5,7 @@ import {debounceTime, distinctUntilChanged, startWith, tap, delay} from 'rxjs/op
 
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
- // import {MatTableDataSource} from '@angular/material/table';
+import {MatTableDataSource} from '@angular/material/table';
 
 import {Contract} from '../models/contract';
 import {ContractService} from '../services/contract.service';
@@ -20,7 +20,7 @@ export class ContractDetailComponent implements OnInit, AfterViewInit {
 
     contract: Contract;
 
-    dataSource: ContractDataSource;
+    dataSource: MatTableDataSource<Contract>;
 
     displayedColumns = ['id', 'contractName', 'dateEntry', 'contractValue', 'currency'];
 
@@ -28,9 +28,7 @@ export class ContractDetailComponent implements OnInit, AfterViewInit {
     @ViewChild(MatSort, { static: true }) sort: MatSort;
     @ViewChild('input', { static: true }) input: ElementRef;
 
-    constructor(private route: ActivatedRoute,
-                private contractService: ContractService) {
-
+    constructor(private route: ActivatedRoute, private contractService: ContractService) {
     }
 
     ngOnInit(): void {

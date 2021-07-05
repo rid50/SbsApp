@@ -9,7 +9,8 @@
     width: 100%;
     height: 230px;
     /* margin: 0, 10px; */
-    overflow: auto; 
+    overflow: auto;
+    margin-top: 10px; 
   }
   
   mat-table{
@@ -109,7 +110,7 @@
   /* .mat-row {
     height: 20px !important;
   } */
-
+/*
   .spinner-container {
     height: 200px;
     width: 200px;
@@ -119,7 +120,7 @@
   .spinner-container mat-spinner {
     margin: 40px auto 0 auto;
   }
-
+*/
   /* .date-entry {
     text-align: center;
   }

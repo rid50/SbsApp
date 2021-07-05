@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, AfterViewInit, ViewChild, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 //import {NgForm} from '@angular/forms'
 import { Observable, BehaviorSubject, of, throwError } from 'rxjs'
@@ -13,7 +13,7 @@ import { MatTableDataSource } from '@angular/material/table';
 
 //import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 
-import { Contract } from '../models/contract';
+import { ContractDetail } from '../models/contract-detail';
 import { ContractService } from '../services/contract.service';
 import { ContractDataSource } from '../services/contract.datasource';
 import { NgForOf } from '@angular/common';
@@ -21,12 +21,14 @@ import { DateAdapter } from '@angular/material/core';
 import { isNgTemplate } from '@angular/compiler';
 
 @Component({
-    selector: 'app-contract-supplier',
-    templateUrl: './contract-supplier-list.component.html',
-    styleUrls: ['./contract-supplier-list.component.css']
+    selector: 'app-contract-detail',
+    templateUrl: './contract-detail-list.component.html',
+    styleUrls: ['./contract-detail-list.component.css']
 })
-export class ContractSupplierListComponent implements OnInit {
-    contract: Contract;
+export class ContractDetailListComponent implements OnInit {
+    @Input() contractId: string;
+        
+    contractDetail: ContractDetail;
     //dataSource: ContractDataSource;
 
 
@@ -41,25 +43,17 @@ export class ContractSupplierListComponent implements OnInit {
 
     loading$ = this.loadingSubject.asObservable();
 
-    dataSource = new MatTableDataSource<Contract>()
+    dataSource = new MatTableDataSource<ContractDetail>()
 
     //displayedColumns = ['contractId', 'contractName', 'dateEntry', 'contractValue', 'currency'];
-    displayedColumns = ['contractId', 'contractName', 'dateEntry', 'contractValue', 'currency', 'edit', 'delete'];
-    skip = 0;
-    take = 6;
-
-    editRow = false
+    displayedColumns = ['supplierId', 'partNo', 'itemId', 'unitPrice', 'costPrice', 'currency'];
 
     //@ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
     @ViewChild(MatSort, { static: true }) sort: MatSort;
     @ViewChild('input', { static: true }) input: ElementRef;
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    constructor(private route: ActivatedRoute, private _adapter: DateAdapter<any>, private contractService: ContractService) {
-        //this._adapter.setLocale('de');
-        //this._adapter.setLocale('en');
-        //this._adapter.setLocale('fr');
-        this._adapter.setLocale('ru-RU');
+    constructor(private route: ActivatedRoute, private contractService: ContractService) {
     }
 
     ngOnInit(): void {
@@ -68,7 +62,8 @@ export class ContractSupplierListComponent implements OnInit {
         //this.loadContracts()
 
         //this.dataSource.loadContracts()
-        this.loadContracts()
+        //this.loadContractDetails('13/910-7972/COM')
+        this.loadContractDetails(this.contractId)        
         this.dataSource.sort = this.sort;
         //this.dataSource.sort = this.sort;
 
@@ -118,15 +113,14 @@ export class ContractSupplierListComponent implements OnInit {
 //        this.dataSource.loadContracts(this.input.nativeElement.value, this.sort.active, this.sort.direction, this.skip, this.take);
 //    }
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-    loadContracts() {
+    loadContractDetails(id: string) {
         //this.dataSource.loadContracts(this.input.nativeElement.value, this.sort.active, this.sort.direction);
         
         this.loadingSubject.next(true)
-        this.contractService.getContracts(this.skip, this.take)
+        this.contractService.getContractDetails(id)
             .pipe(
-                map((array:Contract[]) => array.map ((item: Contract) => ({
-                    ...item,
-                    contractValue: `${item.currency} ${item.contractValue}`
+                map((array:ContractDetail[]) => array.map ((item: ContractDetail) => ({
+                    ...item
                 }))),
                 //tap(console.log),
                 catchError(err => {
@@ -155,11 +149,5 @@ export class ContractSupplierListComponent implements OnInit {
         //console.log('Row clicked: ', row);
         console.log (window.navigator.language)
     }
-
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    edit(element:Contract): void {this.editRow = !this.editRow}
-
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    delete(id:string):void {console.log}
 }
 

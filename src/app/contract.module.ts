@@ -38,7 +38,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon'; 
 
 import { ContractListComponent } from './contract-list/contract-list.component';
-import { ContractSupplierListComponent } from './contract-supplier-list/contract-supplier-list.component';
+import { ContractDetailListComponent } from './contract-detail-list/contract-detail-list.component';
 
 import { ContractService } from './services/contract.service';
 import { ContractResolver } from './services/contract.resolver';
@@ -56,7 +56,7 @@ import { ComponentCommunicationService } from './services/component-communicatio
 @NgModule({
   declarations: [
     ContractListComponent,
-    ContractSupplierListComponent,
+    ContractDetailListComponent,
     ContractDetailComponent,
     ContractFormEntryComponent,
     //HeaderComponent,
@@ -88,7 +88,7 @@ import { ComponentCommunicationService } from './services/component-communicatio
   exports: [
     //BrowserModule,
     ContractListComponent,
-    ContractSupplierListComponent,
+    ContractDetailListComponent,
     ContractFormEntryComponent,
     //MatTabsModule,
     //MatToolbarModule,

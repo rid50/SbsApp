@@ -3,6 +3,6 @@ export interface Contract {
     contractName:string;
     dateEntry: string;
     contractValue: string;
-    currency: number;
+    currency: string;
 }
 

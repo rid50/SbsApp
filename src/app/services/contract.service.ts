@@ -4,6 +4,7 @@ import {HttpClient, HttpParams} from '@angular/common/http'
 import {Observable, of, throwError} from 'rxjs'
 import {catchError, map, finalize} from 'rxjs/operators'
 import {Contract} from '../models/contract'
+import {ContractDetail} from '../models/contract-detail'
 
 @Injectable()
 export class ContractService {
@@ -45,6 +46,18 @@ export class ContractService {
             // )
     }
 
+    getContractDetails(id_wildcard = '' 
+        ): Observable<ContractDetail[]> {
+
+        return this.http.get<ContractDetail[]>
+            (`${this.apiUrl}api/contractDetail?id=${id_wildcard}`)
+        // .pipe(
+        //    catchError(err => {
+        //         console.log('Handling error locally and rethrowing it...', err)
+        //         return throwError(err)
+        //     }),            
+        // )
+}
     // findAllCourseLessons(courseId:number): Observable<Lesson[]> {
         // return this.http.get('${this.apiUrl}/api/lessons', {
             // params: new HttpParams()
