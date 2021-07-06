@@ -1,42 +1,28 @@
-<!-- <mat-card> -->
+<mat-card>
   <!-- <p>{{contractId}}</p> -->
-<mat-drawer-container class="mat-elevation-z8">
+<mat-drawer-container>
 <!-- <mat-drawer-container class="example-container" [hasBackdrop]="hasBackdrop.value"> -->
     <!-- <mat-drawer #drawer [mode]="mode.value">I'm a drawer</mat-drawer> -->
     <mat-drawer-content>
       <mat-form-field>
-        <!-- <mat-label>Search contracts</mat-label> -->
-        <!-- <input matInput placeholder="Search contracts" (keyup)="applyFilter($event)" #input> -->
-        <!-- <input matInput type="text" placeholder="" value={{ dataSource.ContractId }} #input> -->
         <input matInput type="text" placeholder="Contract Id" value={{contract?.contractId}} #input>
-        <!-- <input matInput type="text" [(ngModel)]="filterValue"
-          (blur)="applyFilter()" placeholder="Search contractы"> -->
       </mat-form-field>
       <mat-form-field>
-        <!-- <mat-label>Search contracts</mat-label> -->
-        <!-- <input matInput placeholder="Search contracts" (keyup)="applyFilter($event)" #input> -->
-        <!-- <input matInput type="text" placeholder="" value={{ dataSource.ContractId }} #input> -->
         <input matInput type="text" placeholder="Contract Name" value={{contract?.contractName}} #input>
-        <!-- <input matInput type="text" [(ngModel)]="filterValue"
-          (blur)="applyFilter()" placeholder="Search contractы"> -->
       </mat-form-field>                  
       <mat-form-field>
-        <mat-label>Sidenav mode</mat-label>
-        <mat-select #mode value="side">
-          <mat-option value="side">Side</mat-option>
-          <mat-option value="over">Over</mat-option>
-          <mat-option value="push">Push</mat-option>
-        </mat-select>
-      </mat-form-field>
+        <input matInput type="text" placeholder="Date Entry" value={{contract?.dateEntry}} #input>
+      </mat-form-field>                  
       <mat-form-field>
-        <mat-label>Has backdrop</mat-label>
-        <mat-select #hasBackdrop>
-          <mat-option>Unset</mat-option>
-          <mat-option [value]="true">True</mat-option>
-          <mat-option [value]="false">False</mat-option>
+        <input matInput type="text" placeholder="Contract Value" value={{contract?.contractValue}} #input>
+      </mat-form-field>                  
+      <mat-form-field>
+        <mat-label>Currency</mat-label>
+        <mat-select #mode value="side">
+          <mat-option value="side">US $</mat-option>
+          <mat-option value="over">KD</mat-option>
         </mat-select>
       </mat-form-field>
-      <!-- <button mat-raised-button (click)="drawer.toggle()">Toggle drawer</button> -->
     </mat-drawer-content>
   </mat-drawer-container>
-<!-- </mat-card>   -->
+</mat-card>  

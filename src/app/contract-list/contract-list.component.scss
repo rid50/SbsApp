@@ -16,7 +16,20 @@
     transition: none !important;
     box-shadow: none !important;
   }
-    
+  
+  .mat-row {
+    //min-height: 65px;
+ 
+    &.highlight{
+      background: rgba(0,0,255) !important;
+      //background: #eee
+    }
+  }
+
+  .mat-row:nth-child(odd){
+    background: rgba(0,0,0,0.1);
+  }
+  
   /* .ng-container {
     flex: auto;
   } */
@@ -119,6 +132,10 @@
   .spinner-container mat-spinner {
     margin: 40px auto 0 auto;
   }
+
+  // .highlight{
+  //   background: #42A948; /* green */
+  // }
 
   /* .date-entry {
     text-align: center;

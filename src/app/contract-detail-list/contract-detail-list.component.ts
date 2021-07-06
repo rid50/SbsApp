@@ -1,8 +1,8 @@
-import { Component, ElementRef, OnInit, AfterViewInit, ViewChild, Input } from '@angular/core';
+import { Component, ElementRef, OnInit, AfterViewInit, ViewChild, Input, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 //import {NgForm} from '@angular/forms'
 import { Observable, BehaviorSubject, of, throwError } from 'rxjs'
-import { merge, fromEvent} from 'rxjs';
+import { merge, fromEvent } from 'rxjs';
 import { debounceTime, distinctUntilChanged, startWith, tap, delay } from 'rxjs/operators';
 import { catchError, map, finalize } from 'rxjs/operators'
 
@@ -25,16 +25,16 @@ import { isNgTemplate } from '@angular/compiler';
     templateUrl: './contract-detail-list.component.html',
     styleUrls: ['./contract-detail-list.component.css']
 })
-export class ContractDetailListComponent implements OnInit {
+export class ContractDetailListComponent {
     @Input() contractId: string;
-        
+
     contractDetail: ContractDetail;
     //dataSource: ContractDataSource;
 
 
     //contract: Contract
     //contracts: Contract[]
-    todaysDate: Date = new Date(); 
+    todaysDate: Date = new Date();
 
     //dataSource: ContractDataSource;
     //dataSource = new MatTableDataSource(this.contracts);
@@ -56,28 +56,46 @@ export class ContractDetailListComponent implements OnInit {
     constructor(private route: ActivatedRoute, private contractService: ContractService) {
     }
 
-    ngOnInit(): void {
-        //this.contract = this.route.snapshot.data["contact"];
-        //this.dataSource = new ContractDataSource(this.contractService);
-        //this.loadContracts()
+    ngOnChanges(changes: SimpleChanges): void {
+        for (const propName in changes) {
+            const changedProp = changes[propName];
+            const to = JSON.stringify(changedProp.currentValue);
+            // if (changedProp.isFirstChange()) {
+            //   console.log(`Initial value of ${propName} set to ${to}`);
+            // } else {
+            //   const from = JSON.stringify(changedProp.previousValue);
+            //   console.log(`${propName} changed from ${from} to ${to}`);
+            // }
 
-        //this.dataSource.loadContracts()
-        //this.loadContractDetails('13/910-7972/COM')
-        this.loadContractDetails(this.contractId)        
-        this.dataSource.sort = this.sort;
-        //this.dataSource.sort = this.sort;
-
-        // const contracts$ = this.contractService.findAllContracts()
-        // // .pipe(tap (x => {
-        // //     let y = x;
-        // //     console.log(x)
-        // // }))
-        // .subscribe(
-        //     // res => console.log('HTTP response', res),
-        //     // err => console.log('HTTP Error', err),
-        //     // () => console.log('HTTP request completed.')
-        // );
+            if (to != undefined) {
+                this.loadContractDetails(this.contractId)
+                this.dataSource.sort = this.sort;
+            }
+        }
     }
+
+    // ngOnInit(): void {
+    //     //this.contract = this.route.snapshot.data["contact"];
+    //     //this.dataSource = new ContractDataSource(this.contractService);
+    //     //this.loadContracts()
+
+    //     //this.dataSource.loadContracts()
+    //     //this.loadContractDetails('13/910-7972/COM')
+    //     this.loadContractDetails(this.contractId)
+    //     this.dataSource.sort = this.sort;
+    //     //this.dataSource.sort = this.sort;
+
+    //     // const contracts$ = this.contractService.findAllContracts()
+    //     // // .pipe(tap (x => {
+    //     // //     let y = x;
+    //     // //     console.log(x)
+    //     // // }))
+    //     // .subscribe(
+    //     //     // res => console.log('HTTP response', res),
+    //     //     // err => console.log('HTTP Error', err),
+    //     //     // () => console.log('HTTP request completed.')
+    //     // );
+    // }
 
     ngAfterViewInit(): void {
         //this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
@@ -109,17 +127,17 @@ export class ContractDetailListComponent implements OnInit {
     }
 
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-//    loadContracts() {
-//        this.dataSource.loadContracts(this.input.nativeElement.value, this.sort.active, this.sort.direction, this.skip, this.take);
-//    }
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+    //    loadContracts() {
+    //        this.dataSource.loadContracts(this.input.nativeElement.value, this.sort.active, this.sort.direction, this.skip, this.take);
+    //    }
+    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     loadContractDetails(id: string) {
         //this.dataSource.loadContracts(this.input.nativeElement.value, this.sort.active, this.sort.direction);
-        
+
         this.loadingSubject.next(true)
         this.contractService.getContractDetails(id)
             .pipe(
-                map((array:ContractDetail[]) => array.map ((item: ContractDetail) => ({
+                map((array: ContractDetail[]) => array.map((item: ContractDetail) => ({
                     ...item
                 }))),
                 //tap(console.log),
@@ -147,7 +165,7 @@ export class ContractDetailListComponent implements OnInit {
 
     onRowClicked(row: unknown): void {
         //console.log('Row clicked: ', row);
-        console.log (window.navigator.language)
+        console.log(window.navigator.language)
     }
 }
 

@@ -24,11 +24,14 @@ import { isNgTemplate } from '@angular/compiler';
 @Component({
     selector: 'app-contract',
     templateUrl: './contract-list.component.html',
-    styleUrls: ['./contract-list.component.css']
+    styleUrls: ['./contract-list.component.scss']
 })
 export class ContractListComponent implements OnInit {
 
     @Output() contractIdEvent = new EventEmitter<string>();
+
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
+    selectedRowIndex: number = -1
 
     contract: Contract;
     //dataSource: ContractDataSource;
@@ -50,7 +53,7 @@ export class ContractListComponent implements OnInit {
     //displayedColumns = ['contractId', 'contractName', 'dateEntry', 'contractValue', 'currency'];
     displayedColumns = ['contractId', 'contractName', 'dateEntry', 'contractValue', 'currency', 'edit', 'delete'];
     skip = 0;
-    take = 6;
+    take = 0;
 
     editRow = false
 
@@ -156,7 +159,8 @@ export class ContractListComponent implements OnInit {
         this.dataSource.filter = filterValue.trim().toLowerCase();
     }
 
-    onRowClicked(row: Contract): void {
+    onRowClicked(row: Contract, index: number): void {
+        this.selectedRowIndex = index;
         this.componentCommunicationService.setContract(row);
         this.contractIdEvent.emit(row.contractId);
         //console.log('Row clicked: ', row);
