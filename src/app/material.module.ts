@@ -3,13 +3,13 @@ import {CommonModule} from '@angular/common';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-//import {BrowserModule} from '@angular/platform-browser';
 import {MdcTopAppBarModule} from '@angular-mdc/web/top-app-bar';
 import {MdcDrawerModule} from '@angular-mdc/web/drawer';
 import {MdcListModule} from '@angular-mdc/web/list';
 import {MdcIconModule} from '@angular-mdc/web/icon';
 import {MdcMenuModule} from '@angular-mdc/web/menu';
 import {MdcTabBarModule} from '@angular-mdc/web/tab-bar';
+import {MdcTypographyModule} from '@angular-mdc/web/typography';
 //import {MdcTopAppBarActionItem} from "@angular-mdc/web/top-app-bar";
 
 import {ContractModule} from './contract.module';
@@ -25,6 +25,16 @@ import { MaterialDrawerComponent } from './material-drawer/material-drawer.compo
 // import { MAT_MOMENT_DATE_FORMATS, MatMomentDateModule, MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 // import { environment } from '../environments/environment';
 
+const materialModules = [
+  MdcTopAppBarModule,
+  MdcDrawerModule,
+  MdcListModule,
+  MdcIconModule,
+  MdcMenuModule,
+  MdcTabBarModule,
+  MdcTypographyModule
+]
+
 @NgModule({
   declarations: [
     MaterialDrawerComponent,
@@ -33,14 +43,8 @@ import { MaterialDrawerComponent } from './material-drawer/material-drawer.compo
   imports: [
     CommonModule,
     FlexLayoutModule,
-	//BrowserModule,
     ContractModule,
-    MdcTopAppBarModule,
-    MdcDrawerModule,
-    MdcListModule,
-    MdcIconModule,
-    MdcMenuModule,
-    MdcTabBarModule,
+    ...materialModules
   ],
   exports: [
     //MaterialDrawerComponent,

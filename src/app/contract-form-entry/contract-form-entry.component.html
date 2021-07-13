@@ -1,28 +1,35 @@
 <mat-card>
-  <!-- <p>{{contractId}}</p> -->
-<mat-drawer-container>
-<!-- <mat-drawer-container class="example-container" [hasBackdrop]="hasBackdrop.value"> -->
-    <!-- <mat-drawer #drawer [mode]="mode.value">I'm a drawer</mat-drawer> -->
-    <mat-drawer-content>
-      <mat-form-field>
-        <input matInput type="text" placeholder="Contract Id" value={{contract?.contractId}} #input>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput type="text" placeholder="Contract Name" value={{contract?.contractName}} #input>
-      </mat-form-field>                  
-      <mat-form-field>
-        <input matInput type="text" placeholder="Date Entry" value={{contract?.dateEntry}} #input>
-      </mat-form-field>                  
-      <mat-form-field>
-        <input matInput type="text" placeholder="Contract Value" value={{contract?.contractValue}} #input>
-      </mat-form-field>                  
-      <mat-form-field>
-        <mat-label>Currency</mat-label>
-        <mat-select #mode value="side">
-          <mat-option value="side">US $</mat-option>
-          <mat-option value="over">KD</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </mat-drawer-content>
-  </mat-drawer-container>
-</mat-card>  
+  <div>
+    <!-- <p>{{contractId}}</p> -->
+    <mat-toolbar color="primary">
+      <div>Material Theme</div>
+    </mat-toolbar>
+  <!-- <div class="mat-body-2"> -->
+    <mat-drawer-container>
+      <!-- <mat-drawer-container class="example-container" [hasBackdrop]="hasBackdrop.value"> -->
+      <!-- <mat-drawer #drawer [mode]="mode.value">I'm a drawer</mat-drawer> -->
+      <mat-drawer-content>
+        <mat-form-field>
+          <input matInput type="text" placeholder="Contract Id" value={{contract?.contractId}} #input>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput type="text" placeholder="Contract Name" value={{contract?.contractName}} #input>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput type="text" placeholder="Date Entry" value={{contract?.dateEntry}} #input>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput type="text" placeholder="Contract Value" value={{contract?.contractValue}} #input>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Currency</mat-label>
+          <mat-select #mode value="side">
+            <mat-option value="side">US $</mat-option>
+            <mat-option value="over">KD</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-drawer-content>
+    </mat-drawer-container>
+  </div>
+<!-- </div> -->
+</mat-card>

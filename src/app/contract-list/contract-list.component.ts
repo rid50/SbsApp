@@ -53,7 +53,7 @@ export class ContractListComponent implements OnInit {
     //displayedColumns = ['contractId', 'contractName', 'dateEntry', 'contractValue', 'currency'];
     displayedColumns = ['contractId', 'contractName', 'dateEntry', 'contractValue', 'currency', 'edit', 'delete'];
     skip = 0;
-    take = 0;
+    take = 20;
 
     editRow = false
 

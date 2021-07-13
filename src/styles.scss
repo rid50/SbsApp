@@ -5,15 +5,15 @@
 @use './styles.css';
 //@use './styles/body';
 
-@use '@material/theme' with (
-  $primary: #ee0000,
-  //$primary: #6200ee,
-  $secondary: #faab1a,
-  $background: #fff,
-);
+// @use '@material/theme' with (
+//   $primary: #ee0000,
+//   //$primary: #6200ee,
+//   $secondary: #faab1a,
+//   $background: #fff,
+// );
 
 // MDC Typography
-@use '@material/typography/mdc-typography';
+//@use '@material/typography/mdc-typography';
 
 // MDC Button
 //@use './styles/button';
@@ -22,6 +22,6 @@
 //@use './styles/drawer';
 
 // Angular MDC
-@use '@angular-mdc/theme/material';
+// @use '@angular-mdc/theme/material';
 
 //@import '@material/top-app-bar;

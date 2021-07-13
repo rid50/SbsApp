@@ -1,25 +1,49 @@
 @use "@material/icon-button";
+//@use "@material/top-app-bar";
 @use "@material/top-app-bar/mdc-top-app-bar";
 
 @use "@material/drawer";
 @use "@material/list";
 
-@use "@material/floating-label/mdc-floating-label";
-@use "@material/line-ripple/mdc-line-ripple";
-@use "@material/notched-outline/mdc-notched-outline";
+//@use "@material/floating-label/mdc-floating-label";
+//@use "@material/line-ripple/mdc-line-ripple";
+//@use "@material/notched-outline/mdc-notched-outline";
 @use "@material/textfield";
 
-@use "@material/list/mdc-list";
-@use "@material/menu-surface/mdc-menu-surface";
-@use "@material/menu/mdc-menu";
+@use '@material/top-app-bar/_index' as top-app-bar;
+@use '@material/theme/color-palette' as material-color;
+@use '@material/theme';
+
+//@use "~@material/list/mdc-list";
+//@use "@material/menu-surface/mdc-menu-surface";
+//@use "@material/menu/mdc-menu";
+
+//@use "~@material/theme/mdc-theme";
+//$mdc-typography-font-family: "Times New Roman", Helvetica, sans-serif;
+//@use '@material/typography/mdc-typography';
+
+//@use "@material/typography";
+
+// @use "@material/typography" with (
+//     $font-family: unquote("Times New Roman, Helvetica, sans-serif")
+// );
+
+// @include typography.core-styles;
+
+// $mdc-typography-font-family: "Times New Roman", Helvetica, sans-serif;
+// // $mdc-typography-font-family: "Arial", Helvetica, sans-serif;
+// @import "@material/typography/mdc-typography";
 
 @include icon-button.core-styles;
 @include drawer.core-styles;
 @include list.core-styles;
-@include textfield.core-styles;
+
+//@include textfield.core-styles;
 
 @include drawer.dismissible-core-styles;
-@include drawer.modal-core-styles;
+//@include drawer.modal-core-styles;
+
+//@include theme.mdc-top-app-bar;
 
 // .cardList {
 //   display: flex;
@@ -47,6 +71,11 @@ body {
 
 .app-bar {
   position: absolute;
+  // @include top-app-bar.fill-color(theme.$warn);
+  // @include top-app-bar.fill-color(theme.$primary);
+  // @include top-app-bar.fill-color(theme.$secondary);  
+  // @include top-app-bar.fill-color(material-color.$yellow-800);
+  // @include top-app-bar.icon-ink-color(material-color.$blue-900)
 }
 /*
 // Only apply this style if below top app bar.
