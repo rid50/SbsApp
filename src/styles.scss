@@ -3,6 +3,11 @@
 //@use '@material/top-app-bar';
 
 @use './styles.css';
+
+@use './themes.scss';
+
+@use './mat-typography';
+
 //@use './styles/body';
 
 // @use '@material/theme' with (

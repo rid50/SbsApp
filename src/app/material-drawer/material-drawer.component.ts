@@ -2,6 +2,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 import { MDCDrawer } from '@material/drawer';
 import { MDCTopAppBar } from '@material/top-app-bar';
+// import {MDCRipple} from '@material/ripple';
+// import { MDCList } from '@material/list';
 
 import { ComponentCommunicationService } from '../services/component-communication.service';
 import { Contract } from '../models/contract'
@@ -25,6 +27,10 @@ export class MaterialDrawerComponent implements OnInit {
 
 	ngOnInit(): void {
 
+		// const list = new MDCList(document.querySelector('.mdc-list'));
+		// list.wrapFocus = true;
+		
+		// const listItemRipples = list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
 		// Instantiation
 		// const topAppBarElement = document.querySelector('.mdc-top-app-bar');
 		// const topAppBar = new MDCTopAppBar(topAppBarElement);	  

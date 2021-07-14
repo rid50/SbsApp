@@ -1,0 +1,40 @@
+@use '~@angular/material' as mat;
+
+
+//@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic&subset=latin-ext');
+//@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
+$custom-typography: mat.define-typography-config(
+  $font-family: '"Open Sans", "Helvetica Neue", sans-serif',
+
+  $body-2: mat.define-typography-level(24px, 1, 600, "Times New Roman"), // font-size, line-height, font-weight, font-family, and letter-spacing
+
+  $body-1: mat.define-typography-level(
+    $font-family: "Open Sans",
+    $font-weight: 400,
+    $font-size: 12px,
+    $line-height: 100%,
+    $letter-spacing: normal,
+  ),
+
+  //$input: mat.define-typography-level(24px, 1, 600, "Times New Roman")
+
+);
+
+//@import "@material/typography/mdc-typography";
+
+// @include typography.core-styles;
+
+// @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,500');
+
+//$font-family: '"Open Sans", "Helvetica Neue", sans-serif',
+
+@include mat.core($custom-typography);
+
+@include mat.form-field-typography($custom-typography);
+
+@import '~@angular/material/theming';
+
+// $secondary-typography: mat-typography-config(
+//   $font-family: 'Comic Sans, sans-serif'
+// );

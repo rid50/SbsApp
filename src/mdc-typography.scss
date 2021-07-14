@@ -1,27 +1,27 @@
-$mdc-typography-font-family: "Arial", Helvetica, sans-serif;
-@import "~@material/typography/mdc-typography";
+// used in material-drawer.component.scss
 
-
-// $font-family: "Times New Roman, Helvetica, sans-serif";
-// $font-size: 20px;
-// $font-size2: 16px;
-
-// // @use "@material/typography" with (
-// //     $font-family: unquote($font-family)
-// // //    $font-family: unquote("Arial, Helvetica, sans-serif"),
-// //     // $font-size: 24px
-// // );
+$font-family: "Roboto, sans-serif";
+$font-size: 20px;
+$font-size2: 16px;
 
 // @use "@material/typography" with (
-//   $styles-headline6: (
-//     font-family: unquote($font-family),
-//     font-size: $font-size
-//   ),
-//   $styles-subtitle1: (
-//     font-family: unquote($font-family),
-//     font-size: $font-size2
-//   )
+//     $font-family: unquote($font-family)
+// //    $font-family: unquote("Arial, Helvetica, sans-serif"),
+//     // $font-size: 24px
 // );
+
+@use "@material/typography" with (
+  $styles-headline6: (
+    font-family: unquote($font-family),
+    font-size: $font-size
+  ),
+  $styles-subtitle1: (
+    font-family: unquote($font-family),
+    font-size: $font-size2,
+    // line-height: 2.5rem,
+    // height: 3rem
+  )
+);
 
 //@use "@material/typography/mdc-typography";
 
