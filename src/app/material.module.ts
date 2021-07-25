@@ -3,14 +3,14 @@ import {CommonModule} from '@angular/common';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-//import {MdcTopAppBarModule} from '@angular-mdc/web/top-app-bar';
-//import {MdcDrawerModule} from '@angular-mdc/web/drawer';
+// import {MdcTopAppBarModule} from '@angular-mdc/web/top-app-bar';
+// import {MdcDrawerModule} from '@angular-mdc/web/drawer';
 // import {MdcListModule} from '@angular-mdc/web/list';
 // import {MdcIconModule} from '@angular-mdc/web/icon';
 // import {MdcMenuModule} from '@angular-mdc/web/menu';
 // import {MdcTabBarModule} from '@angular-mdc/web/tab-bar';
 // import {MdcTypographyModule} from '@angular-mdc/web/typography';
-//import {MdcTopAppBarActionItem} from "@angular-mdc/web/top-app-bar";
+// import {MdcTopAppBarActionItem} from "@angular-mdc/web/top-app-bar";
 
 import {ContractModule} from './contract.module';
 
@@ -26,8 +26,8 @@ import { MaterialDrawerComponent } from './material-drawer/material-drawer.compo
 // import { environment } from '../environments/environment';
 
 const materialModules = [
-  //MdcTopAppBarModule,
-  //MdcDrawerModule,
+  // MdcTopAppBarModule,
+  // MdcDrawerModule,
   // MdcListModule,
   // MdcIconModule,
   // MdcMenuModule,

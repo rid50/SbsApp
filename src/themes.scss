@@ -1,6 +1,19 @@
+// @use "@material/theme" with (
+//   $primary: #9c27b0,
+//   $secondary: #76ff03,
+//   $background: #fff,
+// );
+// @use "material-components-web";
+
+
 @use '~@angular/material' as mat;
 
+// @use '@material/theme';
+
 @include mat.core();
+
+//@import "@material/theme/mdc-theme";
+
 
 $my-primary: mat.define-palette(mat.$deep-purple-palette);
 $my-accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
@@ -16,15 +29,37 @@ $my-theme: mat.define-light-theme((
 
 
 $mdc-theme-primary: mat.get-color-from-palette($my-primary);
-//$mdc-theme-primary: #9c27b0;
-$mdc-theme-accent: mat.get-color-from-palette($my-accent);
-// $mdc-theme-accent: #76ff03;
-$mdc-theme-background: #fff;
+// //$mdc-theme-primary: #9c27b0;
+// $mdc-theme-secondary: #f00;
+// $mdc-theme-accent: mat.get-color-from-palette($my-accent);
+$mdc-theme-secondary: mat.get-color-from-palette($my-accent);
+
+// // $mdc-theme-accent: #76ff03;
+$mdc-theme-warn: #fff;
 
 @import "@material/theme/mdc-theme";
+//@include theme.core-styles;
+//@import "material-components-web";
+
+
+// .mdc-drawer .mdc-list-item--activated {
+//   //@include list.item-primary-text-ink-color(material-color.$yellow-800);
+//   //color: rgba(238, 0, 0, 0.87);
+
+//   //@include list.item-primary-text-ink-color(--mdc-theme-secondary);
+//   //@include list.item-primary-text-ink-color(var(--mdc-theme-secondary));
+//   //@include list.item-selected-text-color(var(--mdc-theme-secondary));
+
+//   //@include drawer.item-activated-text-ink-color(var(--mdc-theme-secondary));
+//   //@debug var(--mdc-theme-secondary);
+//   //color: theme.$warn;
+//   color: var(--mdc-theme-primary);
+//   $col: --mdc-theme-primary;
+//   @debug $col;
+// }
 
 
 //$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
 
-// @include mat.core-theme($my-theme);
+//@include mat.core-theme($my-theme);
 @include mat.all-component-themes($my-theme);

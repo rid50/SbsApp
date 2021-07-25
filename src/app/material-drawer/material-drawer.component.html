@@ -7,7 +7,7 @@
     </div>
     <div class="mdc-drawer__content">
       <div class="mdc-list">
-        <a class="mdc-list-item mdc-list-item--activated" href="/contracts" aria-current="page">
+        <a class="mdc-list-item mdc-list-item--activated" color="accent" href="/contracts" aria-current="page">
           <span class="mdc-list-item__ripple"></span>
           <i class="material-icons mdc-list-item__graphic" aria-hidden="true">inbox</i>
           <span class="mdc-list-item__text">Sales Document Flow</span>
@@ -30,12 +30,15 @@
     <header class="mdc-top-app-bar app-bar" id="app-bar">
       <div class="mdc-top-app-bar__row">
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-          <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button" aria-label="Open navigation menu">menu</button>
-          <span class="mdc-top-app-bar__title" mdc-theme--primary-bg>Sales Back Office</span>
+          <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button"
+            aria-label="Open navigation menu">menu</button>
+          <span class="mdc-top-app-bar__title">Sales Back Office</span>
         </section>
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
-          <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Favorite">favorite</button>
-          <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Search">search</button>
+          <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button"
+            aria-label="Favorite">favorite</button>
+          <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button"
+            aria-label="Search">search</button>
           <!-- <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Options"
                   (click)="profileMenu.open = !profileMenu.open">more_vert</button> -->
           <!-- <mdc-icon mdcTopAppBarActionItem (click)="profileMenu.open = !profileMenu.open">more_vert</mdc-icon>
@@ -48,7 +51,7 @@
               </mdc-list>
             </mdc-menu>
           </div>           -->
-        </section>      
+        </section>
       </div>
     </header>
 
@@ -62,15 +65,17 @@
         </label> -->
 
         <div>
-          <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="flex-start">
-            <app-contract  (contractIdEvent)="getContractId($event)" fxFlex="0 1 calc(80% - 10px)"></app-contract>
-            <app-contract-form-entry [contractId] = "contractId" fxFlex="0 1 calc(20% - 10px)"></app-contract-form-entry>
+          <div fxLayout="row" fxLayoutGap="10px">
+            <div fxLayout="column" fxFlex="0 1 calc(80% - 10px)">
+              <app-contract (contractIdEvent)="getContractId($event)"></app-contract>
+              <app-contract-detail [contractId]="contractId"></app-contract-detail>
           </div>
-          <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="flex-start">
-            <app-contract-detail [contractId] = "contractId" fxFlex="0 1 calc(80% - 10px)"></app-contract-detail>
-          </div>
+            <div fxLayout="column" fxFlex="0 1 calc(20% - 10px)">
+              <app-contract-form-entry [contractId]="contractId"></app-contract-form-entry>
+            </div>
+            </div>
         </div>
-        
+
         <!-- <label class="mdc-text-field mdc-text-field--outlined">
           <span class="mdc-notched-outline">
             <span class="mdc-notched-outline__leading"></span>

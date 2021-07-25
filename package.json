@@ -24,9 +24,9 @@
     "@angular/platform-browser": "~12.0.3",
     "@angular/platform-browser-dynamic": "~12.0.3",
     "@angular/router": "~12.0.3",
-    "@material/drawer": "^11.0.0",
+    "@material/drawer": "^10.0.0",
     "@material/icon-button": "^11.0.0",
-    "@material/list": "^11.0.0",
+    "@material/list": "^10.0.0",
     "@material/textfield": "^11.0.0",
     "@material/theme": "^11.0.0",
     "@material/top-app-bar": "^11.0.0",
@@ -58,6 +58,6 @@
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "^4.2.3"
+    "typescript": "~4.2.3"
   }
 }

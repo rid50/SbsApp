@@ -24,7 +24,6 @@ export class MaterialDrawerComponent implements OnInit {
 
 	constructor(private componentCommunicationService: ComponentCommunicationService) { }
 
-
 	ngOnInit(): void {
 
 		// const list = new MDCList(document.querySelector('.mdc-list'));

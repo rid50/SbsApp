@@ -1,4 +1,4 @@
-//@use "../../mdc-typography";
+@use "../../mdc-typography";
 
 @use "@material/icon-button";
 //@use "@material/top-app-bar";
@@ -14,7 +14,7 @@
 
 @use '@material/top-app-bar/_index' as top-app-bar;
 @use '@material/theme/color-palette' as material-color;
-@use '@material/theme';
+//@use '@material/theme';
 
 // @use "~@material/list/mdc-list";
 //@use "@material/menu-surface/mdc-menu-surface";
@@ -23,8 +23,16 @@
 @include icon-button.core-styles;
 @include drawer.core-styles;
 @include drawer.dismissible-core-styles;
-@include list.deprecated-core-styles;
+@include list.core-styles;
 
+//@include theme.core-styles;
+
+//@import "@material/theme/mdc-theme";
+
+// @include list.deprecated-core-styles;
+
+//@import "@material/drawer/mdc-drawer";
+// @import "@material/list/mdc-list";
 
 // @include list.deprecated-single-line-height(20);
 //@include textfield.core-styles;
@@ -33,6 +41,7 @@
 //@include drawer.modal-core-styles;
 
 //@include theme.mdc-top-app-bar;
+//@include theme.core-styles;
 
 // .cardList {
 //   display: flex;
@@ -44,19 +53,44 @@
 body {
   display: flex;
   height: 100vh;
-  @include list.deprecated-single-line-height(20);
+  // @include list.deprecated-single-line-height(20);
 }
 
 .mdc-drawer-app-content {
   flex: auto;
   overflow: auto;
   position: relative;
+  
   // @include list.deprecated-list-item-height(20);
   // @include list.deprecated-single-line-height(20);  
 }
-// .mdc-list {
-//   @include list.deprecated-list-item-height(20);
-//   // @include list.deprecated-single-line-height(20);
+// .mdc-list-item {
+//   //background-color: $mat-amber-A400;
+//   //@include list.item-disabled-text-color(material-color.$yellow-800);
+//   //@include list.list-item-height(20);
+//   //@include list.single-line-height(20);
+// }
+
+// .mdc-drawer .mdc-list-item--activated {
+//   //@include list.item-primary-text-ink-color(material-color.$yellow-800);
+//   //color: rgba(238, 0, 0, 0.87);
+
+  
+//   @include list.item-primary-text-ink-color(var(--mdc-theme-secondary));
+//   //@include list.item-selected-text-color(var(--mdc-theme-secondary));
+
+//   // @include drawer.item-activated-text-ink-color(var(--mdc-theme-secondary));
+//   //@debug var(--mdc-theme-secondary);
+//   // color: var(--mdc-theme-secondary);
+//   //color: #f00;
+//   //background-color: #0f0;
+// }
+
+
+// a.my-list-1 {
+//   color: red;
+//   height: 30px;
+//   @include list.item-graphic-ink-color(material-color.$yellow-800);
 // }
 
 .main-content {
@@ -67,6 +101,8 @@ body {
 
 .app-bar {
   position: absolute;
+  //@include drawer.surface-fill-color(material-color.$yellow-800);
+
   // @include top-app-bar.fill-color(theme.$warn);
   // @include top-app-bar.fill-color(theme.$primary);
   // @include top-app-bar.fill-color(theme.$secondary);  
