@@ -4,6 +4,7 @@ import { MDCDrawer } from '@material/drawer';
 import { MDCTopAppBar } from '@material/top-app-bar';
 // import {MDCRipple} from '@material/ripple';
 // import { MDCList } from '@material/list';
+import { VERSION } from '@angular/material/core';
 
 import { ComponentCommunicationService } from '../services/component-communication.service';
 import { Contract } from '../models/contract'
@@ -19,6 +20,7 @@ export class MaterialDrawerComponent implements OnInit {
 
 	@Output() contractIdEvent = new EventEmitter<string>();
 	
+	version = VERSION;
 	contract: Contract;
 	contractId: string;
 

@@ -12,6 +12,7 @@ import '@angular/common/locales/global/ru';
 import '@angular/common/locales/global/fr';
 
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MAT_RIPPLE_GLOBAL_OPTIONS, RippleGlobalOptions } from '@angular/material/core';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -25,6 +26,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatRippleModule } from '@angular/material/core'; 
 
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -39,11 +41,11 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { ContractListComponent } from './contract-list/contract-list.component';
 import { ContractDetailListComponent } from './contract-detail-list/contract-detail-list.component';
+import { ContractDetailComponent } from './contract-detail/contract-detail.component';
+import { ContractFormEntryComponent } from './contract-form-entry/contract-form-entry.component';
 
 import { ContractService } from './services/contract.service';
 import { ContractResolver } from './services/contract.resolver';
-import { ContractDetailComponent } from './contract-detail/contract-detail.component';
-import { ContractFormEntryComponent } from './contract-form-entry/contract-form-entry.component';
 import { ComponentCommunicationService } from './services/component-communication.service';
 
 //import { HeaderComponent } from './navigation/header/header.component';
@@ -52,6 +54,13 @@ import { ComponentCommunicationService } from './services/component-communicatio
 //import { MaterialModule } from './material.module';
 
 //registerLocaleData(localeRu, 'RU');
+
+const globalRippleConfig: RippleGlobalOptions = {
+  animation: {
+    enterDuration: 300,
+    exitDuration: 0
+  }
+};
 
 @NgModule({
   declarations: [
@@ -78,6 +87,7 @@ import { ComponentCommunicationService } from './services/component-communicatio
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    MatRippleModule,
     MatDatepickerModule,
     MatNativeDateModule,
     MatMomentDateModule,
@@ -100,7 +110,8 @@ import { ComponentCommunicationService } from './services/component-communicatio
     {provide: 'BASE_API_URL', useValue: environment.apiUrl},
     {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {strict: true}},
     {provide: MAT_DATE_LOCALE, useValue: 'ru'},
-    {provide: LOCALE_ID, useValue: 'ru'},    
+    {provide: LOCALE_ID, useValue: 'ru'},
+    {provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig},  
     // {provide: DateAdapter, useClass: MomentDateAdapter,
     //   deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
     // },

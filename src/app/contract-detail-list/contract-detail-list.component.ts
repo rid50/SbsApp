@@ -21,7 +21,7 @@ import { DateAdapter } from '@angular/material/core';
 import { isNgTemplate } from '@angular/compiler';
 
 @Component({
-    selector: 'app-contract-detail',
+    selector: 'app-contract-detail-list',
     templateUrl: './contract-detail-list.component.html',
     styleUrls: ['./contract-detail-list.component.css']
 })

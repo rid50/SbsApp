@@ -32,7 +32,7 @@
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
           <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button"
             aria-label="Open navigation menu">menu</button>
-          <span class="mdc-top-app-bar__title">Sales Back Office</span>
+          <span class="mdc-top-app-bar__title">Sales Back Office (Angular Material {{version.full}} App)</span>
         </section>
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
           <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button"
@@ -64,11 +64,11 @@
           <span class="mdc-line-ripple"></span>
         </label> -->
 
-        <div>
+        <div class="mat-body-1">
           <div fxLayout="row" fxLayoutGap="10px">
             <div fxLayout="column" fxFlex="0 1 calc(80% - 10px)">
-              <app-contract (contractIdEvent)="getContractId($event)"></app-contract>
-              <app-contract-detail [contractId]="contractId"></app-contract-detail>
+              <app-contract-list (contractIdEvent)="getContractId($event)"></app-contract-list>
+              <app-contract-detail-list [contractId]="contractId"></app-contract-detail-list>
           </div>
             <div fxLayout="column" fxFlex="0 1 calc(20% - 10px)">
               <app-contract-form-entry [contractId]="contractId"></app-contract-form-entry>

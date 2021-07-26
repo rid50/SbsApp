@@ -2,13 +2,14 @@ import { Component, ElementRef, OnInit, AfterViewInit, ViewChild, EventEmitter, 
 import { ActivatedRoute } from '@angular/router';
 //import {NgForm} from '@angular/forms'
 import { Observable, BehaviorSubject, of, throwError } from 'rxjs'
-import { merge, fromEvent} from 'rxjs';
+import { merge, fromEvent } from 'rxjs';
 import { debounceTime, distinctUntilChanged, startWith, tap, delay } from 'rxjs/operators';
 import { catchError, map, finalize } from 'rxjs/operators'
 
 //import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+
 //import { MatInputModule } from '@angular/material/input'
 
 //import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
@@ -18,11 +19,11 @@ import { ContractService } from '../services/contract.service';
 import { ComponentCommunicationService } from '../services/component-communication.service';
 import { ContractDataSource } from '../services/contract.datasource';
 import { NgForOf } from '@angular/common';
-import { DateAdapter } from '@angular/material/core';
+import { DateAdapter, MatRipple } from '@angular/material/core';
 import { isNgTemplate } from '@angular/compiler';
 
 @Component({
-    selector: 'app-contract',
+    selector: 'app-contract-list',
     templateUrl: './contract-list.component.html',
     styleUrls: ['./contract-list.component.scss']
 })
@@ -39,7 +40,7 @@ export class ContractListComponent implements OnInit {
 
     //contract: Contract
     //contracts: Contract[]
-    todaysDate: Date = new Date(); 
+    todaysDate: Date = new Date();
 
     //dataSource: ContractDataSource;
     //dataSource = new MatTableDataSource(this.contracts);
@@ -60,6 +61,18 @@ export class ContractListComponent implements OnInit {
     //@ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
     @ViewChild(MatSort, { static: true }) sort: MatSort;
     @ViewChild('input', { static: true }) input: ElementRef;
+    // @ViewChild(MatRipple) ripple: MatRipple;
+
+
+    // launchRipple(): void {
+    //     const rippleRef = this.ripple.launch({
+    //         persistent: true,
+    //         centered: true
+    //     });
+
+    //     // Fade out the ripple later.
+    //     // rippleRef.fadeOut();
+    // }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     constructor(private route: ActivatedRoute, private _adapter: DateAdapter<any>,
@@ -122,17 +135,17 @@ export class ContractListComponent implements OnInit {
     }
 
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-//    loadContracts() {
-//        this.dataSource.loadContracts(this.input.nativeElement.value, this.sort.active, this.sort.direction, this.skip, this.take);
-//    }
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+    //    loadContracts() {
+    //        this.dataSource.loadContracts(this.input.nativeElement.value, this.sort.active, this.sort.direction, this.skip, this.take);
+    //    }
+    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     loadContracts() {
         //this.dataSource.loadContracts(this.input.nativeElement.value, this.sort.active, this.sort.direction);
-        
+
         this.loadingSubject.next(true)
         this.contractService.getContracts(this.skip, this.take)
             .pipe(
-                map((array:Contract[]) => array.map ((item: Contract) => ({
+                map((array: Contract[]) => array.map((item: Contract) => ({
                     ...item,
                     contractValue: `${item.currency} ${item.contractValue}`
                 }))),
@@ -163,14 +176,17 @@ export class ContractListComponent implements OnInit {
         this.selectedRowIndex = index;
         this.componentCommunicationService.setContract(row);
         this.contractIdEvent.emit(row.contractId);
+        //this.ripple.launch(0, 0, { centered: true, persistent: true });
+
+        // this.launchRipple();
         //console.log('Row clicked: ', row);
         //console.log (window.navigator.language)
     }
 
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    edit(element:Contract): void {this.editRow = !this.editRow}
+    edit(element: Contract): void { this.editRow = !this.editRow }
 
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    delete(id:string):void {console.log}
+    delete(id: string): void { console.log }
 }
 
