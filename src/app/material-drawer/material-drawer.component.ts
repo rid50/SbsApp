@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
 
 import { MDCDrawer } from '@material/drawer';
 import { MDCTopAppBar } from '@material/top-app-bar';
@@ -14,7 +14,9 @@ import { Contract } from '../models/contract'
 @Component({
 	selector: 'app-material-drawer',
 	templateUrl: './material-drawer.component.html',
-	styleUrls: ['./material-drawer.component.scss']
+	styleUrls: ['./material-drawer.component.scss'],
+
+	// encapsulation: ViewEncapsulation.None
 })
 export class MaterialDrawerComponent implements OnInit {
 

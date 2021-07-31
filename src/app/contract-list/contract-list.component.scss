@@ -7,7 +7,7 @@
     /* overflow: auto;
     width: 100%; */
     width: 100%;
-    height: 230px;
+    height: 192px;
     /* margin: 0, 10px; */
     overflow: auto; 
   }
@@ -18,7 +18,9 @@
   }
   
   .mat-row {
-    //min-height: 65px;
+    // padding-right: 10px;
+    height: 40px;
+    min-height: 40px;
     // transform: scale(1);
 	  // position: relative;
 	  // overflow: hidden;
@@ -26,6 +28,11 @@
     &.highlight {
       background-color: #ede8f7 !important;
     }
+  }
+
+  .mat-header-row {
+    height: 32px;
+    min-height: 32px;
   }
 
   .mat-row:nth-child(odd){
@@ -37,7 +44,7 @@
   } */
 
   .mat-form-field {
-    font-size: 16px;
+    // font-size: 16px;
     /* margin-left: 10px; */
     width: 100%;
   }
@@ -60,61 +67,71 @@
     margin-bottom: 0 !important;
   }
   
-  .mat-header-row {
-    min-height: 30px !important;
-  }
+  // span {
+  //   text-overflow: ellipsis;    
+  // }
+  // .mat-header-row {
+  //   min-height: 30px !important;
+  // }
 
   .mat-row:is(.highlight) .mat-cell {
     color: var(--mdc-theme-primary) !important;
-    overflow: initial;
+    // overflow: initial;
   }
 
   .mat-cell,
   .mat-header-cell {
     color: black;    
-    font-size: 16px;
-    margin-right: 20px;    
+    // font-size: 16px;
+    margin-right: 10px;    
     /* font-weight: 700; */
   }
 
   .mat-cell:nth-child(1),
   .mat-header-cell:nth-child(1) {
-    flex: 10%;
+    flex: 15%;
+    padding-left: 10px;
   }
 
   .mat-cell:nth-child(2),
   .mat-header-cell:nth-child(2) {
-    flex: 40%;
+    // text-overflow: ellipsis;
+    flex: 35%;
   }
 
   .mat-cell:nth-child(3),
   .mat-header-cell:nth-child(3) {
-    flex: 6%;
+    flex: 10%;
   }  
 
   .mat-cell:nth-child(4),
   .mat-header-cell:nth-child(4) {
-    flex: 6%;
+    flex: 10%;
   }  
 
-  .mat-cell:nth-child(5),
-  .mat-header-cell:nth-child(5) {
-    flex: 4%;
-  }  
-
-  /* .mat-cell {
+ /* .mat-cell {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;        
   } */
-  .mat-cell:nth-child(6),
-  .mat-header-cell:nth-child(6) {
-    flex: 24px;
+
+  .mat-cell.mat-column-currency,
+  .mat-header-cell.mat-column-currency {
+    flex: 4%;
+  }  
+
+  .mat-cell.mat-column-edit,
+  .mat-header-cell.mat-column-edit {
+    min-width: 40px;
+    // flex: 4px;
   }
 
-  .mat-cell:nth-child(7),
-  .mat-header-cell:nth-child(7) {
-    flex: 24px;
+  .mat-cell.mat-column-delete,
+  .mat-header-cell.mat-column-delete {
+    // flex: 3px;
+    min-width: 40px;
+    padding-right: 0px;
+    margin-right: 10px;    
   }
 
   /* .mat-sort-header-container {

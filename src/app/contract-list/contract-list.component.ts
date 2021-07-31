@@ -6,7 +6,7 @@ import { merge, fromEvent } from 'rxjs';
 import { debounceTime, distinctUntilChanged, startWith, tap, delay } from 'rxjs/operators';
 import { catchError, map, finalize } from 'rxjs/operators'
 
-//import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -27,7 +27,7 @@ import { isNgTemplate } from '@angular/compiler';
     templateUrl: './contract-list.component.html',
     styleUrls: ['./contract-list.component.scss']
 })
-export class ContractListComponent implements OnInit {
+export class ContractListComponent implements OnInit, AfterViewInit  {
 
     @Output() contractIdEvent = new EventEmitter<string>();
 
@@ -52,13 +52,14 @@ export class ContractListComponent implements OnInit {
     dataSource = new MatTableDataSource<Contract>()
 
     //displayedColumns = ['contractId', 'contractName', 'dateEntry', 'contractValue', 'currency'];
-    displayedColumns = ['contractId', 'contractName', 'dateEntry', 'contractValue', 'currency', 'edit', 'delete'];
+    // displayedColumns = ['contractId', 'contractName', 'dateEntry', 'contractValue', 'currency', 'edit', 'delete'];
+    displayedColumns = ['contractId', 'contractName', 'dateEntry', 'contractValue', 'edit', 'delete'];
     skip = 0;
     take = 20;
 
     editRow = false
 
-    //@ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+    @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
     @ViewChild(MatSort, { static: true }) sort: MatSort;
     @ViewChild('input', { static: true }) input: ElementRef;
     // @ViewChild(MatRipple) ripple: MatRipple;
@@ -106,6 +107,7 @@ export class ContractListComponent implements OnInit {
     }
 
     ngAfterViewInit(): void {
+        this.dataSource.paginator = this.paginator;
         //this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
         // eslint-disable-next-line @typescript-eslint/no-empty-function
         this.sort.sortChange.subscribe(() => { })
@@ -184,7 +186,13 @@ export class ContractListComponent implements OnInit {
     }
 
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    edit(element: Contract): void { this.editRow = !this.editRow }
+    edit(element: Contract): void { 
+        this.editRow = !this.editRow;
+        if (this.editRow)
+            this.displayedColumns.splice(4, 0, 'currency')        
+        else
+            this.displayedColumns.splice(4, 1)
+    }
 
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     delete(id: string): void { console.log }

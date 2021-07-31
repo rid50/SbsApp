@@ -23,7 +23,7 @@ import { isNgTemplate } from '@angular/compiler';
 @Component({
     selector: 'app-contract-detail-list',
     templateUrl: './contract-detail-list.component.html',
-    styleUrls: ['./contract-detail-list.component.css']
+    styleUrls: ['./contract-detail-list.component.scss']
 })
 export class ContractDetailListComponent {
     @Input() contractId: string;

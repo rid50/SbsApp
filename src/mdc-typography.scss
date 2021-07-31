@@ -1,8 +1,8 @@
 // used in material-drawer.component.scss
 
-$font-family: "Roboto, sans-serif";
-$font-size: 20px;
-$font-size2: 16px;
+// $font-family: "Roboto, sans-serif";
+// $font-size: 20px;
+// $font-size2: 16px;
 
 // @use "@material/typography" with (
 //     $font-family: unquote($font-family)
@@ -10,20 +10,91 @@ $font-size2: 16px;
 //     // $font-size: 24px
 // );
 
-@use "@material/typography" with (
-  $styles-headline6: (
-    font-family: unquote($font-family),
-    font-size: $font-size
-  ),
-  $styles-subtitle1: (
-    font-family: unquote($font-family),
-    font-size: $font-size2,
-    // line-height: 2.5rem,
-    height: 3rem
-  )
+// @use "@material/typography" with (
+//   $styles-headline6: (
+//     font-family: unquote($font-family),
+//     font-size: $font-size
+//   ),
+//   $styles-subtitle1: (
+//     font-family: unquote($font-family),
+//     font-size: $font-size2,
+//     // line-height: 2.5rem,
+//     height: 3rem
+//   )
+// );
+
+// @use "@material/typography/mdc-typography";
+
+$mdc-typography-font-family: unquote("Times New Roman, Helvetica Neue, sans-serif");
+
+
+$mdc-typography-styles-headline1: (
+  font-family: unquote("Arial, Helvetica, sans-serif"),
+  font-size: 1.25rem
+);
+$mdc-typography-styles-headline2: (
+  font-family: unquote("Arial, Helvetica, sans-serif"),
+  font-size: 1.25rem
 );
 
-//@use "@material/typography/mdc-typography";
+$mdc-typography-styles-headline3: (
+  font-family: unquote("Arial, Helvetica, sans-serif"),
+  font-size: 1.25rem
+);
+
+$mdc-typography-styles-headline4: (
+  font-family: unquote("Arial, Helvetica, sans-serif"),
+  font-size: 1.25rem
+);
+
+$mdc-typography-styles-headline5: (
+  font-family: unquote("Arial, Helvetica, sans-serif"),
+  font-size: 1.25rem
+);
+
+$mdc-typography-styles-headline6: (
+  font-family: unquote("Arial, Helvetica, sans-serif"),
+  font-size: 1.25rem
+);
+
+$mdc-typography-styles-subtitle1: (
+  font-family: unquote("Arial, Helvetica, sans-serif"),
+  font-size: 1.25rem
+);
+
+$mdc-typography-styles-subtitle2: (
+  font-family: unquote("Arial, Helvetica, sans-serif"),
+  font-size: 1.25rem
+);
+
+$mdc-typography-styles-body1: (
+  font-family: unquote("Arial, Helvetica, sans-serif"),
+  font-size: 1.25rem
+);
+
+$mdc-typography-styles-body2: (
+  font-family: unquote("Arial, Helvetica, sans-serif"),
+  font-size: 1.25rem
+);
+
+$mdc-typography-styles-caption: (
+  font-family: unquote("Arial, Helvetica, sans-serif"),
+  font-size: 1.25rem
+);
+
+$mdc-typography-styles-button: (
+  font-family: unquote("Arial, Helvetica, sans-serif"),
+  font-size: 3.25rem
+);
+
+$mdc-typography-styles-overline: (
+  font-family: unquote("Arial, Helvetica, sans-serif"),
+  font-size: 3.25rem
+);
+
+@import'~@material/typography/mdc-typography';
+
+// @include mdc-typography.core-styles;
 
 // @use '@material/typography' with (
 //   $font-family: unquote('Roboto Condensed'),

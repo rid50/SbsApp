@@ -7,8 +7,25 @@
 
 @use './themes.scss';
 
-@use './mat-typography';
+// @use './mat-typography';
+// @use './mdc-typography';
 
+// @use '@material/typography' with (
+//   $font-family:  unquote("Times New Roman, Helvetica Neue, sans-serif")
+// );
+
+// @include typography.core-styles;
+
+// :root {
+//     --mdc-typography-font-family: "Roboto Condensed";
+// }
+
+// @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,500');
+
+// $mdc-typography-font-family: unquote("Times New Roman, Helvetica Neue, sans-serif");
+// @import'~@material/typography/mdc-typography';
+
+// @import './mdc-typography';
 //@use './styles/body';
 
 // @use '@material/theme' with (

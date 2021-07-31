@@ -78,13 +78,15 @@
           </ng-container>
 
           <!-- Currency Column -->
-          <ng-container matColumnDef="currency" *ngIf=!editRow>
-              <mat-header-cell *matHeaderCellDef mat-sort-header><span *ngIf=editRow> Currency </span></mat-header-cell>
-              <mat-cell *matCellDef="let row"><span *ngIf=editRow> {{row.currency}} </span></mat-cell>
+          <ng-container matColumnDef="currency" *ngIf=editRow>
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Currency </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.currency}} </mat-cell>
+            <!-- <mat-header-cell *matHeaderCellDef mat-sort-header><span *ngIf=editRow> Currency </span></mat-header-cell>
+            <mat-cell *matCellDef="let row"><span *ngIf=editRow> {{row.currency}} </span></mat-cell> -->
           </ng-container>
 
           <ng-container matColumnDef="edit">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Edit </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
             <mat-cell *matCellDef="let element"> 
               <button mat-icon-button matTooltip="Click to Edit" class="iconbutton"
                 (click)="edit(element)" color="primary">
@@ -93,7 +95,7 @@
             </mat-cell>
           </ng-container>
           <ng-container matColumnDef="delete">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Delete </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
             <mat-cell *matCellDef="let element"> 
               <button mat-icon-button matTooltip="Click to Delete" class="iconbutton"
                 (click)="delete(element.contractId)" color="warn" [disabled]="!editRow">
@@ -105,17 +107,20 @@
 
 
           <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-          <!-- <mat-row *matRowDef="let row; columns: displayedColumns" ></mat-row> -->
           <mat-row *matRowDef="let row; columns: displayedColumns; let i = index" matRipple
               [ngClass]="{'highlight': selectedRowIndex === i}"
               (click)="onRowClicked(row, i)">
           </mat-row>
 
           <!-- Row shown when there is no matching data. -->
-          <!-- <tr class="mat-row" *matNoDataRow> -->
-          <!-- <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</mat-cell> -->
-          <!-- </tr> -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+          </tr>
         </mat-table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+          showFirstLastButtons aria-label="Select page of contracts">
+        </mat-paginator>
 
         <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator> -->
       </div>
