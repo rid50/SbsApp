@@ -1,20 +1,20 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import {Injectable, Inject} from '@angular/core'
-import {HttpClient, HttpParams} from '@angular/common/http'
-import {Observable, of, throwError} from 'rxjs'
-import {catchError, map, finalize} from 'rxjs/operators'
-import {Contract} from '../models/contract'
-import {ContractDetail} from '../models/contract-detail'
+import { Injectable, Inject } from '@angular/core'
+import { HttpClient, HttpParams } from '@angular/common/http'
+import { Observable, of, throwError } from 'rxjs'
+import { catchError, map, finalize } from 'rxjs/operators'
+import { Contract } from '../models/contract'
+import { ContractDetail } from '../models/contract-detail'
 
 @Injectable()
 export class ContractService {
 
-    constructor(private http: HttpClient, @Inject('BASE_API_URL') private apiUrl: string) {}
+    constructor(private http: HttpClient, @Inject('BASE_API_URL') private apiUrl: string) { }
 
-    findContractById (contractId: number): Observable<Contract> {
+    findContractById(contractId: number): Observable<Contract> {
         return this.http.get<Contract>(`${this.apiUrl}/api/contract/${contractId}`)
     }
-//t?id=&sortColumnName=contractid&sortOrder=desc
+    //t?id=&sortColumnName=contractid&sortOrder=desc
 
     // findAllContracts(): Observable<any> {
     //     return this.http.get(`${this.apiUrl}/api/courses`)
@@ -33,22 +33,20 @@ export class ContractService {
     //         );
     // }
 
-    getContracts(skip = 0, take = 0, id_wildcard = '', sortColumnName = '', sordOrder = '', 
+    getContracts(skip = 0, take = 0, id_wildcard = '', sortColumnName = '', sordOrder = '',
         ): Observable<Contract[]> {
 
-            return this.http.get<Contract[]>
-                (`${this.apiUrl}api/contract?id=${id_wildcard}&sort=${sortColumnName}&order=${sordOrder}&skip=${skip}&take=${take}`)
-            // .pipe(
-            //    catchError(err => {
-            //         console.log('Handling error locally and rethrowing it...', err)
-            //         return throwError(err)
-            //     }),            
-            // )
+        return this.http.get<Contract[]>
+            (`${this.apiUrl}api/contract?id=${id_wildcard}&sort=${sortColumnName}&order=${sordOrder}&skip=${skip}&take=${take}`)
+        // .pipe(
+        //    catchError(err => {
+        //         console.log('Handling error locally and rethrowing it...', err)
+        //         return throwError(err)
+        //     }),            
+        // )
     }
 
-    getContractDetails(id_wildcard = '' 
-        ): Observable<ContractDetail[]> {
-
+    getContractDetails(id_wildcard = ''): Observable<ContractDetail[]> {
         return this.http.get<ContractDetail[]>
             (`${this.apiUrl}api/contractDetail?id=${id_wildcard}`)
         // .pipe(
@@ -57,16 +55,16 @@ export class ContractService {
         //         return throwError(err)
         //     }),            
         // )
-}
+    }
     // findAllCourseLessons(courseId:number): Observable<Lesson[]> {
-        // return this.http.get('${this.apiUrl}/api/lessons', {
-            // params: new HttpParams()
-                // .set('courseId', courseId.toString())
-                // .set('pageNumber', "0")
-                // .set('pageSize', "1000")
-        // }).pipe(
-            // map(res =>  res["payload"])
-        // );
+    // return this.http.get('${this.apiUrl}/api/lessons', {
+    // params: new HttpParams()
+    // .set('courseId', courseId.toString())
+    // .set('pageNumber', "0")
+    // .set('pageSize', "1000")
+    // }).pipe(
+    // map(res =>  res["payload"])
+    // );
     // }
 
     // getContracts(
@@ -81,10 +79,10 @@ export class ContractService {
     //             .set('pageNumber', pageNumber.toString())
     //             .set('pageSize', pageSize.toString())
     //     })
-        // .pipe(
-        //     // tslint:disable-next-line: no-string-literal
-        //     map(res =>  res['payload'])
-        // )
+    // .pipe(
+    //     // tslint:disable-next-line: no-string-literal
+    //     map(res =>  res['payload'])
+    // )
     //}
 
 }

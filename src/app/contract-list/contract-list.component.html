@@ -20,7 +20,7 @@
   
   </mat-form-field> -->
 
-      <div class="spinner-container" *ngIf="loading$ | async">
+      <div class="spinner-container" *ngIf="dataSource.loading$ | async">
         <mat-spinner></mat-spinner>
       </div>
 
@@ -104,8 +104,6 @@
             </mat-cell>
           </ng-container>
 
-
-
           <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
           <mat-row *matRowDef="let row; columns: displayedColumns; let i = index" matRipple
               [ngClass]="{'highlight': selectedRowIndex === i}"
@@ -118,8 +116,12 @@
           </tr>
         </mat-table>
 
-        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-          showFirstLastButtons aria-label="Select page of contracts">
+        <!-- <mat-paginator #paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+          (page)="handlePageEvent($event)" showFirstLastButtons aria-label="Select page of contracts"> -->
+        <mat-paginator [length]="getContactsCount()" [pageSize]="pageSize" 
+          [pageSizeOptions]="pageSizeOptions" showFirstLastButtons >
+
+          <!-- (ngModelChange)="setPageSizeOptions($event)"> -->
         </mat-paginator>
 
         <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator> -->
