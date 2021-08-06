@@ -151,10 +151,12 @@
     height: 200px;
     width: 200px;
     position: fixed;
+    // position: absolute; 
+    z-index: 100;    
   }
 
   .spinner-container mat-spinner {
-    margin: 40px auto 0 auto;
+    margin: 80px auto 0 auto;
   }
 
   // .highlight{

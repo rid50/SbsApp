@@ -14,6 +14,7 @@
 
 @use '@material/top-app-bar/_index' as top-app-bar;
 @use '@material/theme/color-palette' as material-color;
+@use "@material/card";
 //@use '@material/theme';
 
 // @use "~@material/list/mdc-list";
@@ -23,8 +24,8 @@
 @include icon-button.core-styles;
 @include drawer.core-styles;
 @include drawer.dismissible-core-styles;
-@include list.core-styles;
-
+@include list.deprecated-core-styles;
+@include card.core-styles;
 //@include theme.core-styles;
 
 //@import "@material/theme/mdc-theme";
@@ -63,6 +64,10 @@
   
   // @include list.deprecated-list-item-height(20);
   // @include list.deprecated-single-line-height(20);  
+}
+
+a.mdc-list-item {
+  margin-bottom: 10px !important;
 }
 // .mdc-list-item {
 //   //background-color: $mat-amber-A400;
@@ -116,6 +121,31 @@
   // @include top-app-bar.fill-color(material-color.$yellow-800);
   // @include top-app-bar.icon-ink-color(material-color.$blue-900)
 }
+
+.my-card-content {
+  padding: 10px;
+  // max-width: 300px;
+}
+
+.my-card__media {
+  padding: 55px;
+  // display: flex;
+  // justify-content: center;  
+  // padding: 16px;
+  // background-image: url("https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/2.jpg");
+  background-image: url("../../assets/NanoteX.jpg");
+}
+
+.my-card__media2 {
+  padding: 10px 0px;
+  display: flex;
+  justify-content: center;  
+  // padding: 16px;
+  // background-image: url("https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/2.jpg");
+  background-image: url("../../assets/NanoteX-phones.jpg");
+}
+
+
 /*
 // Only apply this style if below top app bar.
 .mdc-top-app-bar {
