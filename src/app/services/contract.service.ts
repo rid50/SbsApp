@@ -1,18 +1,24 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Injectable, Inject } from '@angular/core'
+import { Injectable, Inject, EventEmitter } from '@angular/core'
 import { HttpClient, HttpParams } from '@angular/common/http'
 import { Observable, of, throwError } from 'rxjs'
 import { catchError, map, finalize } from 'rxjs/operators'
-import { Contract } from '../models/contract'
+import { IContract } from '../models/contract'
 import { ContractDetail } from '../models/contract-detail'
 
 @Injectable()
 export class ContractService {
 
+    LoadContractsSubscriptionCompleteEvent = new EventEmitter();
+    
     constructor(private http: HttpClient, @Inject('BASE_API_URL') private apiUrl: string) { }
 
-    findContractById(contractId: number): Observable<Contract> {
-        return this.http.get<Contract>(`${this.apiUrl}/api/contract/${contractId}`)
+    NotifyOfLoadContractsSubscriptionComplete(): void {
+        this.LoadContractsSubscriptionCompleteEvent.emit();
+    }
+
+    findContractById(contractId: number): Observable<IContract> {
+        return this.http.get<IContract>(`${this.apiUrl}/api/contract/${contractId}`)
     }
     //t?id=&sortColumnName=contractid&sortOrder=desc
 
@@ -34,9 +40,9 @@ export class ContractService {
     // }
 
     getContracts(skip = 0, take = 0, id_wildcard = '', sortColumnName = '', sordOrder = '',
-        ): Observable<Contract[]> {
+        ): Observable<IContract[]> {
 
-        return this.http.get<Contract[]>
+        return this.http.get<IContract[]>
             (`${this.apiUrl}api/contract?id=${id_wildcard}&sort=${sortColumnName}&order=${sordOrder}&skip=${skip}&take=${take}`)
         // .pipe(
         //    catchError(err => {

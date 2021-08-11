@@ -80,6 +80,9 @@
           <div fxLayout="row" fxLayoutGap="10px">
             <div fxLayout="column" fxFlex="0 1 calc(80% - 10px)">
               <app-contract-list (contractIdEvent)="getContractId($event)"></app-contract-list>
+                <!-- (loadContractsSubscriptionCompleteEvent)="sendSignalOfLoadContractsSubscriptionComplete($event)"
+                [loadContractsSubscriptionComplete] ="loadContractsSubscriptionComplete">
+              </app-contract-list> -->
               <app-contract-detail-list [contractId]="contractId"></app-contract-detail-list>
             </div>
             <div fxLayout="column" fxFlex="0 1 calc(20% - 10px)">

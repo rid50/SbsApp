@@ -7,7 +7,7 @@ import { MDCTopAppBar } from '@material/top-app-bar';
 import { VERSION } from '@angular/material/core';
 
 import { ComponentCommunicationService } from '../services/component-communication.service';
-import { Contract } from '../models/contract'
+import { IContract } from '../models/contract'
 
 //import {ContractListComponent} from '../contract-list/contract-list.component';
 
@@ -20,11 +20,13 @@ import { Contract } from '../models/contract'
 })
 export class MaterialDrawerComponent implements OnInit {
 
-	@Output() contractIdEvent = new EventEmitter<string>();
+	// @Output() contractIdEvent = new EventEmitter<string>();
+    // @Output() loadContractsSubscriptionCompleteEvent = new EventEmitter<boolean>();
 	
 	version = VERSION;
-	contract: Contract;
+	contract: IContract;
 	contractId: string;
+	// loadContractsSubscriptionComplete: boolean;
 
 	constructor(private componentCommunicationService: ComponentCommunicationService) { }
 
@@ -76,5 +78,17 @@ export class MaterialDrawerComponent implements OnInit {
 		//console.log('ContractId: ', this.contract.contractId);
 
 	}
+
+	// sendSignalOfLoadContractsSubscriptionComplete($event: boolean): void {
+	// 	//this.contract = this.componentCommunicationService.getContract();
+	// 	//this.contractIdEvent.emit(this.contract.contractId);
+	// 	this.loadContractsSubscriptionComplete = $event;
+	// 	//this.contractIdEvent.emit($event);
+
+	// 	//this.contractId = this.contract.contractId;
+	// 	//console.log('Event: ', $event)
+	// 	//console.log('ContractId: ', this.contract.contractId);
+
+	// }
 
 }

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 
-import { Contract } from '../models/contract';
+import { IContract } from '../models/contract';
 import { ComponentCommunicationService } from '../services/component-communication.service';
 
 //import { DataSource } from '@angular/cdk/collections'
@@ -22,7 +22,7 @@ export class ContractFormEntryComponent  implements OnChanges {
   
   //dataSource: DataSource<Contract>;
 
-  contract!: Contract;
+  contract!: IContract;
 
   constructor(private componentCommunicationService: ComponentCommunicationService) { }
 

@@ -1,14 +1,22 @@
 import { CollectionViewer, DataSource } from '@angular/cdk/collections'
+import { Component } from '@angular/core'
+import { EventEmitter, Output } from '@angular/core'
 import { Observable, BehaviorSubject, of, throwError } from 'rxjs'
 import { catchError, finalize, map } from 'rxjs/operators'
-import { Contract } from '../models/contract'
+import { IContract } from '../models/contract'
 import { ContractService } from './contract.service'
 
-export class ContractDataSource implements DataSource<Contract> {
+// @Component({
+//     template: ''
+// })
+export class ContractDataSource implements DataSource<IContract> {
+
+    // @Output() loadContractsSubscriptionCompleteEvent = new EventEmitter<boolean>();
+
 
     contactsCount = 0;
 
-    private contractSubject = new BehaviorSubject<Contract[]>([]);
+    private contractSubject = new BehaviorSubject<IContract[]>([]);
 
     private loadingSubject = new BehaviorSubject<boolean>(false);
 
@@ -40,7 +48,7 @@ export class ContractDataSource implements DataSource<Contract> {
         this.loadingSubject.next(true)
         this.contractService.getContracts(skip, take, id_wildcard, sortColumnName, sordOrder)
             .pipe(
-                map((array: Contract[], index) => {
+                map((array: IContract[], index) => {
                     // console.log(array[0])
                     this.contactsCount = parseInt(array[0].contractValue, 10)
                     // this.length = this.contactsCount
@@ -49,7 +57,7 @@ export class ContractDataSource implements DataSource<Contract> {
                     // array.splice(0,1)
                     return array;
                 }),
-                map((array: Contract[]) => array.map((item: Contract) => ({
+                map((array: IContract[]) => array.map((item: IContract) => ({
                     ...item,
                     contractValue: `${item.currency} ${item.contractValue}`
                 }))),
@@ -63,6 +71,10 @@ export class ContractDataSource implements DataSource<Contract> {
             )
             .subscribe(contracts => {
                 this.contractSubject.next(contracts)
+                setTimeout(_=>{
+                    this.contractService.NotifyOfLoadContractsSubscriptionComplete()
+                }, 100)
+
                 // this.dataSource.data = data;
                 // this.dataSource.paginator = this.paginator;
             })
@@ -92,7 +104,7 @@ export class ContractDataSource implements DataSource<Contract> {
     // }
 
 
-    connect(collectionViewer: CollectionViewer): Observable<Contract[]> {
+    connect(collectionViewer: CollectionViewer): Observable<IContract[]> {
         // console.log('Connecting data source')
         return this.contractSubject.asObservable()
     }

@@ -119,7 +119,7 @@
         <!-- <mat-paginator #paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
           (page)="handlePageEvent($event)" showFirstLastButtons aria-label="Select page of contracts"> -->
         <mat-paginator [length]="getContactsCount()" [pageSize]="pageSize" 
-          [pageSizeOptions]="pageSizeOptions" showFirstLastButtons >
+          [pageSizeOptions]="[20, 40, 100]" showFirstLastButtons >
 
           <!-- (ngModelChange)="setPageSizeOptions($event)"> -->
         </mat-paginator>

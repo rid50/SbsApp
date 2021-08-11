@@ -1,21 +1,21 @@
 import {Injectable} from '@angular/core'
 
 //import { DataSource } from '@angular/cdk/collections'
-import { Contract } from '../models/contract'
+import { IContract } from '../models/contract'
 
 @Injectable()
 export class ComponentCommunicationService {
 
-    contract: Contract;
+    contract: IContract;
 
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     constructor() {}
 
-    setContract (contract: Contract) : void {
+    setContract (contract: IContract) : void {
         this.contract = contract;
     }
 
-    getContract (): Contract {
+    getContract (): IContract {
         return this.contract;
     }
 }

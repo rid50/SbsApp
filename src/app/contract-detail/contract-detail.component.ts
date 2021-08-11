@@ -7,7 +7,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 
-import {Contract} from '../models/contract';
+import {IContract} from '../models/contract';
 import {ContractService} from '../services/contract.service';
 import {ContractDataSource} from '../services/contract.datasource';
 
@@ -18,18 +18,17 @@ import {ContractDataSource} from '../services/contract.datasource';
 })
 export class ContractDetailComponent implements OnInit, AfterViewInit {
 
-    contract: Contract;
+    contract: IContract;
 
-    dataSource: MatTableDataSource<Contract>;
+    dataSource: MatTableDataSource<IContract>;
 
     displayedColumns = ['id', 'contractName', 'dateEntry', 'contractValue', 'currency'];
 
-    @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-    @ViewChild(MatSort, { static: true }) sort: MatSort;
-    @ViewChild('input', { static: true }) input: ElementRef;
+    // @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+    // @ViewChild(MatSort, { static: true }) sort: MatSort;
+    // @ViewChild('input', { static: true }) input: ElementRef;
 
-    constructor(private route: ActivatedRoute, private contractService: ContractService) {
-    }
+    // constructor(private route: ActivatedRoute, private contractService: ContractService) {}
 
     ngOnInit(): void {
 
