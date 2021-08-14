@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, ElementRef, OnInit, AfterViewInit, ViewChild, EventEmitter, Output, ViewContainerRef, ViewChildren, QueryList, TemplateRef, ComponentRef, ContentChildren, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 //import {NgForm} from '@angular/forms'
@@ -9,6 +10,8 @@ import { catchError, map, skip, finalize } from 'rxjs/operators'
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatCell, MatCellDef, MatRow, MatRowDef, MatTable, MatTableDataSource } from '@angular/material/table';
+
+import * as _moment from 'moment';
 
 //import { MatInputModule } from '@angular/material/input'
 
@@ -66,7 +69,7 @@ export class ContractListComponent implements OnInit, AfterViewInit {
 
     // contract: Contract;
     dataSource: ContractDataSource;
-
+    // dataSource = new MatTableDataSource();
 
     // contract: Contract
     //contracts: Contract[]
@@ -95,8 +98,8 @@ export class ContractListComponent implements OnInit, AfterViewInit {
 
     // @ViewChild(MatRow, { static: false }) tableRows: MatRow;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    @ViewChildren(CdkColumnDef) private _columnDef: QueryList<CdkColumnDef>;
-    @ViewChildren(MatCell, { read: ElementRef }) private _cellDef: QueryList<ElementRef>;
+    // @ViewChildren(CdkColumnDef) private _columnDef: QueryList<CdkColumnDef>;
+    // @ViewChildren(MatCell, { read: ElementRef }) private _cellDef: QueryList<ElementRef>;
 
     // @ViewChildren(MatRow) tableRows: QueryList<MatRowDef<Contract>>;
     // @ViewChild('dt', { static: true }) dt;
@@ -200,14 +203,39 @@ export class ContractListComponent implements OnInit, AfterViewInit {
                 //     // this.selection.select(row)
                 // }
 
-                const row:string = this.tableRows.toArray()[this.selectedRowIndex].nativeElement.innerText.split('\n')
-                const contract: IContract = new Contract(...row)
+
+                // const row:string = this.tableRows.toArray()[this.selectedRowIndex].nativeElement.innerText.split('\n')
+                // const contract: IContract = new Contract(...row)
+
+                // console.log(`Contract's row from table:\n${row}`)
+
+                const contractId:string = this.tableRows.toArray()[this.selectedRowIndex].nativeElement.innerText.split('\n')[0]
+
                 // const i =5
 
-                this.componentCommunicationService.setContract(contract);
-                this.contractIdEvent.emit(contract.contractId);      
+                // _moment.locale('ru');
+                // const utc = _moment.utc().format('D/MM-YY')
+                // const utc = _moment.utc(contract.dateEntry, 'DD.MM.YYYY').format()
+                // console.log(`Date = ${utc}, from= ${contract.dateEntry}`)
 
-                // console.log(`Contract:\n${contract.contractId}`)
+                // const offset = new Date().getTimezoneOffset()
+                // const d = new Date(contract.dateEntry);
+
+                // let utc = d.toUTCString();
+                // utc = d.toISOString()
+                // utc = d.toDateString()
+                // utc = d.toString()
+                // utc = d.toLocaleString()
+                
+                // contract.dateEntry = _moment.utc(contract.dateEntry, 'DD.MM.YYYY').format()
+
+                const contract = this.dataSource.data.find(c => c.contractId == contractId)
+                this.contractIdEvent.emit(contractId);      
+                this.componentCommunicationService.setContract(contract);
+
+
+                // console.log(`Contract from dataSource:\n${JSON.stringify(contract)}`)
+                // console.log(`Contract:\n${JSON.stringify(contract)}`)
                 // console.log(`Table rows:\n${contract.contractId} - ${this.selectedRowIndex}`)
             }
         })
@@ -363,10 +391,14 @@ export class ContractListComponent implements OnInit, AfterViewInit {
     }
 
     onRowClicked(row: Contract, index: number): void {
-        // console.log(`Table rows:\n${row}`)
+        console.log(`Table rows:\n${JSON.stringify(row)}`)
         this.selectedRowIndex = index;
-        this.componentCommunicationService.setContract(row);
-        this.contractIdEvent.emit(row.contractId);
+        const contract = this.dataSource.data.find(c => c.contractId == row.contractId)
+        this.contractIdEvent.emit(row.contractId);      
+        this.componentCommunicationService.setContract(contract);
+
+        // this.componentCommunicationService.setContract(row);
+        // this.contractIdEvent.emit(row.contractId);
 
         // const col = {cdkColumnDef: 'contractId'} 
 
@@ -394,7 +426,7 @@ export class ContractListComponent implements OnInit, AfterViewInit {
         // console.log(`Contract:\n${cell}`)
 
         // const rowT:string[] = this.tableRows.toArray()[this.selectedRowIndex].nativeElement.innerText.split('\n')
-        // // this.tableRows.forEach(instance => console.log(instance.nativeElement.innerText.split('\n')))
+        // // this.tableRows.forEach(instance => console.log(instance.nativeElement.textContent))
         // // this.tableRows.forEach(instance => console.log(instance))
         // const contract: Contract = new ContractCl(...rowT)
         // console.log(`Table rows:\n${rowT}`)

@@ -53,7 +53,7 @@ export class ContractDetailListComponent {
     @ViewChild('input', { static: true }) input: ElementRef;
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    constructor(private route: ActivatedRoute, private contractService: ContractService) {
+    constructor(private contractService: ContractService) {
     }
 
     ngOnChanges(changes: SimpleChanges): void {

@@ -12,7 +12,9 @@ export class ComponentCommunicationService {
     constructor() {}
 
     setContract (contract: IContract) : void {
+        // contract.contractValue = contract.contractValue.split(' ')[1]
         this.contract = contract;
+        // this.contract.currency = contract.currency.split(' ')[0]
     }
 
     getContract (): IContract {

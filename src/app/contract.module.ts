@@ -62,6 +62,15 @@ const globalRippleConfig: RippleGlobalOptions = {
   }
 };
 
+const DateFormat = {
+  display: {
+    dateInput: 'DD.MM.YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
+
 @NgModule({
   declarations: [
     ContractListComponent,
@@ -109,7 +118,8 @@ const globalRippleConfig: RippleGlobalOptions = {
     MatDatepickerModule,
     {provide: 'BASE_API_URL', useValue: environment.apiUrl},
     {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {strict: true}},
-    {provide: MAT_DATE_LOCALE, useValue: 'ru'},
+    {provide: MAT_DATE_LOCALE, useValue: 'ru-RU'},
+    {provide: MAT_DATE_FORMATS, useValue: DateFormat},
     {provide: LOCALE_ID, useValue: 'ru'},
     {provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig},  
     // {provide: DateAdapter, useClass: MomentDateAdapter,

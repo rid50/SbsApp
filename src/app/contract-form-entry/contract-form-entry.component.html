@@ -2,10 +2,10 @@
   <!-- <div class="entry-form mat-h3"> -->
   <div class="entry-form">
     <!-- <p>{{contractId}}</p> -->
-    <mat-toolbar color="primary">
+    <!-- <mat-toolbar color="primary">
       <div>Material Theme</div>
       <div class="mat-caption">Material Theme</div>
-    </mat-toolbar>
+    </mat-toolbar> -->
   <!-- <div class="mat-body-2"> -->
     <mat-drawer-container>
       <!-- <mat-drawer-container class="example-container" [hasBackdrop]="hasBackdrop.value"> -->
@@ -17,8 +17,15 @@
         <mat-form-field>
           <input matInput type="text" placeholder="Contract Name" value={{contract?.contractName}} #input>
         </mat-form-field>
-        <mat-form-field>
-          <input matInput type="text" placeholder="Date Entry" value={{contract?.dateEntry}} #input>
+        <mat-form-field *ngIf="contract != undefined">
+          <input matInput #dateEntry="ngModel" placeholder="Date Entry" name="dateEntry" id="dateEntry"
+            [(ngModel)]="contract.dateEntry"
+            (ngModelChange)="contract.dateEntry = $event" [max]="todaysDate" required [matDatepicker]="picker">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="dateEntry?.invalid">
+            <div *ngIf="dateEntry.errors.required">Entry date is required</div>
+          </mat-error>
         </mat-form-field>
         <mat-form-field>
           <input matInput type="text" placeholder="Contract Value" value={{contract?.contractValue}} #input>
