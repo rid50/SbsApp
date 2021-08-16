@@ -1,10 +1,12 @@
-<form #testForm="ngForm" (ngSubmit)="testForm.form.valid" novalidate>
-  <!-- <mat-card> -->
-    <!-- <mat-card-header>
+<div fxLayout="row" fxLayoutGap="10px">
+  <div fxLayout="column" fxFlex="0 1 calc(80% - 10px)">
+    <form #testForm="ngForm" (ngSubmit)="testForm.form.valid" novalidate>
+      <!-- <mat-card> -->
+      <!-- <mat-card-header>
       <mat-card-title>Contracts</mat-card-title>
     </mat-card-header> -->
 
-    <!-- <mat-card-content> -->
+      <!-- <mat-card-content> -->
 
       <mat-form-field>
         <!-- <mat-label>Search contracts</mat-label> -->
@@ -54,12 +56,13 @@
           <!-- [ngModel]="row.dateEntry | date:'dd-MM-yyyy'" does not work -->
           <ng-container matColumnDef="dateEntry">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Date Entry </mat-header-cell>
-            <mat-cell *matCellDef="let row; let rowIdx = index;" class="date-entry"><span *ngIf=!editRow> {{row.dateEntry | date:'shortDate'}} </span>
+            <mat-cell *matCellDef="let row; let rowIdx = index;" class="date-entry"><span *ngIf=!editRow>
+                {{row.dateEntry | date:'shortDate'}} </span>
               <mat-form-field *ngIf=editRow>
                 <mat-label></mat-label>
                 <input matInput #dateEntry="ngModel" name="dateEntry{{rowIdx}}" id="dateEntry{{rowIdx}}"
-                  [ngModel]="row.dateEntry"
-                  (ngModelChange)="row.dateEntry = $event" [max]="todaysDate" required [matDatepicker]="picker">
+                  [ngModel]="row.dateEntry" (ngModelChange)="row.dateEntry = $event" [max]="todaysDate" required
+                  [matDatepicker]="picker">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
                 <mat-error *ngIf="dateEntry?.invalid">
@@ -74,7 +77,11 @@
           <!-- Contract Value Column -->
           <ng-container matColumnDef="contractValue">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Contract Value </mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{row.contractValue}} </mat-cell>
+            <mat-cell *matCellDef="let row">
+              <span *ngIf=!editRow>{{row.contractValue}}</span>
+              <span *ngIf=editRow>{{row.contractValue.split(' ')[1]}}</span>
+            </mat-cell>
+            <!-- <mat-cell *matCellDef="let row"> {{row.contractValue}} </mat-cell> -->
           </ng-container>
 
           <!-- Currency Column -->
@@ -87,27 +94,26 @@
 
           <ng-container matColumnDef="edit">
             <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
-            <mat-cell *matCellDef="let element"> 
-              <button mat-icon-button matTooltip="Click to Edit" class="iconbutton"
-                (click)="edit(element)" color="primary">
+            <mat-cell *matCellDef="let element">
+              <button mat-icon-button matTooltip="Click to Edit" class="iconbutton" (click)="edit(element)"
+                color="primary">
                 <mat-icon>edit</mat-icon>
-              </button> 
+              </button>
             </mat-cell>
           </ng-container>
           <ng-container matColumnDef="delete">
             <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
-            <mat-cell *matCellDef="let element"> 
+            <mat-cell *matCellDef="let element">
               <button mat-icon-button matTooltip="Click to Delete" class="iconbutton"
                 (click)="delete(element.contractId)" color="warn" [disabled]="!editRow">
                 <mat-icon>delete</mat-icon>
-              </button> 
+              </button>
             </mat-cell>
           </ng-container>
 
           <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
           <mat-row *matRowDef="let row; columns: displayedColumns; let i = index" matRipple
-              [ngClass]="{'highlight': selectedRowIndex === i}"
-              (click)="onRowClicked(row, i)">
+            [ngClass]="{'highlight': selectedRowIndex === i}" (click)="onRowClicked(row, i)">
           </mat-row>
 
           <!-- Row shown when there is no matching data. -->
@@ -118,17 +124,23 @@
 
         <!-- <mat-paginator #paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
           (page)="handlePageEvent($event)" showFirstLastButtons aria-label="Select page of contracts"> -->
-        <mat-paginator [length]="getContactsCount()" [pageSize]="pageSize" 
-          [pageSizeOptions]="[20, 40, 100]" showFirstLastButtons >
+        <mat-paginator [length]="getContactsCount()" [pageSize]="pageSize" [pageSizeOptions]="[20, 40, 100]"
+          showFirstLastButtons>
 
           <!-- (ngModelChange)="setPageSizeOptions($event)"> -->
         </mat-paginator>
 
         <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator> -->
       </div>
-    <!-- </mat-card-content> -->
-    <!-- <mat-card-actions>
+      <!-- </mat-card-content> -->
+      <!-- <mat-card-actions>
       <button mat-raised-button color="primary" [disabled]="testForm.invalid" (click)="save(testForm);">SAVE</button>
     </mat-card-actions> -->
-  <!-- </mat-card> -->
-</form>
+      <!-- </mat-card> -->
+    </form>
+    <app-contract-detail-list></app-contract-detail-list>
+  </div>
+  <div fxLayout="column" fxFlex="0 1 calc(20% - 10px)">
+    <app-contract-form-entry></app-contract-form-entry>
+  </div>
+</div>

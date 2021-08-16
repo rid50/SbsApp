@@ -19,7 +19,7 @@ import * as _moment from 'moment';
 
 import { IContract } from '../models/contract';
 import { ContractService } from '../services/contract.service';
-import { ComponentCommunicationService } from '../services/component-communication.service';
+// import { ComponentCommunicationService } from '../services/component-communication.service';
 import { ContractDataSource } from '../services/contract.datasource';
 import { NgForOf } from '@angular/common';
 import { DateAdapter, MatRipple } from '@angular/material/core';
@@ -29,21 +29,21 @@ import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { CdkColumnDef, CdkRowDef } from '@angular/cdk/table';
 import { SelectionModel } from '@angular/cdk/collections';
 
-class Contract implements IContract {
-    constructor(...rest:string[]){
-        this.contractId = rest[0]
-        this.contractName = rest[1]
-        this.dateEntry = rest[2]
-        this.contractValue = rest[3].split(' ')[1]
-        this.currency = rest[3].split(' ')[0]
-    }
+// class Contract implements IContract {
+//     constructor(...rest:string[]){
+//         this.contractId = rest[0]
+//         this.contractName = rest[1]
+//         this.dateEntry = rest[2]
+//         this.contractValue = rest[3].split(' ')[1]
+//         this.currency = rest[3].split(' ')[0]
+//     }
 
-    contractId: string
-    contractName:string;
-    dateEntry: string;
-    contractValue: string;
-    currency: string;
-}
+//     contractId: string
+//     contractName:string;
+//     dateEntry: string;
+//     contractValue: string;
+//     currency: string;
+// }
 
 @Component({
     selector: 'app-contract-list',
@@ -68,7 +68,7 @@ export class ContractListComponent implements OnInit, AfterViewInit {
     selectedRowIndex: number = -1
 
     // contract: Contract;
-    dataSource: ContractDataSource;
+    // dataSource: ContractDataSource;
     // dataSource = new MatTableDataSource();
 
     // contract: Contract
@@ -161,7 +161,7 @@ export class ContractListComponent implements OnInit, AfterViewInit {
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     constructor(private route: ActivatedRoute, private _adapter: DateAdapter<any>,
-        private contractService: ContractService, private componentCommunicationService: ComponentCommunicationService) {
+        public dataSource: ContractDataSource, private contractService: ContractService) {
         //this._adapter.setLocale('de');
         //this._adapter.setLocale('en');
         //this._adapter.setLocale('fr');
@@ -231,7 +231,7 @@ export class ContractListComponent implements OnInit, AfterViewInit {
 
                 const contract = this.dataSource.data.find(c => c.contractId == contractId)
                 this.contractIdEvent.emit(contractId);      
-                this.componentCommunicationService.setContract(contract);
+                this.contractService.setContract(contract);
 
 
                 // console.log(`Contract from dataSource:\n${JSON.stringify(contract)}`)
@@ -242,7 +242,8 @@ export class ContractListComponent implements OnInit, AfterViewInit {
 
         // this.take = this.pageSize;
         // this.contract = this.route.snapshot.data['contract'];
-        this.dataSource = new ContractDataSource(this.contractService);
+        // this.dataSource = new ContractDataSource(this.contractService);
+        // this.dataSource = new ContractDataSource();
         this.dataSource.loadContracts(0, this.pageSize)
 
         // this.loadContracts()
@@ -390,12 +391,12 @@ export class ContractListComponent implements OnInit, AfterViewInit {
         // this.dataSource.filter = filterValue.trim().toLowerCase();
     }
 
-    onRowClicked(row: Contract, index: number): void {
-        console.log(`Table rows:\n${JSON.stringify(row)}`)
+    onRowClicked(row: IContract, index: number): void {
+        // console.log(`Table rows:\n${JSON.stringify(row)}`)
         this.selectedRowIndex = index;
         const contract = this.dataSource.data.find(c => c.contractId == row.contractId)
         this.contractIdEvent.emit(row.contractId);      
-        this.componentCommunicationService.setContract(contract);
+        this.contractService.setContract(contract);
 
         // this.componentCommunicationService.setContract(row);
         // this.contractIdEvent.emit(row.contractId);
@@ -442,7 +443,7 @@ export class ContractListComponent implements OnInit, AfterViewInit {
     }
 
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    edit(element: Contract): void {
+    edit(element: IContract): void {
         this.editRow = !this.editRow;
         if (this.editRow)
             this.displayedColumns.splice(4, 0, 'currency')

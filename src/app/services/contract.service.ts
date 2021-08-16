@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Injectable, Inject, EventEmitter } from '@angular/core'
-import { HttpClient, HttpParams } from '@angular/common/http'
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'
 import { Observable, of, throwError } from 'rxjs'
 import { catchError, map, finalize } from 'rxjs/operators'
 import { IContract } from '../models/contract'
@@ -9,12 +9,32 @@ import { ContractDetail } from '../models/contract-detail'
 @Injectable()
 export class ContractService {
 
+    contract: IContract;
+    
     LoadContractsSubscriptionCompleteEvent = new EventEmitter();
     
+    httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type':  'application/json',
+        //   Authorization: 'my-auth-token'
+        })
+      };
+
     constructor(private http: HttpClient, @Inject('BASE_API_URL') private apiUrl: string) { }
 
     NotifyOfLoadContractsSubscriptionComplete(): void {
         this.LoadContractsSubscriptionCompleteEvent.emit();
+    }
+
+
+    setContract (contract: IContract) : void {
+        // contract.contractValue = contract.contractValue.split(' ')[1]
+        this.contract = contract;
+        // this.contract.currency = contract.currency.split(' ')[0]
+    }
+
+    getContract (): IContract {
+        return this.contract;
     }
 
     findContractById(contractId: number): Observable<IContract> {
@@ -62,6 +82,25 @@ export class ContractService {
         //     }),            
         // )
     }
+
+    updateContract(contract: IContract): Observable<IContract> {
+        return this.http.put<IContract>
+            (`${this.apiUrl}api/contract`, contract)
+        // .pipe(
+        //    catchError(err => {
+        //         console.log('Handling error locally and rethrowing it...', err)
+        //         return throwError(err)
+        //     }),            
+        // )
+    }
+
+    // const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
+    // return this.http.post('your_url', this.body, { headers, responseType: 'text' })
+    //   .subscribe(data => console.log(data));
+
+    // console.log('createProduct ' + JSON.stringify(product));
+    // return this.request('post', `${baseUrl}/product`, product);
+
     // findAllCourseLessons(courseId:number): Observable<Lesson[]> {
     // return this.http.get('${this.apiUrl}/api/lessons', {
     // params: new HttpParams()

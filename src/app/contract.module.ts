@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule} from '@angular/forms';
-//import { FlexLayoutModule } from '@angular/flex-layout';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { environment } from '../environments/environment';
 
@@ -41,12 +41,13 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { ContractListComponent } from './contract-list/contract-list.component';
 import { ContractDetailListComponent } from './contract-detail-list/contract-detail-list.component';
-import { ContractDetailComponent } from './contract-detail/contract-detail.component';
+// import { ContractDetailComponent } from './contract-detail/contract-detail.component';
 import { ContractFormEntryComponent } from './contract-form-entry/contract-form-entry.component';
 
 import { ContractService } from './services/contract.service';
 import { ContractResolver } from './services/contract.resolver';
-import { ComponentCommunicationService } from './services/component-communication.service';
+// import { ComponentCommunicationService } from './services/component-communication.service';
+import { ContractDataSource } from './services/contract.datasource';
 
 //import { HeaderComponent } from './navigation/header/header.component';
 //import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
@@ -75,7 +76,7 @@ const DateFormat = {
   declarations: [
     ContractListComponent,
     ContractDetailListComponent,
-    ContractDetailComponent,
+    // ContractDetailComponent,
     ContractFormEntryComponent,
     //HeaderComponent,
     //SidenavListComponent
@@ -83,7 +84,7 @@ const DateFormat = {
   imports: [
     CommonModule,
     FormsModule,  
-    //FlexLayoutModule,
+    FlexLayoutModule,
     MatTabsModule,
     MatToolbarModule,
     MatListModule,
@@ -125,9 +126,10 @@ const DateFormat = {
     // {provide: DateAdapter, useClass: MomentDateAdapter,
     //   deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
     // },
-    ComponentCommunicationService,
+    // ComponentCommunicationService,
     ContractService,
-    ContractResolver
+    ContractResolver,
+    ContractDataSource
   ],
 })
 export class ContractModule { }

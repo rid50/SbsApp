@@ -1,9 +1,13 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { DateAdapter } from '@angular/material/core';
+import { throwError } from 'rxjs';
+import { catchError, finalize } from 'rxjs/operators';
 
 import { IContract } from '../models/contract';
-import { ComponentCommunicationService } from '../services/component-communication.service';
+import { ContractDataSource } from '../services/contract.datasource';
+// import { ComponentCommunicationService } from '../services/component-communication.service';
+import { ContractService } from '../services/contract.service';
 
 //import { DataSource } from '@angular/cdk/collections'
 
@@ -17,45 +21,82 @@ import { ComponentCommunicationService } from '../services/component-communicati
 })
 export class ContractFormEntryComponent implements OnChanges {
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  @Input() contractId: string;
-  //@Input('dataSource') dataSource: DataSource<Contract>;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    @Input() contractId: string;
+    //@Input('dataSource') dataSource: DataSource<Contract>;
 
-  //dataSource: DataSource<Contract>;
+    //dataSource: DataSource<Contract>;
 
-  contract!: IContract;
+    contract!: IContract;
 
-  todaysDate: Date = new Date();
+    todaysDate: Date = new Date();
 
-  // hideDateEntryFormField = this.contract == undefined
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(private _adapter: DateAdapter<any>, private componentCommunicationService: ComponentCommunicationService) {
-    this._adapter.setLocale('ru-RU');
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    for (const propName in changes) {
-      const changedProp = changes[propName];
-      const to = JSON.stringify(changedProp.currentValue);
-      // if (changedProp.isFirstChange()) {
-      //   console.log(`Initial value of ${propName} set to ${to}`);
-      // } else {
-      //   const from = JSON.stringify(changedProp.previousValue);
-      //   console.log(`${propName} changed from ${from} to ${to}`);
-      // }
-
-      if (to != undefined)
-        this.contract = this.componentCommunicationService.getContract();
+    selected = ''
+    // hideDateEntryFormField = this.contract == undefined
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(private _adapter: DateAdapter<any>,
+      private dataSource: ContractDataSource, private contractService: ContractService) {
+      this._adapter.setLocale('ru-RU');
     }
-  }
-  // getContractId(): void {
-  // 	this.contract = this.componentCommunicationService.getContract();
-  // 	//this.contractIdEvent.emit(this.contract.contractId);
-  // 	//this.contractIdEvent.emit($event);
 
-  // 	//this.contractId = this.contract.contractId;
-  // 	//console.log('Event: ', $event)
-  // 	//console.log('ContractId: ', this.contract.contractId);
+    ngOnChanges(changes: SimpleChanges): void {
+      for (const propName in changes) {
+        const changedProp = changes[propName];
+        const to = JSON.stringify(changedProp.currentValue);
+        // if (changedProp.isFirstChange()) {
+        //   console.log(`Initial value of ${propName} set to ${to}`);
+        // } else {
+        //   const from = JSON.stringify(changedProp.previousValue);
+        //   console.log(`${propName} changed from ${from} to ${to}`);
+        // }
 
-  // }
+        if (to != undefined) {
+          this.contract = this.contractService.getContract();
+          this.selected = this.contract.currency;
+          // this.selected = this.contract.currency.replace(/\s+/g, '_');
+        }
+      }
+    }
+
+    onSelectionChange(value: string): void {
+      // console.log(value);
+      this.dataSource.updateContract(this.contract.contractId, { 'currency': value })
+    }
+
+    //   updateContract(contractId: string, json: Record<string, string>): void {
+    //     // this.loadingSubject.next(true)
+    //     // const contract = this.data.find(c => c.contractId == contractId)
+
+    //     const propNames = Object.getOwnPropertyNames(this.contract);
+    //     propNames.forEach((propName) => {
+    //             console.log(`name: ${propName} value: ${this.contract[propName]}`);
+    //         }
+    //     );
+
+    //     for(const prop in this.contract) {
+    //         console.log(`name ${prop} value ${this.contract[prop]}`)
+    //     }
+
+    //     //this.contract.
+    //     this.contractService.updateContract(this.contract)
+    //     .pipe(
+    //         //tap(console.log),
+    //         catchError(err => {
+    //             console.log('Handling error locally and rethrowing it...', err)
+    //             return throwError(err)
+    //         }),
+    //         // finalize(() => this.loadingSubject.next(false))
+    //     )
+    //     .subscribe()
+    // }  
+    // getContractId(): void {
+    // 	this.contract = this.componentCommunicationService.getContract();
+    // 	//this.contractIdEvent.emit(this.contract.contractId);
+    // 	//this.contractIdEvent.emit($event);
+
+    // 	//this.contractId = this.contract.contractId;
+    // 	//console.log('Event: ', $event)
+    // 	//console.log('ContractId: ', this.contract.contractId);
+
+    // }
 }

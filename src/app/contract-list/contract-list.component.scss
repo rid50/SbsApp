@@ -96,7 +96,7 @@
   .mat-cell:nth-child(2),
   .mat-header-cell:nth-child(2) {
     // text-overflow: ellipsis;
-    flex: 35%;
+    flex: 34%;
   }
 
   .mat-cell:nth-child(3),
@@ -106,7 +106,12 @@
 
   .mat-cell:nth-child(4),
   .mat-header-cell:nth-child(4) {
+    // display: flex;
     flex: 10%;
+    // min-width: 100px !important;
+    // align-items: flex-end;
+    justify-content: flex-end;
+    // text-align: right;
   }  
 
  /* .mat-cell {

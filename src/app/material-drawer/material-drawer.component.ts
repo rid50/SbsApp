@@ -6,7 +6,7 @@ import { MDCTopAppBar } from '@material/top-app-bar';
 // import { MDCList } from '@material/list';
 import { VERSION } from '@angular/material/core';
 
-import { ComponentCommunicationService } from '../services/component-communication.service';
+// import { ComponentCommunicationService } from '../services/component-communication.service';
 import { IContract } from '../models/contract'
 
 //import {ContractListComponent} from '../contract-list/contract-list.component';
@@ -28,7 +28,7 @@ export class MaterialDrawerComponent implements OnInit {
 	contractId: string;
 	// loadContractsSubscriptionComplete: boolean;
 
-	constructor(private componentCommunicationService: ComponentCommunicationService) { }
+	// constructor(private componentCommunicationService: ComponentCommunicationService) { }
 
 	ngOnInit(): void {
 

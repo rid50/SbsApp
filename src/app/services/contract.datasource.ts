@@ -1,5 +1,5 @@
 import { CollectionViewer, DataSource } from '@angular/cdk/collections'
-import { Component } from '@angular/core'
+import { Component, Inject, Injectable } from '@angular/core'
 import { EventEmitter, Output } from '@angular/core'
 import { Observable, BehaviorSubject, of, throwError } from 'rxjs'
 import { catchError, finalize, map, tap } from 'rxjs/operators'
@@ -10,6 +10,7 @@ import { ContractService } from './contract.service'
 // @Component({
 //     template: ''
 // })
+@Injectable()
 export class ContractDataSource extends DataSource<IContract> {
 
     // @Output() loadContractsSubscriptionCompleteEvent = new EventEmitter<boolean>();
@@ -42,7 +43,7 @@ export class ContractDataSource extends DataSource<IContract> {
     constructor(private contractService: ContractService) {
         super();
         this._data = new BehaviorSubject<IContract[]>([]);
-     }
+    }
 
 
     // loadContracts(skip?:number, take?:number, id_wildcard?: string, sortColumnName?: string, sordOrder?:string,
@@ -91,7 +92,7 @@ export class ContractDataSource extends DataSource<IContract> {
                 //catchError(() => of([])),
                 finalize(() => this.loadingSubject.next(false))
             )
-            .subscribe(contracts => { 
+            .subscribe(contracts => {
                 this.data = contracts
                 // this.contractSubject.next(contracts)
                 setTimeout(_ => {
@@ -105,9 +106,31 @@ export class ContractDataSource extends DataSource<IContract> {
 
     }
 
+    updateContract(contractId: string, jsonPropertyValue: Record<string, string>): void {
+        // this.loadingSubject.next(true)
+        const contract = this.data.find(c => c.contractId == contractId)
+        const contractProps = Object.getOwnPropertyNames(contract);
 
+        for (const jsonProp in jsonPropertyValue) {
+            // console.log(`name ${jsonProp} value ${jsonPropertyValue[jsonProp]}`)
+            contractProps.forEach((contractProp) => {
+                if (jsonProp == contractProp)
+                    // console.log(`name: ${contractProp} value: ${contract[contractProp]}`);
+                    contract[contractProp] = jsonPropertyValue[jsonProp]
+            });
+        }
 
-
+        this.contractService.updateContract(contract)
+            .pipe(
+                //tap(console.log),
+                catchError(err => {
+                    console.log('Handling error locally and rethrowing it...', err)
+                    return throwError(err)
+                }),
+                // finalize(() => this.loadingSubject.next(false))
+            )
+            .subscribe()
+    }
 
     // loadContracts(contractId: number,
     //     filter: string,
@@ -133,7 +156,7 @@ export class ContractDataSource extends DataSource<IContract> {
             .asObservable()
             .pipe(
                 // tap((item)=> console.log(item))
-                map((contract:IContract[]) => contract.map((item:IContract) => ({
+                map((contract: IContract[]) => contract.map((item: IContract) => ({
                     ...item,
                     contractValue: `${item.currency} ${item.contractValue}`
                 })))
