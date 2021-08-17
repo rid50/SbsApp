@@ -69,8 +69,6 @@
                   <div *ngIf="dateEntry.errors.required">Entry date is required</div>
                 </mat-error>
               </mat-form-field>
-
-
             </mat-cell>
           </ng-container>
 
@@ -138,9 +136,9 @@
     </mat-card-actions> -->
       <!-- </mat-card> -->
     </form>
-    <app-contract-detail-list></app-contract-detail-list>
+    <app-contract-detail-list [contractId]="contractId"></app-contract-detail-list>
   </div>
   <div fxLayout="column" fxFlex="0 1 calc(20% - 10px)">
-    <app-contract-form-entry></app-contract-form-entry>
+    <app-contract-form-entry [contract]="contract"></app-contract-form-entry>
   </div>
 </div>

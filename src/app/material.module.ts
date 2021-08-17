@@ -47,6 +47,7 @@ const materialModules = [
     ...materialModules
   ],
   exports: [
+    // FlexLayoutModule
     //MaterialDrawerComponent,
     //ContractComponent,
 //	MdcTopAppBarModule,

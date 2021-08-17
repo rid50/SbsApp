@@ -24,8 +24,8 @@ export class MaterialDrawerComponent implements OnInit {
     // @Output() loadContractsSubscriptionCompleteEvent = new EventEmitter<boolean>();
 	
 	version = VERSION;
-	contract: IContract;
-	contractId: string;
+	// contract: IContract;
+	// contractId: string;
 	// loadContractsSubscriptionComplete: boolean;
 
 	// constructor(private componentCommunicationService: ComponentCommunicationService) { }
@@ -67,17 +67,12 @@ export class MaterialDrawerComponent implements OnInit {
 		});
 	}
 
-	getContractId($event: string): void {
-		//this.contract = this.componentCommunicationService.getContract();
-		//this.contractIdEvent.emit(this.contract.contractId);
-		this.contractId = $event;
-		//this.contractIdEvent.emit($event);
+	// getContractId($event: string): void {
+	// 	this.contractId = $event;
+	// 	//console.log('Event: ', $event)
+	// 	//console.log('ContractId: ', this.contract.contractId);
 
-		//this.contractId = this.contract.contractId;
-		//console.log('Event: ', $event)
-		//console.log('ContractId: ', this.contract.contractId);
-
-	}
+	// }
 
 	// sendSignalOfLoadContractsSubscriptionComplete($event: boolean): void {
 	// 	//this.contract = this.componentCommunicationService.getContract();

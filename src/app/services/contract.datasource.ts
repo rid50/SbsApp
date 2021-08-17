@@ -107,7 +107,10 @@ export class ContractDataSource extends DataSource<IContract> {
     }
 
     updateContract(contractId: string, jsonPropertyValue: Record<string, string>): void {
-        // this.loadingSubject.next(true)
+        if (contractId == undefined)
+            return;
+
+        this.loadingSubject.next(true)
         const contract = this.data.find(c => c.contractId == contractId)
         const contractProps = Object.getOwnPropertyNames(contract);
 
@@ -127,7 +130,7 @@ export class ContractDataSource extends DataSource<IContract> {
                     console.log('Handling error locally and rethrowing it...', err)
                     return throwError(err)
                 }),
-                // finalize(() => this.loadingSubject.next(false))
+                finalize(() => this.loadingSubject.next(false))
             )
             .subscribe()
     }

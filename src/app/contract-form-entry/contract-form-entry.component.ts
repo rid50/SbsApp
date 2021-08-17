@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { DateAdapter } from '@angular/material/core';
 import { throwError } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
@@ -14,12 +14,21 @@ import { ContractService } from '../services/contract.service';
 //import { ComponentCommunicationService } from '../services/component-communication.service';
 //import { Contract } from '../models/contract'
 
+class Contract implements IContract {
+    contractId: string
+    contractName:string;
+    dateEntry: string;
+    contractValue: string;
+    currency: string;
+}
+
 @Component({
   selector: 'app-contract-form-entry',
   templateUrl: './contract-form-entry.component.html',
-  styleUrls: ['./contract-form-entry.component.scss']
+  styleUrls: ['./contract-form-entry.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,  
 })
-export class ContractFormEntryComponent implements OnChanges {
+export class ContractFormEntryComponent implements OnInit, OnChanges {
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     @Input() contractId: string;
@@ -27,7 +36,7 @@ export class ContractFormEntryComponent implements OnChanges {
 
     //dataSource: DataSource<Contract>;
 
-    contract!: IContract;
+    @Input() contract: Contract;
 
     todaysDate: Date = new Date();
 
@@ -37,6 +46,11 @@ export class ContractFormEntryComponent implements OnChanges {
     constructor(private _adapter: DateAdapter<any>,
       private dataSource: ContractDataSource, private contractService: ContractService) {
       this._adapter.setLocale('ru-RU');
+    }
+    
+    ngOnInit(): void {
+      this.contract = new Contract();
+      this.contract.contractName = 'ku'
     }
 
     ngOnChanges(changes: SimpleChanges): void {
@@ -50,8 +64,9 @@ export class ContractFormEntryComponent implements OnChanges {
         //   console.log(`${propName} changed from ${from} to ${to}`);
         // }
 
-        if (to != undefined) {
-          this.contract = this.contractService.getContract();
+        if (to != undefined ) {
+          // this.contract = this.contractService.getContract();
+          // this.contract.contractName = 'kuku'
           this.selected = this.contract.currency;
           // this.selected = this.contract.currency.replace(/\s+/g, '_');
         }
@@ -60,6 +75,7 @@ export class ContractFormEntryComponent implements OnChanges {
 
     onSelectionChange(value: string): void {
       // console.log(value);
+      this.contract.contractName = 'kukuk' + value
       this.dataSource.updateContract(this.contract.contractId, { 'currency': value })
     }
 

@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, AfterViewInit, ViewChild, Input, SimpleChanges } from '@angular/core';
+import { Component, ElementRef, OnInit, AfterViewInit, ViewChild, Input, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 //import {NgForm} from '@angular/forms'
 import { Observable, BehaviorSubject, of, throwError } from 'rxjs'
@@ -23,7 +23,7 @@ import { isNgTemplate } from '@angular/compiler';
 @Component({
     selector: 'app-contract-detail-list',
     templateUrl: './contract-detail-list.component.html',
-    styleUrls: ['./contract-detail-list.component.scss']
+    styleUrls: ['./contract-detail-list.component.scss'],
 })
 export class ContractDetailListComponent {
     @Input() contractId: string;

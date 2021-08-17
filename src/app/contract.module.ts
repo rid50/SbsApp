@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule} from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+// import { AppModule } from './app.module';
+
 import { environment } from '../environments/environment';
 
 import { LOCALE_ID } from '@angular/core';
