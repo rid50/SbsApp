@@ -4,7 +4,7 @@ import {catchError, finalize} from 'rxjs/operators';
 import {IContract} from '../models/contract';
 import {ContractService} from './contract.service';
 
-export class ContractDetailDataSource implements DataSource<IContract> {
+export class ContractDetailDataSource2 implements DataSource<IContract> {
 
     private contractSubject = new BehaviorSubject<IContract[]>([]);
 

@@ -22,6 +22,8 @@ export class ContractService {
 
     constructor(private http: HttpClient, @Inject('BASE_API_URL') private apiUrl: string) { }
 
+    // Notify ContractDetailList and ContractFormEntry components via 
+    // ContractList's contractId and contract properties
     NotifyOfLoadContractsSubscriptionComplete(): void {
         this.LoadContractsSubscriptionCompleteEvent.emit();
     }
@@ -94,40 +96,9 @@ export class ContractService {
         // )
     }
 
-    // const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
-    // return this.http.post('your_url', this.body, { headers, responseType: 'text' })
-    //   .subscribe(data => console.log(data));
-
-    // console.log('createProduct ' + JSON.stringify(product));
-    // return this.request('post', `${baseUrl}/product`, product);
-
-    // findAllCourseLessons(courseId:number): Observable<Lesson[]> {
-    // return this.http.get('${this.apiUrl}/api/lessons', {
-    // params: new HttpParams()
-    // .set('courseId', courseId.toString())
-    // .set('pageNumber', "0")
-    // .set('pageSize', "1000")
-    // }).pipe(
-    // map(res =>  res["payload"])
-    // );
-    // }
-
-    // getContracts(
-    //     contractId: number, filter = '', sortOrder = 'asc',
-    //     pageNumber = 0, pageSize = 3): Observable<Contract[]> {
-
-    //     return this.http.get<Contract[]>('${this.apiUrl}api/contract', {
-    //         params: new HttpParams()
-    //             .set('contractId', contractId.toString())
-    //             .set('filter', filter)
-    //             .set('sortOrder', sortOrder)
-    //             .set('pageNumber', pageNumber.toString())
-    //             .set('pageSize', pageSize.toString())
-    //     })
-    // .pipe(
-    //     // tslint:disable-next-line: no-string-literal
-    //     map(res =>  res['payload'])
-    // )
-    //}
+    onDestroy(): void {
+        this.LoadContractsSubscriptionCompleteEvent.complete()
+        // console.log('Contract details onDestroy')
+    }
 
 }

@@ -53,8 +53,7 @@ export class ContractDetailListComponent {
     @ViewChild('input', { static: true }) input: ElementRef;
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    constructor(private contractService: ContractService) {
-    }
+    constructor(private contractService: ContractService) {}
 
     ngOnChanges(changes: SimpleChanges): void {
         for (const propName in changes) {
@@ -135,17 +134,19 @@ export class ContractDetailListComponent {
         //this.dataSource.loadContracts(this.input.nativeElement.value, this.sort.active, this.sort.direction);
 
         this.loadingSubject.next(true)
+        // console.log('Contract details started')
         this.contractService.getContractDetails(id)
             .pipe(
+                // tap(() => console.log('Contract details completed')),
                 map((array: ContractDetail[]) => array.map((item: ContractDetail) => ({
                     ...item
                 }))),
-                //tap(console.log),
                 catchError(err => {
                     console.log('Handling error locally and rethrowing it...', err)
                     return throwError(err)
                 }),
                 //catchError(() => of([])),
+                // tap(() => console.log('Contract details finalized')),
                 finalize(() => this.loadingSubject.next(false))
             )
             .subscribe(data => this.dataSource.data = data)

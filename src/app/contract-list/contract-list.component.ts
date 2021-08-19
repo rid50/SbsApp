@@ -54,7 +54,9 @@ class Contract implements IContract {
 export class ContractListComponent implements OnInit, AfterViewInit {
 
     // @Input() loadContractsSubscriptionComplete: boolean;
- 
+
+    // @Input() tableContractId: string;
+
     // ngOnChanges(changes: SimpleChanges): void {
     //     if (this.selectedRowIndex != -1) {
     //         const rowT = this.tableRows.toArray()[this.selectedRowIndex].nativeElement.innerText.split('\n')[0];
@@ -112,8 +114,9 @@ export class ContractListComponent implements OnInit, AfterViewInit {
     // @ViewChildren(MatRow) tableRows: QueryList<MatRowDef<Contract>>;
     // @ViewChild('dt', { static: true }) dt;
 
-    // @ViewChildren(MatRow) contr: QueryList<MatRow>;
+    @ViewChildren(MatRow, { read: ViewContainerRef  }) rows: QueryList<ViewContainerRef>;
     @ViewChildren(MatRow, { read: ElementRef }) tableRows: QueryList<ElementRef>;
+    // @ViewChildren(MatCell) tableContractId: QueryList<MatCell>;
     // @ViewChildren(MatRow, { read: ViewContainerRef  }) tableRows: QueryList<ViewContainerRef>;
     
     // @ViewChildren('matrow', { read: ViewContainerRef }) tableRows: QueryList<ViewContainerRef>;
@@ -176,6 +179,24 @@ export class ContractListComponent implements OnInit, AfterViewInit {
         this._adapter.setLocale('ru-RU');
     }
 
+    ngOnChanges(changes: SimpleChanges): void {
+        for (const propName in changes) {
+            const changedProp = changes[propName];
+            const to = JSON.stringify(changedProp.currentValue);
+            // if (changedProp.isFirstChange()) {
+            //   console.log(`Initial value of ${propName} set to ${to}`);
+            // } else {
+            //   const from = JSON.stringify(changedProp.previousValue);
+            //   console.log(`${propName} changed from ${from} to ${to}`);
+            // }
+
+            // if (to != undefined) {
+            //     this.loadContractDetails(this.contractId)
+            //     this.dataSource.sort = this.sort;
+            // }
+        }
+    }
+
     contactsCount = 0;
     getContactsCount(): number {
         if (this.contactsCount == 0)
@@ -191,6 +212,7 @@ export class ContractListComponent implements OnInit, AfterViewInit {
         
     ngOnInit(): void {
         this.contractService.LoadContractsSubscriptionCompleteEvent.subscribe(_ => {
+            // console.log('Event of LoadContracts completed')
             if (this.selectedRowIndex != -1) {
                 const selectedRow = this.tableRows.toArray()[this.selectedRowIndex]
                 if (selectedRow == undefined) {
@@ -271,6 +293,38 @@ export class ContractListComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit(): void {
+        this.tableRows.changes.subscribe((changes): void => {
+            // console.log('Table content changed')
+            for (const propName in changes) {
+                const changedProp = changes[propName];
+                const to = JSON.stringify(changedProp.currentValue);
+                // if (changedProp.isFirstChange()) {
+                //   console.log(`Initial value of ${propName} set to ${to}`);
+                // } else {
+                //   const from = JSON.stringify(changedProp.previousValue);
+                //   console.log(`${propName} changed from ${from} to ${to}`);
+                // }
+
+                if (this.selectedRowIndex == -1)
+                    continue
+                    // this.tableRows.forEach(factory => {
+                    //     console.log(factory.componentRef.instance.model.data = "alma")
+                    //   //  factory.()
+                    //   this.factories.notifyOnChanges();
+                    //   })
+
+                console.log(propName)
+                const contr = this.tableRows.toArray()[this.selectedRowIndex]    
+                // console.log(`Contract:\n${contr}`)
+                // if (to != undefined) {
+                    this.contractId = this.tableRows.toArray()[this.selectedRowIndex].nativeElement.innerText.split('\n')[0]
+                    this.contract = this.dataSource.data.find(c => c.contractId == this.contractId)
+                    break;
+                    // console.log(`ContractId before:\n${this.contractId}`)
+                // }
+            }
+          });
+
         // console.log(`After\n tableRow: ${this.tableRows}`)
         // this.length = this.dataSource.contactsCount
         // this.dataSource.paginator = this.paginator;
@@ -314,8 +368,13 @@ export class ContractListComponent implements OnInit, AfterViewInit {
                 tap(() => {
                     // this.skip = this.paginator.pageIndex * this.paginator.pageSize
                     // this.take =  this.paginator.pageSize
-
+                    // this.contractId = this.tableRows.toArray()[this.selectedRowIndex].nativeElement.innerText.split('\n')[0]
+                    // console.log(`ContractId before:\n${this.contractId}`)
+                    // console.log('Next page')
                     this.loadContracts()
+                    
+                    // this.contractId = this.tableRows.toArray()[this.selectedRowIndex].nativeElement.innerText.split('\n')[0]
+                    // console.log(`ContractId after:\n${this.contractId}`)
 
                     // if (this.selectedRowIndex != -1) {
                     //     const rowT = await this.tableRows.toArray()[this.selectedRowIndex].nativeElement.innerText.split('\n')[0];

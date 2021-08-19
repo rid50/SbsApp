@@ -30,7 +30,6 @@ class Contract implements IContract {
 })
 export class ContractFormEntryComponent implements OnInit, OnChanges {
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     @Input() contractId: string;
     //@Input('dataSource') dataSource: DataSource<Contract>;
 
@@ -75,7 +74,8 @@ export class ContractFormEntryComponent implements OnInit, OnChanges {
 
     onSelectionChange(value: string): void {
       // console.log(value);
-      this.contract.contractName = 'kukuk' + value
+      //this.contract.contractName = 'kukuk' + value
+      const contract = this.dataSource.data.find(c => c.contractId == this.contract.contractId)
       this.dataSource.updateContract(this.contract.contractId, { 'currency': value })
     }
 

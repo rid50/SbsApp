@@ -114,6 +114,19 @@
     flex: 24px;
   }
 
+  .spinner-container {
+    height: 200px;
+    width: 200px;
+    position: fixed;
+    // position: absolute; 
+    z-index: 100;    
+  }
+
+  .spinner-container mat-spinner {
+    margin: 80px auto 0 auto;
+  }
+
+  
   /* .mat-sort-header-container {
     font-size: larger;
     font-weight: bolder;

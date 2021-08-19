@@ -95,9 +95,11 @@ export class ContractDataSource extends DataSource<IContract> {
             .subscribe(contracts => {
                 this.data = contracts
                 // this.contractSubject.next(contracts)
-                setTimeout(_ => {
-                    this.contractService.NotifyOfLoadContractsSubscriptionComplete()
-                }, 100)
+
+                // setTimeout(_ => {
+                //     // console.log('LoadContracts completed event fired')
+                //     this.contractService.NotifyOfLoadContractsSubscriptionComplete()
+                // }, 100)
 
                 // this.dataSource.data = data;
                 // this.dataSource.paginator = this.paginator;
