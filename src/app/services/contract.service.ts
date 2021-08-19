@@ -9,7 +9,7 @@ import { ContractDetail } from '../models/contract-detail'
 @Injectable()
 export class ContractService {
 
-    contract: IContract;
+    // contract: IContract;
     
     LoadContractsSubscriptionCompleteEvent = new EventEmitter();
     
@@ -29,15 +29,15 @@ export class ContractService {
     }
 
 
-    setContract (contract: IContract) : void {
-        // contract.contractValue = contract.contractValue.split(' ')[1]
-        this.contract = contract;
-        // this.contract.currency = contract.currency.split(' ')[0]
-    }
+    // setContract (contract: IContract) : void {
+    //     // contract.contractValue = contract.contractValue.split(' ')[1]
+    //     this.contract = contract;
+    //     // this.contract.currency = contract.currency.split(' ')[0]
+    // }
 
-    getContract (): IContract {
-        return this.contract;
-    }
+    // getContract (): IContract {
+    //     return this.contract;
+    // }
 
     findContractById(contractId: number): Observable<IContract> {
         return this.http.get<IContract>(`${this.apiUrl}/api/contract/${contractId}`)

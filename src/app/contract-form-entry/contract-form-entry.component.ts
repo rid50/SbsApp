@@ -14,19 +14,19 @@ import { ContractService } from '../services/contract.service';
 //import { ComponentCommunicationService } from '../services/component-communication.service';
 //import { Contract } from '../models/contract'
 
-class Contract implements IContract {
-    contractId: string
-    contractName:string;
-    dateEntry: string;
-    contractValue: string;
-    currency: string;
-}
+// class Contract implements IContract {
+//     contractId: string
+//     contractName:string;
+//     dateEntry: string;
+//     contractValue: string;
+//     currency: string;
+// }
 
 @Component({
   selector: 'app-contract-form-entry',
   templateUrl: './contract-form-entry.component.html',
   styleUrls: ['./contract-form-entry.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,  
+  // changeDetection: ChangeDetectionStrategy.OnPush,  
 })
 export class ContractFormEntryComponent implements OnInit, OnChanges {
 
@@ -35,21 +35,20 @@ export class ContractFormEntryComponent implements OnInit, OnChanges {
 
     //dataSource: DataSource<Contract>;
 
-    @Input() contract: Contract;
+    @Input() contract: IContract;
 
     todaysDate: Date = new Date();
 
     selected = ''
     // hideDateEntryFormField = this.contract == undefined
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    constructor(private _adapter: DateAdapter<any>,
-      private dataSource: ContractDataSource, private contractService: ContractService) {
+    constructor(private _adapter: DateAdapter<any>, private dataSource: ContractDataSource) {
       this._adapter.setLocale('ru-RU');
     }
     
     ngOnInit(): void {
-      this.contract = new Contract();
-      this.contract.contractName = 'ku'
+      // this.contract = new Contract();
+      // this.contract.contractName = 'ku'
     }
 
     ngOnChanges(changes: SimpleChanges): void {
