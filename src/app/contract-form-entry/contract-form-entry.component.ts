@@ -14,13 +14,13 @@ import { ContractService } from '../services/contract.service';
 //import { ComponentCommunicationService } from '../services/component-communication.service';
 //import { Contract } from '../models/contract'
 
-// class Contract implements IContract {
-//     contractId: string
-//     contractName:string;
-//     dateEntry: string;
-//     contractValue: string;
-//     currency: string;
-// }
+class Contract implements IContract {
+    contractId: string
+    contractName:string;
+    dateEntry: string;
+    contractValue: string;
+    currency: string;
+}
 
 @Component({
   selector: 'app-contract-form-entry',
@@ -47,7 +47,7 @@ export class ContractFormEntryComponent implements OnInit, OnChanges {
     }
     
     ngOnInit(): void {
-      // this.contract = new Contract();
+      this.contract = new Contract();
       // this.contract.contractName = 'ku'
     }
 

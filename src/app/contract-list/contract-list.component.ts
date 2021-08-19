@@ -49,7 +49,7 @@ class Contract implements IContract {
     selector: 'app-contract-list',
     templateUrl: './contract-list.component.html',
     styleUrls: ['./contract-list.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,    
+    // changeDetection: ChangeDetectionStrategy.OnPush,    
 })
 export class ContractListComponent implements OnInit, AfterViewInit {
 
