@@ -39,7 +39,7 @@ class Contract implements IContract {
     // }
 
     contractId: string
-    contractName:string;
+    contractName: string;
     dateEntry: string;
     contractValue: string;
     currency: string;
@@ -114,11 +114,11 @@ export class ContractListComponent implements OnInit, AfterViewInit {
     // @ViewChildren(MatRow) tableRows: QueryList<MatRowDef<Contract>>;
     // @ViewChild('dt', { static: true }) dt;
 
-    @ViewChildren(MatRow, { read: ViewContainerRef  }) rows: QueryList<ViewContainerRef>;
+    @ViewChildren(MatRow, { read: ViewContainerRef }) rows: QueryList<ViewContainerRef>;
     @ViewChildren(MatRow, { read: ElementRef }) tableRows: QueryList<ElementRef>;
     // @ViewChildren(MatCell) tableContractId: QueryList<MatCell>;
     // @ViewChildren(MatRow, { read: ViewContainerRef  }) tableRows: QueryList<ViewContainerRef>;
-    
+
     // @ViewChildren('matrow', { read: ViewContainerRef }) tableRows: QueryList<ViewContainerRef>;
 
     // @ViewChild(MatCell, {read: ViewContainerRef}) tableRows: QueryList<MatCell>;
@@ -209,7 +209,7 @@ export class ContractListComponent implements OnInit, AfterViewInit {
     // allowMultiSelect = false;
     // selection = new SelectionModel<Contract>(this.allowMultiSelect, this.initialSelection);
     // selection = new SelectionModel<Contract>(false, null);
-        
+
     ngOnInit(): void {
         this.contractService.LoadContractsSubscriptionCompleteEvent.subscribe(_ => {
             // console.log('Event of LoadContracts completed')
@@ -218,16 +218,16 @@ export class ContractListComponent implements OnInit, AfterViewInit {
                 if (selectedRow == undefined) {
                     this.selectedRowIndex = this.tableRows.toArray().length - 1;
                 }
-                    // contractId = contractId.nativeElement.innerText.split('\n')[0];
+                // contractId = contractId.nativeElement.innerText.split('\n')[0];
 
 
 
 
-                    // const rowT = this.tableRows.toArray()[this.selectedRowIndex].nativeElement.innerText.split('\n')[0];
-                    // const rowT = await this.tableRows.toArray()[this.selectedRowIndex].nativeElement
+                // const rowT = this.tableRows.toArray()[this.selectedRowIndex].nativeElement.innerText.split('\n')[0];
+                // const rowT = await this.tableRows.toArray()[this.selectedRowIndex].nativeElement
                 // } else {
                 //     contractId = this.tableRows.toArray()[this.tableRows.toArray().length - 1].nativeElement.innerText.split('\n')[0]
-                    
+
                 //     this.selectedRowIndex = this.tableRows.toArray().length - 1;
                 //     // this.dataSource2.data.forEach(row => this.selection.select(row));
                 //     // this.selection.select(row)
@@ -256,7 +256,7 @@ export class ContractListComponent implements OnInit, AfterViewInit {
                 // utc = d.toDateString()
                 // utc = d.toString()
                 // utc = d.toLocaleString()
-                
+
                 // contract.dateEntry = _moment.utc(contract.dateEntry, 'DD.MM.YYYY').format()
 
                 // const contract = this.dataSource.data.find(c => c.contractId == contractId)
@@ -307,23 +307,23 @@ export class ContractListComponent implements OnInit, AfterViewInit {
 
                 if (this.selectedRowIndex == -1)
                     continue
-                    // this.tableRows.forEach(factory => {
-                    //     console.log(factory.componentRef.instance.model.data = "alma")
-                    //   //  factory.()
-                    //   this.factories.notifyOnChanges();
-                    //   })
+                // this.tableRows.forEach(factory => {
+                //     console.log(factory.componentRef.instance.model.data = "alma")
+                //   //  factory.()
+                //   this.factories.notifyOnChanges();
+                //   })
 
                 console.log(propName)
-                const contr = this.tableRows.toArray()[this.selectedRowIndex]    
+                const contr = this.tableRows.toArray()[this.selectedRowIndex]
                 // console.log(`Contract:\n${contr}`)
                 // if (to != undefined) {
-                    this.contractId = this.tableRows.toArray()[this.selectedRowIndex].nativeElement.innerText.split('\n')[0]
-                    this.contract = this.dataSource.data.find(c => c.contractId == this.contractId)
-                    break;
-                    // console.log(`ContractId before:\n${this.contractId}`)
+                this.contractId = this.tableRows.toArray()[this.selectedRowIndex].nativeElement.innerText.split('\n')[0]
+                this.contract = this.dataSource.data.find(c => c.contractId == this.contractId)
+                break;
+                // console.log(`ContractId before:\n${this.contractId}`)
                 // }
             }
-          });
+        });
 
         // console.log(`After\n tableRow: ${this.tableRows}`)
         // this.length = this.dataSource.contactsCount
@@ -372,7 +372,7 @@ export class ContractListComponent implements OnInit, AfterViewInit {
                     // console.log(`ContractId before:\n${this.contractId}`)
                     // console.log('Next page')
                     this.loadContracts()
-                    
+
                     // this.contractId = this.tableRows.toArray()[this.selectedRowIndex].nativeElement.innerText.split('\n')[0]
                     // console.log(`ContractId after:\n${this.contractId}`)
 
@@ -409,8 +409,8 @@ export class ContractListComponent implements OnInit, AfterViewInit {
         // const take = this.paginator.pageSize
 
         this.dataSource.loadContracts(
-            this.paginator.pageIndex * this.paginator.pageSize, 
-            this.paginator.pageSize, 
+            this.paginator.pageIndex * this.paginator.pageSize,
+            this.paginator.pageSize,
             this.input.nativeElement.value, this.sort.active, this.sort.direction
         )
 

@@ -15,7 +15,7 @@
           <input matInput type="text" placeholder="Contract Id" value={{contract?.contractId}} #input readonly>
         </mat-form-field>
         <mat-form-field>
-          <input matInput type="text" name="contractName" id="contractName" placeholder="Contract Name" [ngModel]="contract?.contractName">
+          <input matInput #input  name="contractName" id="contractName" placeholder="Contract Name" [(ngModel)]="contract.contractName">
         </mat-form-field>
         <mat-form-field *ngIf="contract != undefined">
           <input matInput #dateEntry="ngModel" placeholder="Date Entry" name="dateEntry" id="dateEntry"
@@ -28,7 +28,8 @@
           </mat-error>
         </mat-form-field>
         <mat-form-field>
-          <input matInput type="text" placeholder="Contract Value" value={{contract?.contractValue}} #input>
+          <input matInput type="text" placeholder="Contract Value" 
+            value={{contract?.contractValue}} (blur)="onBlurEvent($event)">
         </mat-form-field>
         <mat-form-field>
           <mat-label>Currency</mat-label>
