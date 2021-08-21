@@ -114,7 +114,8 @@ export class ContractListComponent implements OnInit, AfterViewInit {
     // @ViewChildren(MatRow) tableRows: QueryList<MatRowDef<Contract>>;
     // @ViewChild('dt', { static: true }) dt;
 
-    @ViewChildren(MatRow, { read: ViewContainerRef }) rows: QueryList<ViewContainerRef>;
+    // @ViewChildren(MatRow, { read: ViewContainerRef }) rows: QueryList<ViewContainerRef>;
+    @ViewChild(MatTable) table: MatTable<Contract>;
     @ViewChildren(MatRow, { read: ElementRef }) tableRows: QueryList<ElementRef>;
     // @ViewChildren(MatCell) tableContractId: QueryList<MatCell>;
     // @ViewChildren(MatRow, { read: ViewContainerRef  }) tableRows: QueryList<ViewContainerRef>;
@@ -211,64 +212,69 @@ export class ContractListComponent implements OnInit, AfterViewInit {
     // selection = new SelectionModel<Contract>(false, null);
 
     ngOnInit(): void {
-        this.contractService.LoadContractsSubscriptionCompleteEvent.subscribe(_ => {
-            // console.log('Event of LoadContracts completed')
-            if (this.selectedRowIndex != -1) {
-                const selectedRow = this.tableRows.toArray()[this.selectedRowIndex]
-                if (selectedRow == undefined) {
-                    this.selectedRowIndex = this.tableRows.toArray().length - 1;
-                }
-                // contractId = contractId.nativeElement.innerText.split('\n')[0];
+        // _moment.locale('ru');
+        // const utc = _moment.utc().format('D/MM-YY')
+        // const utc = _moment.utc(contract.dateEntry, 'DD.MM.YYYY').format()
+        // console.log(`Date = ${utc}, from= ${contract.dateEntry}`)
 
-
-
-
-                // const rowT = this.tableRows.toArray()[this.selectedRowIndex].nativeElement.innerText.split('\n')[0];
-                // const rowT = await this.tableRows.toArray()[this.selectedRowIndex].nativeElement
-                // } else {
-                //     contractId = this.tableRows.toArray()[this.tableRows.toArray().length - 1].nativeElement.innerText.split('\n')[0]
-
-                //     this.selectedRowIndex = this.tableRows.toArray().length - 1;
-                //     // this.dataSource2.data.forEach(row => this.selection.select(row));
-                //     // this.selection.select(row)
-                // }
-
-
-                // const row:string = this.tableRows.toArray()[this.selectedRowIndex].nativeElement.innerText.split('\n')
-                // const contract: IContract = new Contract(...row)
-
-                // console.log(`Contract's row from table:\n${row}`)
-
-                this.contractId = this.tableRows.toArray()[this.selectedRowIndex].nativeElement.innerText.split('\n')[0]
-                this.contract = this.dataSource.data.find(c => c.contractId == this.contractId)
-                // const i =5
-
-                // _moment.locale('ru');
-                // const utc = _moment.utc().format('D/MM-YY')
-                // const utc = _moment.utc(contract.dateEntry, 'DD.MM.YYYY').format()
-                // console.log(`Date = ${utc}, from= ${contract.dateEntry}`)
-
-                // const offset = new Date().getTimezoneOffset()
-                // const d = new Date(contract.dateEntry);
-
-                // let utc = d.toUTCString();
-                // utc = d.toISOString()
-                // utc = d.toDateString()
-                // utc = d.toString()
-                // utc = d.toLocaleString()
-
-                // contract.dateEntry = _moment.utc(contract.dateEntry, 'DD.MM.YYYY').format()
-
-                // const contract = this.dataSource.data.find(c => c.contractId == contractId)
-                // this.contractIdEvent.emit(contractId);      
-                // this.contractService.setContract(contract);
-
-
-                // console.log(`Contract from dataSource:\n${JSON.stringify(contract)}`)
-                // console.log(`Contract:\n${JSON.stringify(contract)}`)
-                // console.log(`Table rows:\n${contract.contractId} - ${this.selectedRowIndex}`)
-            }
+        this.contractService.RenderRows.subscribe(_ => {
+            this.table.renderRows()
         })
+
+        // this.contractService.LoadContractsSubscriptionCompleteEvent.subscribe(_ => {
+        //     // console.log('Event of LoadContracts completed')
+        //     if (this.selectedRowIndex != -1) {
+        //         const selectedRow = this.tableRows.toArray()[this.selectedRowIndex]
+        //         if (selectedRow == undefined) {
+        //             this.selectedRowIndex = this.tableRows.toArray().length - 1;
+        //         }
+        //         // contractId = contractId.nativeElement.innerText.split('\n')[0];
+        //         // const rowT = this.tableRows.toArray()[this.selectedRowIndex].nativeElement.innerText.split('\n')[0];
+        //         // const rowT = await this.tableRows.toArray()[this.selectedRowIndex].nativeElement
+        //         // } else {
+        //         //     contractId = this.tableRows.toArray()[this.tableRows.toArray().length - 1].nativeElement.innerText.split('\n')[0]
+
+        //         //     this.selectedRowIndex = this.tableRows.toArray().length - 1;
+        //         //     // this.dataSource2.data.forEach(row => this.selection.select(row));
+        //         //     // this.selection.select(row)
+        //         // }
+
+
+        //         // const row:string = this.tableRows.toArray()[this.selectedRowIndex].nativeElement.innerText.split('\n')
+        //         // const contract: IContract = new Contract(...row)
+
+        //         // console.log(`Contract's row from table:\n${row}`)
+
+        //         this.contractId = this.tableRows.toArray()[this.selectedRowIndex].nativeElement.innerText.split('\n')[0]
+        //         this.contract = this.dataSource.data.find(c => c.contractId == this.contractId)
+        //         // const i =5
+
+        //         // _moment.locale('ru');
+        //         // const utc = _moment.utc().format('D/MM-YY')
+        //         // const utc = _moment.utc(contract.dateEntry, 'DD.MM.YYYY').format()
+        //         // console.log(`Date = ${utc}, from= ${contract.dateEntry}`)
+
+        //         // const offset = new Date().getTimezoneOffset()
+        //         // const d = new Date(contract.dateEntry);
+
+        //         // let utc = d.toUTCString();
+        //         // utc = d.toISOString()
+        //         // utc = d.toDateString()
+        //         // utc = d.toString()
+        //         // utc = d.toLocaleString()
+
+        //         // contract.dateEntry = _moment.utc(contract.dateEntry, 'DD.MM.YYYY').format()
+
+        //         // const contract = this.dataSource.data.find(c => c.contractId == contractId)
+        //         // this.contractIdEvent.emit(contractId);      
+        //         // this.contractService.setContract(contract);
+
+
+        //         // console.log(`Contract from dataSource:\n${JSON.stringify(contract)}`)
+        //         // console.log(`Contract:\n${JSON.stringify(contract)}`)
+        //         // console.log(`Table rows:\n${contract.contractId} - ${this.selectedRowIndex}`)
+        //     }
+        // })
 
         // this.take = this.pageSize;
         // this.contract = this.route.snapshot.data['contract'];

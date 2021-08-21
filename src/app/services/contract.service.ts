@@ -11,6 +11,8 @@ export class ContractService {
 
     // contract: IContract;
     
+    RenderRows = new EventEmitter();
+
     LoadContractsSubscriptionCompleteEvent = new EventEmitter();
     
     httpOptions = {
@@ -21,6 +23,10 @@ export class ContractService {
       };
 
     constructor(private http: HttpClient, @Inject('BASE_API_URL') private apiUrl: string) { }
+
+      RefreshTable(): void {
+        this.RenderRows.emit();
+      }
 
     // Notify ContractDetailList and ContractFormEntry components via 
     // ContractList's contractId and contract properties
