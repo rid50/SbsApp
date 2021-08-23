@@ -5,10 +5,13 @@ import { MatInput } from '@angular/material/input';
 import { throwError } from 'rxjs';
 import { catchError, finalize, startWith } from 'rxjs/operators';
 
+import * as _moment from 'moment';
+
 import { IContract } from '../models/contract';
 import { ContractDataSource } from '../services/contract.datasource';
 // import { ComponentCommunicationService } from '../services/component-communication.service';
 import { ContractService } from '../services/contract.service';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 //import { DataSource } from '@angular/cdk/collections'
 
@@ -104,10 +107,12 @@ export class ContractFormEntryComponent implements OnInit, AfterViewInit, OnChan
   }
 
   onSelectionChange(value: string): void {
+    this.dataSource.updateContract(this.contract.contractId, { 'currency': value })    
     // console.log(value);
     //this.contract.contractName = 'kukuk' + value
-    const contract = this.dataSource.data.find(c => c.contractId == this.contract.contractId)
-
+    // const contract = this.dataSource.data.find(c => c.contractId == this.contract.contractId)
+    // contract['currency'] = value
+    // console.log(`onSelectionChange=${value}`)
     // this.contract.contractName += ' a-9'
 
 
@@ -119,23 +124,54 @@ export class ContractFormEntryComponent implements OnInit, AfterViewInit, OnChan
     //   return true;
     // });
 
-    const words = ['spray', 'limit', 'exuberant', 'destruction', 'elite', 'present']
+    // const words = ['spray', 'limit', 'exuberant', 'destruction', 'elite', 'present']
 
-    const modifiedWords = words.filter((word, index, arr) => {
-      arr[index + 1] += ' aa'
-      return true
-      // arr[index+1] +=' extra'
-      // return word.length < 6
-    })
-    console.log(modifiedWords)
+    // const modifiedWords = words.filter((word, index, arr) => {
+    //   arr[index + 1] += ' aa'
+    //   return true
+    //   // arr[index+1] +=' extra'
+    //   // return word.length < 6
+    // })
+    // console.log(modifiedWords)
 
     // this.dataSource.updateContract(this.contract.contractId, { 'currency': value })
   }
 
+  // setDatepicker(value: string): void {
+  //   // this.contract.dateEntry = new Date(value)
+  //   console.log(`setDatepicker ${value}`);
+  //   // this.contract.dateEntry = _moment.utc(value, 'DD.MM.YYYY').format()
+  // }
+
+  // addEvent(type: string, event: MatDatepickerInputEvent<Date>): void {
+  //   console.log(`${type}: ${event.value}`);
+  // }
+
+  change(event: MatDatepickerInputEvent<Date>): void {
+    // change(event: Event): void {
+    console.log(`change ${JSON.stringify(event)}`);
+  }
+
+  ngModelChange(event: MatDatepickerInputEvent<Date>): void {
+  // change(event: Event): void {
+    console.log(`ngModelChange ${JSON.stringify(event)}`);
+  }
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+  // dateChange(event: MatDatepickerInputEvent<Date>): void {
+  dateChange(event: MatDatepickerInputEvent<Date>): void {
+      // console.log(`dateChange event ${event}`);
+      // console.log(`dateChange value ${event.value}`);
+      if (event.value != null)
+        this.dataSource.updateContract(this.contract.contractId)
+  }
+
   onBlurEvent(event: Event): void {
-    console.log((event.target as HTMLInputElement).value);
+    // console.log(`value ${(event.target as HTMLInputElement).value}`);
+    // console.log(`textContent ${(event.target as HTMLInputElement).textContent}`);
+
+    this.dataSource.updateContract(this.contract.contractId)
   }
   //   updateContract(contractId: string, json: Record<string, string>): void {
   //     // this.loadingSubject.next(true)

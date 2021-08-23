@@ -1,6 +1,7 @@
 import { CollectionViewer, DataSource } from '@angular/cdk/collections'
 import { Component, Inject, Injectable } from '@angular/core'
 import { EventEmitter, Output } from '@angular/core'
+import { MatTableDataSource } from '@angular/material/table'
 import { Observable, BehaviorSubject, of, throwError } from 'rxjs'
 import { catchError, finalize, map, tap } from 'rxjs/operators'
 import { isTemplateExpression } from 'typescript'
@@ -11,7 +12,7 @@ import { ContractService } from './contract.service'
 //     template: ''
 // })
 @Injectable()
-export class ContractDataSource extends DataSource<IContract> {
+export class ContractDataSource extends MatTableDataSource<IContract> {
 
     // @Output() loadContractsSubscriptionCompleteEvent = new EventEmitter<boolean>();
 
@@ -21,7 +22,7 @@ export class ContractDataSource extends DataSource<IContract> {
     // private contractSubject = new BehaviorSubject<IContract[]>([]);
 
     /** Stream that emits when a new data array is set on the data source. */
-    private readonly _data: BehaviorSubject<IContract[]>;
+    // private readonly _data: BehaviorSubject<IContract[]>;
 
     private loadingSubject = new BehaviorSubject<boolean>(false);
 
@@ -30,19 +31,19 @@ export class ContractDataSource extends DataSource<IContract> {
 
     /** Array of data that should be rendered by the table, where each object represents one row. */
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-    get data(): IContract[] { return this._data.value; }
-    set data(data: IContract[]) {
-        this._data.next(data);
-        // // Normally the `filteredData` is updated by the re-render
-        // // subscription, but that won't happen if it's inactive.
-        // if (!this._renderChangesSubscription) {
-        //   this._filterData(data);
-        // }
-    }
+    // get data(): IContract[] { return this._data.value; }
+    // set data(data: IContract[]) {
+    //     this._data.next(data);
+    //     // // Normally the `filteredData` is updated by the re-render
+    //     // // subscription, but that won't happen if it's inactive.
+    //     // if (!this._renderChangesSubscription) {
+    //     //   this._filterData(data);
+    //     // }
+    // }
 
     constructor(private contractService: ContractService) {
         super();
-        this._data = new BehaviorSubject<IContract[]>([]);
+        // this._data = new BehaviorSubject<IContract[]>([]);
     }
 
 
@@ -94,6 +95,9 @@ export class ContractDataSource extends DataSource<IContract> {
             )
             .subscribe(contracts => {
                 this.data = contracts
+
+
+
                 // this.contractSubject.next(contracts)
 
                 // setTimeout(_ => {
@@ -108,7 +112,7 @@ export class ContractDataSource extends DataSource<IContract> {
 
     }
 
-    updateContract(contractId: string, jsonPropertyValue: Record<string, string>): void {
+    updateContract(contractId: string, jsonPropertyValue?: Record<string, string>): void {
         if (contractId == undefined)
             return;
 
@@ -155,27 +159,27 @@ export class ContractDataSource extends DataSource<IContract> {
     // }
 
 
-    connect(collectionViewer: CollectionViewer): Observable<IContract[]> {
-        // console.log('Connecting data source')
-        return this._data
-            .asObservable()
-            .pipe(
-                // tap((item)=> console.log(item))
-                map((contract: IContract[]) => contract.map((item: IContract) => ({
-                    ...item,
-                    contractValue: `${item.currency} ${item.contractValue}`
-                })))
-            )
+    // connect(collectionViewer: CollectionViewer): Observable<IContract[]> {
+    //     // console.log('Connecting data source')
+    //     return this._data
+    //         .asObservable()
+    //         .pipe(
+    //             // tap((item)=> console.log(item))
+    //             map((contract: IContract[]) => contract.map((item: IContract) => ({
+    //                 ...item,
+    //                 contractValue: `${item.currency} ${item.contractValue}`
+    //             })))
+    //         )
 
-        // return this._data.asObservable()
-        // return this.contractSubject.asObservable()
-    }
+    //     // return this._data.asObservable()
+    //     // return this.contractSubject.asObservable()
+    // }
 
-    disconnect(collectionViewer: CollectionViewer): void {
-        // this.contractSubject.complete()
-        this._data.complete()
-        this.loadingSubject.complete()
-    }
+    // disconnect(collectionViewer: CollectionViewer): void {
+    //     // this.contractSubject.complete()
+    //     this._data.complete()
+    //     this.loadingSubject.complete()
+    // }
 
 }
 

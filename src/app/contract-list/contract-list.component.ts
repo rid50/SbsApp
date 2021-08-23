@@ -29,21 +29,24 @@ import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { CdkColumnDef, CdkRowDef } from '@angular/cdk/table';
 import { SelectionModel } from '@angular/cdk/collections';
 
-class Contract implements IContract {
-    // constructor(...rest:string[]){
-    //     this.contractId = rest[0]
-    //     this.contractName = rest[1]
-    //     this.dateEntry = rest[2]
-    //     this.contractValue = rest[3].split(' ')[1]
-    //     this.currency = rest[3].split(' ')[0]
-    // }
+// class Contract implements IContract {
+//     // constructor(...rest:string[]){
+//     //     this.contractId = rest[0]
+//     //     this.contractName = rest[1]
+//     //     this.dateEntry = rest[2]
+//     //     this._contractValue = rest[3].split(' ')[1]
+//     //     this.currency = rest[3].split(' ')[0]
+//     // }
 
-    contractId: string
-    contractName: string;
-    dateEntry: string;
-    contractValue: string;
-    currency: string;
-}
+//     contractId: string
+//     contractName: string;
+//     dateEntry: string;
+//     contractValue: string;
+//     currency: string;
+
+//     // get contractValue(): string { return this._contractValue.split(' ')[1]; }
+//     // set contractValue(value: string) { this._contractValue = value}
+// }
 
 @Component({
     selector: 'app-contract-list',
@@ -72,7 +75,7 @@ export class ContractListComponent implements OnInit, AfterViewInit {
     // @Output() contractIdEvent = new EventEmitter<string>();
 
     contractId: string;
-    contract: Contract
+    contract: IContract
 
     // eslint-disable-next-line @typescript-eslint/no-inferrable-types
     selectedRowIndex: number = -1
@@ -115,7 +118,7 @@ export class ContractListComponent implements OnInit, AfterViewInit {
     // @ViewChild('dt', { static: true }) dt;
 
     // @ViewChildren(MatRow, { read: ViewContainerRef }) rows: QueryList<ViewContainerRef>;
-    @ViewChild(MatTable) table: MatTable<Contract>;
+    // @ViewChild(MatTable) table: MatTable<IContract>;
     @ViewChildren(MatRow, { read: ElementRef }) tableRows: QueryList<ElementRef>;
     // @ViewChildren(MatCell) tableContractId: QueryList<MatCell>;
     // @ViewChildren(MatRow, { read: ViewContainerRef  }) tableRows: QueryList<ViewContainerRef>;
@@ -177,26 +180,26 @@ export class ContractListComponent implements OnInit, AfterViewInit {
         //this._adapter.setLocale('de');
         //this._adapter.setLocale('en');
         //this._adapter.setLocale('fr');
-        this._adapter.setLocale('ru-RU');
+        _adapter.setLocale('ru-RU');
     }
 
-    ngOnChanges(changes: SimpleChanges): void {
-        for (const propName in changes) {
-            const changedProp = changes[propName];
-            const to = JSON.stringify(changedProp.currentValue);
-            // if (changedProp.isFirstChange()) {
-            //   console.log(`Initial value of ${propName} set to ${to}`);
-            // } else {
-            //   const from = JSON.stringify(changedProp.previousValue);
-            //   console.log(`${propName} changed from ${from} to ${to}`);
-            // }
+    // ngOnChanges(changes: SimpleChanges): void {
+    //     for (const propName in changes) {
+    //         const changedProp = changes[propName];
+    //         const to = JSON.stringify(changedProp.currentValue);
+    //         // if (changedProp.isFirstChange()) {
+    //         //   console.log(`Initial value of ${propName} set to ${to}`);
+    //         // } else {
+    //         //   const from = JSON.stringify(changedProp.previousValue);
+    //         //   console.log(`${propName} changed from ${from} to ${to}`);
+    //         // }
 
-            // if (to != undefined) {
-            //     this.loadContractDetails(this.contractId)
-            //     this.dataSource.sort = this.sort;
-            // }
-        }
-    }
+    //         // if (to != undefined) {
+    //         //     this.loadContractDetails(this.contractId)
+    //         //     this.dataSource.sort = this.sort;
+    //         // }
+    //     }
+    // }
 
     contactsCount = 0;
     getContactsCount(): number {
@@ -217,9 +220,9 @@ export class ContractListComponent implements OnInit, AfterViewInit {
         // const utc = _moment.utc(contract.dateEntry, 'DD.MM.YYYY').format()
         // console.log(`Date = ${utc}, from= ${contract.dateEntry}`)
 
-        this.contractService.RenderRows.subscribe(_ => {
-            this.table.renderRows()
-        })
+        // this.contractService.RenderRows.subscribe(_ => {
+        //     this.table.renderRows()
+        // })
 
         // this.contractService.LoadContractsSubscriptionCompleteEvent.subscribe(_ => {
         //     // console.log('Event of LoadContracts completed')
@@ -301,34 +304,52 @@ export class ContractListComponent implements OnInit, AfterViewInit {
     ngAfterViewInit(): void {
         this.tableRows.changes.subscribe((changes): void => {
             // console.log('Table content changed')
-            for (const propName in changes) {
-                const changedProp = changes[propName];
-                const to = JSON.stringify(changedProp.currentValue);
-                // if (changedProp.isFirstChange()) {
-                //   console.log(`Initial value of ${propName} set to ${to}`);
-                // } else {
-                //   const from = JSON.stringify(changedProp.previousValue);
-                //   console.log(`${propName} changed from ${from} to ${to}`);
-                // }
-
-                if (this.selectedRowIndex == -1)
-                    continue
-                // this.tableRows.forEach(factory => {
-                //     console.log(factory.componentRef.instance.model.data = "alma")
-                //   //  factory.()
-                //   this.factories.notifyOnChanges();
-                //   })
-
-                console.log(propName)
-                const contr = this.tableRows.toArray()[this.selectedRowIndex]
-                // console.log(`Contract:\n${contr}`)
-                // if (to != undefined) {
-                this.contractId = this.tableRows.toArray()[this.selectedRowIndex].nativeElement.innerText.split('\n')[0]
-                this.contract = this.dataSource.data.find(c => c.contractId == this.contractId)
-                break;
-                // console.log(`ContractId before:\n${this.contractId}`)
-                // }
+            if (this.selectedRowIndex != -1) {
+                setTimeout(_ => {
+                    // this.contractId = this.tableRows.toArray()[this.selectedRowIndex].nativeElement.innerText.split('\n')[0]
+                    this.contractId = changes['_results'][this.selectedRowIndex].nativeElement.innerText.split('\n')[0]
+                    this.contract = this.dataSource.data.find(c => c.contractId == this.contractId)
+                    // console.log(`ContractId before:\n${this.contractId}`)
+                }, 100)
             }
+            // for (const propName in changes) {
+            //     const changedProp = changes[propName];
+            //     const to = JSON.stringify(changedProp.currentValue);
+            //     // if (changedProp.isFirstChange()) {
+            //     //   console.log(`Initial value of ${propName} set to ${to}`);
+            //     // } else {
+            //     //   const from = JSON.stringify(changedProp.previousValue);
+            //     //   console.log(`${propName} changed from ${from} to ${to}`);
+            //     // }
+
+            //     if (this.selectedRowIndex == -1)
+            //         continue
+            //     // this.tableRows.forEach(factory => {
+            //     //     console.log(factory.componentRef.instance.model.data = "alma")
+            //     //   //  factory.()
+            //     //   this.factories.notifyOnChanges();
+            //     //   })
+
+            //     // const item = changes['_results'][this.selectedRowIndex]
+            //     // console.log(propName)
+            //     // console.log(this.contractId)
+            //     // console.log(this.contract)
+            //     // const contr = this.tableRows.toArray()[this.selectedRowIndex]
+            //     // console.log(`Contract:\n${contr}`)
+            //     // if (to != undefined) {
+            //     setTimeout(_ => {
+            //         // this.contractId = this.tableRows.toArray()[this.selectedRowIndex].nativeElement.innerText.split('\n')[0]
+            //         this.contractId = changes['_results'][this.selectedRowIndex].nativeElement.innerText.split('\n')[0]
+            //         this.contract = this.dataSource.data.find(c => c.contractId == this.contractId)
+            //         // console.log(`ContractId before:\n${this.contractId}`)
+            //     }, 100)
+            //     // const contractId = this.tableRows.toArray()[this.selectedRowIndex].nativeElement.innerText.split('\n')[0]
+            //     //this.contractId = '13/9107972/COM'
+            //     // this.contract = this.dataSource.data.find(c => c.contractId == contractId)
+            //     // break;
+            //     // console.log(`ContractId before:\n${this.contractId}`)
+            //     // }
+            // }
         });
 
         // console.log(`After\n tableRow: ${this.tableRows}`)
@@ -468,8 +489,16 @@ export class ContractListComponent implements OnInit, AfterViewInit {
         // console.log(`Table rows:\n${JSON.stringify(row)}`)
         this.selectedRowIndex = index;
         this.contractId = row.contractId;
-
         this.contract = this.dataSource.data.find(c => c.contractId == row.contractId)
+
+        // this.tableRows.forEach(instance => console.log(instance.nativeElement.textContent))
+        // this.tableRows.forEach(instance => console.log(instance))
+        // const contr:string[] = this.tableRows.toArray()[this.selectedRowIndex].nativeElement.innerText.split('\n')
+        // this.contract = new Contract(...contr)
+        // this.contract.dateEntry = _moment.utc(this.contract.dateEntry, 'DD.MM.YYYY').format()
+
+
+
         // this.contractIdEvent.emit(row.contractId);      
         // this.contractService.setContract(contract);
 
@@ -514,7 +543,7 @@ export class ContractListComponent implements OnInit, AfterViewInit {
     }
 
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    delete(id: string): void { console.log }
+    delete(id: string): void { console.log(id)}
 }
 
 function MaInput(MaInput: any) {

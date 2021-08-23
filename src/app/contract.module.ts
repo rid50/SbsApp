@@ -124,7 +124,16 @@ const DateFormat = {
     {provide: MAT_DATE_LOCALE, useValue: 'ru-RU'},
     {provide: MAT_DATE_FORMATS, useValue: DateFormat},
     {provide: LOCALE_ID, useValue: 'ru'},
-    {provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig},  
+    {provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig},
+
+
+    // {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
+    {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {useUtc: true}},
+    // {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {strict: true}},
+    {provide: DateAdapter, useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
+    },
+
     // {provide: DateAdapter, useClass: MomentDateAdapter,
     //   deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
     // },

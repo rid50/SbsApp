@@ -14,13 +14,28 @@
         <mat-form-field>
           <input matInput type="text" placeholder="Contract Id" value={{contract?.contractId}} #input readonly>
         </mat-form-field>
+
         <mat-form-field>
-          <input matInput #input  name="contractName" id="contractName" placeholder="Contract Name" [(ngModel)]="contract.contractName">
+          <input matInput name="contractName" id="contractName" placeholder="Contract Name" 
+            [(ngModel)]="contract.contractName" required>
         </mat-form-field>
+
+        <!-- <mat-form-field *ngIf="contract != undefined">
+          <input matInput placeholder="Date Entry" name="dateEntry" id="dateEntry"
+            (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)"            
+            [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field> -->
+
         <mat-form-field *ngIf="contract != undefined">
           <input matInput #dateEntry="ngModel" placeholder="Date Entry" name="dateEntry" id="dateEntry"
             [(ngModel)]="contract.dateEntry"
-            (ngModelChange)="contract.dateEntry = $event" [max]="todaysDate" required [matDatepicker]="picker">
+            (dateChange)="dateChange($event)"
+            [max]="todaysDate" [matDatepicker]="picker" required>
+            <!-- (ngModelChange)="contract.dateEntry = $event" -->
+            <!-- (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)"      -->
+            <!-- (blur)="setDatepicker($event.target.value)"  (change)="change($event)" -->
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
           <mat-error *ngIf="dateEntry?.invalid">
@@ -28,12 +43,15 @@
           </mat-error>
         </mat-form-field>
         <mat-form-field>
+
           <input matInput type="text" placeholder="Contract Value" 
-            value={{contract?.contractValue}} (blur)="onBlurEvent($event)">
+          [(ngModel)]="contract.contractValue" (blur)="onBlurEvent($event)" required>
         </mat-form-field>
+
         <mat-form-field>
           <mat-label>Currency</mat-label>
-          <mat-select #mode  [(value)]="selected" (selectionChange)="onSelectionChange($event.value)">
+          <mat-select [(value)]="selected" (selectionChange)="onSelectionChange($event.value)">
+          <!-- <mat-select #mode  [(value)]="selected" (blur)="onBlurEvent($event)"> -->
             <mat-option value="US$">US$</mat-option>
             <mat-option value="KD">KD</mat-option>
           </mat-select>

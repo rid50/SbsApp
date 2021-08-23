@@ -76,8 +76,10 @@
           <ng-container matColumnDef="contractValue">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Contract Value </mat-header-cell>
             <mat-cell *matCellDef="let row">
-              <span *ngIf=!editRow>{{row.contractValue}}</span>
-              <span *ngIf=editRow>{{row.contractValue.split(' ')[1]}}</span>
+              <span *ngIf=!editRow>{{row.currency}} {{row.contractValue}}</span>
+              <span *ngIf=editRow>{{row.contractValue}}</span>
+              <!-- <span *ngIf=!editRow>{{row.contractValue}}</span>
+              <span *ngIf=editRow>{{row.contractValue.split(' ')[1]}}</span> -->
             </mat-cell>
             <!-- <mat-cell *matCellDef="let row"> {{row.contractValue}} </mat-cell> -->
           </ng-container>

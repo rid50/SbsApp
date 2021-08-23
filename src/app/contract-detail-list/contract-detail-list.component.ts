@@ -28,7 +28,7 @@ import { isNgTemplate } from '@angular/compiler';
 export class ContractDetailListComponent {
     @Input() contractId: string;
 
-    contractDetail: ContractDetail;
+    // contractDetail: ContractDetail;
     //dataSource: ContractDataSource;
 
 

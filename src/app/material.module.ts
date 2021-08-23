@@ -3,6 +3,14 @@ import {CommonModule} from '@angular/common';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { DateAdapter, MatNativeDateModule, MAT_DATE_FORMATS, MAT_DATE_LOCALE, NativeDateAdapter} from '@angular/material/core';
+
+import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
+
 // import {MdcTopAppBarModule} from '@angular-mdc/web/top-app-bar';
 // import {MdcDrawerModule} from '@angular-mdc/web/drawer';
 // import {MdcListModule} from '@angular-mdc/web/list';
@@ -17,13 +25,26 @@ import {ContractModule} from './contract.module';
 //import { ContractComponent } from './contract/contract.component';
 
 import { MaterialDrawerComponent } from './material-drawer/material-drawer.component';
-
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 //import { AngularMdcDrawerComponent } from './angular-mdc-drawer/angular-mdc-drawer.component';
 
 // import { LOCALE_ID } from '@angular/core';
 // import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 // import { MAT_MOMENT_DATE_FORMATS, MatMomentDateModule, MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 // import { environment } from '../environments/environment';
+export const APP_DATE_FORMATS =
+{
+   parse: {
+       dateInput: {month: 'short', year: 'numeric', day: 'numeric'}
+   },
+   display: {
+       dateInput: 'input',
+       monthYearLabel: 'inputMonth',
+       dateA11yLabel: {year: 'numeric', month: 'long', day: 'numeric'},
+       monthYearA11yLabel: {year: 'numeric', month: 'long'},
+   }
+}
 
 const materialModules = [
   // MdcTopAppBarModule,
@@ -33,6 +54,11 @@ const materialModules = [
   // MdcMenuModule,
   // MdcTabBarModule,
   // MdcTypographyModule
+  MatFormFieldModule,
+  MatInputModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatMomentDateModule  
 ]
 
 @NgModule({
@@ -57,16 +83,21 @@ const materialModules = [
 //	MdcMenuModule,
 //	MdcTabBarModule
   ],
-  // providers: [
+  providers: [
+    // MatDatepickerModule,
+    // {provide: DateAdapter, useClass: NativeDateAdapter},
+    {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
+    // {provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS},
   //   {provide: 'BASE_API_URL', useValue: environment.apiUrl},
-  //   {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {strict: true}},
-  //   {provide: MAT_DATE_LOCALE, useValue: 'ru'},
+    {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {useUtc: true}},
+    // {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {strict: true}},
+    {provide: MAT_DATE_LOCALE, useValue: 'ru'},
   //   {provide: LOCALE_ID, useValue: 'ru'},    
-  //   // {provide: DateAdapter, useClass: MomentDateAdapter,
-  //   //   deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
-  //   // },
+    {provide: DateAdapter, useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
+    },
   //   //ContractService,
   //   //ContractResolver
-  // ],  
+  ],  
 })
 export class MaterialModule {}
