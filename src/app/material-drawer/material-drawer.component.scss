@@ -17,6 +17,10 @@
 @use "@material/card";
 //@use '@material/theme';
 
+@use "@material/list/mdc-list";
+@use "@material/menu-surface/mdc-menu-surface";
+@use "@material/menu/mdc-menu";
+
 // @use "~@material/list/mdc-list";
 //@use "@material/menu-surface/mdc-menu-surface";
 //@use "@material/menu/mdc-menu";
@@ -145,6 +149,16 @@ a.mdc-list-item {
   background-image: url("../../assets/NanoteX-phones.jpg");
 }
 
+.spacer {
+  flex: 1 1 auto;
+}
+
+// .material-icons {
+//   vertical-align:middle;
+//   // display: flex;
+//   // align-items: center;
+//   // justify-content: center;
+// }
 
 /*
 // Only apply this style if below top app bar.

@@ -2,6 +2,12 @@ import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@ang
 
 import { MDCDrawer } from '@material/drawer';
 import { MDCTopAppBar } from '@material/top-app-bar';
+
+// import {MDCMenu} from '@material/menu';
+
+// import {MdcIconModule} from '@angular-mdc/web/icon';
+// import {MdcMenuModule} from '@angular-mdc/web/menu';
+
 // import {MDCRipple} from '@material/ripple';
 // import { MDCList } from '@material/list';
 import { VERSION } from '@angular/material/core';
@@ -30,7 +36,22 @@ export class MaterialDrawerComponent implements OnInit {
 
 	// constructor(private componentCommunicationService: ComponentCommunicationService) { }
 
+	siteLanguage = 'English';
+	siteLocale: string;
+	languageList = [
+		{ code: 'en', label: 'English' },
+		{ code: 'fr', label: 'Français' },
+		{ code: 'ru', label: 'Russian' }
+	];
+
 	ngOnInit(): void {
+
+		this.siteLocale = window.location.pathname.split('/')[1];
+		this.siteLanguage = this.languageList.find(f => f.code === this.siteLocale)?.label
+		if (this.siteLanguage == undefined)
+			this.siteLanguage = 'English'
+		// else
+		// this.siteLanguage = this.siteLanguage.label;
 
 		// const list = new MDCList(document.querySelector('.mdc-list'));
 		// list.wrapFocus = true;
@@ -41,6 +62,11 @@ export class MaterialDrawerComponent implements OnInit {
 		// const topAppBar = new MDCTopAppBar(topAppBarElement);	  
 
 		// const drawer = MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
+
+		// const menu = new MDCMenu(document.querySelector('.mdc-menu'));
+		// menu.open = true;
+		// menu.setFixedPosition(true);
+		// menu.setAbsolutePosition(100, 100);
 
 		const drawer = MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
 		drawer.open = true;

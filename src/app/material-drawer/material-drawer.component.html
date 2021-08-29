@@ -22,17 +22,17 @@
         <a class="mdc-list-item mdc-list-item--activated" color="accent" href="/contracts" aria-current="page">
           <span class="mdc-list-item__ripple"></span>
           <i class="material-icons mdc-list-item__graphic" aria-hidden="true">list</i>
-          <span class="mdc-list-item__text">Sales Document Flow</span>
+          <span i18n class="mdc-list-item__text">Sales Document Flow</span>
         </a>
         <a class="mdc-list-item" href="#">
           <span class="mdc-list-item__ripple"></span>
           <i class="material-icons mdc-list-item__graphic" aria-hidden="true">inventory</i>
-          <span class="mdc-list-item__text">Pending Purchase Requisition</span>
+          <span i18n class="mdc-list-item__text">Pending Purchase Requisition</span>
         </a>
         <a class="mdc-list-item" href="#">
           <span class="mdc-list-item__ripple"></span>
           <i class="material-icons mdc-list-item__graphic" aria-hidden="true">favorite</i>
-          <span class="mdc-list-item__text">Statistical Analysis</span>
+          <span i18n class="mdc-list-item__text">Statistical Analysis</span>
         </a>
       </div>
     </div>
@@ -44,9 +44,94 @@
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
           <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button"
             aria-label="Open navigation menu">menu</button>
-          <span class="mdc-top-app-bar__title">Sales Back Office (Angular Material {{version.full}} App)</span>
+          <span i18n class="mdc-top-app-bar__title">Sales Back Office (Angular Material {{version.full}} App)</span>
         </section>
+
+        <!-- <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Options">
+          arrow_drop_down
+        </button>         -->
+        <!-- <div class="mdc-menu mdc-menu-surface">
+          <ul class="mdc-deprecated-list" role="menu" aria-hidden="true" aria-orientation="vertical" tabindex="-1">
+            <li class="mdc-deprecated-list-item" role="menuitem">
+              <span class="mdc-deprecated-list-item__ripple"></span>
+              <span class="mdc-deprecated-list-item__text">A Menu Item</span>
+            </li>
+            <li class="mdc-deprecated-list-item" role="menuitem">
+              <span class="mdc-deprecated-list-item__ripple"></span>
+              <span class="mdc-deprecated-list-item__text">Another Menu Item</span>
+            </li>
+          </ul>
+        </div> -->
+
+        <!-- <ng-container> -->
+        <!-- <section class="mdc-top-app-bar__section" role="toolbar" >
+
+        </section> -->
+        <!-- </ng-container>         -->
+
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+
+          <!-- <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button"
+           aria-label="Language">language</button> -->
+
+          <!-- <div>
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">language</i>
+        </div> -->
+        <!-- <span class="spacer"></span> -->
+
+          <mat-icon>language</mat-icon>
+          <button style="padding: 12px 0px" class="material-icons mdc-top-app-bar__action-item mdc-icon-button"
+            [matMenuTriggerFor]="menu"
+            aria-label="Language">arrow_drop_down</button>
+           <span style="padding-left: 0px; padding-right: 20px" class="mdc-top-app-bar__title">{{siteLanguage}}</span>
+
+          <!-- <ng-container> -->
+            <!-- <mat-icon>language</mat-icon>
+            <button style="background-color: transparent !important" mat-button [matMenuTriggerFor]="menu">
+              {{siteLanguage}}
+              <mat-icon>arrow_drop_down</mat-icon>
+            </button> -->
+            <mat-menu #menu="matMenu">
+              <a mat-menu-item href="/en">English</a>
+              <a mat-menu-item href="/fr">Français</a>
+              <a mat-menu-item href="/ru">Russian</a>
+            </mat-menu>
+          <!-- </ng-container> -->
+
+          <!-- export class AppComponent {
+            languages = [
+              { code: 'en', label: 'English'},
+              { code: 'es', label: 'Español'},
+              { code: 'fr', label: 'Français'}
+            ];
+            constructor(@Inject(LOCALE_ID) protected localeId: string) {}
+          }
+
+          <h1 i18n>Hello World!</h1>
+          <ng-template ngFor let-lang [ngForOf]="languages">
+            <span *ngIf="lang.code !== localeId">
+              <a href="/{{lang.code}}/">{{lang.label}}</a> </span>
+            <span *ngIf="lang.code === localeId">{{lang.label}} </span>
+          </ng-template> -->
+
+
+
+
+
+
+          <!-- <div class="mdc-menu mdc-menu-surface">
+            <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical" tabindex="-1">
+              <li class="mdc-list-item" role="menuitem">
+                <span class="mdc-list-item__ripple"></span>
+                <span class="mdc-list-item__text">A Menu Item</span>
+              </li>
+              <li class="mdc-list-item" role="menuitem">
+                <span class="mdc-list-item__ripple"></span>
+                <span class="mdc-list-item__text">Another Menu Item</span>
+              </li>
+            </ul>
+          </div> -->
+
           <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button"
             aria-label="Favorite">search</button>
           <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Search">login</button>
@@ -62,7 +147,11 @@
               </mdc-list>
             </mdc-menu>
           </div>           -->
+
         </section>
+
+
+
       </div>
     </header>
 
@@ -88,23 +177,23 @@
           </div>
         </div> -->
         <!-- <div> -->
-          <!-- <div fxLayout="row" fxLayoutGap="10px"> -->
-            <!-- <div fxLayout="column"> -->
+        <!-- <div fxLayout="row" fxLayoutGap="10px"> -->
+        <!-- <div fxLayout="column"> -->
 
-              <!-- <mat-form-field>
+        <!-- <mat-form-field>
                 <input matInput [matDatepicker]="picker" placeholder="Input & change events">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field> -->
 
-              <app-contract-list>
-                <!-- <div fxLayout="column">
+        <app-contract-list>
+          <!-- <div fxLayout="column">
                   <app-contract-form-entry [contractId]="contractId"></app-contract-form-entry>
                 </div>     -->
-              </app-contract-list>
-              <!-- <app-contract-detail-list [contractId]="contractId"></app-contract-detail-list> -->
-            <!-- </div> -->
-          <!-- </div> -->
+        </app-contract-list>
+        <!-- <app-contract-detail-list [contractId]="contractId"></app-contract-detail-list> -->
+        <!-- </div> -->
+        <!-- </div> -->
         <!-- </div> -->
 
 

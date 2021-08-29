@@ -6,6 +6,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { DateAdapter, MatNativeDateModule, MAT_DATE_FORMATS, MAT_DATE_LOCALE, NativeDateAdapter} from '@angular/material/core';
 
@@ -56,6 +59,8 @@ const materialModules = [
   // MdcTypographyModule
   MatFormFieldModule,
   MatInputModule,
+  MatMenuModule,
+  MatIconModule,
   MatDatepickerModule,
   MatNativeDateModule,
   MatMomentDateModule  
