@@ -28,6 +28,7 @@ import { MatInput } from '@angular/material/input';
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { CdkColumnDef, CdkRowDef } from '@angular/cdk/table';
 import { SelectionModel } from '@angular/cdk/collections';
+import { LocaleService } from '../services/localeService.service';
 
 // class Contract implements IContract {
 //     // constructor(...rest:string[]){
@@ -175,14 +176,21 @@ export class ContractListComponent implements OnInit, AfterViewInit {
     // }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    constructor(private route: ActivatedRoute, private _adapter: DateAdapter<any>,
-        public dataSource: ContractDataSource, private contractService: ContractService) {
+    // constructor(private route: ActivatedRoute, private _adapter: DateAdapter<any>,
+    //     public dataSource: ContractDataSource, private contractService: ContractService,
+    //     private localeService: LocaleService) {
+       
+        // localeService.locale = 'ru'
+
+        // this._adapter.setDateFormat()
         //this._adapter.setLocale('de');
         //this._adapter.setLocale('en');
         //this._adapter.setLocale('fr');
-        _adapter.setLocale('ru-RU');
-    }
+        // _adapter.setLocale('ru-RU');
+    // }
 
+    constructor(public dataSource: ContractDataSource, private contractService: ContractService){}
+ 
     // ngOnChanges(changes: SimpleChanges): void {
     //     for (const propName in changes) {
     //         const changedProp = changes[propName];

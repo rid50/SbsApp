@@ -11,6 +11,9 @@
       <!-- <mat-drawer-container class="example-container" [hasBackdrop]="hasBackdrop.value"> -->
       <!-- <mat-drawer #drawer [mode]="mode.value">I'm a drawer</mat-drawer> -->
       <mat-drawer-content>
+
+        <!-- <span>Locale is {{loc}}</span> -->
+        
         <mat-form-field>
           <input matInput type="text" placeholder="Contract Id" value={{contract?.contractId}} #input readonly>
         </mat-form-field>
@@ -30,7 +33,7 @@
 
         <mat-form-field *ngIf="contract != undefined">
           <input matInput #dateEntry="ngModel" placeholder="Date Entry" name="dateEntry" id="dateEntry"
-            [(ngModel)]="contract.dateEntry"
+            [(ngModel)]="contract.dateEntry" 
             (dateChange)="dateChange($event)"
             [max]="todaysDate" [matDatepicker]="picker" required>
             <!-- (ngModelChange)="contract.dateEntry = $event" -->

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { APP_BASE_HREF, CommonModule, PlatformLocation } from '@angular/common';
 import { FormsModule} from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -50,6 +50,7 @@ import { ContractService } from './services/contract.service';
 import { ContractResolver } from './services/contract.resolver';
 // import { ComponentCommunicationService } from './services/component-communication.service';
 import { ContractDataSource } from './services/contract.datasource';
+import { LocaleService } from './services/localeService.service';
 
 //import { HeaderComponent } from './navigation/header/header.component';
 //import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
@@ -66,6 +67,9 @@ const globalRippleConfig: RippleGlobalOptions = {
 };
 
 const DateFormat = {
+  parse: {
+    dateInput: 'DD.MM.YYYY',
+  },  
   display: {
     dateInput: 'DD.MM.YYYY',
     monthYearLabel: 'MMM YYYY',
@@ -73,6 +77,10 @@ const DateFormat = {
     monthYearA11yLabel: 'MMMM YYYY',
   },
 };
+
+export function getBaseHref(platformLocation: PlatformLocation): string {
+  return platformLocation.getBaseHrefFromDOM();
+}
 
 @NgModule({
   declarations: [
@@ -120,24 +128,37 @@ const DateFormat = {
   providers: [
     MatDatepickerModule,
     {provide: 'BASE_API_URL', useValue: environment.apiUrl},
-    {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {strict: true}},
-    {provide: MAT_DATE_LOCALE, useValue: 'ru-RU'},
-    {provide: MAT_DATE_FORMATS, useValue: DateFormat},
-    {provide: LOCALE_ID, useValue: 'ru'},
-    {provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig},
 
+    // {provide: LOCALE_ID, useValue: 'en'},
+
+    {provide: APP_BASE_HREF, useFactory: getBaseHref, deps: [PlatformLocation]},
+
+    {provide: LOCALE_ID, deps: [LocaleService],
+      useFactory: (localeService: { locale: string; }) => localeService.locale},
+
+    {provide: MAT_DATE_FORMATS, deps: [LocaleService],
+      useFactory: (localeService: { dateFormat: string; }) => localeService.dateFormat},
 
     // {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
-    {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {useUtc: true}},
-    // {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {strict: true}},
+    // {provide: MAT_DATE_FORMATS, useValue: DateFormat},
+
+    // {provide: MAT_DATE_LOCALE, useValue: 'en-US'},
+    // {provide: MAT_DATE_LOCALE, useValue: 'ru-RU'},
+
+    // {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {useUtc: true}},
+    {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {strict: true}},
+    
     {provide: DateAdapter, useClass: MomentDateAdapter,
       deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
     },
+
+    {provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig},
 
     // {provide: DateAdapter, useClass: MomentDateAdapter,
     //   deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
     // },
     // ComponentCommunicationService,
+    LocaleService,
     ContractService,
     ContractResolver,
     ContractDataSource

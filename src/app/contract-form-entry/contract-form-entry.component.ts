@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { Component, OnInit, Input, AfterViewInit, OnChanges, SimpleChanges, ChangeDetectionStrategy, ViewChildren, ElementRef, QueryList } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit, OnChanges, SimpleChanges, ChangeDetectionStrategy, ViewChildren, ElementRef, QueryList, Inject, LOCALE_ID } from '@angular/core';
 import { DateAdapter } from '@angular/material/core';
 import { MatInput } from '@angular/material/input';
 import { throwError } from 'rxjs';
@@ -12,6 +12,7 @@ import { ContractDataSource } from '../services/contract.datasource';
 // import { ComponentCommunicationService } from '../services/component-communication.service';
 import { ContractService } from '../services/contract.service';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { getLocaleId } from '@angular/common';
 
 //import { DataSource } from '@angular/cdk/collections'
 
@@ -49,9 +50,14 @@ export class ContractFormEntryComponent implements OnInit, AfterViewInit, OnChan
 
   // hideDateEntryFormField = this.contract == undefined
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(private _adapter: DateAdapter<any>, private dataSource: ContractDataSource) {
-    this._adapter.setLocale('ru-RU');
+  constructor(@Inject(LOCALE_ID) public locale: string, private _adapter: DateAdapter<any>,
+    private dataSource: ContractDataSource) {
+    // this._adapter.setLocale('fr');
+    // this._adapter.setLocale('ru-RU');
   }
+
+  // loc = getLocaleId(this.locale);
+
 
   ngOnInit(): void {
     this.contract = new Contract();
@@ -59,7 +65,7 @@ export class ContractFormEntryComponent implements OnInit, AfterViewInit, OnChan
   }
 
   ngAfterViewInit(): void {
-    const inpu = this.inputs.toArray()
+    // const inpu = this.inputs.toArray()
 
     this.inputs.changes.subscribe((changes): void => {
       // console.log('Table content changed')

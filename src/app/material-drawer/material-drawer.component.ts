@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Inject, LOCALE_ID, OnInit, Output, ViewEncapsulation } from '@angular/core';
 
 import { MDCDrawer } from '@material/drawer';
 import { MDCTopAppBar } from '@material/top-app-bar';
@@ -14,6 +14,7 @@ import { VERSION } from '@angular/material/core';
 
 // import { ComponentCommunicationService } from '../services/component-communication.service';
 import { IContract } from '../models/contract'
+import { getLocaleId } from '@angular/common';
 
 //import {ContractListComponent} from '../contract-list/contract-list.component';
 
@@ -35,6 +36,9 @@ export class MaterialDrawerComponent implements OnInit {
 	// loadContractsSubscriptionComplete: boolean;
 
 	// constructor(private componentCommunicationService: ComponentCommunicationService) { }
+	
+	// loc = getLocaleId(this.locale);
+    // constructor(@Inject(LOCALE_ID) public locale: string,){}
 
 	siteLanguage = 'English';
 	siteLocale: string;
