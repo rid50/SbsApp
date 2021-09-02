@@ -45,10 +45,12 @@
             <div *ngIf="dateEntry.errors.required">Entry date is required</div>
           </mat-error>
         </mat-form-field>
-        <mat-form-field>
 
+        <mat-form-field>
           <input matInput type="text" placeholder="Contract Value" 
-          [(ngModel)]="contract.contractValue" (blur)="onBlurEvent($event)" required>
+            [ngModel]="contract.contractValue | number" 
+            (ngModelChange)="contract.contractValue=$event" 
+            (blur)="onBlurEvent($event)" required>
         </mat-form-field>
 
         <mat-form-field>

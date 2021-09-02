@@ -57,12 +57,12 @@
           <ng-container matColumnDef="dateEntry">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Date Entry </mat-header-cell>
             <mat-cell *matCellDef="let row; let rowIdx = index;" class="date-entry"><span *ngIf=!editRow>
-                {{row.dateEntry | date:'shortDate'}} </span>
+                {{row.dateEntry | date:'mediumDate'}} </span>
               <mat-form-field *ngIf=editRow>
                 <mat-label></mat-label>
                 <input matInput #dateEntry="ngModel" name="dateEntry{{rowIdx}}" id="dateEntry{{rowIdx}}"
                   [ngModel]="row.dateEntry" (ngModelChange)="row.dateEntry = $event" [max]="todaysDate" required
-                  [matDatepicker]="picker">
+                  [matDatepicker]="picker" >
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
                 <mat-error *ngIf="dateEntry?.invalid">
@@ -76,8 +76,8 @@
           <ng-container matColumnDef="contractValue">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Contract Value </mat-header-cell>
             <mat-cell *matCellDef="let row">
-              <span *ngIf=!editRow>{{row.currency}} {{row.contractValue}}</span>
-              <span *ngIf=editRow>{{row.contractValue}}</span>
+              <span *ngIf=!editRow>{{row.currency}} {{row.contractValue | number}}</span>
+              <span *ngIf=editRow>{{row.contractValue | number}}</span>
               <!-- <span *ngIf=!editRow>{{row.contractValue}}</span>
               <span *ngIf=editRow>{{row.contractValue.split(' ')[1]}}</span> -->
             </mat-cell>
@@ -87,7 +87,7 @@
           <!-- Currency Column -->
           <ng-container matColumnDef="currency" *ngIf=editRow>
             <mat-header-cell *matHeaderCellDef mat-sort-header> Currency </mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{row.currency | currency}} </mat-cell>
+            <mat-cell *matCellDef="let row"> {{row.currency}} </mat-cell>
             <!-- <mat-header-cell *matHeaderCellDef mat-sort-header><span *ngIf=editRow> Currency </span></mat-header-cell>
             <mat-cell *matCellDef="let row"><span *ngIf=editRow> {{row.currency}} </span></mat-cell> -->
           </ng-container>

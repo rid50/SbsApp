@@ -15,10 +15,13 @@ export class LocaleService {
 
   EnDateFormat = {
     parse: {
-      dateInput: 'MM/DD/yyyy',
+      dateInput: 'yyyy-MM-DD',
     },  
     display: {
-      dateInput: 'MM/DD/yyyy',
+      dateInput: 'yyyy-MM-DD',
+      monthYearLabel: 'MMM YYYY',
+      dateA11yLabel: 'LL',
+      monthYearA11yLabel: 'MMMM YYYY',
     },
   };
 
@@ -27,7 +30,10 @@ export class LocaleService {
       dateInput: 'DD/MM/yyyy',
     },  
     display: {
-      dateInput: 'DD/MM/yyyy',
+      dateInput: 'DD/MM/YYYY',
+      monthYearLabel: 'MMM YYYY',
+      dateA11yLabel: 'LL',
+      monthYearA11yLabel: 'MMMM YYYY',
     },
   };
 
@@ -36,7 +42,10 @@ export class LocaleService {
       dateInput: 'DD.MM.yyyy',
     },  
     display: {
-      dateInput: 'DD.MM.yyyy',
+      dateInput: 'DD.MM.YYYY',
+      monthYearLabel: 'MMM YYYY',
+      dateA11yLabel: 'LL',
+      monthYearA11yLabel: 'MMMM YYYY',
     },
   };
 
@@ -62,7 +71,7 @@ export class LocaleService {
   }
 
   get dateFormat(): Record<string, unknown> {
-    console.log(`locale ${this._locale}`)    
+    // console.log(`locale ${this._locale}`)    
     switch(this._locale) {
       case 'en': {
         this._dateFormat = this.EnDateFormat

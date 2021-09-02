@@ -52,6 +52,7 @@ import { ContractResolver } from './services/contract.resolver';
 import { ContractDataSource } from './services/contract.datasource';
 import { LocaleService } from './services/localeService.service';
 
+import { MyDateFormatPipe } from './services/date-format-pipe.service'
 //import { HeaderComponent } from './navigation/header/header.component';
 //import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 
@@ -88,6 +89,7 @@ export function getBaseHref(platformLocation: PlatformLocation): string {
     ContractDetailListComponent,
     // ContractDetailComponent,
     ContractFormEntryComponent,
+    MyDateFormatPipe
     //HeaderComponent,
     //SidenavListComponent
   ],
