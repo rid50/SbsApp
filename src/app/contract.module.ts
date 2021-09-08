@@ -119,9 +119,11 @@ export function getBaseHref(platformLocation: PlatformLocation): string {
   ],
   exports: [
     //BrowserModule,
+
     ContractListComponent,
-    ContractDetailListComponent,
-    ContractFormEntryComponent,
+    //ContractDetailListComponent,
+    //ContractFormEntryComponent,
+
     //MatTabsModule,
     //MatToolbarModule,
     //MatSidenavModule

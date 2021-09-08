@@ -4,15 +4,18 @@ import { ContractResolver } from './services/contract.resolver';
 import { ContractListComponent } from './contract-list/contract-list.component';
 import { ContractDetailListComponent } from './contract-detail-list/contract-detail-list.component';
 import { MaterialDrawerComponent } from './material-drawer/material-drawer.component'
+import { PendingTransactionComponent } from './pending-transaction/pending-transaction.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/drawer', pathMatch: 'full' },  
+  { path: '', redirectTo: '/contract', pathMatch: 'full' },  
   //{ path: '', redirectTo: '/contracts', pathMatch: 'full' },
-  { path: 'drawer', component: MaterialDrawerComponent },  
+  { path: 'contract', component: ContractListComponent },  
+  { path: 'pending-transaction', component: PendingTransactionComponent }, 
+  
   //{ path: 'contracts', component: ContractListComponent },
   { path: 'contracts/:id', component: ContractDetailListComponent, resolve: { contract: ContractResolver} },
-  { path: '**', component: MaterialDrawerComponent }
-  //{ path: '**', redirectTo: '/' }
+  // { path: '**', component: ContractListComponent }
+  { path: '**', redirectTo: '/' }
 ];
 
 @NgModule({

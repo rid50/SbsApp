@@ -35,7 +35,7 @@ import { MaterialModule } from './material.module';
   imports: [
     CommonModule,
     BrowserModule,
-    AppRoutingModule,
+    // AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
     //MatDatepickerModule,
