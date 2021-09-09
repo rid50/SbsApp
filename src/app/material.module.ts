@@ -31,6 +31,7 @@ import { MaterialDrawerComponent } from './material-drawer/material-drawer.compo
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { AppRoutingModule } from './app-routing.module';
+import { PendingTransactionModule } from './pending-transaction.module';
 //import { AngularMdcDrawerComponent } from './angular-mdc-drawer/angular-mdc-drawer.component';
 
 // import { LOCALE_ID } from '@angular/core';
@@ -78,6 +79,7 @@ const materialModules = [
     CommonModule,
     FlexLayoutModule,
     ContractModule,
+    PendingTransactionModule,
     ...materialModules
   ],
   exports: [

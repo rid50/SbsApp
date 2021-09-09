@@ -18,24 +18,26 @@
       <h6 class="mdc-drawer__subtitle">rdavidenko@gmail.com</h6>
     </div> -->
     <div class="mdc-drawer__content" style="padding-top:10px">
-      <div class="mdc-list">
-        <a class="mdc-list-item mdc-list-item--activated" color="accent" href="/contract" aria-current="page">
+      <nav class="mdc-list" id="my-list" role="list">
+        <a class="mdc-list-item mdc-list-item--activated" role="listitem" tabindex="0" routerLink="/contract" color="accent" aria-selected="true" aria-current="page">
+        <!-- <a class="mdc-list-item mdc-list-item--activated" role="listitem" aria-selected="true" tabindex="0" aria-current="page"> -->
           <span class="mdc-list-item__ripple"></span>
           <i class="material-icons mdc-list-item__graphic" aria-hidden="true">list</i>
           <span i18n class="mdc-list-item__text">Sales Document Flow</span>
         </a>
-        <a class="mdc-list-item" href="/pending-transaction">
+        <a class="mdc-list-item" role="listitem" tabindex="-1" routerLink="/pending-transaction" aria-selected="false" aria-current="page">
+        <!-- <a class="mdc-list-item" role="listitem" tabindex="-1" aria-selected="false" aria-current="page"> -->
           <span class="mdc-list-item__ripple"></span>
           <i class="material-icons mdc-list-item__graphic" aria-hidden="true">inventory</i>
           <span i18n class="mdc-list-item__text">Pending Transactions</span>
           <!-- <span i18n class="mdc-list-item__text">Pending Purchase Requisition</span> -->
         </a>
-        <a class="mdc-list-item" href="#">
+        <a class="mdc-list-item" role="listitem" tabindex="-1" routerLink="/#" aria-selected="false" aria-current="page">
           <span class="mdc-list-item__ripple"></span>
           <i class="material-icons mdc-list-item__graphic" aria-hidden="true">favorite</i>
           <span i18n class="mdc-list-item__text">Statistical Analysis</span>
         </a>
-      </div>
+      </nav>
     </div>
   </aside>
 

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Inject, LOCALE_ID, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Inject, LOCALE_ID, OnInit, Output, ViewEncapsulation } from '@angular/core';
 
 import { MDCDrawer } from '@material/drawer';
 import { MDCTopAppBar } from '@material/top-app-bar';
@@ -15,6 +15,9 @@ import { VERSION } from '@angular/material/core';
 // import { ComponentCommunicationService } from '../services/component-communication.service';
 import { IContract } from '../models/contract'
 import { getLocaleId } from '@angular/common';
+import { MDCList, MDCListFoundation } from '@material/list';
+import { MDCRipple } from '@material/ripple';
+import { MDCMenu, MDCMenuFoundation } from '@material/menu';
 
 //import {ContractListComponent} from '../contract-list/contract-list.component';
 
@@ -25,7 +28,7 @@ import { getLocaleId } from '@angular/common';
 
 	// encapsulation: ViewEncapsulation.None
 })
-export class MaterialDrawerComponent implements OnInit {
+export class MaterialDrawerComponent implements OnInit, AfterViewInit {
 
 	// @Output() contractIdEvent = new EventEmitter<string>();
     // @Output() loadContractsSubscriptionCompleteEvent = new EventEmitter<boolean>();
@@ -75,26 +78,88 @@ export class MaterialDrawerComponent implements OnInit {
 		const drawer = MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
 		drawer.open = true;
 
-		const listEl = document.querySelector('.mdc-drawer .mdc-list');
-		const mainContentEl = document.querySelector('.main-content');
-
-		listEl.addEventListener('click', (event) => {
-			//Dismissible drawer
-			(<HTMLElement>mainContentEl.querySelector('input, button')).focus();
-
-			//Modal drawer
-			// drawer.open = false;
-		});
-
-		document.body.addEventListener('MDCDrawer:closed', () => {
-			(<HTMLElement>mainContentEl.querySelector('input, button')).focus();
-		});
-
 		const topAppBar = MDCTopAppBar.attachTo(document.getElementById('app-bar'));
 		topAppBar.setScrollTarget(document.getElementById('main-content'));
 		topAppBar.listen('MDCTopAppBar:nav', () => {
 			drawer.open = !drawer.open;
 		});
+
+		// const list = MDCList.attachTo(document.querySelector('.mdc-list'));
+		// const listEl = document.querySelector('.mdc-list');
+		// listEl.addEventListener('MDCList:action', (event) => {
+		// 	console.log(`Event ${JSON.stringify(event)}`)
+		// });
+
+		// list.wrapFocus = true;
+		// list.setEnabled(1, true)
+		// list.singleSelection = true;
+
+		// const list = MDCList.attachTo(document.querySelector('.mdc-list'));
+		// list.wrapFocus = true;		
+		// list.singleSelection = true;
+	
+		// const menu = new MDCMenu(document.querySelector('.mdc-menu'));
+		// menu.setSelectedIndex(0);
+
+		// const list = new MDCList(document.getElementById('my-list'));
+		// list.singleSelection = true;
+
+		// const found = new MDCListFoundation();
+		// found.setSingleSelection(true)
+		// found.setSelectedIndex(1)
+
+		// // const found = new MDCListAdapter();
+
+		// const indx = list.selectedIndex
+
+		//found.setDefaultFocusState(DefaultFocusState.LIST_ROOT)
+		// found.setDefaultFocusState(default) .setSelectedIndex(0);
+		// MDCListAdapter.focusItemAtIndex(index: Number)
+
+		// const list = new MDCList(document.getElementById('my-list'));
+		// // list.singleSelection = true;
+		// list.wrapFocus = true;
+
+		// const listEl = document.querySelector('.mdc-drawer .mdc-list');
+		// const mainContentEl = document.querySelector('.main-content');
+
+		// const listItemRipples = list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
+				
+		// listEl.addEventListener('click', (event) => {
+		// 	//Dismissible drawer
+		// 	(<HTMLElement>mainContentEl.querySelector('input, button')).focus();
+
+		// // 	//Modal drawer
+		// // 	// drawer.open = false;
+		// });
+
+		// document.body.addEventListener('MDCDrawer:closed', () => {
+		// 	(<HTMLElement>mainContentEl.querySelector('input, button')).focus();
+		// });
+
+
+	}
+
+	ngAfterViewInit(): void {
+		// const found = new MDCListFoundation();
+		// // found.setSingleSelection(true)
+		// found.setSelectedIndex(0)		
+		// const list = new MDCList(document.getElementById('my-list'));
+		// const list = MDCList.attachTo(document.querySelector('.mdc-list'));
+		// list.wrapFocus = true;
+		// // list.setEnabled(1, true)
+		// list.singleSelection = true;
+
+		// const listEle = document.getElementById('my-list');
+		// const list = new mdc.list.MDCList(listEle);
+		// list.singleSelection = true;
+
+
+
+		// const found = new MDCListAdapter();
+
+		// const indx = list.selectedIndex
+
 	}
 
 	// getContractId($event: string): void {

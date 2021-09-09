@@ -120,7 +120,7 @@ export function getBaseHref(platformLocation: PlatformLocation): string {
   exports: [
     //BrowserModule,
 
-    ContractListComponent,
+    // ContractListComponent,
     //ContractDetailListComponent,
     //ContractFormEntryComponent,
 

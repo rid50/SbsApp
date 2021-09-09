@@ -7,15 +7,14 @@ import { MaterialDrawerComponent } from './material-drawer/material-drawer.compo
 import { PendingTransactionComponent } from './pending-transaction/pending-transaction.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/contract', pathMatch: 'full' },  
   //{ path: '', redirectTo: '/contracts', pathMatch: 'full' },
-  { path: 'contract', component: ContractListComponent },  
-  { path: 'pending-transaction', component: PendingTransactionComponent }, 
-  
+  { path: 'contract', component: ContractListComponent },
+  { path: 'pending-transaction', component: PendingTransactionComponent },
+  { path: '', redirectTo: '/contract', pathMatch: 'full' }, 
   //{ path: 'contracts', component: ContractListComponent },
   { path: 'contracts/:id', component: ContractDetailListComponent, resolve: { contract: ContractResolver} },
   // { path: '**', component: ContractListComponent }
-  { path: '**', redirectTo: '/' }
+  { path: '**', redirectTo: '/contract' }
 ];
 
 @NgModule({
