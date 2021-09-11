@@ -9,10 +9,11 @@
       [attr.aria-expanded]="accordionItem.expanded"
       [attr.aria-controls]="'accordion-body-' + index">
       <div class="example-accordion-item-header" (click)="accordionItem.toggle()">
-        {{ item }}
-        <span class="example-accordion-item-description">
+        <span *ngIf="index == 0">{{ item }} ({{recordsCount}})</span>
+        <span *ngIf="index != 0">{{ item }}</span>
+        <!-- <span class="example-accordion-item-description">
           Click to {{ accordionItem.expanded ? 'close' : 'open' }}
-        </span>
+        </span> -->
       </div>
       <div
         class="example-accordion-item-body"
@@ -20,9 +21,7 @@
         [style.display]="accordionItem.expanded ? '' : 'none'"
         [attr.id]="'accordion-body-' + index"
         [attr.aria-labelledby]="'accordion-header-' + index">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis
-        excepturi incidunt ipsum deleniti labore, tempore non nam doloribus blanditiis
-        veritatis illo autem iure aliquid ullam rem tenetur deserunt velit culpa?
+        <app-purchase-requisition *ngIf="index == 0" (onRecordsCount)="onRecordsCount($event)"></app-purchase-requisition>
       </div>
     </cdk-accordion-item>
   </cdk-accordion>

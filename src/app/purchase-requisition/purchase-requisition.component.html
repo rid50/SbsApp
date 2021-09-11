@@ -1,0 +1,22 @@
+<div class="mat-elevation-z8">
+    <mat-table [dataSource]="dataSource" [matSortDisableClear]="false" matSort matSortActive="contractId"
+      matSortDirection="asc">
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="contractId">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Contract ID </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.contractId}} </mat-cell>
+      </ng-container>
+
+      <!-- Contract Name Column -->
+      <!-- <ng-container matColumnDef="dateEntry">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Date Entry </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.dateEntry}} </mat-cell>
+      </ng-container> -->
+
+      <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns; let i = index" matRipple
+        [ngClass]="{'highlight': selectedRowIndex === i}" (click)="onRowClicked(row, i)">
+      </mat-row>
+    </mat-table>
+  </div>

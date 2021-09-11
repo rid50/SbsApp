@@ -5,6 +5,7 @@ import { Observable, of, throwError } from 'rxjs'
 import { catchError, map, finalize } from 'rxjs/operators'
 import { IContract } from '../models/contract'
 import { ContractDetail } from '../models/contract-detail'
+import { PurchaseRequisition } from '../models/purchase-requisition'
 
 @Injectable()
 export class ContractService {
@@ -100,6 +101,11 @@ export class ContractService {
         //         return throwError(err)
         //     }),            
         // )
+    }
+
+    getPurchaseRequisition(): Observable<PurchaseRequisition[]> {
+        return this.http.get<PurchaseRequisition[]>
+            (`${this.apiUrl}api/pendingTransactions`)
     }
 
     onDestroy(): void {

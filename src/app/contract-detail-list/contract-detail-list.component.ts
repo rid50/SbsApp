@@ -125,12 +125,11 @@ export class ContractDetailListComponent {
 
     }
 
-    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     //    loadContracts() {
     //        this.dataSource.loadContracts(this.input.nativeElement.value, this.sort.active, this.sort.direction, this.skip, this.take);
     //    }
-    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-    loadContractDetails(id: string) {
+
+    loadContractDetails(id: string): void {
         //this.dataSource.loadContracts(this.input.nativeElement.value, this.sort.active, this.sort.direction);
 
         this.loadingSubject.next(true)

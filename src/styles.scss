@@ -7,8 +7,8 @@
 
 @use './themes.scss';
 
-// @use './mat-typography';
-// @use './mdc-typography';
+@use './mat-typography';
+@use './mdc-typography';
 
 // @use '@material/typography' with (
 //   $font-family:  unquote("Times New Roman, Helvetica Neue, sans-serif")

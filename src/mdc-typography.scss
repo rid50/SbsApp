@@ -25,7 +25,10 @@
 
 // @use "@material/typography/mdc-typography";
 
-$mdc-typography-font-family: unquote("Times New Roman, Helvetica Neue, sans-serif");
+// @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
+//$mdc-typography-font-family: unquote("Times New Roman, Helvetica Neue, sans-serif");
+$mdc-typography-font-family: unquote("Roboto, Helvetica Neue, sans-serif");
 
 
 $mdc-typography-styles-headline1: (
