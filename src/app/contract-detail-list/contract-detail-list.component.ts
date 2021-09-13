@@ -50,7 +50,7 @@ export class ContractDetailListComponent {
 
     //@ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
     @ViewChild(MatSort, { static: true }) sort: MatSort;
-    @ViewChild('input', { static: true }) input: ElementRef;
+    // @ViewChild('input', { static: true }) input: ElementRef;
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     constructor(private contractService: ContractService) {}
@@ -158,10 +158,10 @@ export class ContractDetailListComponent {
     //      this.dataSource.filter = this.filterValue.trim().toLowerCase();
     // }
 
-    applyFilter(event: Event): void {
-        const filterValue = (event.target as HTMLInputElement).value;
-        this.dataSource.filter = filterValue.trim().toLowerCase();
-    }
+    // applyFilter(event: Event): void {
+    //     const filterValue = (event.target as HTMLInputElement).value;
+    //     this.dataSource.filter = filterValue.trim().toLowerCase();
+    // }
 
     // onRowClicked(row: unknown): void {
     //     //console.log('Row clicked: ', row);

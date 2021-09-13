@@ -46,11 +46,11 @@ export class PendingPurchaseRequisitionDetailComponent {
 
   dataSource = new MatTableDataSource<PurchaseRequisition>()
 
-  displayedColumns = ['ItemId', 'PartNo', 'PartNoDescription', 'SumQuantity', 'UnitPrice', 'TotalPrice'];
+  displayedColumns = ['itemId', 'partNo', 'partNoDescription', 'sumQuantity', 'unitPrice', 'totalPrice'];
 
   //@ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  @ViewChild('input', { static: true }) input: ElementRef;
+  // @ViewChild('input', { static: true }) input: ElementRef;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   constructor(private contractService: ContractService) { }
@@ -113,18 +113,6 @@ export class PendingPurchaseRequisitionDetailComponent {
     // console.log('Contract details started')
     this.contractService.getPendingPRDetails(id)
       .pipe(
-        // tap(() => console.log('Contract details completed')),
-        // map((obj: unknown) => {
-        //   console.log(array[0])
-        //   //this.contactsCount = parseInt(array[0].contractValue, 10)
-        //   // this.length = this.contactsCount
-        //   // if (skip == 0 && index == 0)
-        //   //if (skip == 0)
-        //     //array.shift()
-        //   // array.splice(0,1)
-        //   return array;
-        // }),
-
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         map((obj:any)=>obj.rows),
         map((array: PurchaseRequisition[]) => array.map((item: PurchaseRequisition) => ({
@@ -148,9 +136,9 @@ export class PendingPurchaseRequisitionDetailComponent {
   //      this.dataSource.filter = this.filterValue.trim().toLowerCase();
   // }
 
-  applyFilter(event: Event): void {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
+  // applyFilter(event: Event): void {
+  //   const filterValue = (event.target as HTMLInputElement).value;
+  //   this.dataSource.filter = filterValue.trim().toLowerCase();
+  // }
 
 }

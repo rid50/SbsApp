@@ -115,7 +115,7 @@ export class ContractService {
     getPendingPRDetails(id_wildcard = ''): Observable<PurchaseRequisition[]> {
         id_wildcard = encodeURIComponent(id_wildcard);
         return this.http.get<PurchaseRequisition[]> 
-            (`${this.apiUrl}api/pendingTransactions/${id_wildcard}`)
+            (`${this.apiUrl}api/pendingTransactions/ById?contract_id=${id_wildcard}`)
     }
 
     onDestroy(): void {
