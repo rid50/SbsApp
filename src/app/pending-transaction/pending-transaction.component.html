@@ -1,11 +1,8 @@
 <div fxLayout="row" fxLayoutGap="10px">
     <div fxLayout="column" fxFlex="0 1 calc(70% - 10px)">
-
-        <p>pending-transaction works!</p>
-
-
-        <!-- <app-contract-accordion></app-contract-accordion> -->
-    </div>
+        <app-pending-purchase-requisition [pr]="pr"></app-pending-purchase-requisition>
+        <app-pending-purchase-requisition-detail [contractId]="contractId"></app-pending-purchase-requisition-detail>
+     </div>
     <div fxLayout="column" fxFlex="0 1 calc(30% - 10px)">
         <app-contract-accordion></app-contract-accordion>
     </div>

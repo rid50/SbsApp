@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
+import { strings } from '@material/drawer';
 import { BehaviorSubject, throwError } from 'rxjs';
 import { catchError, finalize, map } from 'rxjs/operators';
 import { MatTableDataSource } from 'table-data-source';
@@ -17,9 +18,10 @@ export class PurchaseRequisitionComponent implements OnInit {
 
   // @Input() recordsCount = 5
   @Output() onRecordsCount = new EventEmitter();
+  // @Output() onRecordSelected = new EventEmitter();
   
-  contractId: string;
-  purchaseRequisition: PurchaseRequisition
+  // contractId: string;
+  // purchaseRequisition: PurchaseRequisition
 
   // eslint-disable-next-line @typescript-eslint/no-inferrable-types
   selectedRowIndex: number = -1
@@ -36,10 +38,9 @@ export class PurchaseRequisitionComponent implements OnInit {
 
   constructor(private contractService: ContractService) {}
 
-
   ngOnInit(): void {
     this.loadPurchaseRequisition()
-    this.dataSource.sort = this.sort;    
+    this.dataSource.sort = this.sort;
   }
 
   loadPurchaseRequisition(): void {
@@ -52,7 +53,7 @@ export class PurchaseRequisitionComponent implements OnInit {
             // tap(() => console.log('Contract details completed')),
             map((array: PurchaseRequisition[]) => array.map((item: PurchaseRequisition) => ({
                 ...item,
-                contractId: `${item.contractId} (${item.dateEntry})`
+                // contractId: `${item.contractId} (${item.dateEntry})`
             }))),
             catchError(err => {
                 console.log('Handling error locally and rethrowing it...', err)
@@ -73,8 +74,8 @@ export class PurchaseRequisitionComponent implements OnInit {
   onRowClicked(row: PurchaseRequisition, index: number): void {
     // console.log(`Table rows:\n${JSON.stringify(row)}`)
     this.selectedRowIndex = index;
-    this.contractId = row.contractId;
-    this.purchaseRequisition = this.dataSource.data.find(c => c.contractId == row.contractId)
-
+    // const contractId = row.contractId;
+    const purchaseRequisition = this.dataSource.data.find(c => c.contractId == row.contractId)
+    this.contractService.NotifyOfPurchaseRequisitionSelection(purchaseRequisition)
   }
 }

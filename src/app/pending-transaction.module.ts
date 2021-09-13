@@ -6,10 +6,15 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { PendingTransactionComponent } from './pending-transaction/pending-transaction.component';
 import { ContractAccordionComponent } from './contract-accordion/contract-accordion.component';
 import { PurchaseRequisitionComponent } from './purchase-requisition/purchase-requisition.component';
+import { PendingPurchaseRequisitionComponent } from './pending-purchase-requisition/pending-purchase-requisition.component';
+import { PendingPurchaseRequisitionDetailComponent } from './pending-purchase-requisition-detail/pending-purchase-requisition-detail.component';
 
 
 
@@ -17,7 +22,9 @@ import { PurchaseRequisitionComponent } from './purchase-requisition/purchase-re
   declarations: [
     PendingTransactionComponent,
     ContractAccordionComponent,
-    PurchaseRequisitionComponent
+    PurchaseRequisitionComponent,
+    PendingPurchaseRequisitionComponent,
+    PendingPurchaseRequisitionDetailComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +32,10 @@ import { PurchaseRequisitionComponent } from './purchase-requisition/purchase-re
     CdkAccordionModule,
     ScrollingModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     // ContractAccordionComponent

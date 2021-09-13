@@ -1,0 +1,31 @@
+.form {
+    // min-width: 150px;
+    // max-width: 400px;
+    padding-top: 10px;
+    // width: 100%;
+  }
+  
+  mat-form-field:nth-of-type(1){
+    padding-top: 10px;
+    color: red;
+  }
+
+  mat-form-field {
+    padding-right: 40px;
+    width: 200px;
+    // padding-bottom: 10px;
+  }
+
+  #customer {
+    width: 300px !important;      
+  }
+
+  div.mat-form-field-wrapper {
+    padding-bottom: 10px !important;
+  }
+
+//   .example-full-width {
+//     width: 100%;
+//   }
+  
+  

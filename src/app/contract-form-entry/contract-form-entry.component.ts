@@ -79,8 +79,9 @@ export class ContractFormEntryComponent implements OnInit, AfterViewInit, OnChan
         //   console.log(`${propName} changed from ${from} to ${to}`);
         // }
 
-        console.log(propName)
-        const inpu = this.inputs.toArray()
+        // console.log(propName)
+        // const inpu = this.inputs.toArray()
+
         // console.log(`Contract:\n${contr}`)
         // if (to != undefined) {
         // this.contractId = this.tableRows.toArray()[this.selectedRowIndex].nativeElement.innerText.split('\n')[0]

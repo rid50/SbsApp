@@ -14,11 +14,12 @@ export class ContractService {
     
     RenderRows = new EventEmitter();
 
-    LoadContractsSubscriptionCompleteEvent = new EventEmitter();
+    // LoadContractsSubscriptionCompleteEvent = new EventEmitter();
+    purchaseRequisitionSelectionEvent = new EventEmitter()
     
     httpOptions = {
         headers: new HttpHeaders({
-          'Content-Type':  'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded'
         //   Authorization: 'my-auth-token'
         })
       };
@@ -31,10 +32,13 @@ export class ContractService {
 
     // Notify ContractDetailList and ContractFormEntry components via 
     // ContractList's contractId and contract properties
-    NotifyOfLoadContractsSubscriptionComplete(): void {
-        this.LoadContractsSubscriptionCompleteEvent.emit();
-    }
+    // NotifyOfLoadContractsSubscriptionComplete(): void {
+    //     this.LoadContractsSubscriptionCompleteEvent.emit();
+    // }
 
+    NotifyOfPurchaseRequisitionSelection(pr: PurchaseRequisition): void {
+        this.purchaseRequisitionSelectionEvent.emit(pr);
+    }
 
     // setContract (contract: IContract) : void {
     //     // contract.contractValue = contract.contractValue.split(' ')[1]
@@ -108,8 +112,14 @@ export class ContractService {
             (`${this.apiUrl}api/pendingTransactions`)
     }
 
+    getPendingPRDetails(id_wildcard = ''): Observable<PurchaseRequisition[]> {
+        id_wildcard = encodeURIComponent(id_wildcard);
+        return this.http.get<PurchaseRequisition[]> 
+            (`${this.apiUrl}api/pendingTransactions/${id_wildcard}`)
+    }
+
     onDestroy(): void {
-        this.LoadContractsSubscriptionCompleteEvent.complete()
+        this.purchaseRequisitionSelectionEvent.complete()
         // console.log('Contract details onDestroy')
     }
 

@@ -34,7 +34,7 @@ export class ContractDetailListComponent {
 
     //contract: Contract
     //contracts: Contract[]
-    todaysDate: Date = new Date();
+    // todaysDate: Date = new Date();
 
     //dataSource: ContractDataSource;
     //dataSource = new MatTableDataSource(this.contracts);
@@ -96,34 +96,34 @@ export class ContractDetailListComponent {
     //     // );
     // }
 
-    ngAfterViewInit(): void {
-        //this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
-        this.sort.sortChange.subscribe(() => { })
+    // ngAfterViewInit(): void {
+    //     //this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
+    //     // eslint-disable-next-line @typescript-eslint/no-empty-function
+    //     this.sort.sortChange.subscribe(() => { })
 
-        // fromEvent(this.input.nativeElement, 'keyup')
-        //     .pipe(
-        //         debounceTime(150),
-        //         distinctUntilChanged(),
-        //         tap(() => {
-        //             //this.paginator.pageIndex = 0;
+    //     // fromEvent(this.input.nativeElement, 'keyup')
+    //     //     .pipe(
+    //     //         debounceTime(150),
+    //     //         distinctUntilChanged(),
+    //     //         tap(() => {
+    //     //             //this.paginator.pageIndex = 0;
 
-        //             this.loadContracts();
-        //         })
-        //     )
-        //     .subscribe();
+    //     //             this.loadContracts();
+    //     //         })
+    //     //     )
+    //     //     .subscribe();
 
-        //merge(this.sort.sortChange, this.paginator.page)
-        //merge(this.sort.sortChange)
-        // this.sort.sortChange
-        //     .pipe(
-        //         //tap((x) => console.log(x)),
-        //         //tap(() => this.dataSource.loadContracts(null, '', '')),
-        //         tap(() => this.loadContracts())
-        //     )
-        //     .subscribe();
+    //     //merge(this.sort.sortChange, this.paginator.page)
+    //     //merge(this.sort.sortChange)
+    //     // this.sort.sortChange
+    //     //     .pipe(
+    //     //         //tap((x) => console.log(x)),
+    //     //         //tap(() => this.dataSource.loadContracts(null, '', '')),
+    //     //         tap(() => this.loadContracts())
+    //     //     )
+    //     //     .subscribe();
 
-    }
+    // }
 
     //    loadContracts() {
     //        this.dataSource.loadContracts(this.input.nativeElement.value, this.sort.active, this.sort.direction, this.skip, this.take);
@@ -163,9 +163,9 @@ export class ContractDetailListComponent {
         this.dataSource.filter = filterValue.trim().toLowerCase();
     }
 
-    onRowClicked(row: unknown): void {
-        //console.log('Row clicked: ', row);
-        console.log(window.navigator.language)
-    }
+    // onRowClicked(row: unknown): void {
+    //     //console.log('Row clicked: ', row);
+    //     console.log(window.navigator.language)
+    // }
 }
 

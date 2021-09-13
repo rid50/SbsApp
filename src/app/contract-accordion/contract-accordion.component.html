@@ -21,7 +21,9 @@
         [style.display]="accordionItem.expanded ? '' : 'none'"
         [attr.id]="'accordion-body-' + index"
         [attr.aria-labelledby]="'accordion-header-' + index">
-        <app-purchase-requisition *ngIf="index == 0" (onRecordsCount)="onRecordsCount($event)"></app-purchase-requisition>
+        <app-purchase-requisition *ngIf="index == 0"
+          (onRecordsCount)="onRecordsCount($event)">
+        </app-purchase-requisition>
       </div>
     </cdk-accordion-item>
   </cdk-accordion>
