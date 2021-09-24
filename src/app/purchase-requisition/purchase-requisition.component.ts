@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { strings } from '@material/drawer';
 import { BehaviorSubject, throwError } from 'rxjs';
 import { catchError, finalize, map } from 'rxjs/operators';
-import { MatTableDataSource } from 'table-data-source';
+import { MatTableDataSource } from '@angular/material/table';
 
 import { PurchaseRequisition } from '../models/purchase-requisition';
 import { ContractService } from '../services/contract.service';

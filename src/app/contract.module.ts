@@ -89,7 +89,7 @@ export function getBaseHref(platformLocation: PlatformLocation): string {
     ContractDetailListComponent,
     // ContractDetailComponent,
     ContractFormEntryComponent,
-    MyDateFormatPipe
+    //MyDateFormatPipe
     //HeaderComponent,
     //SidenavListComponent
   ],

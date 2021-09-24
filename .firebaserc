@@ -1,0 +1,7 @@
+// run "firebase use default" when changing the target
+//"default": "salesbackoffice-65e2a"
+{
+  "projects": {
+    "default": "sbs-app-ng"
+  }
+}

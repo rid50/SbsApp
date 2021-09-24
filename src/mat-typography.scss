@@ -4,7 +4,7 @@
 // @use '~@angular/material/theming';
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic&subset=latin-ext');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
 $config: mat-typography-config();
 
 $font-size-display-4: mat-font-size($config, 'display-4');
