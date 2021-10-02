@@ -32,7 +32,7 @@
           <span i18n class="mdc-list-item__text">Pending Transactions</span>
           <!-- <span i18n class="mdc-list-item__text">Pending Purchase Requisition</span> -->
         </a>
-        <a class="mdc-list-item" role="listitem" tabindex="-1" routerLink="/#" aria-selected="false" aria-current="page">
+        <a class="mdc-list-item" role="listitem" tabindex="-1" routerLink="/most-wanted" aria-selected="false" aria-current="page">
           <span class="mdc-list-item__ripple"></span>
           <i class="material-icons mdc-list-item__graphic" aria-hidden="true">favorite</i>
           <span i18n class="mdc-list-item__text">Statistical Analysis</span>
@@ -45,9 +45,18 @@
     <header class="mdc-top-app-bar app-bar" id="app-bar">
       <div class="mdc-top-app-bar__row">
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+
+
+
           <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button"
             aria-label="Open navigation menu">menu</button>
-          <span i18n class="mdc-top-app-bar__title">Sales Back Office (Angular Material {{version.full}} App)</span>
+
+            <img src="../../assets/RapidSSL-SEAL.gif" alt="RapidSSL seal" width="90" height="50">             
+
+            <span i18n class="mdc-top-app-bar__title">Sales Back Office (Angular Material {{version.full}} App)</span>
+        
+        
+        
         </section>
 
         <!-- <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Options">
@@ -84,6 +93,8 @@
         
           <!-- <span>Locale is {{loc}}</span> -->
           
+
+
           <mat-icon>language</mat-icon>
           <button style="padding: 12px 0px" class="material-icons mdc-top-app-bar__action-item mdc-icon-button"
             [matMenuTriggerFor]="menu"

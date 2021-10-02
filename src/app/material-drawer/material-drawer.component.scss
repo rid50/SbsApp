@@ -17,7 +17,7 @@
 @use "@material/card";
 //@use '@material/theme';
 
-@use "@material/list/mdc-list";
+//@use "@material/list/mdc-list";
 // @use "@material/menu-surface/mdc-menu-surface";
 // @use "@material/menu/mdc-menu";
 
@@ -29,7 +29,7 @@
 @include drawer.core-styles;
 @include drawer.dismissible-core-styles;
 @include list.deprecated-core-styles;
-// @include list.core-styles;
+//@include mdc-list.core-styles;
 @include card.core-styles;
 //@include theme.core-styles;
 
@@ -148,6 +148,15 @@ a.mdc-list-item {
   // padding: 16px;
   // background-image: url("https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/2.jpg");
   background-image: url("../../assets/NanoteX-phones.jpg");
+}
+
+.my-card__media3 {
+  // padding: 10px 0px;
+  // display: flex;
+  // justify-content: left;  
+  // padding: 16px;
+  // background-image: url("https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/2.jpg");
+  background-image: url("../../assets/RapidSSL-SEAL.gif");
 }
 
 .spacer {
