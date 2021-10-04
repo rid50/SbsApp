@@ -1,1 +1,87 @@
-<p>biometrics works!</p>
+<!-- <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Shiba Inu</mat-card-title>
+      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p>
+        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+        bred for hunting.
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card> -->
+  
+  <div style="border:0px solid red; height:inherit;">
+    <ul id="bio" class="content" style="border:0px solid black; height:inherit; display:none; overflow:auto;">
+        <li><img src="http://localhost:5000/ImageHandler.ashx?id=103" alt="" height="40" width="40" /><strong unselectable="on" class="unselectable">Pig</strong></li>
+        <li><img src="http://localhost:5000/ImageHandler.ashx?id=104" alt="" height="40" width="40" /><strong unselectable="on" class="unselectable">Roost</strong></li>
+        <li><img src="http://localhost:5000/ImageHandler.ashx?id=105" alt="" height="40" width="40" /><strong unselectable="on" class="unselectable">Monkey</strong></li>
+    </ul>
+    <div id="info2"></div>
+</div>
+
+  <!-- <img class="mdc-image-list__image"
+  src="http://localhost:5000/ImageHandler.ashx?id=103"/> -->
+
+<div id="div_pic" style="display:none">
+    <img id="wanted-picture" alt="" height="200" width="200" style="float:left; padding-right:30px"/>
+    <div id="animal" style="clear:right"></div>
+</div>
+
+<div id="div_wsq" style="display:none; margin-top:150px; clear:both">
+    <table>
+        <tr>
+            <td><strong>LL</strong></td><td><strong>LR</strong></td><td><strong>LM</strong></td><td><strong>LI</strong></td>
+            <td><strong>RI</strong></td><td><strong>RM</strong></td><td><strong>RR</strong></td><td><strong>RL</strong></td>
+            <td><strong>TL</strong></td><td><strong>TR</strong></td>
+        </tr>
+        <tr>
+            <td><img id="ll" class="wsq" title="Left little" alt="Left little" height="90" width="60" /></td>
+            <td><img id="lr" class="wsq" title="Left ring" alt="Left ring" height="90" width="60" /></td>
+            <td><img id="lm" class="wsq" title="Left middle" alt="Left middle" height="90" width="60" /></td>
+            <td><img id="li" class="wsq" title="Left index" alt="Left index" height="90" width="60" /></td>
+            <td><img id="ri" class="wsq" title="Right index" alt="Right index" height="90" width="60" /></td>
+            <td><img id="rm" class="wsq" title="Right middle" alt="Right middle" height="90" width="60" /></td>
+            <td><img id="rr" class="wsq" title="Right ring" alt="Right ring" height="90" width="60" /></td>
+            <td><img id="rl" class="wsq" title="Right little" alt="Right little" height="90" width="60" /></td>
+            <td><img id="lt" class="wsq" title="Left thumb" alt="Left thumb" height="90" width="60" /></td>
+            <td><img id="rt" class="wsq" title="Right thumb" alt="Right thumb" height="90" width="60" /></td>
+        </tr>
+    </table>
+
+    <div id="wsqDialog">
+        <em id="wsqDialogText">click to close</em>
+        <img id="wsqDialogImage" title="" alt="" />
+    </div>
+
+    <div id="pig" style="display:none">
+        <em style="font-weight:bold; font-size:large; text-decoration:underline">PIG:</em>
+        <br /><br />
+        <span style="font-size:medium; text-decoration:underline">Name:</span><span style="font-weight:bolder; font-size:medium;"> “Napoleon”</span><br /><br />
+        <span style="font-size:medium; text-decoration:underline">Title:</span><span style="font-weight:bolder; font-size:medium;"> Leader of operation “Animal Farm” after defeating his cofounder</span><br /><br />
+        <span style="font-size:medium; text-decoration:underline">Accused:</span><span style="font-weight:bolder; font-size:medium;"> False statements, misinforming his comrades, abuse of power, murder, oppression of animal rights, sabotaging comrades, association with humans.</span>
+    </div>
+
+    <div id="rooster" style="display:none">
+        <em style="font-weight:bold; font-size:large; text-decoration:underline">ROOSTER:</em>
+        <br /><br />
+        <span style="font-size:medium; text-decoration:underline">Name:</span><span style="font-weight:bolder; font-size:medium;"> “Alexandar”</span><br /><br />
+        <span style="font-size:medium; text-decoration:underline">Title:</span><span style="font-weight:bolder; font-size:medium;"> Pen watchman</span><br /><br />
+        <span style="font-size:medium; text-decoration:underline">Accused:</span><span style="font-weight:bolder; font-size:medium;"> Excessive noise pollution in domestic district, disturbance during after-hours.</span>
+    </div>
+
+    <div id="monkey" style="display:none">
+        <em style="font-weight:bold; font-size:large; text-decoration:underline">MONKEY:</em>
+        <br /><br />
+        <span style="font-size:medium; text-decoration:underline">Name:</span><span style="font-weight:bolder; font-size:medium;"> “Bert”</span><br /><br />
+        <span style="font-size:medium; text-decoration:underline">Title:</span><span style="font-weight:bolder; font-size:medium;"> Trained pick-pocket, former pet</span><br /><br />
+        <span style="font-size:medium; text-decoration:underline">Accused:</span><span style="font-weight:bolder; font-size:medium;"> Small-scale street robbery, multiple attempts to retrieve fruits from street sellers, pick-pocketing.</span>
+    </div>
+</div>
