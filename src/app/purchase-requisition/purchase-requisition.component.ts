@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
-import { strings } from '@material/drawer';
+//import { strings } from '@material/drawer';
 import { BehaviorSubject, throwError } from 'rxjs';
 import { catchError, finalize, map } from 'rxjs/operators';
 import { MatTableDataSource } from '@angular/material/table';
