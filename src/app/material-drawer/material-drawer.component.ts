@@ -120,18 +120,19 @@ export class MaterialDrawerComponent implements OnInit, AfterViewInit {
 		// // list.singleSelection = true;
 		// list.wrapFocus = true;
 
-		// const listEl = document.querySelector('.mdc-drawer .mdc-list');
+		const listEl = document.querySelector('.mdc-drawer .mdc-list');
 		// const mainContentEl = document.querySelector('.main-content');
 
 		// const listItemRipples = list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
 				
-		// listEl.addEventListener('click', (event) => {
-		// 	//Dismissible drawer
-		// 	(<HTMLElement>mainContentEl.querySelector('input, button')).focus();
+		listEl.addEventListener('click', (event) => {
+			drawer.open = false;
+			//Dismissible drawer
+			// (<HTMLElement>mainContentEl.querySelector('input, button')).focus();
 
 		// // 	//Modal drawer
 		// // 	// drawer.open = false;
-		// });
+		});
 
 		// document.body.addEventListener('MDCDrawer:closed', () => {
 		// 	(<HTMLElement>mainContentEl.querySelector('input, button')).focus();

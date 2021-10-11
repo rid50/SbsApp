@@ -3,6 +3,10 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatCardModule } from '@angular/material/card'; 
+
 // import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -25,12 +29,14 @@ import { ContractResolver } from './services/contract.resolver';
 
 //import { ContractModule } from './contract.module';
 import { MaterialModule } from './material.module';
+import { DatabaseSchemaComponent } from './database-schema/database-schema.component';
 
 //registerLocaleData(localeRu, 'RU');
 
 @NgModule({
   declarations: [
     AppComponent,
+    DatabaseSchemaComponent,
   ],
   imports: [
     CommonModule,
@@ -38,6 +44,8 @@ import { MaterialModule } from './material.module';
     // AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    FlexLayoutModule,
+    MatCardModule,
     //MatDatepickerModule,
     //MatNativeDateModule,
     //FormsModule,

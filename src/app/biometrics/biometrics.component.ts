@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, Inject, OnDestroy, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { BehaviorSubject } from 'rxjs';
 
 
 //import * as $ from 'jquery';

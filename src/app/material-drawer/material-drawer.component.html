@@ -16,6 +16,12 @@
 
     <div class="mdc-drawer__content" style="padding-top:10px">
       <nav class="mdc-list" id="my-list" role="list">
+        <a class="mdc-list-item mdc-list-item--activated" role="listitem" tabindex="0" routerLink="/dbSchema"
+          color="accent" aria-selected="true" aria-current="page">
+          <span class="mdc-list-item__ripple"></span>
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">schema</i>
+          <span i18n class="mdc-list-item__text">Microsoft SQL Server Database Schema Design</span>
+        </a>
         <a class="mdc-list-item mdc-list-item--activated" role="listitem" tabindex="0" routerLink="/contract"
           color="accent" aria-selected="true" aria-current="page">
           <span class="mdc-list-item__ripple"></span>
@@ -67,9 +73,10 @@
             <a mat-menu-item href="/ru">Russian</a>
           </mat-menu>
 
+          <!-- <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button"
+            aria-label="Favorite">search</button> -->
           <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button"
-            aria-label="Favorite">search</button>
-          <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Search">login</button>
+            aria-label="Login">login</button>
 
         </section>
 
