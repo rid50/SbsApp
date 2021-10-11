@@ -1,4 +1,4 @@
-.mat-table {
+  .mat-table {
     /* display: flex; */
     /* column-gap: 40px; */
     /* overflow: auto;
@@ -27,9 +27,8 @@
   .mat-row {
     min-height: 40px;
     cursor: pointer;
-    &.highlight {
-      background-color: #ede8f7 !important;
-    }    
+    &.highlight {background-color: #ede8f7 !important;}
+    &:hover { background: #c8c8c8; }    
   }
 
   .mat-row:is(.highlight) .mat-cell {

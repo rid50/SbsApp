@@ -25,9 +25,12 @@
 	  // position: relative;
 	  // overflow: hidden;
     cursor: pointer;
-    &.highlight {
-      background-color: #ede8f7 !important;
-    }
+    &.highlight {background-color: #ede8f7 !important;}
+    //:hover { background: #c8c8c8; }
+  }
+
+  .mat-row:hover {
+    background: #c8c8c8;
   }
 
   .mat-header-row {
@@ -81,10 +84,12 @@
 
   .mat-cell,
   .mat-header-cell {
-    color: black;    
-    // font-size: 16px;
-    margin-right: 10px;    
-    /* font-weight: 700; */
+    color: black;
+    margin-right: 10px;
+
+    &:last-child {
+      margin-right: 0px;      
+    }
   }
 
   .mat-cell:nth-child(1),
@@ -97,6 +102,16 @@
   .mat-header-cell:nth-child(2) {
     // text-overflow: ellipsis;
     flex: 34%;
+    max-width: 350px;
+    //display: inline-block;
+    white-space: nowrap;
+    overflow: auto;
+    //overflow: hidden;
+    //text-overflow: ellipsis;
+    // &:hover {
+    //   //white-space: normal;
+    //   overflow: auto;
+    // }       
   }
 
   .mat-cell:nth-child(3),

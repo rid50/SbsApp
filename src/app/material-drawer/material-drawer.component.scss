@@ -15,15 +15,6 @@
 @use '@material/top-app-bar/_index' as top-app-bar;
 @use '@material/theme/color-palette' as material-color;
 @use "@material/card";
-//@use '@material/theme';
-
-//@use "@material/list/mdc-list";
-// @use "@material/menu-surface/mdc-menu-surface";
-// @use "@material/menu/mdc-menu";
-
-// @use "~@material/list/mdc-list";
-//@use "@material/menu-surface/mdc-menu-surface";
-//@use "@material/menu/mdc-menu";
 
 @include icon-button.core-styles;
 @include drawer.core-styles;
@@ -31,113 +22,29 @@
 @include list.deprecated-core-styles;
 //@include mdc-list.core-styles;
 @include card.core-styles;
-//@include theme.core-styles;
-
-//@import "@material/theme/mdc-theme";
-
-// @include list.deprecated-core-styles;
-
-//@import "@material/drawer/mdc-drawer";
-// @import "@material/list/mdc-list";
-
-// @include list.deprecated-single-line-height(20);
-//@include textfield.core-styles;
-
-
-//@include drawer.modal-core-styles;
-
-//@include theme.mdc-top-app-bar;
-//@include theme.core-styles;
-
-// .cardList {
-//   display: flex;
-//   flex-direction: row;
-//   flex-wrap: wrap;
-//   justify-content: flex-start;
-// }
-
-// body {
-//   display: flex;
-//   height: 100vh;
-//   // @include list.deprecated-single-line-height(20);
-// }
 
 .mdc-drawer-app-content {
-  // flex: auto;
-  // overflow: auto;
   position: relative;
-  
-  // @include list.deprecated-list-item-height(20);
-  // @include list.deprecated-single-line-height(20);  
 }
 
 a.mdc-list-item {
   margin-bottom: 10px !important;
 }
-// .mdc-list-item {
-//   //background-color: $mat-amber-A400;
-//   //@include list.item-disabled-text-color(material-color.$yellow-800);
-//   //@include list.list-item-height(20);
-//   //@include list.single-line-height(20);
-// }
-
-// .mdc-drawer .mdc-list-item--activated {
-//   //@include list.item-primary-text-ink-color(material-color.$yellow-800);
-//   //color: rgba(238, 0, 0, 0.87);
-
-  
-//   @include list.item-primary-text-ink-color(var(--mdc-theme-secondary));
-//   //@include list.item-selected-text-color(var(--mdc-theme-secondary));
-
-//   // @include drawer.item-activated-text-ink-color(var(--mdc-theme-secondary));
-//   //@debug var(--mdc-theme-secondary);
-//   // color: var(--mdc-theme-secondary);
-//   //color: #f00;
-//   //background-color: #0f0;
-// }
-
-
-// a.my-list-1 {
-//   color: red;
-//   height: 30px;
-//   @include list.item-graphic-ink-color(material-color.$yellow-800);
-// }
 
 .main-content {
-  // overflow: auto;
-  // height: 100%;
   margin-left: 10px;
-  // & div:first-child {
-  //   padding-top: 64px;
-  // }  
 }
 
 .app-bar {
   position: absolute;
-  // & div {
-  // & div:first-child {
-  //   height: 48px;
-  // }
-  //@include drawer.surface-fill-color(material-color.$yellow-800);
-
-  // @include top-app-bar.fill-color(theme.$warn);
-  // @include top-app-bar.fill-color(theme.$primary);
-  // @include top-app-bar.fill-color(theme.$secondary);  
-  // @include top-app-bar.fill-color(material-color.$yellow-800);
-  // @include top-app-bar.icon-ink-color(material-color.$blue-900)
 }
 
 .my-card-content {
   padding: 10px;
-  // max-width: 300px;
 }
 
 .my-card__media {
   padding: 55px;
-  // display: flex;
-  // justify-content: center;  
-  // padding: 16px;
-  // background-image: url("https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/2.jpg");
   background-image: url("../../assets/NanoteX.jpg");
 }
 
@@ -145,17 +52,12 @@ a.mdc-list-item {
   padding: 10px 0px;
   display: flex;
   justify-content: center;  
-  // padding: 16px;
-  // background-image: url("https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/2.jpg");
   background-image: url("../../assets/NanoteX-phones.jpg");
 }
 
 .my-card__media3 {
-  // padding: 10px 0px;
-  // display: flex;
-  // justify-content: left;  
-  // padding: 16px;
-  // background-image: url("https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/2.jpg");
+  width:90px;
+  height:50px;
   background-image: url("../../assets/RapidSSL-SEAL.gif");
 }
 

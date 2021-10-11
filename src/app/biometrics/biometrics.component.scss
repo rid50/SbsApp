@@ -25,7 +25,7 @@
   .mdc-image-list__image {
     height: 100px !important;
     width: 100px;
-    padding:  10px;
+    padding: 10px;
   }
 //   .mdc-image-list__item {
 //     padding-top: 10px;
@@ -66,6 +66,20 @@
   tr > td {
     text-align: center;
   }
+
+  .spinner-container {
+    height: 200px;
+    width: 200px;
+    position: fixed;
+    // position: absolute; 
+    z-index: 100;    
+  }
+
+  .spinner-container mat-spinner {
+    margin: 80px auto 0 auto;
+  }
+
+
     // .example-header-image {
   //   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   //   //background-size: cover;

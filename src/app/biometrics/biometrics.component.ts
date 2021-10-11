@@ -1,4 +1,6 @@
 import { AfterViewInit, Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+
 
 //import * as $ from 'jquery';
 
@@ -16,7 +18,7 @@ export class BiometricsComponent implements AfterViewInit, OnDestroy {
   name: string
   title: string
   accused: string
-  urlImg = `${this.apiUrl}/ImageHandler.ashx`;
+  urlImg = `${this.apiUrl}ImageHandler.ashx`;
 
   text = {
     '103': {
@@ -26,7 +28,7 @@ export class BiometricsComponent implements AfterViewInit, OnDestroy {
             murder, oppression of animal rights, sabotaging comrades, association with humans`
     },
     '105': {
-      name: 'Alexandar',
+      name: 'Alexander',
       title: 'Pen watchman',
       accused: 'Excessive noise pollution in domestic district, disturbance during after-hours'
     },
@@ -37,6 +39,10 @@ export class BiometricsComponent implements AfterViewInit, OnDestroy {
             from street sellers, pick-pocketing`
     }
   }
+
+  private loadingSubject = new BehaviorSubject<boolean>(false);
+
+  loading$ = this.loadingSubject.asObservable();
 
   constructor(@Inject('BASE_API_URL') private apiUrl: string) { }
 
@@ -52,7 +58,10 @@ export class BiometricsComponent implements AfterViewInit, OnDestroy {
     // console.log(this.id)
     let idImg = '';
     //    const urlImg = `${this.apiUrl}/ImageHandler.ashx`;
+    
     const urlImg = this.urlImg;
+    const loadingSubject = this.loadingSubject;
+
     let numImg = 10;
     let pic_src = '';
 
@@ -69,7 +78,7 @@ export class BiometricsComponent implements AfterViewInit, OnDestroy {
       //height: 685,
       //width: 456,
       //position: {my: 'center', at: 'center'},
-      //position: ['top'],
+      position: ['left'],
       buttons: {}
     });
     //
@@ -115,6 +124,8 @@ export class BiometricsComponent implements AfterViewInit, OnDestroy {
 
 
     $('.wsq').on('load', function () {
+      loadingSubject.next(false)
+      
       if ($('#div_wsq').css('display') == 'none')
         $('#div_wsq').slideDown(500);
       //$('#div_wsq').attr('style', 'display: inline-block !important;')
@@ -184,7 +195,7 @@ export class BiometricsComponent implements AfterViewInit, OnDestroy {
       );
 
       // eslint-disable-next-line @typescript-eslint/no-this-alias
-      const that = this
+      //const that = this
       $('#bio li').click(function () {
         //console.log(this.id)
         $('#wsqDialog').dialog('close');
@@ -192,6 +203,8 @@ export class BiometricsComponent implements AfterViewInit, OnDestroy {
         const id = pic_src.substring(pic_src.lastIndexOf('id=') + 3);
         if (id == idImg)
           return;
+
+        loadingSubject.next(true)
 
         idImg = id;
         numImg = 10;

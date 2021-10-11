@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card'; 
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { MostWantedComponent } from './most-wanted/most-wanted.component';
 import { CriminalListComponent } from './criminal-list/criminal-list.component';
@@ -23,6 +24,7 @@ import { BiometricsComponent } from './biometrics/biometrics.component';
     CommonModule,
     FlexLayoutModule,
     MatCardModule,
+    MatProgressSpinnerModule
     //MatFormFieldModule,
     //MatInputModule,
 

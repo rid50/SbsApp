@@ -66,15 +66,16 @@
   .mat-cell,
   .mat-header-cell {
     color: black;
-    // height: 30px !important;    
-    // font-size: 16px;
-    margin-right: 20px;    
-    /* font-weight: 700; */
+    margin-right: 20px;
+
+    &:last-child {
+      margin-right: 0px;      
+    }
   }
 
   .mat-cell:nth-child(1),
   .mat-header-cell:nth-child(1) {
-    flex: 8%;
+    flex: 5%;
   }
 
   .mat-cell:nth-child(2),
@@ -84,7 +85,17 @@
 
   .mat-cell:nth-child(3),
   .mat-header-cell:nth-child(3) {
-    flex: 44%;
+    flex: 62%;
+    max-width: 350px;
+    //display: inline-block;
+    white-space: nowrap;
+    overflow: auto;
+    //overflow: hidden;
+    //text-overflow: ellipsis;
+    // &:hover {
+    //   //white-space: normal;
+    //   overflow: auto;
+    // }   
   }  
 
   .mat-cell:nth-child(4),
@@ -94,7 +105,7 @@
 
   .mat-cell:nth-child(5),
   .mat-header-cell:nth-child(5) {
-    flex: 10%;
+    flex: 5%;
   }  
 
   /* .mat-cell {
@@ -104,7 +115,7 @@
   } */
   .mat-cell:nth-child(6),
   .mat-header-cell:nth-child(6) {
-    flex: 10%;
+    flex: 5%;
     // margin-right: 0px;   
   }
 

@@ -82,6 +82,10 @@
   .mat-cell:nth-child(2),
   .mat-header-cell:nth-child(2) {
     flex: 40%;
+    max-width: 350px;
+    //display: inline-block;
+    white-space: nowrap;
+    overflow: auto;    
   }
 
   .mat-cell:nth-child(3),

@@ -1,5 +1,9 @@
+<div class="spinner-container" *ngIf="loading$ | async">
+  <mat-spinner diameter="100" strokeWidth="10"></mat-spinner>
+</div>
+
 <div fxLayout="row" fxLayoutGap="10px">
-  <div fxLayout="column" fxFlex="0 1 calc(90% - 10px)" style="background-color:lightgrey;">
+  <div fxLayout="column" fxFlex="0 1 calc(90% - 10px)" style="background-color:rgb(224,224,224);">
     <div id="div_pic" style="display:none; margin: 10px 10px 0px 0px">
       <mat-card class="card">
         <mat-card-title-group>
