@@ -12,11 +12,7 @@ branches:
 
 deploy:
   provider: firebase
-
-cache:
-  directories:
-    - ./node_modules
-    
+   
 script: 
   - ng build --configuration=production
 
