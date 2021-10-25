@@ -10,12 +10,15 @@ cache:
   directories:
     ./node_modules
 
+script: 
+  ng build --configuration=production
+
 deploy:
   provider: firebase
+  skip_cleanup: true
   token:
     secure: "1//0cF7mDh6tnnNPCgYIARAAGAwSNwF-L9Iri5NWaPd5sHLx8C5yPehvD7yYaHy5vlyVdY1ob2Bek4-RGhgo8ryyTb-E7la_XdyBMJ8"  
+  local_dir: dist/SbsApp
   on:
     branch: Internationalization
 
-script: 
-  ng build --configuration=production
