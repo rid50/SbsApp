@@ -22,7 +22,7 @@ cache:
     - ./node_modules
     
 script: 
-  - ng build --configurations=production
+  - ng build --configuration=production
 
 after_success:
   - firebase deploy
