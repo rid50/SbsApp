@@ -10,6 +10,7 @@ script: ng build --configuration=production
 after_success:
 - npm install -g firebase-tools
 - firebase deploy --token "$FIREBASE_TOKEN"
+- curl --insecure -I https://https://app.travis-ci.com/
 deploy:
   provider: heroku
   api_key:
