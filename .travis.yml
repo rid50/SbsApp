@@ -4,7 +4,7 @@ mono: none
 
 language: node_js
 node_js:
-  - node
+  - 14
 
 branches:
   only:
