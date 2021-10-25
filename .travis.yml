@@ -1,0 +1,28 @@
+dist: trusty
+sudo: false
+mono: none
+
+language: node_js
+
+node_js:
+  - stable
+
+branches:
+  only:
+    - Internationalization
+
+deploy:
+  provider: firebase
+  on:
+    branch: Internationalization
+    node_js: '14' # this should be quoted; otherwise, 0.10 would not work  
+  
+cache:
+  directories:
+    - ./node_modules
+    
+script: 
+  - ng build --configurations=production
+
+after_success:
+  - firebase deploy
