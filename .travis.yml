@@ -1,3 +1,6 @@
+dist: trusty
+sudo: false
+
 language: node_js
 node_js:
   14
@@ -13,12 +16,17 @@ cache:
 script: 
   ng build --configuration=production
 
-deploy:
-  provider: firebase
-  skip_cleanup: true
-  token:
-    secure: "1//0cF7mDh6tnnNPCgYIARAAGAwSNwF-L9Iri5NWaPd5sHLx8C5yPehvD7yYaHy5vlyVdY1ob2Bek4-RGhgo8ryyTb-E7la_XdyBMJ8"  
-  local_dir: dist/SbsApp
-  on:
-    branch: Internationalization
+after_success:
+  - npm install -g firebase-tools
+  - firebase deploy --token "$FIREBASE_TOKEN"
+
+#deploy:
+#  provider: firebase
+#  skip_cleanup: true
+#  edge: true
+#  token:
+#    secure: "1//0cF7mDh6tnnNPCgYIARAAGAwSNwF-L9Iri5NWaPd5sHLx8C5yPehvD7yYaHy5vlyVdY1ob2Bek4-RGhgo8ryyTb-E7la_XdyBMJ8"  
+#  local_dir: dist/SbsApp
+#  on:
+#    branch: Internationalization
 
