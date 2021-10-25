@@ -12,6 +12,8 @@ cache:
 
 deploy:
   provider: firebase
+  token:
+    secure: "1//0cF7mDh6tnnNPCgYIARAAGAwSNwF-L9Iri5NWaPd5sHLx8C5yPehvD7yYaHy5vlyVdY1ob2Bek4-RGhgo8ryyTb-E7la_XdyBMJ8"  
   on:
     branch: Internationalization
 
