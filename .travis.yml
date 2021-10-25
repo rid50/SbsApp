@@ -12,9 +12,9 @@ branches:
 
 deploy:
   provider: firebase
-   
+
 script: 
-  - ng build --configuration=production
+  - ng build --prod
 
 after_success:
   - firebase deploy
