@@ -12,6 +12,9 @@ branches:
 deploy:
   provider: firebase
 
+before_script:
+  - npm install -g @angular/cli
+    
 script: 
   - ng build --prod
 
