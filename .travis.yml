@@ -1,9 +1,9 @@
-dist: trusty
-sudo: true
+#dist: trusty
+# sudo: true
 
 language: node_js
 node_js:
-  - 14
+  14
 
 branches:
   only:
@@ -11,12 +11,8 @@ branches:
 
 deploy:
   provider: firebase
+  on:
+    branch: Internationalization
 
-before_script:
-  - npm install -g @angular/cli
-    
 script: 
-  - ng build --prod
-
-after_success:
-  - firebase deploy
+  - ng build --configuration=production
