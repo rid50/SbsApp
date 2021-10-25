@@ -3,9 +3,8 @@ sudo: false
 mono: none
 
 language: node_js
-
 node_js:
-  - stable
+  - '14'
 
 branches:
   only:
