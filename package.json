@@ -4,7 +4,7 @@
   "type":"commonjs",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
+    "start": "node server.mjs",
     "build": "ng build --configuration=production",
     "start-comment": "ng serve --proxy-config ./proxy.json",
     "build-comment": "ng build --verbose=false",
