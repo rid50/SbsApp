@@ -1,10 +1,13 @@
 {
   "name": "sbs-app",
   "version": "0.0.0",
+  "type":"module",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config ./proxy.json",
-    "build": "ng build --verbose=false",
+    "start": "node server.js",
+    "build": "ng build --configuration=production",
+    "start-comment": "ng serve --proxy-config ./proxy.json",
+    "build-comment": "ng build --verbose=false",
     "test": "nyc ./node_modules/.bin/ava -v",
     "lint": "eslint . --ext .ts",
     "e2e": "ng e2e",
@@ -13,7 +16,7 @@
     "dev2": "lite-server --baseDir=dist/SbsApp/en",
     "report-coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
     "standard": "standard index.js",
-    "heroku-postbuild": "ng build --configuration=production"
+    "heroku-postbuild-comment": "ng build --configuration=production"
   },
   "private": true,
   "dependencies": {
@@ -41,7 +44,9 @@
     "@material/theme": "^11.0.0",
     "@material/top-app-bar": "^12.0.0",
     "@material/typography": "^12.0.0",
+    "express": "^4.17.1",
     "moment": "^2.29.1",
+    "path": "^0.12.7",
     "rxjs": "~6.5.4",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
@@ -51,6 +56,7 @@
     "@angular/cli": "~12.0.3",
     "@angular/compiler-cli": "~12.0.3",
     "@angular/language-service": "~12.0.3",
+    "@types/express": "^4.17.13",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/jquery": "^3.5.6",
@@ -58,8 +64,12 @@
     "@types/node": "^12.11.1",
     "@typescript-eslint/eslint-plugin": "^4.14.0",
     "@typescript-eslint/parser": "^4.14.0",
+    "ava": "^0.16.0",
+    "co-exec": "^1.0",
+    "codecov": "^1.0.1",
     "codelyzer": "^6.0.0",
     "eslint": "^7.18.0",
+    "ghooks": "^1.2.4",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.0.0",
@@ -67,16 +77,12 @@
     "karma-coverage-istanbul-reporter": "~3.0.2",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
+    "nyc": "^10.0.0",
     "protractor": "~7.0.0",
+    "standard": "^8.4.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~4.2.3",
-    "ava": "^0.16.0",
-    "co-exec": "^1.0",
-    "codecov": "^1.0.1",
-    "ghooks": "^1.2.4",
-    "nyc": "^10.0.0",
-    "standard": "^8.4.0"
+    "typescript": "~4.2.3"
   },
   "config": {
     "ghooks": {
