@@ -6,10 +6,10 @@ const path = require('path');
 const express = require('express');
 
 import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+//import { dirname } from 'path';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 
