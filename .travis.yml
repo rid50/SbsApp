@@ -13,6 +13,7 @@ after_success:
 - curl --insecure -I https://https://app.travis-ci.com/
 deploy:
   provider: heroku
+  edge: true
   api_key:
     secure: A/H9dOT5adxZfy3Y9qS42+s6ljK4IrhfJnqMcjkMDVMkwmxhCyIASSiSWzsxOOhZ1VQz1r/nKIDIig2DtU7nGiEaw0RDvbDqFMQr99X6Sbj58heUD/gUpop01dN27SZQwMY1TJpwI9xu3PQeYz4Z8pOvSg6hR7tlCrhhWgORPtQLEjtaAXM8cTtPoGiVVrOs88I8xBPg4H7E0s4Mw6ifaj3Wm77vJ8wSEeUx+jzBmyP6YuPiHljYSKP9e20T4+uHwCsvn9s5U3rlFYe+lAFhno3H0+hMs+b9OVqCn1cujO4zNwFLANvQa/jc9QeKquR78Tcs+zhqQf0WIAc4vipvR19HbLW6XKNZ7uEzcM7DuFxbWkwNLks402jM82FipYYVtIoDSiNQDnlSB2M+w/UdKfkfvAYbO9s6XryrxXtX2/CeMtYBZtOgIXLfU48HY8i3nxSE4nMSSmBeyQIePZCU2qGIbawIG1let2uDKjuzYu8c5ljVrD+bf0QBxoDTTS0XAQ0SsQM9+RSDIqwN66tU/TGZg5ht+OLDB4ZIdIlhKNpuiNg45r6N5eaGmxWKMSy8A3E8eLrZvQ+U7b99LIBHY0uhQzBP+LuDVOZKXHwv9Qv1lTID3qMEi/L3bWAtOAf5F4p4VZwgLZ8kyRL7tBx3hgLxao2LFnDN9/hXup4X4Ns=
   app: sbs-app-ng
