@@ -12,7 +12,8 @@
     "dev": "lite-server",
     "dev2": "lite-server --baseDir=dist/SbsApp/en",
     "report-coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
-    "standard": "standard index.js"
+    "standard": "standard index.js",
+    "heroku-postbuild": "ng build --configuration=production"
   },
   "private": true,
   "dependencies": {
