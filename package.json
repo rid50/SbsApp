@@ -1,7 +1,7 @@
 {
   "name": "sbs-app",
   "version": "0.0.0",
-  "type":"module",
+  "type": "commonjs",
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
