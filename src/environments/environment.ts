@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   // apiUrl: 'http://sbs2.yaruss.co.uk/'
-  apiUrl: 'http://localhost:5000/'
+  //apiUrl: 'http://localhost:5000/'
+  apiUrl: 'https://sbs-api.yaruss.co.uk/'  
 };
 
 /*

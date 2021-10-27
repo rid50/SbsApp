@@ -87,7 +87,7 @@ export class ContractDataSource extends MatTableDataSource<IContract> {
                 }))),
                 //tap(console.log),
                 catchError(err => {
-                    console.log('Handling error locally and rethrowing it...', err)
+                    //console.log('Handling error locally and rethrowing it...', err)
                     return throwError(err)
                 }),
                 //catchError(() => of([])),

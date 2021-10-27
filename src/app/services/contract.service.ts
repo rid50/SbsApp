@@ -1,34 +1,44 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Injectable, Inject, EventEmitter } from '@angular/core'
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'
-import { Observable, of, throwError } from 'rxjs'
+import { BehaviorSubject, Observable, of, throwError } from 'rxjs'
 import { catchError, map, finalize } from 'rxjs/operators'
 import { IContract } from '../models/contract'
 import { ContractDetail } from '../models/contract-detail'
 import { PurchaseRequisition } from '../models/purchase-requisition'
+import { BaseApiUrlService2 } from './BaseApiUrlService2'
+import { BaseApiUrlService } from '../app.module'
+//import { BaseApiUrlService } from './BaseApiUrlService'
 
 @Injectable()
 export class ContractService {
 
     // contract: IContract;
-    
+
+    // apiUrl: string
+
     RenderRows = new EventEmitter();
 
     // LoadContractsSubscriptionCompleteEvent = new EventEmitter();
     purchaseRequisitionSelectionEvent = new EventEmitter()
-    
+
     httpOptions = {
         headers: new HttpHeaders({
             'Content-Type': 'application/x-www-form-urlencoded'
-        //   Authorization: 'my-auth-token'
+            //   Authorization: 'my-auth-token'
         })
-      };
+    };
 
-    constructor(private http: HttpClient, @Inject('BASE_API_URL') private apiUrl: string) { }
+    //constructor(private http: HttpClient, private apiUrl: BaseApiUrlService) { }
+    constructor(private http: HttpClient, @Inject(BaseApiUrlService) private apiUrl: BehaviorSubject<string>) { }
+    //constructor(private http: HttpClient, @Inject('BASE_API_URL') private apiUrl: string) { }      
+    // constructor(private http: HttpClient, @Inject(BaseApiUrlService) public baseApiUrlService: BaseApiUrlService) {
+    //     this.apiUrl = baseApiUrlService.baseApiUrl
+    // }
 
-      RefreshTable(): void {
+    RefreshTable(): void {
         this.RenderRows.emit();
-      }
+    }
 
     // Notify ContractDetailList and ContractFormEntry components via 
     // ContractList's contractId and contract properties
@@ -51,7 +61,7 @@ export class ContractService {
     // }
 
     findContractById(contractId: number): Observable<IContract> {
-        return this.http.get<IContract>(`${this.apiUrl}/api/contract/${contractId}`)
+        return this.http.get<IContract>(`${this.apiUrl.value}/api/contract/${contractId}`)
     }
     //t?id=&sortColumnName=contractid&sortOrder=desc
 
@@ -73,10 +83,10 @@ export class ContractService {
     // }
 
     getContracts(skip = 0, take = 0, id_wildcard = '', sortColumnName = '', sordOrder = '',
-        ): Observable<IContract[]> {
+    ): Observable<IContract[]> {
 
         return this.http.get<IContract[]>
-            (`${this.apiUrl}api/contract?id=${id_wildcard}&sort=${sortColumnName}&order=${sordOrder}&skip=${skip}&take=${take}`)
+            (`${this.apiUrl.value}api/contract?id=${id_wildcard}&sort=${sortColumnName}&order=${sordOrder}&skip=${skip}&take=${take}`)
         // .pipe(
         //    catchError(err => {
         //         console.log('Handling error locally and rethrowing it...', err)
@@ -87,7 +97,7 @@ export class ContractService {
 
     getContractDetails(id_wildcard = ''): Observable<ContractDetail[]> {
         return this.http.get<ContractDetail[]>
-            (`${this.apiUrl}api/contractDetail?id=${id_wildcard}`)
+            (`${this.apiUrl.value}api/contractDetail?id=${id_wildcard}`)
         // .pipe(
         //    catchError(err => {
         //         console.log('Handling error locally and rethrowing it...', err)
@@ -98,7 +108,7 @@ export class ContractService {
 
     updateContract(contract: IContract): Observable<IContract> {
         return this.http.put<IContract>
-            (`${this.apiUrl}api/contract`, contract)
+            (`${this.apiUrl.value}api/contract`, contract)
         // .pipe(
         //    catchError(err => {
         //         console.log('Handling error locally and rethrowing it...', err)
@@ -109,13 +119,13 @@ export class ContractService {
 
     getPurchaseRequisition(): Observable<PurchaseRequisition[]> {
         return this.http.get<PurchaseRequisition[]>
-            (`${this.apiUrl}api/pendingTransactions`)
+            (`${this.apiUrl.value}api/pendingTransactions`)
     }
 
     getPendingPRDetails(id_wildcard = ''): Observable<PurchaseRequisition[]> {
         id_wildcard = encodeURIComponent(id_wildcard);
-        return this.http.get<PurchaseRequisition[]> 
-            (`${this.apiUrl}api/pendingTransactions/ById?contract_id=${id_wildcard}`)
+        return this.http.get<PurchaseRequisition[]>
+            (`${this.apiUrl.value}api/pendingTransactions/ById?contract_id=${id_wildcard}`)
     }
 
     onDestroy(): void {

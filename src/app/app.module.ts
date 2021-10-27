@@ -1,11 +1,15 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, InjectionToken, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card'; 
+import { ToastrModule } from 'ngx-toastr';
+
+import { HttpInterceptorService } from './services/HttpInterceptorService';
+import { ErrorHandlerService } from './services/ErrorHandlerService';
 
 // import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -30,8 +34,15 @@ import { ContractResolver } from './services/contract.resolver';
 //import { ContractModule } from './contract.module';
 import { MaterialModule } from './material.module';
 import { DatabaseSchemaComponent } from './database-schema/database-schema.component';
+//import { BaseApiUrlService } from './services/BaseApiUrlService';
+import { environment } from 'src/environments/environment';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { ContractService } from './services/contract.service';
+import { BaseApiUrlService2 } from './services/BaseApiUrlService2';
 
 //registerLocaleData(localeRu, 'RU');
+
+export const BaseApiUrlService = new InjectionToken<string>('BaseApiUrlService')
 
 @NgModule({
   declarations: [
@@ -46,6 +57,7 @@ import { DatabaseSchemaComponent } from './database-schema/database-schema.compo
     BrowserAnimationsModule,
     FlexLayoutModule,
     MatCardModule,
+    ToastrModule.forRoot(),
     //MatDatepickerModule,
     //MatNativeDateModule,
     //FormsModule,
@@ -55,7 +67,7 @@ import { DatabaseSchemaComponent } from './database-schema/database-schema.compo
   exports: [
     // FlexLayoutModule
     //FormsModule,  
-	//ReactiveFormsModule
+    //ReactiveFormsModule,
     //BrowserModule,
     //ContractComponent,
     //MatTabsModule,
@@ -64,6 +76,11 @@ import { DatabaseSchemaComponent } from './database-schema/database-schema.compo
   ],
   //both the NativeDateAdapter and MomentDateAdapter allow ISO 8601 strings to be passed to the datepicker and automatically converted to the proper object type  
   providers: [
+    { provide: 'BASE_API_URL', useValue: environment.apiUrl },
+    { provide: BaseApiUrlService, useValue: new BehaviorSubject(environment.apiUrl)},
+    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true },
+    { provide: ErrorHandler, useClass: ErrorHandlerService },
+    BaseApiUrlService2,
     //MatDatepickerModule, 
     //{provide: 'BASE_API_URL', useValue: environment.apiUrl},
     //{provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {strict: true}},

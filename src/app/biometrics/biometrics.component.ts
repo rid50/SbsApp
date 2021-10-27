@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { BaseApiUrlService } from '../app.module';
 
 
 //import * as $ from 'jquery';
@@ -18,7 +19,7 @@ export class BiometricsComponent implements AfterViewInit, OnDestroy {
   name: string
   title: string
   accused: string
-  urlImg = `${this.apiUrl}ImageHandler.ashx`;
+  urlImg = `${this.apiUrl.value}ImageHandler.ashx`;
 
   text = {
     '103': {
@@ -44,7 +45,9 @@ export class BiometricsComponent implements AfterViewInit, OnDestroy {
 
   loading$ = this.loadingSubject.asObservable();
 
-  constructor(@Inject('BASE_API_URL') private apiUrl: string) { }
+  //constructor(@Inject('BASE_API_URL') private apiUrl: string) { }
+  constructor(@Inject(BaseApiUrlService) private apiUrl: BehaviorSubject<string>) { }
+
 
   selectPerson(id: string): void {
     this.name = this.text[id].name

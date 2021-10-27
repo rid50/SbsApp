@@ -53,6 +53,8 @@ import { ContractDataSource } from './services/contract.datasource';
 import { LocaleService } from './services/localeService.service';
 
 import { MyDateFormatPipe } from './services/date-format-pipe.service'
+import { AppModule } from './app.module';
+//import { BaseApiUrlService } from './services/BaseApiUrlService';
 //import { HeaderComponent } from './navigation/header/header.component';
 //import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 
@@ -116,6 +118,7 @@ export function getBaseHref(platformLocation: PlatformLocation): string {
     MatPaginatorModule,
     MatProgressSpinnerModule,
     MatIconModule,
+    //AppModule,
   ],
   exports: [
     //BrowserModule,
@@ -131,8 +134,8 @@ export function getBaseHref(platformLocation: PlatformLocation): string {
   // both the NativeDateAdapter and MomentDateAdapter allow ISO 8601 strings to be passed to the datepicker and automatically converted to the proper object type  
   providers: [
     MatDatepickerModule,
-    {provide: 'BASE_API_URL', useValue: environment.apiUrl},
-
+    //{provide: 'BASE_API_URL', useValue: environment.apiUrl},
+    
     // {provide: LOCALE_ID, useValue: 'en'},
 
     {provide: APP_BASE_HREF, useFactory: getBaseHref, deps: [PlatformLocation]},
@@ -163,6 +166,7 @@ export function getBaseHref(platformLocation: PlatformLocation): string {
     // },
     // ComponentCommunicationService,
     LocaleService,
+    //BaseApiUrlService,
     ContractService,
     ContractResolver,
     ContractDataSource
