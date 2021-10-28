@@ -91,7 +91,9 @@ export class ContractDataSource extends MatTableDataSource<IContract> {
                     return throwError(err)
                 }),
                 //catchError(() => of([])),
-                finalize(() => this.loadingSubject.next(false))
+                finalize(() => { 
+                    this.loadingSubject.next(false)
+                })
             )
             .subscribe(contracts => {
                 this.data = contracts

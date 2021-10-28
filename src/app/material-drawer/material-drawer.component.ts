@@ -18,6 +18,7 @@ import { getLocaleId } from '@angular/common';
 import { MDCList, MDCListFoundation } from '@material/list';
 import { MDCRipple } from '@material/ripple';
 import { MDCMenu, MDCMenuFoundation } from '@material/menu';
+import { ContractService } from '../services/contract.service';
 
 //import {ContractListComponent} from '../contract-list/contract-list.component';
 
@@ -39,6 +40,7 @@ export class MaterialDrawerComponent implements OnInit, AfterViewInit {
 	// loadContractsSubscriptionComplete: boolean;
 
 	// constructor(private componentCommunicationService: ComponentCommunicationService) { }
+    constructor(private contractService: ContractService){}
 	
 	// loc = getLocaleId(this.locale);
     // constructor(@Inject(LOCALE_ID) public locale: string,){}
@@ -142,6 +144,22 @@ export class MaterialDrawerComponent implements OnInit, AfterViewInit {
 	}
 
 	ngAfterViewInit(): void {
+        this.contractService.isSSL().subscribe()
+            // .pipe(
+            //     // // tap(() => console.log('Contract details completed')),
+            //     // map((array: ContractDetail[]) => array.map((item: ContractDetail) => ({
+            //     //     ...item
+            //     // }))),
+            //     catchError(err => {
+            //         console.log('Handling error locally and rethrowing it...', err)
+            //         return throwError(err)
+            //     }),
+            //     //catchError(() => of([])),
+            //     // tap(() => console.log('Contract details finalized')),
+            //     //finalize(() => this.loadingSubject.next(false))
+            // )
+            // .subscribe()
+
 		// const found = new MDCListFoundation();
 		// // found.setSingleSelection(true)
 		// found.setSelectedIndex(0)		

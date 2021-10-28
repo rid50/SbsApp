@@ -36,9 +36,9 @@ import { MaterialModule } from './material.module';
 import { DatabaseSchemaComponent } from './database-schema/database-schema.component';
 //import { BaseApiUrlService } from './services/BaseApiUrlService';
 import { environment } from 'src/environments/environment';
-import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { BehaviorSubject } from 'rxjs';
 import { ContractService } from './services/contract.service';
-import { BaseApiUrlService2 } from './services/BaseApiUrlService2';
+//import { BaseApiUrlService2 } from './services/BaseApiUrlService2';
 
 //registerLocaleData(localeRu, 'RU');
 
@@ -80,7 +80,7 @@ export const BaseApiUrlService = new InjectionToken<string>('BaseApiUrlService')
     { provide: BaseApiUrlService, useValue: new BehaviorSubject(environment.apiUrl)},
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true },
     { provide: ErrorHandler, useClass: ErrorHandlerService },
-    BaseApiUrlService2,
+    //BaseApiUrlService2,
     //MatDatepickerModule, 
     //{provide: 'BASE_API_URL', useValue: environment.apiUrl},
     //{provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {strict: true}},

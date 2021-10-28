@@ -60,8 +60,18 @@ export class ContractService {
     //     return this.contract;
     // }
 
+    isSSL(): Observable<never> {
+        return this.http.get<never>(`${this.apiUrl.value}api/isSSL/`)
+        .pipe(
+           catchError(err => {
+                // console.log('Handling error locally and rethrowing it...', err)
+                return throwError(err)
+            }),            
+        )        
+    }
+
     findContractById(contractId: number): Observable<IContract> {
-        return this.http.get<IContract>(`${this.apiUrl.value}/api/contract/${contractId}`)
+        return this.http.get<IContract>(`${this.apiUrl.value}api/contract/${contractId}`)
     }
     //t?id=&sortColumnName=contractid&sortOrder=desc
 
