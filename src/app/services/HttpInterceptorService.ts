@@ -40,29 +40,27 @@ export class HttpInterceptorService implements HttpInterceptor {
     return next.handle(req).pipe(
       catchError((error: Error) => {
 
-        // if (req.url.indexOf('https://') != -1) {
-        //   error.message = 'Invalid SSL/TLS Certificate, going insecure'
-        //   throwError(error)
-        // }
-
-        this.toastrService.error(
-          'Invalid SSL/TLS Certificate, going insecure',
-          'Error',
-          {
-            timeOut: 4000,
-          }
-        );
+        if (req.url.indexOf('https://') != -1) {
+          error.message = 'Invalid SSL/TLS Certificate, going insecure'
+          this.toastrService.error(
+            error.message,
+            'Error',
+            {
+              timeOut: 4000,
+            }
+          );
+        }
 
         //setTimeout(() => {
-          // clone request and replace 'https://' with 'http://' at the same time
-          const secureReq = req.clone({
-            url: req.url.replace('https://', 'http://')
-          });
+        // clone request and replace 'https://' with 'http://' at the same time
+        const secureReq = req.clone({
+          url: req.url.replace('https://', 'http://')
+        });
 
-          this.apiUrl.next(this.apiUrl.value.replace('https://', 'http://'))
+        this.apiUrl.next(this.apiUrl.value.replace('https://', 'http://'))
 
-          // send the cloned, "secure" request to the next handler.
-          return next.handle(secureReq)
+        // send the cloned, "secure" request to the next handler.
+        return next.handle(secureReq)
         //}, 1000)
       })
     )

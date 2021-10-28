@@ -315,8 +315,15 @@ export class ContractListComponent implements OnInit, AfterViewInit {
             if (this.selectedRowIndex != -1) {
                 setTimeout(_ => {
                     // this.contractId = this.tableRows.toArray()[this.selectedRowIndex].nativeElement.innerText.split('\n')[0]
+                    
+                    const selectedRow = changes['_results'][this.selectedRowIndex]
+                    if (selectedRow == undefined) {
+                        this.selectedRowIndex = this.tableRows.toArray().length - 1;
+                    }
+
                     this.contractId = changes['_results'][this.selectedRowIndex].nativeElement.innerText.split('\n')[0]
                     this.contract = this.dataSource.data.find(c => c.contractId == this.contractId)
+
                     // console.log(`ContractId before:\n${this.contractId}`)
                 }, 100)
             }

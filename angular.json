@@ -21,7 +21,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "localize": false,
+            "localize": true,
             "outputPath": "dist/SbsApp/",
             "index": "src/index.html",
             "main": "src/main.ts",
