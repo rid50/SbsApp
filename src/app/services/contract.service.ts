@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Injectable, Inject, EventEmitter } from '@angular/core'
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http'
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs'
 import { catchError, map, finalize } from 'rxjs/operators'
 import { IContract } from '../models/contract'
@@ -60,14 +60,42 @@ export class ContractService {
     //     return this.contract;
     // }
 
-    isSSL(): Observable<never> {
-        return this.http.get<never>(`${this.apiUrl.value}api/isSSL/`)
-        .pipe(
-           catchError(err => {
-                // console.log('Handling error locally and rethrowing it...', err)
-                return throwError(err)
-            }),            
-        )        
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    get(url: string): Promise<any> {
+        return new Promise((resolve, reject) => {
+            const req = new XMLHttpRequest();
+            req.open('POST', url);
+            req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            req.onreadystatechange = function() {
+                if (req.readyState == 4) {
+                    alert(req.responseText);
+                }
+            }
+            req.onload = () => req.status === 200 ? resolve(req.response) : reject(Error(req.statusText))
+            req.onerror = (e) => reject(Error(`Network Error: ${e}`))
+            req.send('foo=bar&lorem=ipsum');
+        });
+    }
+
+
+    //isSSL(): Observable<never> {
+    isSSL(): void {
+        this.get(`${this.apiUrl.value}api/isSSL/`)
+        .then((data) => {
+            console.log('Ok: ' + JSON.stringify(data))
+        })
+        .catch((err) => {
+            console.log('Err: ' + JSON.stringify(err))
+        });
+
+        //return this.http.get<never>(`${this.apiUrl.value}api/isSSL/`)
+        // .pipe(
+        //    catchError(error => {
+        //     console.log('IsSSL (HttpErrorResponse): ' + (error instanceof HttpErrorResponse));               
+        //         // console.log('Handling error locally and rethrowing it...', err)
+        //         return throwError(error)
+        //     }),            
+        // )        
     }
 
     findContractById(contractId: number): Observable<IContract> {

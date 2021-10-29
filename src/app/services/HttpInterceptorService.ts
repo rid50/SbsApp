@@ -2,10 +2,11 @@
 import { Inject, Injectable, Injector } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, finalize, map, retry } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { BaseApiUrlService } from '../app.module';
 import { ToastrService } from 'ngx-toastr';
+import { LoadingDialogService } from './loading-dialog.service';
 //import { BaseApiUrlService } from './BaseApiUrlService';
 
 @Injectable()
@@ -13,7 +14,9 @@ export class HttpInterceptorService implements HttpInterceptor {
 
   constructor(public router: Router,
     @Inject(BaseApiUrlService) private apiUrl: BehaviorSubject<string>,
-    @Inject(Injector) private injector: Injector) { }
+    @Inject(Injector) private injector: Injector,
+    //private loadingDialogService: LoadingDialogService
+  ) { }
 
   private get toastrService(): ToastrService {
     return this.injector.get(ToastrService);
@@ -32,18 +35,22 @@ export class HttpInterceptorService implements HttpInterceptor {
   }
 
   //2. Sending an Invalid Token will generate error
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     //   const token = 'invald token';
     //   req = req.clone({ headers: req.headers.set('Authorization', 'Bearer ' + token) });
-
-    return next.handle(req).pipe(
-      catchError((error: Error) => {
-
-        if (req.url.indexOf('https://') != -1) {
-          error.message = 'Invalid SSL/TLS Certificate, going insecure'
+    //this.loadingDialogService.openDialog();
+    return next.handle(request).pipe(
+      
+      //retry(1),
+      catchError((error: any) => {
+        //console.log('Http interceptor (HttpErrorResponse): ' + (error instanceof HttpErrorResponse));
+        let errorMessage
+        if (request.url.indexOf('https://') != -1) {
+          errorMessage = 'Invalid TLS Server Certificate, going insecure'
+          //return throwError(error);
           this.toastrService.error(
-            error.message,
+            errorMessage,
             'Error',
             {
               timeOut: 4000,
@@ -51,10 +58,18 @@ export class HttpInterceptorService implements HttpInterceptor {
           );
         }
 
+        // if (error.error instanceof ErrorEvent) {
+        //   // client-side error
+        //   errorMessage = `${error.error.message}`;
+        // } else {
+        //   // server-side error
+        //   errorMessage =  `${error.status}\nMessage: ${error.message}`;
+        // }
+
         //setTimeout(() => {
         // clone request and replace 'https://' with 'http://' at the same time
-        const secureReq = req.clone({
-          url: req.url.replace('https://', 'http://')
+        const secureReq = request.clone({
+          url: request.url.replace('https://', 'http://')
         });
 
         this.apiUrl.next(this.apiUrl.value.replace('https://', 'http://'))
@@ -62,8 +77,11 @@ export class HttpInterceptorService implements HttpInterceptor {
         // send the cloned, "secure" request to the next handler.
         return next.handle(secureReq)
         //}, 1000)
-      })
-    )
+      }),
+      // finalize(() => {
+      //   this.loadingDialogService.hideDialog();
+      // })      
+    ) as Observable<HttpEvent<any>>;
   }
 
   intercept3(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

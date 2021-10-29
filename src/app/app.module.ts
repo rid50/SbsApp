@@ -6,6 +6,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card'; 
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 import { ToastrModule } from 'ngx-toastr';
 
 import { HttpInterceptorService } from './services/HttpInterceptorService';
@@ -33,11 +36,17 @@ import { ContractResolver } from './services/contract.resolver';
 
 //import { ContractModule } from './contract.module';
 import { MaterialModule } from './material.module';
-import { DatabaseSchemaComponent } from './database-schema/database-schema.component';
 //import { BaseApiUrlService } from './services/BaseApiUrlService';
 import { environment } from 'src/environments/environment';
 import { BehaviorSubject } from 'rxjs';
 import { ContractService } from './services/contract.service';
+import { LoadingDialogService } from './services/loading-dialog.service';
+
+import { DatabaseSchemaComponent } from './database-schema/database-schema.component';
+import { LoadingDialogComponent } from './loading-dialog/loading-dialog.component';
+import { ErrorDialogService } from './services/error-dialog.service';
+import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
+
 //import { BaseApiUrlService2 } from './services/BaseApiUrlService2';
 
 //registerLocaleData(localeRu, 'RU');
@@ -48,6 +57,8 @@ export const BaseApiUrlService = new InjectionToken<string>('BaseApiUrlService')
   declarations: [
     AppComponent,
     DatabaseSchemaComponent,
+    LoadingDialogComponent,
+    ErrorDialogComponent
   ],
   imports: [
     CommonModule,
@@ -57,6 +68,9 @@ export const BaseApiUrlService = new InjectionToken<string>('BaseApiUrlService')
     BrowserAnimationsModule,
     FlexLayoutModule,
     MatCardModule,
+    MatProgressSpinnerModule,
+    MatDialogModule,
+    MatButtonModule,
     ToastrModule.forRoot(),
     //MatDatepickerModule,
     //MatNativeDateModule,
@@ -80,6 +94,8 @@ export const BaseApiUrlService = new InjectionToken<string>('BaseApiUrlService')
     { provide: BaseApiUrlService, useValue: new BehaviorSubject(environment.apiUrl)},
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true },
     { provide: ErrorHandler, useClass: ErrorHandlerService },
+    LoadingDialogService,
+    ErrorDialogService
     //BaseApiUrlService2,
     //MatDatepickerModule, 
     //{provide: 'BASE_API_URL', useValue: environment.apiUrl},

@@ -144,7 +144,8 @@ export class MaterialDrawerComponent implements OnInit, AfterViewInit {
 	}
 
 	ngAfterViewInit(): void {
-        this.contractService.isSSL().subscribe()
+		this.contractService.isSSL()
+        //this.contractService.isSSL().subscribe().unsubscribe
             // .pipe(
             //     // // tap(() => console.log('Contract details completed')),
             //     // map((array: ContractDetail[]) => array.map((item: ContractDetail) => ({
