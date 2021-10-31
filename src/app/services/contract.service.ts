@@ -110,12 +110,12 @@ export class ContractService {
 
     // isSSL(): void {this.makeImageElement(`${this.apiUrl.value}api/isSSL/`) }
 
-    isSSL(): void {
+    isSSL_ws(): void {
         if (this.apiUrl.value.indexOf('https://') === -1)
             return
 
         const url = this.apiUrl.value.replace('https://', 'wss://')
-        const ws = new WebSocket(url);
+        const ws = new WebSocket(url + 'ws');
         //const ws = new WebSocket("ws://sbs-api.yaruss.co.uk/");
 
         ws.onopen = (event) => {
@@ -166,7 +166,7 @@ export class ContractService {
         });
     }
 
-    isSSL2(): void {
+    isSSL_promise(): void {
         this.getp(`${this.apiUrl.value}api/isSSL/`)
         .then((data) => {
             console.log('Ok: ' + JSON.stringify(data))
@@ -176,7 +176,7 @@ export class ContractService {
         });
     }
 
-    isSSL3(): Observable<never> {
+    isSSL(): Observable<never> {
         return this.http.get<never>(`${this.apiUrl.value}api/isSSL/`)
         // .pipe(
         //    catchError(error => {

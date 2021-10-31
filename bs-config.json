@@ -1,5 +1,6 @@
 {
   "port": 4200,
   "files": ["./src/**/*.{html,htm,css,js}"],
+  "https": true,
   "server": [ "./dist/SbsApp/", "./dist/SbsApp/en/", "./dist/SbsApp/en-US/", "./dist/SbsApp/fr/", "./dist/SbsApp/ru/" ]
 }
