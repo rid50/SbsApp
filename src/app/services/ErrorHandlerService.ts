@@ -16,9 +16,9 @@ export class ErrorHandlerService implements ErrorHandler {
     handleError(error: any): void {
         //console.log('Error handler (HttpErrorResponse): ' + (error instanceof HttpErrorResponse));
         // Check if it's an error from an HTTP response
-        if (!(error instanceof HttpErrorResponse)) {
-            error = error.rejection; // get the error object
-        }
+        // if (!(error instanceof HttpErrorResponse)) {
+        //     error = error.rejection; // get the error object
+        // }
 
         this.zone.run(() =>
             this.errorDialogService.openDialog(

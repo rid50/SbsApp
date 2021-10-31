@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Injectable, Inject, EventEmitter } from '@angular/core'
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http'
@@ -9,6 +10,11 @@ import { PurchaseRequisition } from '../models/purchase-requisition'
 import { BaseApiUrlService2 } from './BaseApiUrlService2'
 import { BaseApiUrlService } from '../app.module'
 //import { BaseApiUrlService } from './BaseApiUrlService'
+
+//import * as $ from 'jquery';
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+declare const $: any;
 
 @Injectable()
 export class ContractService {
@@ -60,13 +66,96 @@ export class ContractService {
     //     return this.contract;
     // }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    get(url: string): Promise<any> {
+    // <img src="https://the_site/the_image" onerror="redirectToCertPage()">
+
+
+    // get(url: string): void {
+    //     $.ajax({
+    //         method: 'GET',
+    //         url: url,
+    //         //async: true,
+    //         //crossDomain: false,
+    //         contentType: 'application/application/x-www-form-urlencoded',
+    //         //dataType: 'json',
+    //         // headers: {
+    //         //     'Authorization': 'Token xxxprivatexxxxx'
+    //         // },
+    //         xhrFields: {
+    //             withCredentials: true
+    //         },            
+    //         options: {
+    //             useSSL: true
+    //         },
+    //         success: function (data) {
+    //             console.log(data);
+    //             const dados = JSON.stringify(data);
+    //             console.log(dados);
+    //             //$("#IDDOCAMPO").val(data.AlgumaCoisa);
+    //         },
+    //         // error: function (xhr, status, error) {
+    //         //     const data = $.getJSON(xhr.responseText);
+    //         //     console.log(JSON.stringify(data));
+    //         // }
+    //     });
+    // }
+
+    // makeImageElement(url:string): void {
+    //     const img = document.createElement('img');
+    //     img.src = url
+    //     img.onerror = (err) => {
+    //         console.log('Ok: ' + JSON.stringify(err))
+    //     }
+    //     document.getElementById('body').appendChild(img);
+    // }
+
+    // isSSL(): void {this.makeImageElement(`${this.apiUrl.value}api/isSSL/`) }
+
+    isSSL(): void {
+        if (this.apiUrl.value.indexOf('https://') === -1)
+            return
+
+        const url = this.apiUrl.value.replace('https://', 'wss://')
+        const ws = new WebSocket(url);
+        //const ws = new WebSocket("ws://sbs-api.yaruss.co.uk/");
+
+        ws.onopen = (event) => {
+            ws.send('zz');
+        };
+
+        ws.onerror = (event) => {
+            //console.error("WebSocket error observed:", event);
+            ws.close()
+            this.apiUrl.next(this.apiUrl.value.replace('https://', 'http://'))
+        }
+
+        ws.onmessage = (event) => {
+            //console.log(event);
+            ws.close()
+        }
+        
+        // ws.onclose = function (e){
+        //     if(ws.readyState == WebSocket.OPEN) {
+        //         window.removeEventListener("unload", closeWebSocket);        
+        //         //alert('connection closed');
+        //     }
+        // };
+
+        // window.addEventListener("unload", closeWebSocket);
+
+        // function closeWebSocket() {
+        //     if(ws.readyState == WebSocket.OPEN) {
+        //         ws.close();
+        //     }
+        // }
+    }
+
+    //eslint-disable-next-line @typescript-eslint/no-explicit-any
+    getp(url: string): Promise<any> {
         return new Promise((resolve, reject) => {
             const req = new XMLHttpRequest();
             req.open('POST', url);
-            req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-            req.onreadystatechange = function() {
+            req.setRequestHeader('Content-type', 'application/json;charset=utf-8');
+            req.onreadystatechange = function () {
                 if (req.readyState == 4) {
                     alert(req.responseText);
                 }
@@ -77,18 +166,18 @@ export class ContractService {
         });
     }
 
-
-    //isSSL(): Observable<never> {
-    isSSL(): void {
-        this.get(`${this.apiUrl.value}api/isSSL/`)
+    isSSL2(): void {
+        this.getp(`${this.apiUrl.value}api/isSSL/`)
         .then((data) => {
             console.log('Ok: ' + JSON.stringify(data))
         })
         .catch((err) => {
             console.log('Err: ' + JSON.stringify(err))
         });
+    }
 
-        //return this.http.get<never>(`${this.apiUrl.value}api/isSSL/`)
+    isSSL3(): Observable<never> {
+        return this.http.get<never>(`${this.apiUrl.value}api/isSSL/`)
         // .pipe(
         //    catchError(error => {
         //     console.log('IsSSL (HttpErrorResponse): ' + (error instanceof HttpErrorResponse));               

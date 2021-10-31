@@ -11,22 +11,22 @@ declare const $: any;
 export class DatabaseSchemaComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
-    // $(function () {
-    //   const codes = ['USD', 'BHD', 'OMR', 'QAR', 'SAR', 'AED', 'RUB'];
+    $(function () {
+      const codes = ['USD', 'BHD', 'OMR', 'QAR', 'SAR', 'AED', 'RUB'];
 
-    //   for (let i = 0; i < codes.length; i++) {
-    //     $.ajax({
-    //       type: 'GET',
-    //       contentType: 'application/json; charset=utf-8',
-    //       dataType: 'jsonp',
-    //       url: 'http://www.geoplugin.net/currency_converter.gp?jsoncallback=?',
-    //       data: { from: 'KWD', to: codes[i], amount: 1 },
-    //       async: false,       // doesn't work for jsonp
-    //       success: function (data) {
-    //         $('.currency-rates #' + data.to.code).text(data.to.amount);
-    //       }
-    //     });
-    //   }
-    // });
+      for (let i = 0; i < codes.length; i++) {
+        $.ajax({
+          type: 'GET',
+          contentType: 'application/json; charset=utf-8',
+          dataType: 'jsonp',
+          url: 'http://www.geoplugin.net/currency_converter.gp?jsoncallback=?',
+          data: { from: 'KWD', to: codes[i], amount: 1 },
+          async: false,       // doesn't work for jsonp
+          success: function (data) {
+            $('.currency-rates #' + data.to.code).text(data.to.amount);
+          }
+        });
+      }
+    });
   }
 }
