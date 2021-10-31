@@ -14,7 +14,7 @@ import { BaseApiUrlService } from '../app.module'
 //import * as $ from 'jquery';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-declare const $: any;
+//declare const $: any;
 
 @Injectable()
 export class ContractService {
@@ -177,7 +177,7 @@ export class ContractService {
     }
 
     isSSL(): Observable<never> {
-        return this.http.get<never>(`${this.apiUrl.value}api/isSSL/`)
+        return this.http.get<never>(`${this.apiUrl.value}api/IsSSL/`)
         // .pipe(
         //    catchError(error => {
         //     console.log('IsSSL (HttpErrorResponse): ' + (error instanceof HttpErrorResponse));               

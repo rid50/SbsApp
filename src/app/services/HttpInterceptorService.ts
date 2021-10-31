@@ -43,40 +43,38 @@ export class HttpInterceptorService implements HttpInterceptor {
     return next.handle(request).pipe(
       
       //retry(1),
-      catchError((error: any) => {
+      catchError(error => {
         //console.log('Http interceptor (HttpErrorResponse): ' + (error instanceof HttpErrorResponse));
-        let errorMessage
-        if (request.url.indexOf('https://') != -1) {
-          errorMessage = 'Invalid TLS Server Certificate, going insecure'
-          //return throwError(error);
-          this.toastrService.error(
-            errorMessage,
-            'Error',
-            {
-              timeOut: 4000,
-            }
-          );
-        }
-
-        // if (error.error instanceof ErrorEvent) {
-        //   // client-side error
-        //   errorMessage = `${error.error.message}`;
-        // } else {
-        //   // server-side error
-        //   errorMessage =  `${error.status}\nMessage: ${error.message}`;
+        // let errorMessage
+        // if (request.url.indexOf('https://') != -1) {
+        //   errorMessage = 'Invalid TLS Server Certificate, going insecure'
+        //   //return throwError(error);
+        //   this.toastrService.error(
+        //     errorMessage,
+        //     'Error',
+        //     {
+        //       timeOut: 4000,
+        //     }
+        //   );
         // }
 
-        //setTimeout(() => {
         // clone request and replace 'https://' with 'http://' at the same time
-        const secureReq = request.clone({
-          url: request.url.replace('https://', 'http://')
-        });
+        // const secureReq = request.clone({
+        //   url: request.url.replace('https://', 'http://')
+        // });
 
         this.apiUrl.next(this.apiUrl.value.replace('https://', 'http://'))
 
+        let loc = window.location.origin
+        if (loc.indexOf('https://') != -1) {
+          loc = loc.replace('https://', 'http://')
+        }
+
+        this.router.navigateByUrl(loc)
+
         // send the cloned, "secure" request to the next handler.
-        return next.handle(secureReq)
-        //}, 1000)
+        // return next.handle(secureReq)
+        return of(error);
       }),
       // finalize(() => {
       //   this.loadingDialogService.hideDialog();
