@@ -73,7 +73,9 @@ export class HttpInterceptorService implements HttpInterceptor {
 
         console.log('2: ' + loc)
 
-        this.router.navigateByUrl(loc)
+        setInterval(_ => {
+          this.router.navigateByUrl(loc)
+        }, 100);
 
         // send the cloned, "secure" request to the next handler.
         // return next.handle(secureReq)
