@@ -66,9 +66,12 @@ export class HttpInterceptorService implements HttpInterceptor {
         this.apiUrl.next(this.apiUrl.value.replace('https://', 'http://'))
 
         let loc = window.location.origin
+        console.log('1: ' + loc)
         if (loc.indexOf('https://') != -1) {
           loc = loc.replace('https://', 'http://')
         }
+
+        console.log('2: ' + loc)
 
         this.router.navigateByUrl(loc)
 
