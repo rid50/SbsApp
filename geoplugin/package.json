@@ -1,0 +1,14 @@
+{
+  "name": "geoplugin",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "main": "server-fetch.js",
+  "scripts": {
+	"start": "node server-fetch.js"
+  },  
+  "dependencies": {
+    "express": "^4.17.1",
+    "fetch-jsonp": "^1.2.1",
+    "jsdom": "^19.0.0"
+  }
+}

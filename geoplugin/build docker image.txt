@@ -1,0 +1,2 @@
+docker build -t rid50/geoplugin-service .
+docker run --name geoplugin-service -p 3000:3000 -d rid50/geoplugin-service
