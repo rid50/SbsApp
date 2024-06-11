@@ -20,8 +20,8 @@ export class DatabaseSchemaComponent implements AfterViewInit {
           contentType: 'application/json; charset=utf-8',
           dataType: 'jsonp',
           //url: 'http://www.geoplugin.net/currency_converter.gp?jsoncallback=?',
-          //url: 'http://localhost:3000',
-          url: 'https://geoplugin-service.herokuapp.com',
+          url: 'http://localhost:3000',
+          //url: 'https://geoplugin-service.herokuapp.com',
           data: { from: 'KWD', to: codes[i] },
           //data: { from: 'KWD', to: codes[i], amount: 1 },
           async: true, //Cross-domain requests and dataType: "jsonp" requests do not support synchronous operation

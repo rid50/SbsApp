@@ -40,6 +40,7 @@ geoplugin/Dockerfile
 geoplugin/.dockerignore
 
 # misc
+/.firebase
 /.sass-cache
 /connect.lock
 /coverage
