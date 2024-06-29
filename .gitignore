@@ -36,7 +36,7 @@ speed-measure-plugin*.json
 geoplugin/.vscode
 geoplugin/node_modules
 geoplugin/npm-debug.log
-geoplugin/Dockerfile
+#geoplugin/Dockerfile
 geoplugin/.dockerignore
 
 # misc
