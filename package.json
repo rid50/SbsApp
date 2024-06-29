@@ -4,6 +4,7 @@
   "type": "commonjs",
   "scripts": {
     "ng": "ng",
+	"serve2": "export NODE_OPTIONS=--openssl-legacy-provider; ng serve --configuration=en",
     "start": "node server.mjs",
     "build": "ng build --configuration=production",
     "start-comment": "ng serve --proxy-config ./proxy.json",
@@ -17,6 +18,7 @@
     "report-coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
     "standard": "standard index.js",
     "heroku-postbuild-comment": "ng build --configuration=production"
+	
   },
   "private": true,
   "dependencies": {

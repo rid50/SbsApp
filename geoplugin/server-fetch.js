@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 'use strict';
 
+//http://www.geoplugin.net/currency_converter.gp?from=KWD&to=USD&amount=1
+
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 // eslint-disable-next-line quotes
@@ -11,7 +13,10 @@ global.document = dom.window.document;
 
 const fetchJsonp = require('fetch-jsonp');
 const express = require('express')
+
 const app = express();
+//app.set("view engine", "pug");
+//app.set("views", path.join(__dirname, "views"));
 
 //const PORT = 3000;
 const PORT = process.env.PORT || 3000;
@@ -20,13 +25,23 @@ const HOST = '0.0.0.0';
 app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
 
-app.get('/', async (req, res) => {
-	res.jsonp(await getFetch2(req.query.from, req.query.to));	
-});
+// app.get('/', async (req, res) => {
+	// res.jsonp(await getFetch2(req.query.from, req.query.to));	
+// });
 
 // app.get('/', async (req, res) => {
-	// res.jsonp(await getFetch3('KWD', 'USD'));	
+	// res.jsonp(await getFetch2('KWD', 'USD'));
 // });
+
+// app.get('/', async (req, res) => {
+	// res.jsonp(await getFetch());	
+// });
+
+app.get('/', async (req, res) => {
+	const path = require('path');
+	res.sendFile(path.join(__dirname, '/index.html'));
+	// res.render("index");
+});
 
 const getFetch = async () => {
 
