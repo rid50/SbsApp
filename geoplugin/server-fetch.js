@@ -30,7 +30,7 @@ console.log(`Running on http://${HOST}:${PORT}`);
 // });
 
 // app.get('/', async (req, res) => {
-	// res.jsonp(await getFetch2('KWD', 'USD'));
+	// res.jsonp(await getFetch2('KWD', 'RUB'));
 // });
 
 // app.get('/', async (req, res) => {
@@ -40,7 +40,7 @@ console.log(`Running on http://${HOST}:${PORT}`);
 app.get('/', async (req, res) => {
 	const path = require('path');
 	res.sendFile(path.join(__dirname, '/index.html'));
-	// res.render("index");
+	//res.render("index");
 });
 
 const getFetch = async () => {
@@ -51,7 +51,8 @@ const getFetch = async () => {
     for (let i = 0; i < codes.length; i++) {	  
 		const params = new URLSearchParams({ from: 'KWD', to: codes[i], amount: 1 })
 		const url = 'http://www.geoplugin.net/currency_converter.gp?' + params
-
+		//const url = 'https://geopluginservice-sw2qek0j.b4a.run:3000?' + params
+		
 		const response = await fetchJsonp(url, {
 			jsonpCallback: 'jsoncallback',
 			//jsonpCallbackFunction: 'myCallback',
@@ -83,13 +84,12 @@ const getFetch2 = async (from, to) => {
 
 	const params = new URLSearchParams({ from: from, to: to, amount: 1 })
 
-	const url = 'http://www.geoplugin.net/currency_converter.gp?' + params
-
+	//const url = 'http://www.geoplugin.net/currency_converter.gp?' + params		// jsonpCallback: 'jsoncallback'
+	const url = 'https://geopluginservice-sw2qek0j.b4a.run?' + params				// no jsonpCallback: 'jsoncallback'	!!!!!
+	
 	const doAjax = async () => {
 		const response = await fetchJsonp(url, {
-			jsonpCallback: 'jsoncallback',
-			//jsonpCallbackFunction: 'myCallback',
-			method: 'GET',
+			//jsonpCallback: 'jsoncallback',
 			cache: 'no-cache',
 		})
 

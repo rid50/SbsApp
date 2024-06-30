@@ -11,8 +11,8 @@ declare let fetchJsonp: any;
 })
 export class DatabaseSchemaComponent implements AfterViewInit {
 
-//http://www.geoplugin.net/currency_converter.gp?from=KWD&to=USD&amount=1	!!! does not work
-
+// http://www.geoplugin.net/currency_converter.gp?from=KWD&to=USD&amount=1	!!! does not work
+// https://geopluginservice-sw2qek0j.b4a.run/?from=KWD&to=USD&amount=1
 
   ngAfterViewInit(): void {
     $(async function () {
@@ -20,9 +20,10 @@ export class DatabaseSchemaComponent implements AfterViewInit {
 
 		for (let i = 0; i < codes.length; i++) {	  
 			const params = new URLSearchParams({ from: 'KWD', to: codes[i], amount: '1' })
-			const url = 'http://www.geoplugin.net/currency_converter.gp?' + params
+			//const url = 'http://www.geoplugin.net/currency_converter.gp?' + params	// jsonpCallback: 'jsoncallback'	!!!!!
+			const url = 'https://geopluginservice-sw2qek0j.b4a.run?' + params	// no jsonpCallback: 'jsoncallback'	!!!!!
 			const response = await fetchJsonp(url, {
-				jsonpCallback: 'jsoncallback',
+				//jsonpCallback: 'jsoncallback',
 				cache: 'no-cache',
 			})
 			.then(response => {

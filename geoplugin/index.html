@@ -32,7 +32,9 @@
 		//const codes = ['USD'];		
 		for (let i = 0; i < codes.length; i++) {	  
 			const params = new URLSearchParams({ from: 'KWD', to: codes[i], amount: 1 })
-			const url = 'https://www.geoplugin.net/currency_converter.gp?' + params
+			//const url = 'https://www.geoplugin.net/currency_converter.gp?' + params
+			const url = 'https://geopluginservice-sw2qek0j.b4a.run/?' + params	
+			
 /*
 			fetch(url)
 				.then(response => {
@@ -45,9 +47,7 @@
 */	
 	
 			const response = await fetchJsonp(url, {
-				jsonpCallback: 'jsoncallback',
-				//jsonpCallbackFunction: 'myCallback',
-				//method: 'GET',
+				//jsonpCallback: 'jsoncallback',
 				cache: 'no-cache',
 			})
 			.then(response => {
