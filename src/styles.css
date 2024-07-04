@@ -1,0 +1,20 @@
+/* :root {
+    --mdc-typography-font-family: 'Nunito Sans', sans-serif;
+} */
+
+html, body { 
+    margin: 0;
+    height: 100%;
+    /* --mdc-typography-font-family: Times New Roman, Helvetica, sans-serif; */
+    /* font-family: var(--mdc-typography-font-family); */
+}
+
+    /* --mdc-typography-body1-font-family: "Times New Roman", Helvetica, sans-serif; */
+    /* --mdc-typography-font-family: "Times New Roman", "Helvetica Neue", sans-serif; */
+
+/* html, body { height: 100%; } */
+/* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+/* body { margin: 0; font-family: "Times New Roman", "Helvetica Neue", sans-serif; } */
+
+    /* --mdc-typography-body1-font-family: Times New Roman, Helvetica, sans-serif; */
+        /* font-family: "Times New Roman", "Helvetica Neue", sans-serif; */

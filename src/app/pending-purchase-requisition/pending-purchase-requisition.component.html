@@ -1,0 +1,28 @@
+<form class="form">
+    <span>Pending Purchase Requisition</span><br/>
+    <mat-form-field>
+        <mat-label>Contract Id</mat-label>
+        <input matInput value={{pr?.contractId}} readonly>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Date entry</mat-label>
+        <input matInput value={{pr?.dateEntry}} readonly>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Supplier</mat-label>
+        <input matInput value={{pr?.supplierName}} readonly>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Lead time</mat-label>
+        <input matInput value={{pr?.leadTime}} readonly>
+    </mat-form-field>
+
+    <mat-form-field id="customer">
+        <mat-label>Customer</mat-label>
+        <input matInput value={{pr?.customerName}} readonly>
+    </mat-form-field>
+
+</form>

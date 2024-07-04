@@ -1,0 +1,108 @@
+// @use "@material/theme" with (
+//   $primary: #9c27b0,
+//   $secondary: #76ff03,
+//   $background: #fff,
+// );
+// @use "material-components-web";
+
+
+@use '@angular/material' as mat;
+
+// @use '@material/theme';
+
+// TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
+//  The following line adds:
+//    1. Default typography styles for all components
+//    2. Styles for typography hierarchy classes (e.g. .mat-headline-1)
+//  If you specify typography styles for the components you use elsewhere, you should delete this line.
+//  If you don't need the default component typographies but still want the hierarchy styles,
+//  you can delete this line and instead use:
+//    `@include mat.legacy-typography-hierarchy(mat.define-legacy-typography-config());`
+// @include mat.all-legacy-component-typographies();								//RID50 !!!!
+
+@include mat.legacy-core();														//RID50 !!!!
+
+//@import "@material/theme/mdc-theme";
+
+$cyan-palette: (
+  50: #e0edf6,
+  100: #b3d1e8,
+  200: #80b2d9,
+  300: #4d93ca,
+  400: #267cbe,
+  500: #0065b3,
+  600: #005dac,
+  700: #0053a3,
+  800: #00499a,
+  900: #00378b,
+  A100: #b7ceff,
+  A200: #84abff,
+  A400: #5188ff,
+  A700: #3777ff,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: rgba(black, 0.87),
+    A700: white,
+  )
+);
+
+// $my-primary: mat.define-palette(mat.$deep-purple-palette);
+
+$my-primary: mat.define-palette($cyan-palette);
+$my-accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
+$my-warn: mat.define-palette(mat.$red-palette);
+
+$my-theme: mat.define-light-theme((
+ color: (
+   primary: $my-primary,
+   accent: $my-accent,
+   warn: $my-warn,
+ )
+));
+
+$mdc-theme-primary: mat.get-color-from-palette($my-primary);
+// $mdc-theme-primary: #0065b3;
+// //$mdc-theme-primary: #9c27b0;
+// $mdc-theme-secondary: #f00;
+// $mdc-theme-accent: mat.get-color-from-palette($my-accent);
+$mdc-theme-secondary: mat.get-color-from-palette($my-accent);
+
+// // $mdc-theme-accent: #76ff03;
+// $mdc-theme-warn: #fff;
+$mdc-theme-background: #fff; // White 
+
+@import "@material/theme/mdc-theme";
+// @include angular-material-theme($my-theme);
+
+// .mdc-drawer .mdc-list-item--activated {
+//   //@include list.item-primary-text-ink-color(material-color.$yellow-800);
+//   //color: rgba(238, 0, 0, 0.87);
+
+//   //@include list.item-primary-text-ink-color(--mdc-theme-secondary);
+//   //@include list.item-primary-text-ink-color(var(--mdc-theme-secondary));
+//   //@include list.item-selected-text-color(var(--mdc-theme-secondary));
+
+//   //@include drawer.item-activated-text-ink-color(var(--mdc-theme-secondary));
+//   //@debug var(--mdc-theme-secondary);
+//   //color: theme.$warn;
+//   color: var(--mdc-theme-primary);
+//   $col: --mdc-theme-primary;
+//   @debug $col;
+// }
+
+
+//$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+
+//@include mat.core-theme($my-theme);
+//@include mat.all-legacy-component-themes($my-theme);

@@ -1,0 +1,33 @@
+heroku login
+
+heroku container:login
+
+heroku destroy geoplugin-service --confirm geoplugin-service
+
+heroku create geoplugin-service --region=eu
+	Creating ⬢ geoplugin-service... done
+	https://geoplugin-service.herokuapp.com/ | https://git.heroku.com/geoplugin-service.git
+
+heroku container:push -a geoplugin-service web
+	=== Building web (C:\MicrosoftProjects\SbsApp\geoplugin\Dockerfile)
+	[+] Building 3.8s (12/12) FINISHED
+	................
+	=== Pushing web (C:\MicrosoftProjects\SbsApp\geoplugin\Dockerfile)
+	Using default tag: latest
+	The push refers to repository [registry.heroku.com/geoplugin-service/web]
+	cc61dd3bdd4f: Pushed
+	de9db8213d90: Pushed
+	8fbcbd9c190e: Pushed
+	5f70bf18a086: Pushed
+	6eba222c5638: Pushed
+	0173bef8938f: Pushed
+	b157e0da2944: Pushed
+	bfb6455a0ec4: Pushed
+	0e0d79e2c080: Pushed
+	e9dc98463cd6: Pushed
+	latest: digest: sha256:2895b810ca2852dd85d9f4a82a47468a90dea1ec4da92ef56f69532525349a2e size: 2409
+	Your image has been successfully pushed. You can now release it with the 'container:release' command.
+	
+heroku container:release -a geoplugin-service web
+	Releasing images web to geoplugin-service... done
+	

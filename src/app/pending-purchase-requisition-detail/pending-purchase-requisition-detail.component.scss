@@ -1,0 +1,133 @@
+
+.mat-table {
+    /* display: flex; */
+    /* column-gap: 40px; */
+    /* overflow: auto;
+    width: 100%; */
+    width: 100%;
+    height: 356px;
+    /* margin: 0, 10px; */
+    overflow: auto;
+    margin-top: 10px; 
+  }
+  
+  mat-table{
+    transition: none !important;
+    box-shadow: none !important;
+  }
+
+  .mat-row {
+    height: 40px;
+    min-height: 40px;
+    cursor: pointer;
+    &.highlight {
+      background-color: #ede8f7 !important;
+    }
+  }
+
+  .mat-header-row {
+    height: 32px;
+    min-height: 32px;
+  }
+
+  /* .ng-container {
+    flex: auto;
+  } */
+
+  .mat-form-field {
+    /* font-size: 16px; */
+    /* margin-left: 10px; */
+    width: 100%;
+  }
+  
+  /* td, th {
+    width: 25%;
+  } */
+
+  /* .contract-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+
+    height: 220px;
+    margin: 0, 10px;
+    overflow: auto;
+  } */
+
+  .mat-card-title {
+    margin-bottom: 0 !important;
+  }
+  
+  .mat-table .mat-header-row {
+    // height: 30px !important;
+    max-height: 30px !important;
+  }
+
+  .mat-cell,
+  .mat-header-cell {
+    color: black;
+    margin-right: 20px;
+
+    &:last-child {
+      margin-right: 0px;      
+    }
+  }
+
+  .mat-cell:nth-child(1),
+  .mat-header-cell:nth-child(1) {
+    flex: 5%;
+  }
+
+  .mat-cell:nth-child(2),
+  .mat-header-cell:nth-child(2) {
+    flex: 15%;
+  }
+
+  .mat-cell:nth-child(3),
+  .mat-header-cell:nth-child(3) {
+    flex: 62%;
+    max-width: 350px;
+    //display: inline-block;
+    white-space: nowrap;
+    overflow: auto;
+    //overflow: hidden;
+    //text-overflow: ellipsis;
+    // &:hover {
+    //   //white-space: normal;
+    //   overflow: auto;
+    // }   
+  }  
+
+  .mat-cell:nth-child(4),
+  .mat-header-cell:nth-child(4) {
+    flex: 8%;
+  }  
+
+  .mat-cell:nth-child(5),
+  .mat-header-cell:nth-child(5) {
+    flex: 5%;
+  }  
+
+  /* .mat-cell {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;        
+  } */
+  .mat-cell:nth-child(6),
+  .mat-header-cell:nth-child(6) {
+    flex: 5%;
+    // margin-right: 0px;   
+  }
+
+  .spinner-container {
+    height: 200px;
+    width: 200px;
+    position: fixed;
+    // position: absolute; 
+    z-index: 100;    
+  }
+
+  .spinner-container mat-spinner {
+    margin: 80px auto 0 auto;
+  }
+

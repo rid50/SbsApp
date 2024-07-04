@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div fxLayout="column" fxFlex="0 1 calc(20% - 10px)">
+	<div style="margin-top: 40px; width:300px">
+		<table class="currency-rates" style="table-layout:fixed; border-collapse: separate; border-spacing: 10px; color:Black">
+			<tr><td><div></div></td><td>KUWAITI DINAR</td><td style="border-bottom:1px solid black"><strong id="KWD"> 1 KWD Buys:</strong></td></tr>
+			<tr><td><div></div></td><td>US DOLLAR</td><td><strong id="USD"></strong></td></tr>
+			<tr><td><div></div></td><td>BAHRAINI DINAR</td><td><strong id="BHD"></strong></td></tr>
+			<tr><td><div></div></td><td>OMANI RIYAL</td><td><strong id="OMR"></strong></td></tr>
+			<tr><td><div></div></td><td>QATARI RIYAL</td><td><strong id="QAR"></strong></td></tr>
+			<tr><td><div></div></td><td>SAUDI RIYAL</td><td><strong id="SAR"></strong></td></tr>
+			<tr><td><div></div></td><td>UAE DIRHAMS</td><td><strong id="AED"></strong></td></tr>
+			<tr><td><div></div></td><td>RUSSIAN RUBLE</td><td><strong id="RUB"></strong></td></tr>
+		</table>
+		<br/>
+		<div style="text-align: center"><a href="http://www.geoplugin.com/geolocation/" target="_new">IP Geolocation</a> by <a href="http://www.geoplugin.com/" target="_new">geoPlugin</a></div>
+	</div>        
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fetch-jsonp/1.3.0/fetch-jsonp.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch-jsonp/1.3.0/fetch-jsonp.min.js" integrity="sha512-LfvwUS90R3EGFKdGHf99KospAgXqTHeQeKbRn1wlsxyTi2P2R1nIn84DZO857XlyrDdwXovib2cz66z+8aeSHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+<script>
+//http://www.geoplugin.net/currency_converter.gp?from=KWD&to=USD&amount=1	!!! Does not work
+	const getFetch = async () => {
+
+		//let result = []
+		
+		const codes = ['USD', 'BHD', 'OMR', 'QAR', 'SAR', 'AED', 'RUB'];
+		//const codes = ['USD'];		
+		for (let i = 0; i < codes.length; i++) {	  
+			const params = new URLSearchParams({ from: 'KWD', to: codes[i], amount: 1 })
+			//const url = 'https://www.geoplugin.net/currency_converter.gp?' + params
+			const url = 'https://geopluginservice-sw2qek0j.b4a.run/?' + params	
+			
+/*
+			fetch(url)
+				.then(response => {
+					if (!response.ok) {
+					  throw new Error('Network response was not ok');
+					}
+					return response.data;
+				})
+				.then(data => console.log(data));
+*/	
+	
+			const response = await fetchJsonp(url, {
+				//jsonpCallback: 'jsoncallback',
+				cache: 'no-cache',
+			})
+			.then(response => {
+				//console.log('Response: ' + JSON.stringify(response))
+				return response.json()
+			})
+			.then(data => {
+				//console.log('Data: ' + JSON.stringify(data))
+				$('.currency-rates #' + data.to.code).text(data.to.amount);
+				//result.push(data);
+			})
+			.catch(error => {
+				console.error(error);
+			})
+
+			//if (result.length == 0)
+				//break;
+		//console.log('a3')		
+		}
+		
+		//return result
+	}
+	
+	const getAjax = async () => {
+		$(function () {
+		  const codes = ['USD', 'BHD', 'OMR', 'QAR', 'SAR', 'AED', 'RUB'];
+
+		  for (let i = 0; i < codes.length; i++) {
+			$.ajax({
+			  type: 'GET',
+			  contentType: 'application/json; charset=utf-8',
+			  dataType: 'jsonp',
+			  url: 'http://www.geoplugin.net/currency_converter.gp?jsoncallback=?',
+			  //url: 'http://localhost:3000',
+			  //url: 'https://geoplugin-service.herokuapp.com',
+			  data: { from: 'KWD', to: codes[i] },
+			  //data: { from: 'KWD', to: codes[i], amount: 1 },
+			  async: true, //Cross-domain requests and dataType: "jsonp" requests do not support synchronous operation
+			  timeout: 3000,
+			  success: function (data) {
+				//console.log('success:' + JSON.stringify(data))
+				$('.currency-rates #' + data.to.code).text(data.to.amount);
+			  }
+			});
+		  }
+		});
+	}	
+	
+	getFetch();	
+	
+	//getAjax();
+</script>
+
+</body>
+</html>	

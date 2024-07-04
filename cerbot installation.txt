@@ -1,0 +1,62 @@
+wsl
+sudo certbot -d sbs-api.yaruss.co.uk --manual --preferred-challenges dns certonly
+sudo certbot -d sbs-api.yaruss.co.uk --manual --preferred-challenges http certonly
+sudo certbot -d sbs-api.yaruss.co.uk --webroot -w httpdocs/ --preferred-challenges http certonly
+sudo certbot certonly --standalone --preferred-challenges http -d sbs-api.yaruss.co.uk
+
+sudo certbot -d sbs-api.yaruss.co.uk --webroot -w G:/PleskVhosts/yaruss.co.uk --preferred-challenges http certonly
+
+--------- ************************************************************************************************************************
+roman@lenovo-pc:/mnt/c/WINDOWS/system32$ sudo certbot -d sbs-api.yaruss.co.uk --manual --preferred-challenges http certonly
+[sudo] password for roman:
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Plugins selected: Authenticator manual, Installer None
+Obtaining a new certificate
+Performing the following challenges:
+http-01 challenge for sbs-api.yaruss.co.uk
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+NOTE: The IP of this machine will be publicly logged as having requested this
+certificate. If you're running certbot in manual mode on a machine that is not
+your server, please ensure you're okay with that.
+
+Are you OK with your IP being logged?
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+(Y)es/(N)o: Y
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Create a file containing just this data:
+
+aJBuPw29VHJAWemVORtszmbFVAJ-MVIE6LVe8JWzssI.C9OVjbomrMt5v16reLOqx_Ie1M65Mt_2PlyG1V_yj0E
+
+And make it available on your web server at this URL:
+
+http://sbs-api.yaruss.co.uk/.well-known/acme-challenge/aJBuPw29VHJAWemVORtszmbFVAJ-MVIE6LVe8JWzssI
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Press Enter to Continue
+Waiting for verification...
+Cleaning up challenges
+
+IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at:
+   /etc/letsencrypt/live/sbs-api.yaruss.co.uk/fullchain.pem
+   Your key file has been saved at:
+   /etc/letsencrypt/live/sbs-api.yaruss.co.uk/privkey.pem
+   Your cert will expire on 2022-03-15. To obtain a new or tweaked
+   version of this certificate in the future, simply run certbot
+   again. To non-interactively renew *all* of your certificates, run
+   "certbot renew"
+ - If you like Certbot, please consider supporting our work by:
+
+   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+   Donating to EFF:                    https://eff.org/donate-le
+
+roman@lenovo-pc:/mnt/c/WINDOWS/system32$
+
+--------- ************************************************************************************************************************
+
+roman@lenovo-pc:/mnt$ chmod -R 755 /etc/letsencrypt/live/
+
+roman@lenovo-pc:/mnt$ sudo cat /etc/letsencrypt/live/sbs-api.yaruss.co.uk/fullchain.pem
+roman@lenovo-pc:/mnt$ sudo cat /etc/letsencrypt/live/sbs-api.yaruss.co.uk/privkey.pem

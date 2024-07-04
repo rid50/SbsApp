@@ -1,0 +1,160 @@
+// used in material-drawer.component.scss
+
+// $font-family: "Roboto, sans-serif";
+// $font-size: 20px;
+// $font-size2: 16px;
+
+// @use "@material/typography" with (
+//     $font-family: unquote($font-family)
+// //    $font-family: unquote("Arial, Helvetica, sans-serif"),
+//     // $font-size: 24px
+// );
+
+// @use "@material/typography" with (
+//   $styles-headline6: (
+//     font-family: unquote($font-family),
+//     font-size: $font-size
+//   ),
+//   $styles-subtitle1: (
+//     font-family: unquote($font-family),
+//     font-size: $font-size2,
+//     // line-height: 2.5rem,
+//     height: 3rem
+//   )
+// );
+
+// @use "@material/typography/mdc-typography";
+
+// @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
+//$mdc-typography-font-family: unquote("Times New Roman, Helvetica Neue, sans-serif");
+$mdc-typography-font-family: unquote("Roboto, Helvetica Neue, sans-serif");
+
+
+$mdc-typography-styles-headline1: (
+  font-family: unquote("Arial, Helvetica, sans-serif"),
+  font-size: 1.25rem
+);
+$mdc-typography-styles-headline2: (
+  font-family: unquote("Arial, Helvetica, sans-serif"),
+  font-size: 1.25rem
+);
+
+$mdc-typography-styles-headline3: (
+  font-family: unquote("Arial, Helvetica, sans-serif"),
+  font-size: 1.25rem
+);
+
+$mdc-typography-styles-headline4: (
+  font-family: unquote("Arial, Helvetica, sans-serif"),
+  font-size: 1.25rem
+);
+
+$mdc-typography-styles-headline5: (
+  font-family: unquote("Arial, Helvetica, sans-serif"),
+  font-size: 1.25rem
+);
+
+$mdc-typography-styles-headline6: (
+  font-family: unquote("Arial, Helvetica, sans-serif"),
+  font-size: 1.25rem
+);
+
+$mdc-typography-styles-subtitle1: (
+  font-family: unquote("Arial, Helvetica, sans-serif"),
+  font-size: 1.25rem
+);
+
+$mdc-typography-styles-subtitle2: (
+  font-family: unquote("Arial, Helvetica, sans-serif"),
+  font-size: 1.25rem
+);
+
+$mdc-typography-styles-body1: (
+  font-family: unquote("Arial, Helvetica, sans-serif"),
+  font-size: 1.25rem
+);
+
+$mdc-typography-styles-body2: (
+  font-family: unquote("Arial, Helvetica, sans-serif"),
+  font-size: 1.25rem
+);
+
+$mdc-typography-styles-caption: (
+  font-family: unquote("Arial, Helvetica, sans-serif"),
+  font-size: 1.25rem
+);
+
+$mdc-typography-styles-button: (
+  font-family: unquote("Arial, Helvetica, sans-serif"),
+  font-size: 3.25rem
+);
+
+$mdc-typography-styles-overline: (
+  font-family: unquote("Arial, Helvetica, sans-serif"),
+  font-size: 3.25rem
+);
+
+@import'@material/typography/mdc-typography';
+
+// @include mdc-typography.core-styles;
+
+// @use '@material/typography' with (
+//   $font-family: unquote('Roboto Condensed'),
+// );
+
+
+// @use '@material/typography/mdc-typography';
+
+// @use "@material/typography" with (
+//   $styles-body1: (
+//     font-family: unquote("Times New Roman, Helvetica, sans-serif")
+//   ),
+//   $styles-body2: (
+//     font-family: unquote("Times New Roman, Helvetica, sans-serif"),
+//     font-size: 3.25rem
+//   )
+// );
+
+// $mdc-typography-font-family: unquote("Times New Roman, Helvetica Neue, sans-serif");
+
+// @use "@material/typography/mdc-typography";
+
+// @use '@material/typography/mdc-typography';
+//@use '~@material/typography';
+
+// @use '@material/typography' with (
+//   $font-family: unquote('Roboto Condensed'),
+// );
+// @include typography.core-styles;
+// //@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,500');
+
+// @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+// $mdc-typography-font-family: unquote("Josefin Sans, sans-serif");
+
+// $mdc-typography-styles-headline6: (
+//   font-family: unquote("Roboto Condensed"),
+//   font-size: 96
+// );
+
+// @import '@material/typography/mdc-typography';
+// @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,500');
+
+// $mdc-typography-font-family: "Times New Roman", Helvetica, sans-serif;
+// // $mdc-typography-font-family: "Arial", Helvetica, sans-serif;
+// @import "@material/typography/mdc-typography";
+
+// @use "@material/typography" with (
+//     // $styles-headline6: (
+//       $font-family: unquote("Times New Roman, Helvetica, sans-serif"),
+//     //   $font-size: 24px
+//     // )
+// );
+
+// //@use "@material/headline6";
+// @include typography.core-styles;
+
+// @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,500');
+
+//$font-family: '"Open Sans", "Helvetica Neue", sans-serif',
+
