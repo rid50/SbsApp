@@ -5,10 +5,17 @@
 
 @use './styles.css';
 
-//@use './themes.scss';
+@use './themes.scss';
 
-@use './mat-typography';
+//@use './mat-typography';
 @use './mdc-typography';
+
+
+//@use '@angular/material' as mat;
+
+//@include mat.core();
+//@include mat.legacy-core(); // this is the important line
+
 
 // @use '@material/typography' with (
 //   $font-family:  unquote("Times New Roman, Helvetica Neue, sans-serif")

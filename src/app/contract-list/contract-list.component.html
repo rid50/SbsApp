@@ -1,5 +1,7 @@
-<div fxLayout="row" fxLayoutGap="10px">
-  <div fxLayout="column" fxFlex="0 1 calc(80% - 10px)">
+<!-- <div fxLayout="row" fxLayoutGap="10px"> -->
+<div class="flex flex-row">
+  <!-- <div fxLayout="column" fxFlex="0 1 calc(80% - 10px)"> -->
+  <div class="grow" style="margin-right: 10px;">
     <form #testForm="ngForm" (ngSubmit)="testForm.form.valid" novalidate>
       <!-- <mat-card> -->
       <!-- <mat-card-header>
@@ -140,7 +142,8 @@
     </form>
     <app-contract-detail-list [contractId]="contractId"></app-contract-detail-list>
   </div>
-  <div fxLayout="column" fxFlex="0 1 calc(20% - 10px)">
+  <!-- <div fxLayout="column" fxFlex="0 1 calc(20% - 10px)"> -->
+  <div>
     <app-contract-form-entry [contract]="contract"></app-contract-form-entry>
   </div>
 </div>

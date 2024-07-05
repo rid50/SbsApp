@@ -1,4 +1,5 @@
 @use '@angular/material' as mat;
+@use 'sass:math';
 
 @import '@angular/material/theming';
 // @use '~@angular/material/theming';
@@ -21,7 +22,7 @@ $font-size-caption: mat-font-size($config, 'caption');
 $font-size-button: mat-font-size($config, 'button');
 // $font-size-input: mat-font-size($config, 'input');     //inherit
 
-$delta: 25 / 100; // %
+$delta: math.div(25, 100); // %
 
 // @debug $delta;
 // @debug $font-size-title;

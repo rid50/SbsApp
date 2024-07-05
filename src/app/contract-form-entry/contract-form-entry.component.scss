@@ -11,7 +11,7 @@
   // }
 
   mat-drawer-content {
-    //padding: 4px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
 
@@ -26,8 +26,9 @@
   // }
 
   .entry-form {
-    margin: 30px 20px 0px 10px;
-    width: 250px !important;
-    // margin-top: 40px;
+    //padding: 30px 10px 0px 0px;
+	
+    //width: 250px !important;
+    margin-top: 40px;
     // margin-right: 10px;
   }

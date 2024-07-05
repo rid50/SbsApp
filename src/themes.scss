@@ -7,7 +7,7 @@
 
 
 @use '@angular/material' as mat;
-
+@use "@material/theme/mdc-theme";
 // @use '@material/theme';
 
 // TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
@@ -18,9 +18,11 @@
 //  If you don't need the default component typographies but still want the hierarchy styles,
 //  you can delete this line and instead use:
 //    `@include mat.legacy-typography-hierarchy(mat.define-legacy-typography-config());`
-// @include mat.all-legacy-component-typographies();								//RID50 !!!!
 
-@include mat.legacy-core();														//RID50 !!!!
+@include mat.all-legacy-component-typographies();								//RID50 !!!!
+
+@include mat.core();
+@include mat.legacy-core();
 
 //@import "@material/theme/mdc-theme";
 
@@ -68,7 +70,9 @@ $my-theme: mat.define-light-theme((
    primary: $my-primary,
    accent: $my-accent,
    warn: $my-warn,
- )
+ ),
+ typography: mat.define-typography-config(),
+ density: 0, 
 ));
 
 $mdc-theme-primary: mat.get-color-from-palette($my-primary);
@@ -82,8 +86,8 @@ $mdc-theme-secondary: mat.get-color-from-palette($my-accent);
 // $mdc-theme-warn: #fff;
 $mdc-theme-background: #fff; // White 
 
-@import "@material/theme/mdc-theme";
-// @include angular-material-theme($my-theme);
+//@import "@material/theme/mdc-theme";
+//@include angular-material-theme($my-theme);
 
 // .mdc-drawer .mdc-list-item--activated {
 //   //@include list.item-primary-text-ink-color(material-color.$yellow-800);
@@ -105,4 +109,5 @@ $mdc-theme-background: #fff; // White
 //$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
 
 //@include mat.core-theme($my-theme);
-//@include mat.all-legacy-component-themes($my-theme);
+//@include mat.all-component-themes($my-theme);
+@include mat.all-legacy-component-themes($my-theme);
