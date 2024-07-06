@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {Injectable} from '@angular/core'
-import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from '@angular/router'
+import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router'
 import {Observable} from 'rxjs'
 import {IContract} from '../models/contract'
 import {ContractService} from './contract.service'
@@ -8,7 +8,7 @@ import {ContractService} from './contract.service'
 
 
 @Injectable()
-export class ContractResolver implements Resolve<IContract> {
+export class ContractResolver  {
 
     constructor(private contractService:ContractService) {}
 
