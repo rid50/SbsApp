@@ -7,7 +7,10 @@
 
 
 @use '@angular/material' as mat;
-@use "@material/theme/mdc-theme";
+
+@include mat.core();
+
+//@use "@material/theme/mdc-theme";
 // @use '@material/theme';
 
 // TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
@@ -19,10 +22,11 @@
 //  you can delete this line and instead use:
 //    `@include mat.legacy-typography-hierarchy(mat.define-legacy-typography-config());`
 
-@include mat.all-legacy-component-typographies();								//RID50 !!!!
+//@include mat.all-legacy-component-typographies();
+//@include mat.all-component-typographies();
 
-@include mat.core();
-@include mat.legacy-core();
+//@include mat.core();
+//@include mat.legacy-core();
 
 //@import "@material/theme/mdc-theme";
 
@@ -61,10 +65,36 @@ $cyan-palette: (
 
 // $my-primary: mat.define-palette(mat.$deep-purple-palette);
 
-$my-primary: mat.define-palette($cyan-palette);
-$my-accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
-$my-warn: mat.define-palette(mat.$red-palette);
+//$my-primary: mat.define-palette($cyan-palette);
+//$my-accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
+//$my-warn: mat.define-palette(mat.$red-palette);
+/*
+$theme: mat.define-theme((
+  color: (
+    theme-type: dark,
+    primary: mat.$violet-palette,
+  ),
+  typography: (
+    brand-family: 'Comic Sans',
+    bold-weight: 900
+  ),
+  density: (
+    scale: 0
+  )
+));
+*/
 
+$my-theme: mat.define-theme((
+ color: (
+    theme-type: light,
+    primary: mat.$violet-palette,
+  ),
+));
+
+
+//@include mat.core-theme($my-theme);
+
+/*
 $my-theme: mat.define-light-theme((
  color: (
    primary: $my-primary,
@@ -75,16 +105,16 @@ $my-theme: mat.define-light-theme((
  density: 0, 
 ));
 
-$mdc-theme-primary: mat.get-color-from-palette($my-primary);
+//$mdc-theme-primary: mat.get-color-from-palette($my-primary);
 // $mdc-theme-primary: #0065b3;
 // //$mdc-theme-primary: #9c27b0;
 // $mdc-theme-secondary: #f00;
 // $mdc-theme-accent: mat.get-color-from-palette($my-accent);
-$mdc-theme-secondary: mat.get-color-from-palette($my-accent);
+//$mdc-theme-secondary: mat.get-color-from-palette($my-accent);
 
 // // $mdc-theme-accent: #76ff03;
 // $mdc-theme-warn: #fff;
-$mdc-theme-background: #fff; // White 
+//$mdc-theme-background: #fff; // White 
 
 //@import "@material/theme/mdc-theme";
 //@include angular-material-theme($my-theme);
@@ -105,9 +135,18 @@ $mdc-theme-background: #fff; // White
 //   @debug $col;
 // }
 
+*/
+
+//@include mat.all-component-themes($my-theme);
 
 //$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
 
 //@include mat.core-theme($my-theme);
-//@include mat.all-component-themes($my-theme);
-@include mat.all-legacy-component-themes($my-theme);
+
+html {
+	@include mat.core-theme($my-theme);
+	@include mat.button-theme($my-theme);
+	//@include mat.all-component-themes($my-theme);
+}
+
+//@include mat.all-legacy-component-themes($my-theme);
