@@ -5,7 +5,7 @@
 // );
 // @use "material-components-web";
 
-
+//@use "sass:map";
 @use '@angular/material' as mat;
 
 @include mat.core();
@@ -65,11 +65,11 @@ $cyan-palette: (
 
 // $my-primary: mat.define-palette(mat.$deep-purple-palette);
 
-//$my-primary: mat.define-palette($cyan-palette);
-//$my-accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
-//$my-warn: mat.define-palette(mat.$red-palette);
+$my-primary: mat.m2-define-palette($cyan-palette);
+$my-accent: mat.m2-define-palette(mat.$m2-amber-palette, A200, A100, A400);
+$my-warn: mat.m2-define-palette(mat.$m2-red-palette);
 /*
-$theme: mat.define-theme((
+$theme: mat.define-light-theme((
   color: (
     theme-type: dark,
     primary: mat.$violet-palette,
@@ -83,26 +83,26 @@ $theme: mat.define-theme((
   )
 ));
 */
-
+/*
 $my-theme: mat.m2-define-light-theme((
  color: (
     theme-type: light,
-    primary: mat.$violet-palette,
+    primary: mat.$m2-pink-palette,
   ),
 ));
-
+*/
 //@include mat.all-component-themes($my-theme);
 
 //@include mat.core-theme($my-theme);
 
-/*
-$my-theme: mat.define-light-theme((
+
+$my-theme: mat.m2-define-light-theme((
  color: (
    primary: $my-primary,
    accent: $my-accent,
    warn: $my-warn,
  ),
- typography: mat.define-typography-config(),
+ typography: mat.m2-define-typography-config(),
  density: 0, 
 ));
 
@@ -136,9 +136,9 @@ $my-theme: mat.define-light-theme((
 //   @debug $col;
 // }
 
-*/
 
-@include mat.all-component-themes($my-theme);
+
+//@include mat.all-component-themes($my-theme);
 
 //$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
 
@@ -150,4 +150,26 @@ html {
 	//@include mat.all-component-themes($my-theme);
 }
 
-//@include mat.all-legacy-component-themes($my-theme);
+@include mat.all-component-themes($my-theme);
+
+
+$custom-primary: mat.m2-define-palette(mat.$m2-pink-palette, 700, 500, 900);
+//$custom-accent: mat.m2-define-palette(mat.$m2-blue-grey-palette, A200, A100, A400);
+$custom-accent: mat.m2-define-palette($cyan-palette);
+
+$custom-theme: mat.m2-define-light-theme(
+  (
+    color: (
+	  theme-type: dark,
+      primary: $custom-primary,
+      accent: $custom-accent,
+    ),
+  )
+);
+/*
+.custom-theme {
+  @include mat.button-color($custom-theme);
+  @include mat.progress-spinner-color($custom-theme);
+}
+*/
+//@include mat.all-component-themes($custom-theme);
