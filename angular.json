@@ -92,27 +92,27 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "SbsApp:build"
+            "buildTarget": "SbsApp:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "SbsApp:build:production"
+              "buildTarget": "SbsApp:build:production"
             },
             "en": {
-              "browserTarget": "SbsApp:build:en"
+              "buildTarget": "SbsApp:build:en"
             },
             "fr": {
-              "browserTarget": "SbsApp:build:fr"
+              "buildTarget": "SbsApp:build:fr"
             },
             "ru": {
-              "browserTarget": "SbsApp:build:ru"
+              "buildTarget": "SbsApp:build:ru"
             }                                    
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "SbsApp:build"
+            "buildTarget": "SbsApp:build"
           }
         },
         "test": {
