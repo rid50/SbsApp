@@ -84,13 +84,14 @@ $theme: mat.define-theme((
 ));
 */
 
-$my-theme: mat.define-theme((
+$my-theme: mat.m2-define-light-theme((
  color: (
     theme-type: light,
     primary: mat.$violet-palette,
   ),
 ));
 
+//@include mat.all-component-themes($my-theme);
 
 //@include mat.core-theme($my-theme);
 
@@ -137,15 +138,15 @@ $my-theme: mat.define-light-theme((
 
 */
 
-//@include mat.all-component-themes($my-theme);
+@include mat.all-component-themes($my-theme);
 
 //$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
 
 //@include mat.core-theme($my-theme);
 
 html {
-	@include mat.core-theme($my-theme);
-	@include mat.button-theme($my-theme);
+	//@include mat.core-theme($my-theme);
+	//@include mat.button-theme($my-theme);
 	//@include mat.all-component-themes($my-theme);
 }
 

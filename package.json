@@ -40,7 +40,6 @@
     "@material/menu": "^14.0.0",
     "@material/ripple": "^14.0.0",
     "@material/textfield": "^14.0.0",
-    "@material/theme": "^14.0.0",
     "@material/top-app-bar": "^14.0.0",
     "@material/typography": "^14.0.0",
     "express": "^4.17.1",
