@@ -1,7 +1,7 @@
 import { ErrorHandler, InjectionToken, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //import { FlexLayoutModule } from '@angular/flex-layout';
@@ -51,32 +51,13 @@ import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
 
 export const BaseApiUrlService = new InjectionToken<string>('BaseApiUrlService')
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    DatabaseSchemaComponent,
-    LoadingDialogComponent,
-    ErrorDialogComponent
-  ],
-  imports: [
-    CommonModule,
-    BrowserModule,
-    // AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    //FlexLayoutModule,
-    MatCardModule,
-    MatProgressSpinnerModule,
-    MatDialogModule,
-    MatButtonModule,
-    ToastrModule.forRoot(),
-    //MatDatepickerModule,
-    //MatNativeDateModule,
-    //FormsModule,
-    //ContractModule,
-    MaterialModule,
-  ],
-  exports: [
+@NgModule({ declarations: [
+        AppComponent,
+        DatabaseSchemaComponent,
+        LoadingDialogComponent,
+        ErrorDialogComponent
+    ],
+    exports: [
     // FlexLayoutModule
     //FormsModule,  
     //ReactiveFormsModule,
@@ -85,27 +66,39 @@ export const BaseApiUrlService = new InjectionToken<string>('BaseApiUrlService')
     //MatTabsModule,
     //MatToolbarModule,
     //MatSidenavModule
-  ],
-  //both the NativeDateAdapter and MomentDateAdapter allow ISO 8601 strings to be passed to the datepicker and automatically converted to the proper object type  
-  providers: [
-    { provide: 'BASE_API_URL', useValue: environment.apiUrl },
-    { provide: BaseApiUrlService, useValue: new BehaviorSubject(environment.apiUrl)},
-    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true },
-    { provide: ErrorHandler, useClass: ErrorHandlerService },
-    LoadingDialogService,
-    ErrorDialogService
-    //BaseApiUrlService2,
-    //MatDatepickerModule, 
-    //{provide: 'BASE_API_URL', useValue: environment.apiUrl},
-    //{provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {strict: true}},
-    //{provide: MAT_DATE_LOCALE, useValue: 'ru'},
-    //{provide: LOCALE_ID, useValue: 'ru'},    
-    // // {provide: DateAdapter, useClass: MomentDateAdapter,
-    // //   deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
-    // // },
-    //ContractService,
-    //ContractResolver
-  ],  
-  bootstrap: [AppComponent]
-})
+    ],
+    bootstrap: [AppComponent], imports: [CommonModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+        //FlexLayoutModule,
+        MatCardModule,
+        MatProgressSpinnerModule,
+        MatDialogModule,
+        MatButtonModule,
+        ToastrModule.forRoot(),
+        //MatDatepickerModule,
+        //MatNativeDateModule,
+        //FormsModule,
+        //ContractModule,
+        MaterialModule], providers: [
+        { provide: 'BASE_API_URL', useValue: environment.apiUrl },
+        { provide: BaseApiUrlService, useValue: new BehaviorSubject(environment.apiUrl) },
+        { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true },
+        { provide: ErrorHandler, useClass: ErrorHandlerService },
+        LoadingDialogService,
+        ErrorDialogService
+        //BaseApiUrlService2,
+        //MatDatepickerModule, 
+        //{provide: 'BASE_API_URL', useValue: environment.apiUrl},
+        //{provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {strict: true}},
+        //{provide: MAT_DATE_LOCALE, useValue: 'ru'},
+        //{provide: LOCALE_ID, useValue: 'ru'},    
+        // // {provide: DateAdapter, useClass: MomentDateAdapter,
+        // //   deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
+        // // },
+        //ContractService,
+        //ContractResolver
+        ,
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class AppModule { }

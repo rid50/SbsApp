@@ -2,7 +2,7 @@
 @use 'sass:math';
 
 @import '@angular/material/theming';
-// @use '~@angular/material/theming';
+// @use '@angular/material/theming';
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic&subset=latin-ext');
 // @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
@@ -73,7 +73,7 @@ $custom-typography: mat.define-legacy-typography-config(
 // @include angular-material-typography($custom-typography);
 //@include mat.form-field-typography($custom-typography);
 
-//@import '~@angular/material/theming';
+//@import '@angular/material/theming';
 
 // $secondary-typography: mat-typography-config(
 //   $font-family: 'Comic Sans, sans-serif'
