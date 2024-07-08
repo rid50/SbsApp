@@ -5,10 +5,10 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatLegacyCardModule as MatCardModule } from '@angular/material/legacy-card'; 
-import { MatLegacyProgressSpinnerModule as MatProgressSpinnerModule } from '@angular/material/legacy-progress-spinner';
-import { MatLegacyDialogModule as MatDialogModule } from '@angular/material/legacy-dialog';
-import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
+import { MatCardModule as MatCardModule } from '@angular/material/card'; 
+import { MatProgressSpinnerModule as MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialogModule as MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule as MatButtonModule } from '@angular/material/button';
 import { ToastrModule } from 'ngx-toastr';
 
 import { HttpInterceptorService } from './services/HttpInterceptorService';

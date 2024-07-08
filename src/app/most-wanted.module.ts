@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 //import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatLegacyCardModule as MatCardModule } from '@angular/material/legacy-card'; 
-import { MatLegacyProgressSpinnerModule as MatProgressSpinnerModule } from '@angular/material/legacy-progress-spinner';
+import { MatCardModule as MatCardModule } from '@angular/material/card'; 
+import { MatProgressSpinnerModule as MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { MostWantedComponent } from './most-wanted/most-wanted.component';
 import { CriminalListComponent } from './criminal-list/criminal-list.component';

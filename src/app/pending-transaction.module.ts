@@ -5,10 +5,10 @@ import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { ScrollingModule } from '@angular/cdk/scrolling'; 
 
 import { MatSortModule } from '@angular/material/sort';
-import { MatLegacyTableModule as MatTableModule } from '@angular/material/legacy-table';
-import { MatLegacyFormFieldModule as MatFormFieldModule } from '@angular/material/legacy-form-field';
-import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
-import { MatLegacyProgressSpinnerModule as MatProgressSpinnerModule } from '@angular/material/legacy-progress-spinner';
+import { MatTableModule as MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule as MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule as MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule as MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { PendingTransactionComponent } from './pending-transaction/pending-transaction.component';
 import { ContractAccordionComponent } from './contract-accordion/contract-accordion.component';

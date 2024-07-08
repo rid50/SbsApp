@@ -7,9 +7,9 @@ import { merge, fromEvent } from 'rxjs';
 import { debounceTime, distinctUntilChanged, startWith, tap, delay } from 'rxjs/operators';
 import { catchError, map, skip, finalize } from 'rxjs/operators'
 
-import { MatLegacyPaginator as MatPaginator, LegacyPageEvent as PageEvent } from '@angular/material/legacy-paginator';
+import { MatPaginator as MatPaginator, PageEvent as PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatLegacyCell as MatCell, MatLegacyCellDef as MatCellDef, MatLegacyRow as MatRow, MatLegacyRowDef as MatRowDef, MatLegacyTable as MatTable, MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
+import { MatCell as MatCell, MatCellDef as MatCellDef, MatRow as MatRow, MatRowDef as MatRowDef, MatTable as MatTable, MatTableDataSource as MatTableDataSource } from '@angular/material/table';
 
 import * as _moment from 'moment';
 
@@ -24,7 +24,7 @@ import { ContractDataSource } from '../services/contract.datasource';
 import { NgForOf } from '@angular/common';
 import { DateAdapter, MatRipple } from '@angular/material/core';
 import { isNgTemplate } from '@angular/compiler';
-import { MatLegacyInput as MatInput } from '@angular/material/legacy-input';
+import { MatInput as MatInput } from '@angular/material/input';
 //import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { CdkColumnDef, CdkRowDef } from '@angular/cdk/table';
 import { SelectionModel } from '@angular/cdk/collections';

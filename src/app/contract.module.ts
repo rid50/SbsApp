@@ -17,17 +17,17 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/materia
 import { MAT_RIPPLE_GLOBAL_OPTIONS, RippleGlobalOptions } from '@angular/material/core';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatLegacyTabsModule as MatTabsModule } from '@angular/material/legacy-tabs';
+import { MatTabsModule as MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatLegacyListModule as MatListModule } from '@angular/material/legacy-list';
-import { MatLegacyMenuModule as MatMenuModule } from '@angular/material/legacy-menu';
+import { MatListModule as MatListModule } from '@angular/material/list';
+import { MatMenuModule as MatMenuModule } from '@angular/material/menu';
 
-import { MatLegacyCardModule as MatCardModule } from '@angular/material/legacy-card';
+import { MatCardModule as MatCardModule } from '@angular/material/card';
 import { MatSortModule } from '@angular/material/sort';
-import { MatLegacyTableModule as MatTableModule } from '@angular/material/legacy-table';
-import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
-import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
-import { MatLegacySelectModule as MatSelectModule } from '@angular/material/legacy-select';
+import { MatTableModule as MatTableModule } from '@angular/material/table';
+import { MatButtonModule as MatButtonModule } from '@angular/material/button';
+import { MatInputModule as MatInputModule } from '@angular/material/input';
+import { MatSelectModule as MatSelectModule } from '@angular/material/select';
 import { MatRippleModule } from '@angular/material/core'; 
 
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -36,9 +36,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 //npm i @angular/material-moment-adapter
 //npm i moment
 import { MAT_MOMENT_DATE_FORMATS, MatMomentDateModule, MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
-import { MatLegacyFormFieldModule as MatFormFieldModule } from '@angular/material/legacy-form-field';
-import { MatLegacyPaginatorModule as MatPaginatorModule } from '@angular/material/legacy-paginator';
-import { MatLegacyProgressSpinnerModule as MatProgressSpinnerModule } from '@angular/material/legacy-progress-spinner';
+import { MatFormFieldModule as MatFormFieldModule } from '@angular/material/form-field';
+import { MatPaginatorModule as MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule as MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon'; 
 
 import { ContractListComponent } from './contract-list/contract-list.component';

@@ -1,7 +1,7 @@
 import { CollectionViewer, DataSource } from '@angular/cdk/collections'
 import { Component, Inject, Injectable } from '@angular/core'
 import { EventEmitter, Output } from '@angular/core'
-import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table'
+import { MatTableDataSource as MatTableDataSource } from '@angular/material/table'
 import { Observable, BehaviorSubject, of, throwError } from 'rxjs'
 import { catchError, finalize, map, tap } from 'rxjs/operators'
 import { isTemplateExpression } from 'typescript'
