@@ -1,0 +1,97 @@
+<div>
+  <!-- <aside class="mdc-drawer mdc-drawer--modal"> -->
+  <aside class="mdc-drawer mdc-drawer--dismissible">
+    <a href='http://www.nanotex-group.com' target="_blank">
+      <div class="mdc-card my-card-content">
+        <div class="mdc-card__primary-action">
+          <div class="my-card__media mdc-card__media mdc-card__media--16-9"></div>
+          <div class="my-card__media2 mdc-card__media mdc-card__media"></div>
+          <!-- <div>
+          <h2 class="mdc-typography--title">My mail</h2>
+          <h3 class="mdc-typography--subheading1">rdavidenko@gmail.com</h3>
+        </div> -->
+        </div>
+      </div>
+    </a>
+
+    <div class="mdc-drawer__content" style="padding-top:10px">
+      <nav class="mdc-list" id="my-list" role="list">
+        <a class="mdc-list-item mdc-list-item--activated" role="listitem" tabindex="0" routerLink="/dbSchema"
+          color="accent" aria-selected="true" aria-current="page">
+          <span class="mdc-list-item__ripple"></span>
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">schema</i>
+          <span i18n class="mdc-list-item__text">Microsoft SQL Server Database Schema Design</span>
+        </a>
+        <a class="mdc-list-item" role="listitem" tabindex="-1" routerLink="/contract"
+          color="accent" aria-selected="true" aria-current="page">
+          <span class="mdc-list-item__ripple"></span>
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">list</i>
+          <span i18n class="mdc-list-item__text">Sales Document Flow</span>
+        </a>
+        <a class="mdc-list-item" role="listitem" tabindex="-1" routerLink="/pending-transaction" aria-selected="false"
+          aria-current="page">
+          <span class="mdc-list-item__ripple"></span>
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">inventory</i>
+          <span i18n class="mdc-list-item__text">Pending Transactions</span>
+          <!-- <span i18n class="mdc-list-item__text">Pending Purchase Requisition</span> -->
+        </a>
+        <a class="mdc-list-item" role="listitem" tabindex="-1" routerLink="/most-wanted" aria-selected="false"
+          aria-current="page">
+          <span class="mdc-list-item__ripple"></span>
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">favorite</i>
+          <span i18n class="mdc-list-item__text">The most wanted</span>
+        </a>
+      </nav>
+    </div>
+  </aside>
+
+  <div class="mdc-drawer-app-content">
+    <header class="mdc-top-app-bar app-bar" id="app-bar">
+      <div class="mdc-top-app-bar__row">
+        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+
+          <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button"
+            aria-label="Open navigation menu">menu
+          </button>
+
+          <div class="my-card__media3 mdc-card__media mdc-card__media"></div>
+          <span i18n class="mdc-top-app-bar__title">Sales Back Office (Angular Material {{version.full}} App)</span>
+
+        </section>
+
+        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+
+          <mat-icon>language</mat-icon>
+          <button style="padding: 12px 0px" class="material-icons mdc-top-app-bar__action-item mdc-icon-button"
+            [matMenuTriggerFor]="menu" aria-label="Language">arrow_drop_down</button>
+          <span style="padding-left: 0px; padding-right: 20px" class="mdc-top-app-bar__title">{{siteLanguage}}</span>
+
+
+          <mat-menu #menu="matMenu">
+            <a mat-menu-item href="/en">English</a>
+            <a mat-menu-item href="/fr">Français</a>
+            <a mat-menu-item href="/ru">Russian</a>
+          </mat-menu>
+
+          <!-- <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button"
+            aria-label="Favorite">search</button> -->
+          <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button"
+            aria-label="Login">login</button>
+
+        </section>
+
+
+
+      </div>
+    </header>
+
+    <main class="main-content" id="main-content">
+      <div class="mdc-top-app-bar--fixed-adjust">
+
+        <router-outlet/>
+
+
+      </div>
+    </main>
+  </div>
+</div>

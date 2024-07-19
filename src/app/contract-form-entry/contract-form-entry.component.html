@@ -1,0 +1,68 @@
+<!-- <mat-card> -->
+  <!-- <div class="entry-form mat-h3"> -->
+  <div class="entry-form">
+    <!-- <p>{{contractId}}</p> -->
+    <!-- <mat-toolbar color="primary">
+      <div>Material Theme</div>
+      <div class="mat-caption">Material Theme</div>
+    </mat-toolbar> -->
+  <!-- <div class="mat-body-2"> -->
+    <mat-drawer-container>
+      <!-- <mat-drawer-container class="example-container" [hasBackdrop]="hasBackdrop.value"> -->
+      <!-- <mat-drawer #drawer [mode]="mode.value">I'm a drawer</mat-drawer> -->
+      <mat-drawer-content>
+
+        <!-- <span>Locale is {{loc}}</span> -->
+        
+        <mat-form-field>
+          <input matInput type="text" placeholder="Contract Id" value={{contract?.contractId}} #input readonly>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput name="contractName" id="contractName" placeholder="Contract Name" 
+            [(ngModel)]="contract.contractName" required>
+        </mat-form-field>
+
+        <!-- <mat-form-field *ngIf="contract != undefined">
+          <input matInput placeholder="Date Entry" name="dateEntry" id="dateEntry"
+            (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)"            
+            [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field> -->
+
+        <mat-form-field *ngIf="contract != undefined">
+          <input matInput #dateEntry="ngModel" placeholder="Date Entry" name="dateEntry" id="dateEntry"
+            [(ngModel)]="contract.dateEntry" 
+            (dateChange)="dateChange($event)"
+            [max]="todaysDate" [matDatepicker]="picker" required>
+            <!-- (ngModelChange)="contract.dateEntry = $event" -->
+            <!-- (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)"      -->
+            <!-- (blur)="setDatepicker($event.target.value)"  (change)="change($event)" -->
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="dateEntry?.invalid">
+            <div *ngIf="dateEntry.errors.required">Entry date is required</div>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput type="text" placeholder="Contract Value" 
+            [ngModel]="contract.contractValue | number" 
+            (ngModelChange)="contract.contractValue=$event" 
+            (blur)="onBlurEvent($event)" required>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Currency</mat-label>
+          <mat-select [(value)]="selected" (selectionChange)="onSelectionChange($event.value)">
+          <!-- <mat-select #mode  [(value)]="selected" (blur)="onBlurEvent($event)"> -->
+            <mat-option value="US$">US$</mat-option>
+            <mat-option value="KD">KD</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-drawer-content>
+    </mat-drawer-container>
+  </div>
+<!-- </div> -->
+<!-- </mat-card> -->

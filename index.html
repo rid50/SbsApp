@@ -1,0 +1,14 @@
+<html>
+<head>
+<script>
+    let userLang = navigator.language || navigator.userLanguage; 
+    console.log('userLang:' + userLang);
+    if (userLang != null && typeof userLang !== undefined && userLang.includes('fr')) {
+        userLang = 'fr';
+    } else {
+        userLang = 'en';
+    }
+    window.location.href = window.location.href + '/' + userLang;
+</script>
+</head>
+</html>

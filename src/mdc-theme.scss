@@ -1,0 +1,25 @@
+/*
+@use "@material/theme" with (
+  $primary: #fcb8ab,
+  $secondary: #feeae6,
+  $on-primary: #442b2d,
+  $on-secondary: #442b2d,
+);
+//@use "@material/button/mdc-button";
+*/
+
+
+
+@use "@material/drawer";
+@use "@material/drawer/mdc-drawer";
+
+@use "@material/top-app-bar"; // namespace top-app-bar contains fill-color mixin
+@use "@material/top-app-bar/mdc-top-app-bar"; // contains CSS classes
+
+.app-bar {
+  //@include top-app-bar.fill-color(#0065b3);
+  @include top-app-bar.fill-color(darkcyan);
+}
+
+
+//@use "@material/drawer/mdc-drawer";

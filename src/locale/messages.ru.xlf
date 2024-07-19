@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="65822721fbb912ab5fc5342192ce2b67ae5575e2" datatype="html">
+        <source>Sales Document Flow</source>
+        <target>Торговая документация</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/material-drawer/material-drawer.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7025c7282280f7e51593edb27f09d2d5c8f670b3" datatype="html">
+        <source>Pending Purchase Requisition</source>
+        <target>Незавершенная заявка на покупку </target>        
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/material-drawer/material-drawer.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ad197b7e5e9d5ab755ffbf6d22b4ebaa9012b814" datatype="html">
+        <source>Statistical Analysis</source>
+        <target>Статистический анализ</target>        
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/material-drawer/material-drawer.component.html</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="83d1ec7c7a53d0d86c8e35ba67c180c721f772ca" datatype="html">
+        <source>Sales Back Office (Angular Material <x id="INTERPOLATION" equiv-text="{{version.full}}"/> App)</source>
+        <target>Бэк офис отдела продаж (Angular Material <x id="INTERPOLATION" equiv-text="{{version.full}}"/> App)</target>        
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/material-drawer/material-drawer.component.html</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

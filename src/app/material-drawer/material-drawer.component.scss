@@ -1,0 +1,220 @@
+
+//@use "../../mdc-typography";
+
+//@use "@material/icon-button";
+
+//@use '@angular/material' as mat;
+
+
+$cyan-palette: (
+  50: #e0edf6,
+  100: #b3d1e8,
+  200: #80b2d9,
+  300: #4d93ca,
+  400: #267cbe,
+  500: #0065b3,
+  600: #005dac,
+  700: #0053a3,
+  800: #00499a,
+  900: #00378b,
+  A100: #b7ceff,
+  A200: #84abff,
+  A400: #5188ff,
+  A700: #3777ff,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: rgba(black, 0.87),
+    A700: white,
+  )
+);
+
+//$my-primary: mat.define-palette($cyan-palette);
+//$my-accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
+//$my-warn: mat.define-palette(mat.$red-palette);
+/*
+$my-theme: mat.define-light-theme((
+ color: (
+   primary: $my-primary,
+   accent: $my-accent,
+   warn: $my-warn,
+ )
+));
+*/
+//$mdc-theme-primary: mat.get-color-from-palette($my-primary);
+// $mdc-theme-primary: #0065b3;
+// //$mdc-theme-primary: #9c27b0;
+// $mdc-theme-secondary: #f00;
+// $mdc-theme-accent: mat.get-color-from-palette($my-accent);
+//$mdc-theme-secondary: mat.get-color-from-palette($my-accent);
+
+// // $mdc-theme-accent: #76ff03;
+// $mdc-theme-warn: #fff;
+$mdc-theme-background: #fff; // White 
+
+//@use "@material/theme/mdc-theme";
+
+
+
+/*
+@use "@material/theme" with (
+  $primary: #fcb8ab,
+  $secondary: #feeae6,
+  $on-primary: #442b2d,
+  $on-secondary: #442b2d,
+);
+--mdc-theme-primary
+--mdc-theme-accent
+--mdc-theme-background
+*/
+
+//@use "@material/button/mdc-button";
+
+@use "@material/icon-button/mdc-icon-button";
+//@use "@material/top-app-bar";
+
+//@use '@material/theme/color-palette' as material-color;
+
+@use "@material/drawer";
+@use "@material/drawer/mdc-drawer";
+
+@use "@material/top-app-bar"; // namespace top-app-bar contains fill-color mixin
+@use "@material/top-app-bar/mdc-top-app-bar"; // contains CSS classes
+
+//@use "@material/list";
+//@use "@material/list/_index" as list;
+//@use "@material/list/mdc-list";
+
+@use "@material/list/evolution-mixins" as list;
+
+@use "@material/textfield";
+
+@use "@material/card";
+
+//@include mat.core();
+
+//@include mat.all-component-themes($my-theme);
+
+@include drawer.core-styles;
+@include drawer.dismissible-core-styles;
+@include list.core-styles();
+//@include list.deprecated-core-styles();
+@include card.core-styles;
+
+:host {
+	--my-primary-color: #0065b3;
+}
+
+
+#app-bar {
+  @include top-app-bar.fill-color(var(--my-primary-color));
+  //@include top-app-bar.fill-color(darkcyan);
+}
+
+/*
+.mdc-list-item {
+  //@include list.deprecated-item-selected-text-color(#0065b3);
+  //@include list.list-selected-ink-color(#0065b3);
+  @include list.list-selected-meta-text-ink-color(#0065b3);
+}
+*/
+    //background: #bddbfa linear-gradient(to bottom, #bddbfa 5%, #80b5ea 100%);
+
+
+
+.mdc-list-item {
+	--mdc-theme-primary: var(--my-primary-color);
+	--mdc-theme-on-primary: var(--mdc-theme-text-primary-on-light);
+	--mdc-theme-accent: darksalmon;
+}
+			
+//@use "@material/floating-label/mdc-floating-label";
+//@use "@material/line-ripple/mdc-line-ripple";
+//@use "@material/notched-outline/mdc-notched-outline";
+//@use "@material/textfield";
+
+//@use '@material/top-app-bar/_index' as top-app-bar;
+//@use '@material/theme/color-palette' as material-color;
+//@use "@material/card";
+
+//@use "@material/list/evolution-mixins" as list-evolution-mixins;
+//@include list-evolution-mixins.core-styles();
+
+//@include mdc-drawer-fill-color-accessible(primary);
+
+//@include icon-button.core-styles;
+//@include drawer.core-styles;
+//@include drawer.dismissible-core-styles;
+
+//@include drawer.modal-core-styles;		//????????????????????????
+//@include list.core-styles;
+
+//@include list.deprecated-core-styles;
+//@include mdc-list.core-styles;
+//@include card.core-styles;
+
+.mdc-drawer-app-content {
+  position: relative;
+}
+
+a.mdc-list-item {
+  margin-bottom: 10px !important;
+}
+
+.main-content {
+  margin-left: 10px;
+}
+
+#app-bar {
+  position: absolute;
+}
+
+.my-card-content {
+  padding: 10px;
+}
+
+.my-card__media {
+  padding: 55px;
+  background-image: url("../../assets/NanoteX.jpg");
+}
+
+.my-card__media2 {
+  padding: 10px 0px;
+  display: flex;
+  justify-content: center;  
+  background-image: url("../../assets/NanoteX-phones.jpg");
+}
+
+.my-card__media3 {
+  width:48px;
+  height:48px;
+  background-image: url("../../assets/letsencrypt.png");
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+// .material-icons {
+//   vertical-align:middle;
+//   // display: flex;
+//   // align-items: center;
+//   // justify-content: center;
+// }
+
+/*
+// Only apply this style if below top app bar.
+.mdc-top-app-bar {
+  z-index: 7;
+}
+*/

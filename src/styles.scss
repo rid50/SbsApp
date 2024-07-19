@@ -1,0 +1,52 @@
+@use './themes.scss';
+//@use './mdc-theme';
+
+
+//@use './mat-typography';
+//@use './mdc-typography';
+
+
+//@use '@angular/material' as mat;
+
+//@include mat.core();
+//@include mat.legacy-core(); // this is the important line
+
+
+// @use '@material/typography' with (
+//   $font-family:  unquote("Times New Roman, Helvetica Neue, sans-serif")
+// );
+
+// @include typography.core-styles;
+
+// :root {
+//     --mdc-typography-font-family: "Roboto Condensed";
+// }
+
+// @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,500');
+
+// $mdc-typography-font-family: unquote("Times New Roman, Helvetica Neue, sans-serif");
+// @import'~@material/typography/mdc-typography';
+
+// @import './mdc-typography';
+//@use './styles/body';
+
+// @use '@material/theme' with (
+//   $primary: #ee0000,
+//   //$primary: #6200ee,
+//   $secondary: #faab1a,
+//   $background: #fff,
+// );
+
+// MDC Typography
+//@use '@material/typography/mdc-typography';
+
+// MDC Button
+//@use './styles/button';
+
+// MDC Drawer
+//@use './styles/drawer';
+
+// Angular MDC
+// @use '@angular-mdc/theme/material';
+
+//@import '@material/top-app-bar;

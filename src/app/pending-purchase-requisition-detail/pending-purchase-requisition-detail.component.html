@@ -1,0 +1,44 @@
+<div class="spinner-container" *ngIf="loading$ | async">
+    <mat-spinner diameter="100" strokeWidth="10"></mat-spinner>
+</div>
+
+<div class="mat-elevation-z8">
+    <mat-table [dataSource]="dataSource" [matSortDisableClear]="false" matSort matSortActive="itemId"
+        matSortDirection="asc">
+
+        <ng-container matColumnDef="itemId">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Item ID </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.itemId}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="partNo">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Part No </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.partNo}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="partNoDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.partNoDescription}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="sumQuantity">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Quantity </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.sumQuantity}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="unitPrice">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Unit Price </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.unitPrice}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="totalPrice">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Total Price </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.totalPrice}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <!-- <mat-row *matRowDef="let row; columns: displayedColumns" ></mat-row> -->
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+    </mat-table>
+</div>

@@ -1,0 +1,43 @@
+.my-card__media {
+    margin: 10px;
+    width: 645px;
+    height: 385px;
+    background-image: url("../../assets/Relationship650.jpg");
+}
+
+td div:first-child {
+    width: 16px;
+    height: 11px;
+}
+
+tr:nth-child(1) td div {
+    background-image: url("../../assets/kw.gif")
+}
+
+tr:nth-child(2) td div {
+    background-image: url("../../assets/us.gif")
+}
+
+tr:nth-child(3) td div {
+    background-image: url("../../assets/bh.gif")
+}
+
+tr:nth-child(4) td div {
+    background-image: url("../../assets/om.gif")
+}
+
+tr:nth-child(5) td div {
+    background-image: url("../../assets/qa.gif")
+}
+
+tr:nth-child(6) td div {
+    background-image: url("../../assets/sa.gif")
+}
+
+tr:nth-child(7) td div {
+    background-image: url("../../assets/ae.gif")
+}
+
+tr:nth-child(8) td div {
+    background-image: url("../../assets/rus.png")
+}

@@ -1,0 +1,45 @@
+<div class="spinner-container" *ngIf="loading$ | async">
+  <mat-spinner diameter="100" strokeWidth="10"></mat-spinner>
+</div>
+
+<div class="mat-elevation-z8">
+  <mat-table [dataSource]="dataSource" [matSortDisableClear]="false" matSort matSortActive="supplierId"
+    matSortDirection="asc">
+
+    <ng-container matColumnDef="supplierId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Supplier ID </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.supplierId}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="partNo">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Part No </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.partNo}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="itemId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Item ID </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.itemId}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="unitPrice">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Unit Price </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.unitPrice}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="costPrice">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Cost Price </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.costPrice}} </mat-cell>
+    </ng-container>
+
+    <!-- Currency Column -->
+    <ng-container matColumnDef="currency">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Currency </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.currency}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+    <!-- <mat-row *matRowDef="let row; columns: displayedColumns" ></mat-row> -->
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+  </mat-table>
+</div>
