@@ -24,17 +24,31 @@
     min-height: 40px;
   }
 
-  .mat-row {
-    min-height: 40px;
-    cursor: pointer;
-    &.highlight {background-color: #ede8f7 !important;}
-    &:hover { background: #c8c8c8; }    
+  :host {
+    --my-primary-color: #E0ECF6;
   }
 
-  .mat-row:is(.highlight) .mat-cell {
-    color: var(--mdc-theme-primary) !important;
-    // overflow: initial;
+  mat-row {
+  //tr.mat-mdc-row:hover {
+    min-height: 40px;
+    cursor: pointer;
+    &.highlight {background-color: var(--my-primary-color) !important;}    
+    //&:hover { background: #c8c8c8; }    
   }
+
+  mat-row:hover {
+    background: #c8c8c8;
+    //background-color: red;
+  }
+
+  // mat-row:nth-child(even) {
+  //   background-color: #ede8f7;
+  // }
+
+  // mat-row:is(.highlight) .mat-cell {
+  //   color: var(--my-primary-color) !important;
+  //   // overflow: initial;
+  // }
 
   .spinner-container {
     height: 200px;
@@ -47,3 +61,4 @@
   .spinner-container mat-spinner {
     margin: 80px auto 0 auto;
   }
+  

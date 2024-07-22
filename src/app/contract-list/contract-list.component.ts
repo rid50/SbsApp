@@ -24,7 +24,7 @@ import { ContractDataSource } from '../services/contract.datasource';
 import { NgForOf } from '@angular/common';
 import { DateAdapter, MatRipple } from '@angular/material/core';
 import { isNgTemplate } from '@angular/compiler';
-import { MatInput as MatInput } from '@angular/material/input';
+//import { MatInput as MatInput } from '@angular/material/input';
 //import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { CdkColumnDef, CdkRowDef } from '@angular/cdk/table';
 import { SelectionModel } from '@angular/cdk/collections';

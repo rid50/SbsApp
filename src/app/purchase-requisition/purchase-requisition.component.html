@@ -3,13 +3,17 @@
 </div>
 
 <div class="mat-elevation-z8">
+  <!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8"></table> -->
+    <!-- <mat-table [dataSource]="dataSource" [matSortDisableClear]="false" matSort matSortActive="contractId"
+      matSortDirection="asc"> -->
+
     <mat-table [dataSource]="dataSource" [matSortDisableClear]="false" matSort matSortActive="contractId"
       matSortDirection="asc">
 
       <!-- ID Column -->
       <ng-container matColumnDef="contractId">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Contract ID </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.contractId}} ({{row.dateEntry}})</mat-cell>
+        <mat-cell *matCellDef="let row">{{row.contractId}} ({{row.dateEntry}})</mat-cell>
       </ng-container>
 
       <!-- Contract Name Column -->
@@ -23,4 +27,4 @@
         [ngClass]="{'highlight': selectedRowIndex === i}" (click)="onRowClicked(row, i)">
       </mat-row>
     </mat-table>
-  </div>
+</div>
