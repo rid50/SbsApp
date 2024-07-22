@@ -26,7 +26,7 @@ import { ContractService } from '../services/contract.service';
 	selector: 'app-material-drawer',
 	templateUrl: './material-drawer.component.html',
 	styleUrls: ['./material-drawer.component.scss'],
-
+	//standalone: true,
 	// encapsulation: ViewEncapsulation.None
 })
 export class MaterialDrawerComponent implements OnInit, AfterViewInit {

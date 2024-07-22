@@ -1,7 +1,9 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
-import { FlexLayoutModule } from '@ngbracket/ngx-layout';
+import { AppRoutingModule } from './app-routing.module';
+
+//import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 
 //import { MatLegacyFormFieldModule as MatFormFieldModule } from '@angular/material/legacy-form-field';
 //import { MatFormFieldModule as MatFormFieldModule } from '@angular/material/form-field';
@@ -9,8 +11,8 @@ import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 //import { MatInputModule as MatInputModule } from '@angular/material/input';
 
 //import { MatLegacyMenuModule as MatMenuModule } from '@angular/material/legacy-menu';
-import { MatMenuModule as MatMenuModule } from '@angular/material/menu';
-import { MatIconModule } from '@angular/material/icon';
+//import { MatMenuModule as MatMenuModule } from '@angular/material/menu';
+//import { MatIconModule } from '@angular/material/icon';
 
 //import { MatDatepickerModule } from '@angular/material/datepicker';
 //import { DateAdapter, MatNativeDateModule, MAT_DATE_FORMATS, MAT_DATE_LOCALE, NativeDateAdapter} from '@angular/material/core';
@@ -26,22 +28,24 @@ import { MatIconModule } from '@angular/material/icon';
 // import {MdcTypographyModule} from '@angular-mdc/web/typography';
 // import {MdcTopAppBarActionItem} from "@angular-mdc/web/top-app-bar";
 
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select';
+//import {MatSidenavModule} from '@angular/material/sidenav';
+//import {MatFormFieldModule} from '@angular/material/form-field';
+//import {MatInputModule} from '@angular/material/input';
+//import {MatSelectModule} from '@angular/material/select';
 
 
-import {ContractModule} from './contract.module';
 
 //import { ContractComponent } from './contract/contract.component';
 
 import { MaterialDrawerComponent } from './material-drawer/material-drawer.component';
 // import { MomentDateAdapter } from '@angular/material-moment-adapter';
 // import { MatMomentDateModule } from '@angular/material-moment-adapter';
-import { AppRoutingModule } from './app-routing.module';
+import { ContractModule} from './contract.module';
 import { PendingTransactionModule } from './pending-transaction.module';
 import { MostWantedModule } from './most-wanted.module';
+
+
+
 //import { AngularMdcDrawerComponent } from './angular-mdc-drawer/angular-mdc-drawer.component';
 
 // import { LOCALE_ID } from '@angular/core';
@@ -61,7 +65,9 @@ import { MostWantedModule } from './most-wanted.module';
 //    }
 // }
 
-const materialModules = [
+import { MaterialModule2 } from './material2.module';
+
+//const materialModules = [
   // MdcTopAppBarModule,
   // MdcDrawerModule,
   // MdcListModule,
@@ -72,12 +78,12 @@ const materialModules = [
 
   // MatFormFieldModule,
   // MatInputModule,
-  MatMenuModule,
-  MatIconModule,
+  //MatMenuModule,
+  //MatIconModule,
   // MatDatepickerModule,
   // MatNativeDateModule,
   // MatMomentDateModule  
-]
+//]
 
 @NgModule({
   declarations: [
@@ -88,25 +94,27 @@ const materialModules = [
   imports: [
     AppRoutingModule,    
     CommonModule,
-    FlexLayoutModule,
+    MaterialModule2,
+
+    //FlexLayoutModule,
     
-    
-    //ContractModule,
-    //PendingTransactionModule,
-    //MostWantedModule,
-    ...materialModules
+    ContractModule,
+    PendingTransactionModule,
+    MostWantedModule,
+    //...materialModules
   ],
   exports: [
     MaterialDrawerComponent,
+    MaterialModule2,
     //ContractModule,
-    PendingTransactionModule,
-    MostWantedModule,
+    //PendingTransactionModule,
+    //MostWantedModule,
   
     //...materialModules
-    MatSidenavModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
+    //MatSidenavModule,
+    //MatFormFieldModule,
+    //MatInputModule,
+    //MatSelectModule,
 
     // FlexLayoutModule
     //MaterialDrawerComponent,

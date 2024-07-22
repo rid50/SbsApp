@@ -4,11 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { FlexLayoutModule } from '@ngbracket/ngx-layout';
-import { MatCardModule as MatCardModule } from '@angular/material/card'; 
-import { MatProgressSpinnerModule as MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+//import { FlexLayoutModule } from '@ngbracket/ngx-layout';
+//import { MatCardModule as MatCardModule } from '@angular/material/card'; 
+//import { MatProgressSpinnerModule as MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule as MatDialogModule } from '@angular/material/dialog';
-import { MatButtonModule as MatButtonModule } from '@angular/material/button';
+//import { MatButtonModule as MatButtonModule } from '@angular/material/button';
 import { ToastrModule } from 'ngx-toastr';
 
 import { HttpInterceptorService } from './services/HttpInterceptorService';
@@ -35,7 +35,7 @@ import { ContractResolver } from './services/contract.resolver';
 //import { environment } from '../environments/environment';
 
 //import { ContractModule } from './contract.module';
-import { MaterialModule } from './material.module';
+//import { MaterialModule } from './material.module';
 //import { BaseApiUrlService } from './services/BaseApiUrlService';
 import { environment } from 'src/environments/environment';
 import { BehaviorSubject } from 'rxjs';
@@ -51,11 +51,17 @@ import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
 
 //registerLocaleData(localeRu, 'RU');
 
+import { MaterialDrawerComponent } from './material-drawer/material-drawer.component';
+
+import { MaterialModule } from './material.module';
+import { MaterialModule2 } from './material2.module';
+
 export const BaseApiUrlService = new InjectionToken<string>('BaseApiUrlService')
 
 @NgModule({
   declarations: [
     AppComponent,
+    //MaterialDrawerComponent,
     DatabaseSchemaComponent,
     LoadingDialogComponent,
     ErrorDialogComponent
@@ -63,20 +69,21 @@ export const BaseApiUrlService = new InjectionToken<string>('BaseApiUrlService')
   imports: [
     CommonModule,
     BrowserModule,
-    // AppRoutingModule,
+    //AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    FlexLayoutModule,
-    MatCardModule,
-    MatProgressSpinnerModule,
+    //FlexLayoutModule,
+  //  MatCardModule,
+    //MatProgressSpinnerModule,
     MatDialogModule,
-    MatButtonModule,
+    //MatButtonModule,
     ToastrModule.forRoot(),
     //MatDatepickerModule,
     //MatNativeDateModule,
     //FormsModule,
     //ContractModule,
     MaterialModule,
+    //MaterialModule2,
   ],
   exports: [
     // FlexLayoutModule

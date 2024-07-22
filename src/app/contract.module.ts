@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { APP_BASE_HREF, CommonModule, PlatformLocation } from '@angular/common';
 import { FormsModule} from '@angular/forms';
-import { FlexLayoutModule } from '@ngbracket/ngx-layout';
 
-import { MaterialModule } from './material.module';
+//import { MaterialModule2 } from './material2.module';
 
 // import { AppModule } from './app.module';
 
@@ -64,6 +63,8 @@ import { AppModule } from './app.module';
 
 //registerLocaleData(localeRu, 'RU');
 
+import { MaterialModule2 } from './material2.module';
+
 const globalRippleConfig: RippleGlobalOptions = {
   animation: {
     enterDuration: 300,
@@ -100,30 +101,33 @@ export function getBaseHref(platformLocation: PlatformLocation): string {
   imports: [
     CommonModule,
     FormsModule,  
-    FlexLayoutModule,
-    MaterialModule,
-    MatTabsModule,
-    MatToolbarModule,
-    MatListModule,
-    MatMenuModule,
-    MatSidenavModule,
-    MatCardModule,
-    MatSortModule,
-    MatTableModule,
-    MatButtonModule,
+    //FlexLayoutModule,
+    MaterialModule2,
+
+    //MatTabsModule,
+    //MatToolbarModule,
+    //MatListModule,
+    //MatMenuModule,
+    //MatSidenavModule,
+    //MatCardModule,
+    //MatSortModule,
+    //MatTableModule,
+    //MatButtonModule,
     //MatFormFieldModule,
     //MatInputModule,
     //MatSelectModule,
-    MatRippleModule,
+    //MatRippleModule,
     MatDatepickerModule,
     MatNativeDateModule,
     MatMomentDateModule,
     MatPaginatorModule,
-    MatProgressSpinnerModule,
-    MatIconModule,
+    //MatProgressSpinnerModule,
+    //MatIconModule,
     //AppModule,
   ],
   exports: [
+    //MaterialModule2,
+
     //BrowserModule,
 
     // ContractListComponent,
