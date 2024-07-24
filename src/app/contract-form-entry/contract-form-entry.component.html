@@ -15,10 +15,12 @@
         <!-- <span>Locale is {{loc}}</span> -->
         
         <mat-form-field>
+          <mat-label>Contract Id</mat-label>
           <input matInput type="text" placeholder="Contract Id" value={{contract?.contractId}} #input readonly>
         </mat-form-field>
 
         <mat-form-field>
+          <mat-label>Contract Name</mat-label>
           <input matInput name="contractName" id="contractName" placeholder="Contract Name" 
             [(ngModel)]="contract.contractName" required>
         </mat-form-field>
@@ -32,6 +34,7 @@
         </mat-form-field> -->
 
         <mat-form-field *ngIf="contract != undefined">
+          <mat-label>Date Entry</mat-label>
           <input matInput #dateEntry="ngModel" placeholder="Date Entry" name="dateEntry" id="dateEntry"
             [(ngModel)]="contract.dateEntry" 
             (dateChange)="dateChange($event)"
@@ -47,6 +50,7 @@
         </mat-form-field>
 
         <mat-form-field>
+          <mat-label>Contract Value</mat-label>
           <input matInput type="text" placeholder="Contract Value" 
             [ngModel]="contract.contractValue | number" 
             (ngModelChange)="contract.contractValue=$event" 

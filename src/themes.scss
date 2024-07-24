@@ -1,6 +1,21 @@
+//@use "@material/theme/mdc-theme";
 @use '@angular/material' as mat;
+// @use "@material/theme";
+
+/* @use "@material/theme" with (
+  $primary: red,
+  $secondary: #76ff03,
+  $background: #fff,
+);
+@use "@material/top-app-bar/mdc-top-app-bar";
+*/
+
+//@use "@material/list/evolution-mixins" as list;
+
+//@include list.core-styles();
 
 @include mat.core();
+
 
 $cyan-palette: (
   50: #e0edf6,
@@ -35,6 +50,10 @@ $cyan-palette: (
   )
 );
 
+/* main {
+--roman: red;
+} */
+
 $my-primary: mat.define-palette($cyan-palette);
 //$my-primary: mat.define-palette(mat.$indigo-palette, 500);
 $my-accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
@@ -47,10 +66,35 @@ $my-theme: mat.define-light-theme((
    warn: $my-warn,
  ),
  typography: mat.define-typography-config(),
- density: 0, 
+ density: 2, 
 ));
 
-//body {
+//$mdc-theme-primary: mat.get-color-from-palette($my-primary);
+// $mdc-theme-primary: #0065b3;
+//$mdc-theme-primary: red;
+//--mdc-theme-primary: red;
+
+  //@include list.deprecated-item-selected-text-color(#0065b3);
+  //@include list.list-selected-ink-color(#0065b3);
+  //@include list.list-selected-meta-text-ink-color(#0065b3);
+
+/* .mdc-list-item {
+  //	--mdc-theme-primary: var(--my-primary-color);
+    //--mdc-theme-on-primary: var(--mdc-theme-text-primary-on-light);
+    //--mdc-theme-accent: darksalmon;
+}
+ */
+// $mdc-theme-secondary: #f00;
+// $mdc-theme-accent: mat.get-color-from-palette($my-accent);
+//$mdc-theme-secondary: mat.get-color-from-palette($my-accent);
+
+// // $mdc-theme-accent: #76ff03;
+// $mdc-theme-warn: #fff;
+//$mdc-theme-background: #fff; // White 
+
+//@import "@material/theme/mdc-theme";
+
+body {
 @include mat.all-component-themes($my-theme);
-//}
+}
 

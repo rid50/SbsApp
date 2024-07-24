@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { Component, OnInit, Input, AfterViewInit, OnChanges, SimpleChanges, ChangeDetectionStrategy, ViewChildren, ElementRef, QueryList, Inject, LOCALE_ID } from '@angular/core';
 import { DateAdapter } from '@angular/material/core';
-import { MatInput as MatInput } from '@angular/material/input';
+import { MatInput } from '@angular/material/input';
 import { throwError } from 'rxjs';
 import { catchError, finalize, startWith } from 'rxjs/operators';
 

@@ -1,6 +1,6 @@
 <div fxLayout="row" fxLayoutGap="10px">
 <!-- <div class="flex flex-row"> -->
-  <div fxLayout="column" fxFlex="0 1 calc(80% - 10px)">
+  <div fxLayout="column" fxFlex="0 1 80%" fxLayoutGap="10px">
   <!-- <div class="flex flex-col" style="margin-right: 10px;"> -->
     <form #testForm="ngForm" (ngSubmit)="testForm.form.valid" novalidate>
       <!-- <mat-card> -->
@@ -114,7 +114,7 @@
           </ng-container>
 
           <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-          <mat-row *matRowDef="let row; columns: displayedColumns; let i = index" matRipple
+          <mat-row *matRowDef="let row; columns: displayedColumns; let i = index"
             [ngClass]="{'highlight': selectedRowIndex === i}" (click)="onRowClicked(row, i)">
           </mat-row>
 
@@ -142,7 +142,7 @@
     </form>
     <app-contract-detail-list [contractId]="contractId"></app-contract-detail-list>
   </div>
-  <div fxLayout="column" fxFlex="0 1 calc(20% - 10px)">
+  <div fxLayout="column" fxFlex="0 1 20%" fxLayoutGap="10px">
   <!-- <div> -->
     <app-contract-form-entry [contract]="contract"></app-contract-form-entry>
   </div>

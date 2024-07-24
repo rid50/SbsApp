@@ -1,8 +1,9 @@
 /* @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import '~material-design-icons/iconfont/material-icons.css'; */
 
-  .mat-table {
+  mat-table {
     //display: flex;
+    //flex-direction: column;
     /* column-gap: 40px; */
     /* overflow: auto;
     width: 100%; */
@@ -18,7 +19,8 @@
   }
   
   :host {
-    --my-primary-color: #E0ECF6;
+    --my-primary-color: #0065B3;
+    --my-primary-background: #EDE8F7;
   }
 
   mat-row {
@@ -29,9 +31,25 @@
 	  // position: relative;
 	  // overflow: hidden;
     cursor: pointer;
-    &.highlight {background-color: var(--my-primary-color) !important;}
+    //&.highlight {background-color: #ede8f7 !important;}
+    //&.highlight {background-color: var(--my-primary-color) !important;}
     &:hover { background: #c8c8c8; }
   }
+
+  /* .mat-row:hover {
+    background: #c8c8c8;
+  } */
+
+  mat-row:is(.highlight) {
+    color: var(--my-primary-color) !important;
+    background: var(--my-primary-background) !important;
+    // overflow: initial;
+  }
+
+  // .mat-row:is(.highlight) .mat-cell {
+  //   color: var(--mdc-theme-primary) !important;
+  //   // overflow: initial;
+  // }
 
   // mat-row:nth-child(even) {
   //   background-color: #ede8f7;
@@ -42,14 +60,14 @@
   //   background: red;
   // }
 
-  .mat-header-row {
+  mat-header-row {
     height: 32px;
     min-height: 32px;
   }
 
-  tr.mat-mdc-row:nth-child(even) {
-    background-color: #ede8f7;
-  }
+  // mat-row:nth-child(even) {
+  //   background-color: #ede8f7;
+  // }
 
   // .mat-row:nth-child(odd){
   //   background: rgba(0,0,0,0.12);
@@ -59,7 +77,7 @@
     flex: auto;
   } */
 
-  .mat-form-field {
+  mat-form-field {
     // font-size: 16px;
     /* margin-left: 10px; */
     width: 100%;
@@ -79,7 +97,7 @@
     overflow: auto;
   } */
 
-  .mat-card-title {
+  mat-card-title {
     margin-bottom: 0 !important;
   }
   
@@ -90,31 +108,40 @@
   //   min-height: 30px !important;
   // }
 
-  .mat-row:is(.highlight) .mat-cell {
-    color: var(--mdc-theme-primary) !important;
-    // overflow: initial;
+  /* .mat-mdc-cell
+  .mat-mdc-header-cell {
+    padding: 0px;
   }
+ */
+ /*  mat-cell,
+  mat-header-cell {
+    padding: 0px;
+  } */
 
-  .mat-cell,
-  .mat-header-cell {
-    color: black;
+  mat-cell,
+  mat-header-cell {
+    //color: red;
+    //background-color: aqua;
     margin-right: 10px;
+    padding: 0px;
 
     &:last-child {
       margin-right: 0px;      
     }
   }
 
-  .mat-cell:nth-child(1),
-  .mat-header-cell:nth-child(1) {
+  mat-cell:nth-child(1),
+  mat-header-cell:nth-child(1) {
     flex: 15%;
+    //flex: 0 0 15%;
     padding-left: 10px;
   }
 
-  .mat-cell:nth-child(2),
-  .mat-header-cell:nth-child(2) {
-    // text-overflow: ellipsis;
+  mat-cell:nth-child(2),
+  mat-header-cell:nth-child(2) {
+    //text-overflow: ellipsis;
     flex: 34%;
+    //flex-grow: 4%;
     max-width: 350px;
     //display: inline-block;
     white-space: nowrap;
@@ -127,19 +154,20 @@
     // }       
   }
 
-  .mat-cell:nth-child(3),
-  .mat-header-cell:nth-child(3) {
-    flex: 10%;
+  mat-cell:nth-child(3),
+  mat-header-cell:nth-child(3) {
+    flex: 8%;
   }  
 
-  .mat-cell:nth-child(4),
-  .mat-header-cell:nth-child(4) {
+  mat-cell:nth-child(4),
+  mat-header-cell:nth-child(4) {
     // display: flex;
-    flex: 10%;
+    flex: 12%;
     // min-width: 100px !important;
-    // align-items: flex-end;
+    //align-items: flex-end;
     justify-content: flex-end;
-    // text-align: right;
+    //overflow: auto;
+    //text-align: right;
   }  
 
  /* .mat-cell {
@@ -148,19 +176,19 @@
     overflow: hidden;        
   } */
 
-  .mat-cell.mat-column-currency,
-  .mat-header-cell.mat-column-currency {
+  mat-cell.mat-column-currency,
+  mat-header-cell.mat-column-currency {
     flex: 4%;
   }  
 
-  .mat-cell.mat-column-edit,
-  .mat-header-cell.mat-column-edit {
+  mat-cell.mat-column-edit,
+  mat-header-cell.mat-column-edit {
     min-width: 40px;
     // flex: 4px;
   }
 
-  .mat-cell.mat-column-delete,
-  .mat-header-cell.mat-column-delete {
+  mat-cell.mat-column-delete,
+  mat-header-cell.mat-column-delete {
     // flex: 3px;
     min-width: 40px;
     padding-right: 0px;
