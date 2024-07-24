@@ -1,7 +1,9 @@
 <div fxLayout="row" fxLayoutGap="10px">
 <!-- <div class="flex flex-row"> -->
-  <div fxLayout="column" fxFlex="0 1 80%" fxLayoutGap="10px">
+  <div fxFlex="0 1 80%">
   <!-- <div class="flex flex-col" style="margin-right: 10px;"> -->
+    <div fxLayout="column" fxLayoutGap="10px">
+    <div fxFlex="0 1 60%">
     <form #testForm="ngForm" (ngSubmit)="testForm.form.valid" novalidate>
       <!-- <mat-card> -->
       <!-- <mat-card-header>
@@ -140,9 +142,13 @@
     </mat-card-actions> -->
       <!-- </mat-card> -->
     </form>
+    </div>
+    <div fxFlex="0 1 40%">
     <app-contract-detail-list [contractId]="contractId"></app-contract-detail-list>
+    </div>
+    </div>
   </div>
-  <div fxLayout="column" fxFlex="0 1 20%" fxLayoutGap="10px">
+  <div fxFlex="0 1 20%">
   <!-- <div> -->
     <app-contract-form-entry [contract]="contract"></app-contract-form-entry>
   </div>
