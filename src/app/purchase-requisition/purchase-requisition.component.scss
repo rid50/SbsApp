@@ -1,4 +1,4 @@
-  .mat-table {
+  mat-table {
     /* display: flex; */
     /* column-gap: 40px; */
     /* overflow: auto;
@@ -10,8 +10,8 @@
     // margin-top: 10px; 
   }
   
-  .mat-cell,
-  .mat-header-cell {
+  mat-cell,
+  mat-header-cell {
     color: black;    
     // font-size: 16px;
     min-height: 40px;
@@ -20,7 +20,7 @@
     /* font-weight: 700; */
   }
 
-  .mat-header-row {
+  mat-header-row {
     min-height: 40px;
   }
 

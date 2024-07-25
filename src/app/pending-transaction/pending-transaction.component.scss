@@ -6,6 +6,11 @@
 //     max-width: 300px;    
 // }
 
-app-contract-accordion {
+/* app-contract-accordion {
     width: 280px !important;
+} */
+
+app-pending-purchase-requisition,
+app-pending-purchase-requisition-detail {
+    width: 100%;
 }
