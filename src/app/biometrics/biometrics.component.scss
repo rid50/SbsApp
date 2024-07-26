@@ -1,113 +1,119 @@
 @use "@material/image-list/mdc-image-list";
 @use "@material/image-list";
 
-  // .excontainer {
-  //   // display: block;
-  //   // margin-top: 10px;
-  //   // max-width: 500px;
-  //   //display: flex;
-  //   //flex-direction: column; 
-  //   //justify-content: flex-end; 
-  //   // width: 300px !important;  
-  // }
+// .excontainer {
+//   // display: block;
+//   // margin-top: 10px;
+//   // max-width: 500px;
+//   //display: flex;
+//   //flex-direction: column; 
+//   //justify-content: flex-end; 
+//   // width: 300px !important;  
+// }
 
-  .card {
-    height: 340px;
-    //width: 200px;
-    //max-width: 600px;
+.card {
+  box-sizing: content-box;
+  height: 300px;
+  //width: 200px;
+  max-width: 600px;
+}
+/* .mdc-card {
+  display:block;
+
+} */
+mat-card {
+  padding: 16px;
+  //width: 200px;
+  //max-width: 600px;
+}
+
+/* mat-card-content {
+  padding: 0px;
+  padding-bottom: 0px;
+}
+ */
+/* .mat-mdc-card-content:last-child {
+  padding-bottom: 0px;
+}
+ */
+.mat-mdc-card-content {
+  padding: 0px;
+
+/*   &:first-child {    //does not work ???????????????????
+    margin-top: 0px;      
+  } */
+
+  &:last-child:not(.mat-mdc-card-footer) {
+    padding-bottom: 0px;      
   }
+}
 
-  #div_wsq img {
-    max-width: 500px;
+.mat-mdc-card-content > :first-child {  //does work !!!!!!!!!!!!!!
+    margin-top: 0px;      
+}
 
-    // display: block;
-    // max-width: 100%;
-    // max-height: 100%;
-    // width: auto;
-    // height: auto;    
-    
-    
-    //max-width: 100%; height: auto;
-    // object-fit: contain;
-    // max-width: 100%;
-    // max-height: 100%;
-    // width: auto;
-    // height: auto;
+.mdc-image-list {
+  //@include image-list.aspect(1.5); // Images are 3:2
+  //@include image-list.standard-columns(1);
+  //width: 260px;
+  //margin: 10px 10px 10px 10px;
+  padding: 10px;
+}
 
-    //display: block;
-    // max-width:230px;
-    // max-height:95px;
-    // width: auto;
-    // height: auto;
+// .image_item {
+//   height: 140x !important;
+// }
 
-    // display: flex;
-			// flex-direction: row;
-      // flex: 50%;
-			//width: 100%;
-			//height: 100%;
-			//padding: 10px;
-			//box-sizing: border-box;
-  }
+.mdc-image-list__image {
+  height: 100px !important;
+  width: 100px;
+  padding: 10px;
+}
 
-  .mdc-image-list {
-    //@include image-list.aspect(1.5); // Images are 3:2
-    //@include image-list.standard-columns(1);
-    //width: 260px;
-    //margin: 10px 10px 10px 10px;
-    padding:  10px;
-  }
-  // .image_item {
-  //   height: 140x !important;
-  // }
-
-  .mdc-image-list__image {
-    height: 100px !important;
-    width: 100px;
-    padding: 10px;
-  }
 //   .mdc-image-list__item {
 //     padding-top: 10px;
 //   }
+.masonry-image-list {
+  @include image-list.masonry-columns(1);
+}
+
+@media (max-width: 599px) {
+  .mdc-image-list {
+    @include image-list.standard-columns(1);
+  }
+
   .masonry-image-list {
     @include image-list.masonry-columns(1);
   }
-  
-  @media (max-width: 599px) {
-    .mdc-image-list {
-      @include image-list.standard-columns(1);
-    }
-  
-    .masonry-image-list {
-      @include image-list.masonry-columns(1);
-    }
-  }
-  
-  .image-list--rounded-corners {
-    @include image-list.shape-radius(8px);
-  }
+}
 
-  // #div_wsq {
-  //   width: 800px;
-  // }
+.image-list--rounded-corners {
+  @include image-list.shape-radius(8px);
+}
 
-  #div_pic, #div_wsq {
-    display: flex;
-    justify-content: flex-end;
-    // width: 800px;
-  }
+// #div_wsq {
+//   width: 800px;
+// }
 
-  tr > td {
-    text-align: center;
-  }
+#div_pic,
+#div_wsq {
+  display: flex;
+  justify-content: flex-end;
+  // width: 800px;
+}
 
-  .spinner-container {
-    height: 200px;
-    width: 200px;
-    position: fixed;
-    // position: absolute; 
-    z-index: 100;    
-  }
+tr>td {
+  text-align: center;
+}
 
-  .spinner-container mat-spinner {
-    margin: 80px auto 0 auto;
-  }
+.spinner-container {
+  height: 200px;
+  width: 200px;
+  position: fixed;
+  // position: absolute; 
+  z-index: 100;
+}
+
+.spinner-container mat-spinner {
+  margin: 80px auto 0 auto;
+}
