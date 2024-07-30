@@ -14,7 +14,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { HttpInterceptorService } from './services/HttpInterceptorService';
 import { ErrorHandlerService } from './services/ErrorHandlerService';
 
-import { AppRoutingModule } from './app-routing.module';
+//import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async'
@@ -39,22 +39,22 @@ import { ContractResolver } from './services/contract.resolver';
 //import { BaseApiUrlService } from './services/BaseApiUrlService';
 import { environment } from 'src/environments/environment';
 import { BehaviorSubject } from 'rxjs';
-import { ContractService } from './services/contract.service';
-import { LoadingDialogService } from './services/loading-dialog.service';
+//import { ContractService } from './services/contract.service';
+//import { LoadingDialogService } from './services/loading-dialog.service';
 
-import { DatabaseSchemaComponent } from './database-schema/database-schema.component';
+//import { DatabaseSchemaComponent } from './database-schema/database-schema.component';
 //import { LoadingDialogComponent } from './loading-dialog/loading-dialog.component';
 import { ErrorDialogService } from './services/error-dialog.service';
-import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
+//import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
 
 //import { BaseApiUrlService2 } from './services/BaseApiUrlService2';
 
 //registerLocaleData(localeRu, 'RU');
 
-import { DrawerComponent } from './drawer/drawer.component';
+//import { DrawerComponent } from './drawer/drawer.component';
 
 import { DrawerModule } from './drawer.module';
-import { MaterialModule } from './material.module';
+//import { MaterialModule } from './material.module';
 
 export const BaseApiUrlService = new InjectionToken<string>('BaseApiUrlService')
 
@@ -101,7 +101,7 @@ export const BaseApiUrlService = new InjectionToken<string>('BaseApiUrlService')
     { provide: BaseApiUrlService, useValue: new BehaviorSubject(environment.apiUrl)},
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true },
     { provide: ErrorHandler, useClass: ErrorHandlerService },
-    LoadingDialogService,
+    //LoadingDialogService,
     ErrorDialogService,
     provideAnimationsAsync()
     //BaseApiUrlService2,
