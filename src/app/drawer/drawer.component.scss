@@ -6,14 +6,14 @@
 //@use '@angular/material' as mat;
 //@use '@angular/material' as mat;
 
-@use "@material/theme" with (
-  $primary: #0065b3,
+/* @use "@material/theme" with (
+  $primary: var(--my-primary-color),
   $secondary: #76ff03,
   $background: #fff,
-);
+); */
 
 //@use "@material/top-app-bar/mdc-top-app-bar";
-
+//@use "@material/button/mdc-button";
 
 
 $cyan-palette: (
@@ -49,18 +49,10 @@ $cyan-palette: (
   )
 );
 
-//$my-primary: mat.define-palette($cyan-palette);
-//$my-accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
-//$my-warn: mat.define-palette(mat.$red-palette);
-/*
-$my-theme: mat.define-light-theme((
- color: (
-   primary: $my-primary,
-   accent: $my-accent,
-   warn: $my-warn,
- )
-));
-*/
+
+
+
+
 //$mdc-theme-primary: mat.get-color-from-palette($my-primary);
 // $mdc-theme-primary: #0065b3;
 // //$mdc-theme-primary: #9c27b0;
@@ -90,7 +82,6 @@ $my-theme: mat.define-light-theme((
 
 //@use "@material/button/mdc-button";
 
-@use "@material/icon-button/mdc-icon-button";
 //@use "@material/top-app-bar";
 
 //@use '@material/theme/color-palette' as material-color;
@@ -111,7 +102,11 @@ $my-theme: mat.define-light-theme((
 
 @use "@material/card";
 
+@use "@material/icon-button/mdc-icon-button";
+
 //@use '@angular/material' as mat;
+//@include mat.core();
+
 // @use "@material/theme";
 
 /* @use "@material/theme" with (
@@ -126,7 +121,7 @@ $my-theme: mat.define-light-theme((
 
 //@include list.core-styles();
 
-//@include mat.core();
+// @include mat.core();
 
 //@include mat.core();
 
@@ -137,12 +132,45 @@ $my-theme: mat.define-light-theme((
 @include list.core-styles();
 //@include list.deprecated-core-styles();
 @include card.core-styles;
+/*
+$my-primary: mat.define-palette($cyan-palette);
+$my-accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
+$my-warn: mat.define-palette(mat.$red-palette);
 
-:host {
-	--my-primary-color: #0065b3;
+$my-theme: mat.define-light-theme((
+ color: (
+   primary: $my-primary,
+   accent: $my-accent,
+   warn: $my-warn,
+ ),
+ typography: mat.define-typography-config(),
+ //typography: $typography-config,
+ density: 0, 
+));
+
+*/
+//:host {
+	//--my-primary-color: #0065b3;
   //$me: var(--my-primary-color);
   //@debug "Color: #{$me}";
   
+//}
+
+
+
+:host {
+  //@include mat.all-component-themes($my-theme);
+
+  //--my-primary-color: red;
+//  --my-primary-color: mat.get-theme-color($my-theme, primary, 500);
+
+/* @if mat.theme-has($my-theme, color) {
+  @include color($my-theme);
+} */
+
+  // --my-primary-color: mat.get-color-from-palette($my-primary, 700-contrast);
+	//--mdc-theme-primary: var(--my-primary-color);
+  //--mdc-theme-primary: $aa;
 }
 
 
@@ -151,13 +179,13 @@ $my-theme: mat.define-light-theme((
   //@include top-app-bar.fill-color(darkcyan);
 }
 
-/*
+
 .mdc-list-item {
   //@include list.deprecated-item-selected-text-color(#0065b3);
   //@include list.list-selected-ink-color(#0065b3);
-  @include list.list-selected-meta-text-ink-color(#0065b3);
+  //@include list.list-selected-meta-text-ink-color(0065b3);
 }
-*/
+
     //background: #bddbfa linear-gradient(to bottom, #bddbfa 5%, #80b5ea 100%);
 
 
@@ -166,7 +194,7 @@ $my-theme: mat.define-light-theme((
 .mdc-top-app-bar {
   //background-color: green;
 
-  //background-color: var(--mdc-theme-primary);
+  //background-color: var(--my-primary-color);
 	//--mdc-theme-primary: var(--my-primary-color);
 	//--mdc-theme-on-primary: var(--mdc-theme-text-primary-on-light);
 	//--mdc-theme-accent: darksalmon;

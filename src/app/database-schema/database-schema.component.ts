@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 
+import { FlexLayoutModule } from '@ngbracket/ngx-layout';
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 declare const $: any;
 declare let fetchJsonp: any;
@@ -7,7 +9,11 @@ declare let fetchJsonp: any;
 @Component({
   selector: 'app-database-schema',
   templateUrl: './database-schema.component.html',
-  styleUrls: ['./database-schema.component.scss']
+  styleUrls: ['./database-schema.component.scss'],
+  standalone: true,
+  imports: [
+	FlexLayoutModule,
+  ],    
 })
 export class DatabaseSchemaComponent implements AfterViewInit {
 

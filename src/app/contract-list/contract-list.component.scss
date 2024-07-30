@@ -19,8 +19,10 @@
   }
   
   :host {
-    --my-primary-color: #0065B3;
-    --my-primary-background: #EDE8F7;
+    //--primary-color: var(--mdc-theme-primary)
+
+    // --my-primary-color: #0065B3;
+    // --my-primary-background: #EDE8F7;
   }
 
   mat-row {

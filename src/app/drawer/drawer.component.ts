@@ -23,13 +23,13 @@ import { ContractService } from '../services/contract.service';
 //import {ContractListComponent} from '../contract-list/contract-list.component';
 
 @Component({
-	selector: 'app-material-drawer',
-	templateUrl: './material-drawer.component.html',
-	styleUrls: ['./material-drawer.component.scss'],
+	selector: 'app-drawer',
+	templateUrl: './drawer.component.html',
+	styleUrls: ['./drawer.component.scss'],
 	//standalone: true,
 	// encapsulation: ViewEncapsulation.None
 })
-export class MaterialDrawerComponent implements OnInit, AfterViewInit {
+export class DrawerComponent implements OnInit, AfterViewInit {
 
 	// @Output() contractIdEvent = new EventEmitter<string>();
     // @Output() loadContractsSubscriptionCompleteEvent = new EventEmitter<boolean>();

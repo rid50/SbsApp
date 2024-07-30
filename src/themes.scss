@@ -1,3 +1,4 @@
+@use "sass:map";
 //@use "@material/theme/mdc-theme";
 @use '@angular/material' as mat;
 // @use "@material/theme";
@@ -14,8 +15,21 @@
 
 //@include list.core-styles();
 
+/* @use "@material/theme" with (
+  $primary: #0065b3,
+  $secondary: #76ff03,
+  $background: #fff,
+); */
+
+  //@debug "Color: #{$me}";
+
+
+
 @include mat.core();
 
+body {
+  --my-primary-color: red;
+}
 
 $cyan-palette: (
   50: #e0edf6,
@@ -23,7 +37,8 @@ $cyan-palette: (
   200: #80b2d9,
   300: #4d93ca,
   400: #267cbe,
-  500: #0065b3,
+  500: var(--my-primary-color),
+  //500: #0065b3,
   600: #005dac,
   700: #0053a3,
   800: #00499a,
@@ -50,13 +65,18 @@ $cyan-palette: (
   )
 );
 
+
 /* main {
 --roman: red;
 } */
 
+
+
 $my-primary: mat.define-palette($cyan-palette);
 //$my-primary: mat.define-palette(mat.$indigo-palette, 500);
 $my-accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
+
+// The "warn" palette is optional and defaults to red if not specified.
 $my-warn: mat.define-palette(mat.$red-palette);
 
 $my-theme: mat.define-light-theme((
@@ -66,8 +86,10 @@ $my-theme: mat.define-light-theme((
    warn: $my-warn,
  ),
  typography: mat.define-typography-config(),
- density: 2, 
+ //typography: $typography-config,
+ density: 0, 
 ));
+
 
 //$mdc-theme-primary: mat.get-color-from-palette($my-primary);
 // $mdc-theme-primary: #0065b3;
@@ -94,7 +116,44 @@ $my-theme: mat.define-light-theme((
 
 //@import "@material/theme/mdc-theme";
 
+
+//@debug "Color: #{$myprim}";
+//@debug "Color: #{mat.get-color-from-palette($my-primary)}";
+//@debug "Color: #{mat.get-theme-color($my-theme, primary, 500)}";
+//@debug "Color: #{var(--mdc-theme-primary)}";
+//@debug "Color: #{--mdc-theme-primary}";
+
 body {
-@include mat.all-component-themes($my-theme);
+
+  // Emit theme-dependent styles for common features used across multiple components.
+//@include mat.core-theme($my-theme);
+
+// Emit styles for MatButton based on `$my-theme`. Because the configuration
+// passed to `define-light-theme` omits typography, `button-theme` will not
+// emit any typography styles.
+//@include mat.button-theme($my-theme);
+//@include toolbar-theme.theme($theme);
+// Include the theme mixins for other components you use here.
+
+//src/material/core/theming/_all-theme.scss to see the mixin all-component-themes:
+  @include mat.all-component-themes($my-theme);
+
+  --mdc-theme-primary: var(--my-primary-color)
 }
+
+body {
+  //--my-primary-color: red;
+//  --my-primary-color: mat.get-theme-color($my-theme, primary, 500);
+
+/* @if mat.theme-has($my-theme, color) {
+  @include color($my-theme);
+} */
+
+  // --my-primary-color: mat.get-color-from-palette($my-primary, 700-contrast);
+	//--mdc-theme-primary: var(--my-primary-color);
+    
+	//--mdc-theme-primary: red;
+  //--mdc-theme-primary: $aa;
+}
+
 

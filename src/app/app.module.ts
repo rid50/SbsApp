@@ -43,7 +43,7 @@ import { ContractService } from './services/contract.service';
 import { LoadingDialogService } from './services/loading-dialog.service';
 
 import { DatabaseSchemaComponent } from './database-schema/database-schema.component';
-import { LoadingDialogComponent } from './loading-dialog/loading-dialog.component';
+//import { LoadingDialogComponent } from './loading-dialog/loading-dialog.component';
 import { ErrorDialogService } from './services/error-dialog.service';
 import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
 
@@ -51,10 +51,10 @@ import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
 
 //registerLocaleData(localeRu, 'RU');
 
-import { MaterialDrawerComponent } from './material-drawer/material-drawer.component';
+import { DrawerComponent } from './drawer/drawer.component';
 
+import { DrawerModule } from './drawer.module';
 import { MaterialModule } from './material.module';
-import { MaterialModule2 } from './material2.module';
 
 export const BaseApiUrlService = new InjectionToken<string>('BaseApiUrlService')
 
@@ -62,9 +62,9 @@ export const BaseApiUrlService = new InjectionToken<string>('BaseApiUrlService')
   declarations: [
     AppComponent,
     //MaterialDrawerComponent,
-    DatabaseSchemaComponent,
-    LoadingDialogComponent,
-    ErrorDialogComponent
+    //DatabaseSchemaComponent,
+    //LoadingDialogComponent,
+    //ErrorDialogComponent
   ],
   imports: [
     CommonModule,
@@ -82,7 +82,7 @@ export const BaseApiUrlService = new InjectionToken<string>('BaseApiUrlService')
     //MatNativeDateModule,
     //FormsModule,
     //ContractModule,
-    MaterialModule,
+    DrawerModule,
     //MaterialModule2,
   ],
   exports: [

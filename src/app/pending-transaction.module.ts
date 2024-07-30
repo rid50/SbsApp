@@ -10,7 +10,7 @@ import { PurchaseRequisitionComponent } from './purchase-requisition/purchase-re
 import { PendingPurchaseRequisitionComponent } from './pending-purchase-requisition/pending-purchase-requisition.component';
 import { PendingPurchaseRequisitionDetailComponent } from './pending-purchase-requisition-detail/pending-purchase-requisition-detail.component';
 
-import { MaterialModule2 } from './material2.module';
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { MaterialModule2 } from './material2.module';
   ],
   imports: [
     CommonModule,
-    MaterialModule2,
+    MaterialModule,
     CdkAccordionModule,
     ScrollingModule,
   ],

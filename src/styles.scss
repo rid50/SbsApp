@@ -1,10 +1,18 @@
+//Modify typography
+//https://angular-material.dev/courses/m2-ng-components/m2-ng-components/modify-typography 
+
 @use './themes.scss';
+
+
 //@use './mdc-theme';
 
 
 //@use './mat-typography';
 //@use './mdc-typography';
 
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+ 
 
 //@use '@angular/material' as mat;
 

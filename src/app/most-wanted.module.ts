@@ -6,7 +6,7 @@ import { CriminalListComponent } from './criminal-list/criminal-list.component';
 import { BiometricsComponent } from './biometrics/biometrics.component';
 // import { PendingPurchaseRequisitionComponent } from './pending-purchase-requisition/pending-purchase-requisition.component';
 
-import { MaterialModule2 } from './material2.module';
+import { MaterialModule } from './material.module';
 
 
 @NgModule({
@@ -18,7 +18,7 @@ import { MaterialModule2 } from './material2.module';
   ],
   imports: [
     CommonModule,
-    MaterialModule2,
+    MaterialModule,
   ],
   exports: [
     //MaterialModule2,

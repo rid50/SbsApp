@@ -63,7 +63,7 @@ import { AppModule } from './app.module';
 
 //registerLocaleData(localeRu, 'RU');
 
-import { MaterialModule2 } from './material2.module';
+import { MaterialModule } from './material.module';
 
 const globalRippleConfig: RippleGlobalOptions = {
   animation: {
@@ -102,7 +102,7 @@ export function getBaseHref(platformLocation: PlatformLocation): string {
     CommonModule,
     FormsModule,  
     //FlexLayoutModule,
-    MaterialModule2,
+    MaterialModule,
 
     //MatTabsModule,
     //MatToolbarModule,
