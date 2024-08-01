@@ -19,6 +19,7 @@ import * as _moment from 'moment';
 
 import { IContract } from '../models/contract';
 import { ContractService } from '../services/contract.service';
+import { ActivatedRoutesService } from '../services/activated-routes.service';
 // import { ComponentCommunicationService } from '../services/component-communication.service';
 import { ContractDataSource } from '../services/contract.datasource';
 import { NgForOf } from '@angular/common';
@@ -189,26 +190,11 @@ export class ContractListComponent implements OnInit, AfterViewInit {
         // _adapter.setLocale('ru-RU');
     // }
 
-    constructor(public dataSource: ContractDataSource, private contractService: ContractService){}
+    constructor(public dataSource: ContractDataSource,
+        private contractService: ContractService,
+        private route: ActivatedRoute,
+        private activatedRoutesService: ActivatedRoutesService){}
  
-    // ngOnChanges(changes: SimpleChanges): void {
-    //     for (const propName in changes) {
-    //         const changedProp = changes[propName];
-    //         const to = JSON.stringify(changedProp.currentValue);
-    //         // if (changedProp.isFirstChange()) {
-    //         //   console.log(`Initial value of ${propName} set to ${to}`);
-    //         // } else {
-    //         //   const from = JSON.stringify(changedProp.previousValue);
-    //         //   console.log(`${propName} changed from ${from} to ${to}`);
-    //         // }
-
-    //         // if (to != undefined) {
-    //         //     this.loadContractDetails(this.contractId)
-    //         //     this.dataSource.sort = this.sort;
-    //         // }
-    //     }
-    // }
-
     contactsCount = 0;
     getContactsCount(): number {
         if (this.contactsCount == 0)
@@ -222,7 +208,24 @@ export class ContractListComponent implements OnInit, AfterViewInit {
     // selection = new SelectionModel<Contract>(this.allowMultiSelect, this.initialSelection);
     // selection = new SelectionModel<Contract>(false, null);
 
+//    @Output() activatedRouteEvent = new EventEmitter<string>();
+
     ngOnInit(): void {
+        this.activatedRoutesService.setRoutePathForDrawer(this.route);
+//         this.route.url.subscribe(([url]) => {
+// 			const path = url.path;
+//             this.activatedRouteEvent.emit(path);
+// //			const { path, parameters } = url;
+// 			console.log(path); // e.g. /products
+// //			console.log(parameters); // e.g. { id: 'x8klP0' }
+// 		});
+
+        //console.log("ROUTES" + this.routes.getRoutePath());
+        //   console.log(this.route.snapshot); // ActivatedRouteSnapshot
+        //   console.log(this.route.snapshot.url); // UrlSegment[]
+        //   console.log(this.route.snapshot.url[0]); // UrlSegment
+        //   console.log(this.route.snapshot.url[0].path); // e.g. /products
+        //   console.log(this.route.snapshot.url[0].parameters); // e.g. { id: 'x8klP0' }          
         // _moment.locale('ru');
         // const utc = _moment.utc().format('D/MM-YY')
         // const utc = _moment.utc(contract.dateEntry, 'DD.MM.YYYY').format()

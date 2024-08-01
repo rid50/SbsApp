@@ -67,6 +67,7 @@ import { MostWantedModule } from './most-wanted.module';
 // }
 
 import { MaterialModule } from './material.module';
+import { ActivatedRoutesService } from './services/activated-routes.service';
 
 //const materialModules = [
   // MdcTopAppBarModule,
@@ -106,6 +107,7 @@ import { MaterialModule } from './material.module';
   ],
   exports: [
     DrawerComponent,
+    
     //MaterialModule,
     //ContractModule,
     //PendingTransactionModule,
@@ -127,7 +129,7 @@ import { MaterialModule } from './material.module';
 //	MdcMenuModule,
 //	MdcTabBarModule
   ],
-  // providers: [
+  providers: [
   //   // MatDatepickerModule,
   //   // {provide: DateAdapter, useClass: NativeDateAdapter},
   //   {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
@@ -140,8 +142,8 @@ import { MaterialModule } from './material.module';
   //   {provide: DateAdapter, useClass: MomentDateAdapter,
   //     deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
   //   },
-  // //   //ContractService,
+    //ActivatedRoutesService,
   // //   //ContractResolver
-  // ],  
+  ],  
 })
 export class DrawerModule {}

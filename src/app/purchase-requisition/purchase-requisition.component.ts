@@ -9,6 +9,9 @@ import { MatTableDataSource as MatTableDataSource } from '@angular/material/tabl
 import { PurchaseRequisition } from '../models/purchase-requisition';
 import { ContractService } from '../services/contract.service';
 
+import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoutesService } from '../services/activated-routes.service';
+
 @Component({
   selector: 'app-purchase-requisition',
   templateUrl: './purchase-requisition.component.html',
@@ -36,9 +39,12 @@ export class PurchaseRequisitionComponent implements OnInit {
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private contractService: ContractService) {}
+  constructor(private contractService: ContractService,
+      private route: ActivatedRoute,
+      private activatedRoutesService: ActivatedRoutesService) {}
 
   ngOnInit(): void {
+    this.activatedRoutesService.setRoutePathForDrawer(this.route);
     this.loadPurchaseRequisition()
     this.dataSource.sort = this.sort;
   }
