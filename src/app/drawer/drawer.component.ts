@@ -33,6 +33,7 @@ import { ActivatedRoutesService } from '../services/activated-routes.service';
 	selector: 'app-drawer',
 	templateUrl: './drawer.component.html',
 	styleUrls: ['./drawer.component.scss'],
+	providers: [ActivatedRoutesService]
 	//standalone: true,
 	// encapsulation: ViewEncapsulation.None
 })
@@ -80,9 +81,21 @@ export class DrawerComponent implements OnInit, AfterViewInit, OnDestroy {
 				return true;
 			})
 		}
+		//debugger;
+		//console.log("-----------------")
+		//this.subscription.unsubscribe;
 	}
+
+	// handleActivatedRouteEvent($event) {
+
+	// }
+	
 	ngOnInit(): void {
-		this.subscription = this.activatedRoutesService.activatedRouteEvent.subscribe(item => this.selectedItem(item));
+		//console.log("ngOnInit in Drawer component")
+		//this.subscription = this.activatedRoutesService.activatedRouteEvent.subscribe(item => this.selectedItem(item));
+
+		this.subscription = this.activatedRoutesService.activatedRouteStream.subscribe(item => this.selectedItem(item));
+
 		
 		// const elements = document.querySelectorAll('.mdc-list-item');
 		// elements.forEach(element => {
@@ -281,7 +294,12 @@ export class DrawerComponent implements OnInit, AfterViewInit, OnDestroy {
 	// }
 
 	ngOnDestroy() {
-		// prevent memory leak when component destroyed
+
+		// just to check "ngOnDestroy" method executed we destroy this component,
+		// look at onRowClicked method in ContractListComponent
+
+		//console.log("Drawer Destroyed")
+
 		this.subscription.unsubscribe();
-	  }
+	}
 }

@@ -13,7 +13,7 @@ import { ToastrModule } from 'ngx-toastr';
 
 import { HttpInterceptorService } from './services/HttpInterceptorService';
 
-import { ActivatedRoutesService } from './services/activated-routes.service';
+//import { ActivatedRoutesService } from './services/activated-routes.service';
 import { ErrorHandlerService } from './services/ErrorHandlerService';
 
 //import { AppRoutingModule } from './app-routing.module';
@@ -104,7 +104,7 @@ export const BaseApiUrlService = new InjectionToken<string>('BaseApiUrlService')
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true },
     { provide: ErrorHandler, useClass: ErrorHandlerService },
     //LoadingDialogService,
-    ActivatedRoutesService,
+    //ActivatedRoutesService,
     ErrorDialogService,
     provideAnimationsAsync()
     //BaseApiUrlService2,

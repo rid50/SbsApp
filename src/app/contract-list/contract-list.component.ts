@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, ElementRef, OnInit, AfterViewInit, ViewChild, EventEmitter, Output, ViewContainerRef, ViewChildren, QueryList, TemplateRef, ComponentRef, ContentChildren, Input, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
+//import { Injector } from '@angular/core';
+
 import { ActivatedRoute } from '@angular/router';
 //import {NgForm} from '@angular/forms'
 import { Observable, BehaviorSubject, of, throwError } from 'rxjs'
@@ -30,6 +32,7 @@ import { isNgTemplate } from '@angular/compiler';
 import { CdkColumnDef, CdkRowDef } from '@angular/cdk/table';
 import { SelectionModel } from '@angular/cdk/collections';
 import { LocaleService } from '../services/localeService.service';
+//import { DrawerComponent } from '../drawer/drawer.component';
 
 // class Contract implements IContract {
 //     // constructor(...rest:string[]){
@@ -192,6 +195,7 @@ export class ContractListComponent implements OnInit, AfterViewInit {
 
     constructor(public dataSource: ContractDataSource,
         private contractService: ContractService,
+        //private _injector: Injector,
         private route: ActivatedRoute,
         private activatedRoutesService: ActivatedRoutesService){}
  
@@ -504,7 +508,15 @@ export class ContractListComponent implements OnInit, AfterViewInit {
     }
 
     onRowClicked(row: IContract, index: number): void {
-        // console.log(`Table rows:\n${JSON.stringify(row)}`)
+
+/*        
+        // Get the reference to the component.
+        const componentRef = this._injector.get(DrawerComponent);
+        // Destroy the component.
+        componentRef.ngOnDestroy();
+*/
+
+        //console.log(`Table rows:\n${JSON.stringify(row)}`)
         this.selectedRowIndex = index;
         this.contractId = row.contractId;
         this.contract = this.dataSource.data.find(c => c.contractId == row.contractId)

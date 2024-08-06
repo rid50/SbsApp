@@ -47,7 +47,7 @@ import { ContractDetailListComponent } from './contract-detail-list/contract-det
 // import { ContractDetailComponent } from './contract-detail/contract-detail.component';
 import { ContractFormEntryComponent } from './contract-form-entry/contract-form-entry.component';
 
-import { ActivatedRoutesService } from './services/activated-routes.service';
+//import { ActivatedRoutesService } from './services/activated-routes.service';
 
 import { ContractService } from './services/contract.service';
 import { ContractResolver } from './services/contract.resolver';

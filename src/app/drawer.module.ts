@@ -67,7 +67,7 @@ import { MostWantedModule } from './most-wanted.module';
 // }
 
 import { MaterialModule } from './material.module';
-import { ActivatedRoutesService } from './services/activated-routes.service';
+//import { ActivatedRoutesService } from './services/activated-routes.service';
 
 //const materialModules = [
   // MdcTopAppBarModule,
@@ -142,7 +142,7 @@ import { ActivatedRoutesService } from './services/activated-routes.service';
   //   {provide: DateAdapter, useClass: MomentDateAdapter,
   //     deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
   //   },
-    //ActivatedRoutesService,
+  //  ActivatedRoutesService,
   // //   //ContractResolver
   ],  
 })
